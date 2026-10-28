@@ -20,3 +20,13 @@
   color: #4f4f4f;
   line-height: 18px;
 }
+
+.list-inline-item.footer-option:hover {
+  color: #c90009;
+  cursor: pointer;
+}
+
+.header-option:hover {
+  color: #0959ab;
+  cursor: pointer;
+}

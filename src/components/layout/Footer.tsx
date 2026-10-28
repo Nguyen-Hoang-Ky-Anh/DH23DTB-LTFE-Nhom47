@@ -4,29 +4,29 @@ export default function Footer() {
             <div className="d-flex flex-column align-items-center justify-content-center">
                 <div className="d-flex flex-row align-items-center">
                     <ul className="list-inline">
-                        <li className="list-inline-item"><a>TRANG CHỦ</a></li>
-                        <li className="list-inline-item"><a>MỚI NHẤT</a></li>
-                        <li className="list-inline-item"><a>XEM NHIỀU</a></li>
-                        <li className="list-inline-item"><a>VIDEO</a></li>
-                        <li className="list-inline-item"><a>THỜI SỰ</a></li>
-                        <li className="list-inline-item"><a>THẾ GIỚI</a></li>
-                        <li className="list-inline-item"><a>PHÁP LUẬT</a></li>
-                        <li className="list-inline-item"><a>KINH DOANH</a></li>
-                        <li className="list-inline-item"><a>CÔNG NGHỆ</a></li>
-                        <li className="list-inline-item"><a>XE</a></li>
-                        <li className="list-inline-item"><a>DU LỊCH</a></li>
-                        <li className="list-inline-item"><a>NHỊP SỐNG TRẺ</a></li>
-                        <li className="list-inline-item"><a>VĂN HÓA</a></li>
-                        <li className="list-inline-item"><a>GIẢI TRÍ</a></li>
-                        <li className="list-inline-item"><a>THỂ THAO</a></li>
-                        <li className="list-inline-item"><a>GIÁO DỤC</a></li>
-                        <li className="list-inline-item"><a>NHÀ ĐẤT</a></li>
-                        <li className="list-inline-item"><a>SỨC KHỎE</a></li>
-                        <li className="list-inline-item"><a>GIẢ THẬT</a></li>
-                        <li className="list-inline-item"><a>BẠN ĐỌC</a></li>
+                        <li className="list-inline-item footer-option"><a>TRANG CHỦ</a></li>
+                        <li className="list-inline-item footer-option"><a>MỚI NHẤT</a></li>
+                        <li className="list-inline-item footer-option"><a>XEM NHIỀU</a></li>
+                        <li className="list-inline-item footer-option"><a>VIDEO</a></li>
+                        <li className="list-inline-item footer-option"><a>THỜI SỰ</a></li>
+                        <li className="list-inline-item footer-option"><a>THẾ GIỚI</a></li>
+                        <li className="list-inline-item footer-option"><a>PHÁP LUẬT</a></li>
+                        <li className="list-inline-item footer-option"><a>KINH DOANH</a></li>
+                        <li className="list-inline-item footer-option"><a>CÔNG NGHỆ</a></li>
+                        <li className="list-inline-item footer-option"><a>XE</a></li>
+                        <li className="list-inline-item footer-option"><a>DU LỊCH</a></li>
+                        <li className="list-inline-item footer-option"><a>NHỊP SỐNG TRẺ</a></li>
+                        <li className="list-inline-item footer-option"><a>VĂN HÓA</a></li>
+                        <li className="list-inline-item footer-option"><a>GIẢI TRÍ</a></li>
+                        <li className="list-inline-item footer-option"><a>THỂ THAO</a></li>
+                        <li className="list-inline-item footer-option"><a>GIÁO DỤC</a></li>
+                        <li className="list-inline-item footer-option"><a>NHÀ ĐẤT</a></li>
+                        <li className="list-inline-item footer-option"><a>SỨC KHỎE</a></li>
+                        <li className="list-inline-item footer-option"><a>GIẢ THẬT</a></li>
+                        <li className="list-inline-item footer-option"><a>BẠN ĐỌC</a></li>
                     </ul>
                 </div>
-                <div className="d-flex flex-row align-items-start justify-content-space-between gap-5 p-4" style={{borderTop: "3px solid red"}}>
+                <div className="d-flex flex-row align-items-start justify-content-space-between gap-5 p-4" style={{borderTop: "3px solid #c90009"}}>
                     <div className="d-flex flex-row align-items-center justify-content-space-between gap-5">
                         <img src="https://vahc.com.vn/media/k2/items/cache/dca6745fdbb9da5b038270324f6ced2f_M.jpg" alt="Tuổi trẻ VN" width="200px" height="71px"></img>
                         <div className="d-flex flex-column w-75 text-start" style={{fontSize: 13, color:"#292929"}}>
