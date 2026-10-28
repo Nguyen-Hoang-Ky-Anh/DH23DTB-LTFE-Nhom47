@@ -1,7 +1,7 @@
 export default function Header() {
     return (
         <header className="w-100">
-                <div style={{ backgroundColor: "red" }}>
+                <div style={{ backgroundColor: "#c90009" }}>
                     <div className="container">
                         <div className="d-flex flex-column p-1">
                             <div className="d-flex flex-row justify-content-between align-items-center p-1">
@@ -13,16 +13,16 @@ export default function Header() {
 
                                 <div className="d-flex flex-row align-items-center gap-3">
                                     <ul className="list-inline mb-0">
-                                        <li className="list-inline-item fs-6" style={{color:"white"}}><i className="fa fa-microphone" style={{color:"white", opacity: 0.4}}></i> Podcast</li>
-                                        <li className="list-inline-item fs-6" style={{color:"white"}}><i className="fab fa-youtube-square" style={{color:"white", opacity: 0.4}}></i> Youtube</li>
-                                        <li className="list-inline-item fs-6" style={{color:"white"}}><i className="fa fa-lightbulb" style={{color:"white", opacity: 0.4}}></i> Cần biết</li>
-                                        <li className="list-inline-item fs-6" style={{color:"white"}}><i className="fab fa-soundcloud" style={{color:"white", opacity: 0.4}}></i> Quảng cáo</li>
+                                        <li className="list-inline-item" style={{color:"white", fontSize: "15px"}}><i className="fa fa-microphone" style={{color:"white", opacity: 0.6}}></i> Podcast</li>
+                                        <li className="list-inline-item" style={{color:"white", fontSize: "15px"}}><i className="fab fa-youtube-square" style={{color:"white", opacity: 0.6}}></i> Youtube</li>
+                                        <li className="list-inline-item" style={{color:"white", fontSize: "15px"}}><i className="fa fa-lightbulb" style={{color:"white", opacity: 0.6}}></i> Cần biết</li>
+                                        <li className="list-inline-item" style={{color:"white", fontSize: "15px"}}><i className="fa fa-volume-high" style={{color:"white", opacity: 0.6}}></i> Quảng cáo</li>
                                     </ul>
 
                                     <div className="d-flex flex-row align-items-center gap-2">
                                         <i className="fa fa-magnifying-glass" style={{color:"white"}}></i>
-                                        <div className="btn btn-primary rounded-pill fw-semibold text-nowrap">Đăng ký Tuổi Trẻ Sao</div>
-                                        <div className="btn btn-primary rounded-circle d-flex align-items-center justify-content-center" style={{ width: "25px", height: "25px" }}><i className="fa fa-question"></i></div>
+                                        <div className="btn fw-semibold text-nowrap fw-bold" style={{backgroundColor: "#5580df", color: "white", fontSize: "15px"}}>Đăng ký Tuổi Trẻ Sao</div>
+                                        <div className="btn rounded-circle d-flex align-items-center justify-content-center p-2" style={{ width: "25px", height: "25px", backgroundColor: "#5580df", color: "white"}}><i className="fa fa-question"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -43,23 +43,23 @@ export default function Header() {
                             />
 
                             <ul className="list-inline mb-0">
-                                <li className="list-inline-item fw-bold">THỜI SỰ</li>
-                                <li className="list-inline-item fw-bold">QUỐC TẾ</li>
-                                <li className="list-inline-item fw-bold">LAO ĐỘNG</li>
-                                <li className="list-inline-item fw-bold">BẠN ĐỌC</li>
-                                <li className="list-inline-item fw-bold">NET ZERO</li>
-                                <li className="list-inline-item fw-bold">KINH TẾ</li>
-                                <li className="list-inline-item fw-bold">SỨC KHỎE</li>
-                                <li className="list-inline-item fw-bold">GIÁO DỤC</li>
-                                <li className="list-inline-item fw-bold">PHÁP LUẬT</li>
-                                <li className="list-inline-item fw-bold">VĂN HÓA - VĂN NGHỆ</li>
-                                <li className="list-inline-item fw-bold">GIẢI TRÍ</li>
-                                <li className="list-inline-item fw-bold">THỂ THAO</li>
-                                <li className="list-inline-item fw-bold">AI 365</li>
-                                <li className="list-inline-item fw-bold">PHỤ NỮ</li>
-                                <li className="list-inline-item fw-bold">WORLD CUP 2026</li>
-                                <li className="list-inline-item fw-bold">ĐỊA ỐC</li>
-                                <li className="list-inline-item">...</li>
+                                <li className="list-inline-item fw-bold header-option">THỜI SỰ</li>
+                                <li className="list-inline-item fw-bold header-option">QUỐC TẾ</li>
+                                <li className="list-inline-item fw-bold header-option">LAO ĐỘNG</li>
+                                <li className="list-inline-item fw-bold header-option">BẠN ĐỌC</li>
+                                <li className="list-inline-item fw-bold header-option">NET ZERO</li>
+                                <li className="list-inline-item fw-bold header-option">KINH TẾ</li>
+                                <li className="list-inline-item fw-bold header-option">SỨC KHỎE</li>
+                                <li className="list-inline-item fw-bold header-option">GIÁO DỤC</li>
+                                <li className="list-inline-item fw-bold header-option">PHÁP LUẬT</li>
+                                <li className="list-inline-item fw-bold header-option">VĂN HÓA - VĂN NGHỆ</li>
+                                <li className="list-inline-item fw-bold header-option">GIẢI TRÍ</li>
+                                <li className="list-inline-item fw-bold header-option">THỂ THAO</li>
+                                <li className="list-inline-item fw-bold header-option">AI 365</li>
+                                <li className="list-inline-item fw-bold header-option">PHỤ NỮ</li>
+                                <li className="list-inline-item fw-bold header-option">WORLD CUP 2026</li>
+                                <li className="list-inline-item fw-bold header-option">ĐỊA ỐC</li>
+                                <li className="list-inline-item fw-bold header-option">...</li>
                             </ul>
                         </div>
                     </div>
