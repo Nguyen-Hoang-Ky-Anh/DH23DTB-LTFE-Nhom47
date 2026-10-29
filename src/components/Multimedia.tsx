@@ -31,7 +31,7 @@ export default function Multimedia() {
                         </ul>
                     </div>
                 </div>
-                <div className="row g-4">
+                <div className="row g-4 text-white pb-5">
                     <div className="col-12 col-lg-4">
                         <Card
                             image={"https://cdn2.tuoitre.vn/nld/291774122806476800/2026/6/29/covermoi-17827273420151847590979-0-0-1600-2560-crop-1782734752711336860096.png"}

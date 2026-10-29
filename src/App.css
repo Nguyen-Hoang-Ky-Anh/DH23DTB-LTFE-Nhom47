@@ -63,3 +63,43 @@
   object-fit: cover;
   display: block;
 }
+
+.description {
+  font-size: 14px;
+}
+
+.horizontal-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 0 0 12px;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 16px;
+}
+
+.horizontal-card-image {
+  width: 30%;
+  object-fit: cover;
+  display: block;
+}
+
+.horizontal-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.horizontal-card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #292929;
+  text-align: start;
+}
+
+.horizontal-card-description {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #454545;
+}
