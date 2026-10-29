@@ -9,7 +9,7 @@ export interface NewsItem {
 
 const parser = new DOMParser();
 
-export async function fetchRSS() {
+export default async function fetchRSS() {
     const response = await fetch("/nld/rss/home.rss");
 
     if (!response.ok) {
@@ -39,7 +39,7 @@ export async function fetchRSS() {
         const itemGuid = item.querySelector("guid");
 
         return {
-            title: itemTitle.textContent.trim(),
+            title: itemTitle.textContent.trim() || "",
             link: itemLink.textContent.trim(),
             image: img,
             description: doc2.body.textContent.trim(),
