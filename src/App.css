@@ -108,6 +108,11 @@ li:hover {
   cursor: pointer;
 }
 
+a {
+  color: #454545;
+  text-decoration: none;
+}
+
 .category-dropdown {
   position: relative;
   cursor: pointer;
@@ -150,4 +155,13 @@ li:hover {
 
 .category-box a:hover {
   color: #0a53ab;
+}
+
+.category-item:hover {
+  cursor: pointer;
+  color: #454545;
+}
+
+.category-icon {
+  color: #005bb2;
 }

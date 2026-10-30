@@ -1,3 +1,5 @@
+import {Category} from "../Category.tsx";
+
 export default function Header() {
     return (
         <header className="w-100">
@@ -59,11 +61,14 @@ export default function Header() {
                                 <li className="list-inline-item fw-bold header-option">PHỤ NỮ</li>
                                 <li className="list-inline-item fw-bold header-option">WORLD CUP 2026</li>
                                 <li className="list-inline-item fw-bold header-option">ĐỊA ỐC</li>
-                                <li className="list-inline-item fw-bold header-option">...</li>
+                                <li className="list-inline-item fw-bold header-option">
+                                    <i className="fa-solid fa-ellipsis"></i>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
+            <Category/>
         </header>
     )
 }
