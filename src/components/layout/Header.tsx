@@ -1,4 +1,8 @@
+import {Category} from "../Category.tsx";
+import {useState} from "react";
+
 export default function Header() {
+    const [showCategory, setShowCategory] = useState(false);
     return (
         <header className="w-100">
                 <div style={{ backgroundColor: "#c90009" }}>
@@ -59,11 +63,17 @@ export default function Header() {
                                 <li className="list-inline-item fw-bold header-option">PHỤ NỮ</li>
                                 <li className="list-inline-item fw-bold header-option">WORLD CUP 2026</li>
                                 <li className="list-inline-item fw-bold header-option">ĐỊA ỐC</li>
-                                <li className="list-inline-item fw-bold header-option">...</li>
+                                <li className="list-inline-item fw-bold header-option"
+                                    onClick={() => setShowCategory(!showCategory)}
+                                    style={{cursor: "pointer"}}
+                                >
+                                    <i className="fa-solid fa-ellipsis"></i>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
+            {showCategory && <Category/>}
         </header>
     )
 }
