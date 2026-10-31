@@ -1,4 +1,4 @@
-export default function CategoryRightOptionItems() {
+export default function CategoryMegaRightOptionItems() {
     return (
         <div className="option-right-item d-flex flex-column ps-3 border-start">
             <div className="d-flex flex-column gap-3 mb-3">
