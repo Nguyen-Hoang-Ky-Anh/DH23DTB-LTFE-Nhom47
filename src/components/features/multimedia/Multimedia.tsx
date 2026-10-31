@@ -1,4 +1,4 @@
-import Card from "./Card.tsx";
+import Card from "../../ui/Card.tsx";
 
 export default function Multimedia() {
     return (

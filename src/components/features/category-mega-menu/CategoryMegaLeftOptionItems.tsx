@@ -1,142 +1,142 @@
-import CategoryCard from "./CategoryCard";
+import CategoryMegaMenuCard from "./CategoryMegaMenuCard.tsx";
 
-export default function CategoryLeftOptionItems() {
+export default function CategoryMegaLeftOptionItems() {
     return (
         <div className="container">
             <div className="row">
                 <div className="col-lg-3 col-md-6 d-flex flex-column gap-5">
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Thời sự"
                         categoryItems={["Chính trị", "Xã hội", "Đô thị"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Net Zero"
                         categoryItems={["Tin tức & Xu hướng", "Chuyển đổi xanh", "Sống xanh", "Cẩm nang"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Pháp luật"
                         categoryItems={["Luật sư của bạn", "Truy nã", "Chuyện pháp đình"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="AI 365"
                         categoryItems={["Công nghệ số", "Bảo mật", "Mạng xã hội"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Địa ốc"
                         categoryItems={["Dự án", "Thị trường", "Nhà đẹp", "Doanh nhân"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Khoa học"
                         categoryItems={[]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Dành cho bạn đọc VIP"
                         categoryItems={["Tiêu điểm quốc tế", "Chuyện thương trường", "Bí quyết cộng sống", "Hồ sơ \"nóng\""]}
                     />
                 </div>
 
                 <div className="col-lg-3 col-md-6 d-flex flex-column gap-5">
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Quốc tế"
                         categoryItems={["Người Việt đó đây", "Hay - lạ", "Vấn đề nóng", "Hồ sơ"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Kinh tế"
                         categoryItems={["Kinh doanh", "Tiêu dùng", "Ôtô - Xe - Điện máy", "Bất động sản"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Văn hóa - Văn nghệ"
                         categoryItems={["Âm nhạc", "Văn học", "Sân khấu"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Du lịch xanh"
                         categoryItems={["Tiêu điểm", "Điểm đến", "Ẩm thực", "Đừng bỏ lỡ"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Truy vết mạng xã hội"
                         categoryItems={[]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Giải mai vàng"
                         categoryItems={[]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="World Cup 2026"
                         categoryItems={[]}
                     />
                 </div>
 
                 <div className="col-lg-3 col-md-6 d-flex flex-column gap-5">
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Lao động"
                         categoryItems={["Công đoàn - Công nhân", "An sinh xã hội", "Chính sách"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Sức khỏe"
                         categoryItems={["Chuyển động y học", "Giới tính", "Bác sĩ của bạn", "Khỏe & đẹp"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Giải trí"
                         categoryItems={["Hậu trường showbiz", "Chuyện của sao"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Phụ nữ"
                         categoryItems={["Khỏe - đẹp", "Tâm sự", "Chuyện của Sao", "Món ngon"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Hỏi nóng đáp nhanh"
                         categoryItems={[]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Vùng miền"
                         categoryItems={[]}
                     />
                 </div>
 
                 <div className="col-lg-3 col-md-6 d-flex flex-column gap-5">
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Bạn đọc"
                         categoryItems={["Cuộc sống nhân ái", "Tôi lên miếng", "Góc ảnh bạn đọc", "Thư bạn đọc"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Giáo dục"
                         categoryItems={["Du học", "Tuyển sinh", "Sau bục giảng"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Thể thao"
                         categoryItems={["Bóng đá", "Golf", "Hậu trường", "Các môn khác"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Gia đình"
                         categoryItems={["Bí quyết làm đẹp", "Cha mẹ và con cái", "Không gian sống"]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Đời sống"
                         categoryItems={[]}
                     />
 
-                    <CategoryCard
+                    <CategoryMegaMenuCard
                         title="Người Việt yêu sử Việt"
                         categoryItems={[]}
                     />

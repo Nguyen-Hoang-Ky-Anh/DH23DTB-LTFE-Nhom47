@@ -1,5 +1,5 @@
-import Card from "./Card.tsx";
-import HorizontalCard from "./HorizontalCard.tsx";
+import Card from "../../ui/Card.tsx";
+import HorizontalCard from "../../ui/HorizontalCard.tsx";
 
 export default function NewsSectionContent() {
     return (
