@@ -1,16 +1,16 @@
-import CategoryRightOptionItems from "./CategoryRightOptionItems.tsx";
-import CategoryLeftOptionItems from "./CategoryLeftOptionItems.tsx";
+import CategoryMegaRightOptionItems from "./CategoryMegaRightOptionItems.tsx";
+import CategoryMegaLeftOptionItems from "./CategoryMegaLeftOptionItems.tsx";
 
-export function Category() {
+export function CategoryMegaMenu() {
     return (
         <div style={{backgroundColor: "#fafafa"}}>
             <div className="container p-3">
                 <div className="row">
                     <div className="col-lg-9">
-                        <CategoryLeftOptionItems/>
+                        <CategoryMegaLeftOptionItems/>
                     </div>
                     <div className="col-lg-3">
-                        <CategoryRightOptionItems/>
+                        <CategoryMegaRightOptionItems/>
                     </div>
                 </div>
             </div>

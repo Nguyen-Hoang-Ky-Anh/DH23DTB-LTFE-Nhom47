@@ -3,7 +3,7 @@ interface CategoryCardProps {
     categoryItems: string[];
 }
 
-export default function CategoryCard({ title, categoryItems }: CategoryCardProps) {
+export default function CategoryMegaMenuCard({ title, categoryItems }: CategoryCardProps) {
     return (
         <div className="card border-0" style={{width: '10rem', height: '10rem', backgroundColor: "#FAFAFA"}}>
             <div className="card-title text-start fw-bold mb-0" style={{borderBottom: "1px solid #0959ab", width: "fit-content"}}>{title}</div>
