@@ -165,3 +165,11 @@ a {
 .category-icon {
   color: #005bb2;
 }
+
+.first-category-item {
+  font-size: 28px;
+}
+
+.second-category-item {
+  font-size: 14px;
+}
