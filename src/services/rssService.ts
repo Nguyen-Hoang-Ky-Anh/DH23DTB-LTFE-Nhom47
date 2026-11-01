@@ -24,29 +24,18 @@ export default async function fetchRSS(feed = "home") {
         throw new Error("RSS error: " + error.textContent);
     }
 
-    const items = Array.from(doc.querySelectorAll("item"));
-
-    const newsItems: NewsItem[] = items.map(item => {
-        const itemTitle = item.querySelector("title");
-        const itemLink = item.querySelector("link");
-        const itemBaseDescription = item.querySelector("description");
-
-        const doc2 = parser.parseFromString(itemBaseDescription?.textContent || "", "text/html");
-
-        const imgElement = doc2.querySelector("img");
-        const img = imgElement?.getAttribute("src") || "";
-        const itemPubDate = item.querySelector("pubDate");
-        const itemGuid = item.querySelector("guid");
-
+    return Array.from(doc.querySelectorAll("item")).map((item): NewsItem => {
+        const description = item.querySelector("description")?.textContent || "";
+        const doc2 = parser.parseFromString(description, "text/html");
+        const img = doc2.querySelector("img")?.getAttribute("src") || "";
         return {
-            title: itemTitle?.textContent?.trim() || "",
-            link: itemLink?.textContent?.trim() || "",
+            title: item.querySelector("title")?.textContent?.trim() || "",
+            link: item.querySelector("link")?.textContent?.trim() || "",
             image: /^https?:\/\//i.test(img) ? img : "/news-placeholder.svg",
             description: doc2.body.textContent.trim(),
-            pubDate: itemPubDate?.textContent?.trim() || "",
-            guid: itemGuid?.textContent?.trim() || ""
+            pubDate: item.querySelector("pubDate")?.textContent?.trim() || "",
+            guid: item.querySelector("guid")?.textContent?.trim() || ""
         };
     });
-    return newsItems;
 }
 

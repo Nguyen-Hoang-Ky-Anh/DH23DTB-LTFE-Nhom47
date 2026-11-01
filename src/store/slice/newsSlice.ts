@@ -6,14 +6,12 @@ interface NewsState {
     news: NewsItem[];
     vipNews: NewsItem[];
     state: 'idle' | 'loading' | 'succeeded' | 'failed';
-    error: string | null;
 }
 
 const initialState: NewsState = {
     news: [],
     vipNews: [],
     state: 'idle',
-    error : null
 }
 
 export const fetchNews = createAsyncThunk("news/fetchNews",
@@ -23,8 +21,6 @@ export const fetchNews = createAsyncThunk("news/fetchNews",
             fetchRSS("danh-cho-ban-doc-vip"),
         ]);
         return {news, vipNews};
-    }, {
-        condition: (_, {getState}) => (getState() as {news: NewsState}).news.state !== 'loading',
     })
 
 const newsSlice = createSlice({
@@ -35,16 +31,14 @@ const newsSlice = createSlice({
             builder
                 .addCase(fetchNews.pending, state => {
                     state.state = 'loading';
-                    state.error = null;
                 })
                 .addCase(fetchNews.fulfilled, (state, action) => {
                     state.state = 'succeeded';
                     state.news = action.payload.news;
                     state.vipNews = action.payload.vipNews;
                 })
-                .addCase(fetchNews.rejected, (state, action) => {
+                .addCase(fetchNews.rejected, state => {
                     state.state = 'failed';
-                    state.error = action.error.message || 'Không tải được tin RSS.';
                 });
         },
     }
