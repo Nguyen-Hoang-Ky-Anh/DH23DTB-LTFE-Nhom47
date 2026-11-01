@@ -9,7 +9,7 @@ export default function HomePage() {
             <Header/>
             <main className="flex-grow-1">
                 <Multimedia/>
-                <NewsSection/>
+                <NewsSection title={"homepage"}/>
             </main>
             <Footer/>
         </div>
