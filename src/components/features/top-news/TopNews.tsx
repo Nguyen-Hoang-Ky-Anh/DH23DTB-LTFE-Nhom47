@@ -18,11 +18,7 @@ const descriptionStyle = {fontSize: 14, color: "#555555"};
 
 export default function TopNews() {
     const dispatch = useDispatch<AppDispatch>();
-    const {feeds, state} = useSelector((state: RootState) => state.news);
-
-    const news = feeds.home ?? [];
-    const vipNews = feeds.vip ?? [];
-
+    const {news, vipNews, state} = useSelector((state: RootState) => state.news);
     const mainNews = news[0];
 
     useEffect(() => {
