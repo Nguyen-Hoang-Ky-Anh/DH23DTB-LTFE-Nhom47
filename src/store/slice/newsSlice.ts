@@ -9,7 +9,7 @@ const feedPaths = {
     ...RSS_FEEDS.categories,
 };
 
-type FeedName = keyof typeof feedPaths;
+export type FeedName = keyof typeof feedPaths;
 
 interface NewsState {
     feeds: Partial<Record<FeedName, NewsItem[]>>;
