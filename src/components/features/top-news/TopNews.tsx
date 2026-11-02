@@ -18,7 +18,11 @@ const descriptionStyle = {fontSize: 14, color: "#555555"};
 
 export default function TopNews() {
     const dispatch = useDispatch<AppDispatch>();
-    const {news, vipNews, state} = useSelector((state: RootState) => state.news);
+    const {feeds, state} = useSelector((state: RootState) => state.news);
+
+    const news = feeds.home ?? [];
+    const vipNews = feeds.vip ?? [];
+
     const mainNews = news[0];
 
     useEffect(() => {
@@ -75,7 +79,7 @@ export default function TopNews() {
                         <img className="w-100" src="https://static.mediacdn.vn/nld.com.vn/Banner_Nhung_cau_chuyen_nho_PC.png" alt="Những câu chuyện nhỏ"/>
                     </div>
 
-                   { /*
+                    { /*
                     Tinh Nong + Cuoc thi tim hieu nong thon...
                      */}
                     <aside className="col-3">
