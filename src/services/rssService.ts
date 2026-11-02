@@ -9,7 +9,7 @@ export interface NewsItem {
 
 const parser = new DOMParser();
 
-export default async function fetchRSS(feed = "home") {
+export default async function fetchRSS(feed: string) {
     const response = await fetch(`/nld/rss/${feed}.rss`);
 
     if (!response.ok) {
@@ -38,4 +38,3 @@ export default async function fetchRSS(feed = "home") {
         };
     });
 }
-
