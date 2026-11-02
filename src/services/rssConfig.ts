@@ -52,4 +52,4 @@ export const RSS_FEEDS = {
         NLDNEWS: "nguoi-lao-dong-news",
         SEAGame33: "sea-games-33"
     }
-} as const
+}

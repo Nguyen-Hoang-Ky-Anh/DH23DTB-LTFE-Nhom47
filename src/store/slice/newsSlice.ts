@@ -1,37 +1,26 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import type {NewsItem} from "../../services/rssService.ts";
 import fetchRSS from "../../services/rssService.ts";
-import {RSS_FEEDS} from "../../services/rssConfig.ts";
-
-type Categories = keyof typeof RSS_FEEDS.categories;
-type FeedName = "home" | "vip" | typeof RSS_FEEDS.categories[Categories]
+import type {NewsItem} from "../../services/rssService.ts";
 
 interface NewsState {
-    feeds: Partial<Record<FeedName, NewsItem[]>>;
+    news: NewsItem[];
+    vipNews: NewsItem[];
     state: 'idle' | 'loading' | 'succeeded' | 'failed';
-    error: string | null;
 }
 
 const initialState: NewsState = {
-    feeds: {},
+    news: [],
+    vipNews: [],
     state: 'idle',
-    error: null
 }
 
 export const fetchNews = createAsyncThunk("news/fetchNews",
     async () => {
-        const feedEntries = Object.entries({
-            home: RSS_FEEDS.home,
-            vip: RSS_FEEDS.vip,
-            ...RSS_FEEDS.categories
-        });
-
-        return await Promise.all(
-            feedEntries.map(async ([key, feed]) => ({
-                key: key as FeedName,
-                news: await fetchRSS(feed)
-            }))
-        );
+        const [news, vipNews] = await Promise.all([
+            fetchRSS(),
+            fetchRSS("danh-cho-ban-doc-vip"),
+        ]);
+        return {news, vipNews};
     })
 
 const newsSlice = createSlice({
@@ -42,13 +31,11 @@ const newsSlice = createSlice({
             builder
                 .addCase(fetchNews.pending, state => {
                     state.state = 'loading';
-                    state.error = null;
                 })
                 .addCase(fetchNews.fulfilled, (state, action) => {
                     state.state = 'succeeded';
-                    action.payload.forEach(({ key, news }) => {
-                        state.feeds[key] = news;
-                    });
+                    state.news = action.payload.news;
+                    state.vipNews = action.payload.vipNews;
                 })
                 .addCase(fetchNews.rejected, state => {
                     state.state = 'failed';

@@ -1,7 +1,7 @@
 import fetchRSS from "./services/rssService.ts"
 
 export default function TestRSS(){
-    fetchRSS("home");
+    fetchRSS();
     return (
         <div>
             <h1>test</h1>
