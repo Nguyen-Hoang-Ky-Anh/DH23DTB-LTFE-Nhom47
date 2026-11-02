@@ -1,6 +1,10 @@
 import NewsSectionHeader from "./NewsSectionHeader.tsx";
 import NewsSectionContent from "./NewsSectionContent.tsx";
 import {type SectionKey, SECTIONS} from "../../../config/newsSectionConfig.ts";
+import {useDispatch, useSelector} from "react-redux";
+import type {AppDispatch, RootState} from "../../../store/store.ts";
+import {useEffect} from "react";
+import {fetchNews} from "../../../store/slice/newsSlice.ts";
 
 interface NewsSectionProps {
     section: SectionKey
@@ -8,7 +12,15 @@ interface NewsSectionProps {
 }
 
 export default function NewsSection({section, layout = "horizontal"}: NewsSectionProps) {
-    const {title, icon, links, moreLinks} = SECTIONS[section];
+    const dispatch = useDispatch<AppDispatch>();
+    const {title, icon, feed, links, moreLinks} = SECTIONS[section];
+
+    const news = useSelector((s: RootState) => s.news.feeds[feed]) ?? [];
+
+    useEffect(() => {
+        dispatch(fetchNews(feed));
+    },[dispatch, feed]);
+
     return (
         <div className="container mt-4">
             <div className="row">
@@ -20,7 +32,7 @@ export default function NewsSection({section, layout = "horizontal"}: NewsSectio
                         moreLinks={moreLinks}
                     />
 
-                    <NewsSectionContent layout={layout}/>
+                    <NewsSectionContent layout={layout} news={news}/>
                 </div>
                 <div className="col-lg-3"></div>
             </div>
