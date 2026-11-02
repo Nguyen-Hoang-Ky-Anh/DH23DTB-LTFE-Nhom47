@@ -6,7 +6,7 @@ export default function CategoryPage() {
         <div className="d-flex flex-column min-vh-100">
             <main className="flex-grow-1">
                 <CategoryHeader/>
-                <NewsSection layout={"vertical"} title={""}/>
+                <NewsSection layout={"vertical"} section={"thoiSu"}/>
             </main>
         </div>
     )

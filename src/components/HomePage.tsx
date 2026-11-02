@@ -11,7 +11,14 @@ export default function HomePage() {
             <main className="flex-grow-1">
                 <TopNews/>
                 <Multimedia/>
-                <NewsSection title={"homepage"}/>
+                <NewsSection section="thoiSu"/>
+                <NewsSection section="quocTe"/>
+                <NewsSection section="kinhTe"/>
+                <NewsSection section="netZero"/>
+                <NewsSection section="ai365"/>
+                <NewsSection section="laoDong"/>
+                <NewsSection section="phapLuat"/>
+                <NewsSection section="banDoc"/>
             </main>
             <Footer/>
         </div>
