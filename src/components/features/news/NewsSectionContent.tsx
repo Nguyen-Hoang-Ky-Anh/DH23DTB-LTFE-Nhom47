@@ -2,14 +2,47 @@ import Card from "../../ui/Card.tsx";
 import HorizontalCard from "../../ui/HorizontalCard.tsx";
 import type {NewsItem} from "../../../services/rssService.ts";
 
+export type NewsLayout = "horizontal" | "vertical" | "columns" | "compact";
+
 interface NewsSectionContentProps {
     news: NewsItem[];
-    layout: "horizontal" | "vertical";
+    layout: NewsLayout;
 }
 
 export default function NewsSectionContent({news, layout}: NewsSectionContentProps) {
     const [featured, ...rest] = news;
     if (!featured) return null;
+
+    if (layout === "compact") {
+        return (
+            <div className="compact-news border-top pt-3">
+                <Card image={featured.image} title={featured.title}/>
+                {rest.slice(0, 2).map(item => (
+                    <p key={item.link} className="border-top pt-3 mt-3 mb-0 text-start"
+                       style={{fontSize: 14, lineHeight: 1.5, color: "#454545"}}>
+                        <span className="text-primary me-1">›</span>{item.title}
+                    </p>
+                ))}
+            </div>
+        );
+    }
+
+    if (layout === "columns") {
+        return (
+            <div className="row g-3 mt-0 border-top">
+                {news.slice(0, 2).map(item => (
+                    <div key={item.link} className="col-12 col-sm-6 col-lg-4">
+                        <Card image={item.image} title={item.title} description={item.description}/>
+                    </div>
+                ))}
+                <div className="col-12 col-lg-4 d-flex flex-column gap-3">
+                    {news.slice(2, 5).map(item => (
+                        <HorizontalCard key={item.link} image={item.image} title={item.title}/>
+                    ))}
+                </div>
+            </div>
+        );
+    }
 
     const list = rest.slice(0, 3);
     const sideItem = rest[3];

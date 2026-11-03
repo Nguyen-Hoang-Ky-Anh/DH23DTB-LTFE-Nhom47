@@ -32,7 +32,7 @@ export default function TopNews() {
 
     return (
         <div className="text-start" style={{letterSpacing: "normal"}}>
-            <section className="mx-auto px-3 py-4" style={{width: 1140}}>
+            <section className="container px-3 py-4">
                 <div className="row g-4">
                     <div className="col-9">
                         {/*
@@ -65,6 +65,9 @@ export default function TopNews() {
                                 </div>
                             </>
                         )}
+                        {/*
+                        
+                        */}
                         <div className="d-flex align-items-center gap-3 border-top border-bottom py-3 my-3 small">
                             <i className="fa-solid fa-arrow-trend-up text-danger"/>
                             <DragCarousel showControls>
