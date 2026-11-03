@@ -35,18 +35,18 @@ export const SECTIONS = {
         icon: "fa-solid fa-globe",
         feed: "quocTe",
         links: [
-            { label: "Người Việt đó đây", href: "#" },
-            { label: "Hay - lạ", href: "#" },
-            { label: "Vấn đề nóng", href: "#" },
+            { label: "Người Việt đó đây", href: "/quoc-te/nguoi-viet-do-day" },
+            { label: "Hay - lạ", href: "/quoc-te/hay-la" },
+            { label: "Vấn đề nóng", href: "/quoc-te/van-de-nong" },
         ],
         moreLinks: [
             {
                 label: "Hồ sơ",
-                href: "#",
+                href: "/quoc-te/ho-so",
             },
             {
                 label: "Quân sự - Quốc phòng",
-                href: "#",
+                href: "/quoc-te/quan-su-quoc-phong",
             },
         ],
     },
@@ -56,22 +56,22 @@ export const SECTIONS = {
         icon: "fa-solid fa-chart-line",
         feed: "kinhTe",
         links: [
-            { label: "Kinh doanh", href: "#" },
-            { label: "Tiêu dùng", href: "#" },
-            { label: "Ôtô - Xe - Điện máy", href: "#" },
+            { label: "Kinh doanh", href: "/kinh-te/kinh-doanh" },
+            { label: "Tiêu dùng", href: "/kinh-te/tieu-dung" },
+            { label: "Ôtô - Xe - Điện máy", href: "/kinh-te/oto-xe-dien-may" },
         ],
         moreLinks: [
             {
                 label: "Bất động sản",
-                href: "#",
+                href: "/kinh-te/bat-dong-san",
             },
             {
                 label: "Tài chính - Chứng khoán",
-                href: "#",
+                href: "/kinh-te/tai-chinh-chung-khoan",
             },
             {
                 label: "Diễn đàn kinh tế",
-                href: "#",
+                href: "/kinh-te/dien-dan-kinh-te",
             },
         ],
     },
@@ -81,14 +81,14 @@ export const SECTIONS = {
         icon: "fa-solid fa-leaf",
         feed: "netZero",
         links: [
-            { label: "Tin tức & Xu hướng", href: "#" },
-            { label: "Chuyển đổi xanh", href: "#" },
-            { label: "Sống xanh", href: "#" },
+            { label: "Tin tức & Xu hướng", href: "/net-zero/tin-tuc-xu-huong" },
+            { label: "Chuyển đổi xanh", href: "/net-zero/chuyen-doi-xanh" },
+            { label: "Sống xanh", href: "/net-zero/song-xanh" },
         ],
         moreLinks: [
             {
                 label: "Cẩm nang",
-                href: "#",
+                href: "/net-zero/cam-nang",
             },
         ],
     },
@@ -98,14 +98,14 @@ export const SECTIONS = {
         icon: "fa-solid fa-microchip",
         feed: "ai365",
         links: [
-            { label: "Công nghệ số", href: "#" },
-            { label: "Bảo mật", href: "#" },
-            { label: "Mạng xã hội", href: "#" },
+            { label: "Công nghệ số", href: "/ai-365/cong-nghe-so" },
+            { label: "Bảo mật", href: "/ai-365/bao-mat" },
+            { label: "Mạng xã hội", href: "/ai-365/mang-xa-hoi" },
         ],
         moreLinks: [
             {
                 label: "Giải trí cùng AI",
-                href: "#",
+                href: "/ai-365/giai-tri-cung-ai",
             },
         ],
     },
@@ -115,18 +115,18 @@ export const SECTIONS = {
         icon: "fa-solid fa-person-digging",
         feed: "laoDong",
         links: [
-            { label: "Công đoàn - Công nhân", href: "#" },
-            { label: "Việc làm", href: "#" },
-            { label: "An sinh xã hội", href: "#" },
+            { label: "Công đoàn - Công nhân", href: "/lao-dong/cong-doan-cong-nhan" },
+            { label: "Việc làm", href: "/lao-dong/viec-lam" },
+            { label: "An sinh xã hội", href: "/lao-dong/an-sinh-xa-hoi" },
         ],
         moreLinks: [
             {
                 label: "Chính sách",
-                href: "#",
+                href: "/lao-dong/chinh-sach",
             },
             {
                 label: "Xuất khẩu lao động",
-                href: "#",
+                href: "/lao-dong/xuat-khau-lao-dong",
             },
         ],
     },
@@ -136,9 +136,9 @@ export const SECTIONS = {
         icon: "fa-solid fa-scale-balanced",
         feed: "phapLuat",
         links: [
-            { label: "Luật sư của bạn", href: "#" },
-            { label: "Truy nã", href: "#" },
-            { label: "Chuyện pháp đình", href: "#" },
+            { label: "Luật sư của bạn", href: "/phap-luat/luat-su-cua-ban" },
+            { label: "Truy nã", href: "/phap-luat/truy-na" },
+            { label: "Chuyện pháp đình", href: "/phap-luat/chuyen-phap-dinh.rss" },
         ],
         moreLinks: [],
     },
@@ -148,22 +148,22 @@ export const SECTIONS = {
         icon: "fa-solid fa-book",
         feed: "banDoc",
         links: [
-            { label: "Những câu chuyện nhỏ", href: "#" },
-            { label: "Nhà ở xã hội", href: "#" },
-            { label: "Tôi lên tiếng", href: "#" },
+            { label: "Những câu chuyện nhỏ", href: "/ban-doc/nhung-cau-chuyen-nho" },
+            { label: "Nhà ở xã hội", href: "/ban-doc/nha-o-xa-hoi" },
+            { label: "Tôi lên tiếng", href: "/ban-doc/toi-len-tieng" },
         ],
         moreLinks: [
             {
                 label: "Góc ảnh bạn đọc",
-                href: "#",
+                href: "/ban-doc/goc-anh-ban-doc",
             },
             {
                 label: "Cuộc sống nhân ái",
-                href: "#",
+                href: "/ban-doc/cuoc-song-nhan-ai",
             },
             {
                 label: "Thư bạn đọc",
-                href: "#",
+                href: "/ban-doc/thu-ban-doc",
             },
         ],
     },

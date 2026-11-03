@@ -1,8 +1,14 @@
 import {useState} from "react";
 import {CategoryMegaMenu} from "../../features/category-mega-menu/CategoryMegaMenu.tsx";
+import {SECTIONS} from "../../../config/newsSectionConfig.ts";
 
 export default function HeaderNavigationBar() {
     const [showCategory, setShowCategory] = useState(false);
+
+    const categoriesList = Object.values(SECTIONS)
+        .slice(0, 16)
+        .map((section) => section.title);
+
     return (
         <div style={{ backgroundColor: "white" }}>
             <div className="container">
@@ -18,22 +24,11 @@ export default function HeaderNavigationBar() {
                     />
 
                     <ul className="list-inline mb-0">
-                        <li className="list-inline-item fw-bold header-option">THỜI SỰ</li>
-                        <li className="list-inline-item fw-bold header-option">QUỐC TẾ</li>
-                        <li className="list-inline-item fw-bold header-option">LAO ĐỘNG</li>
-                        <li className="list-inline-item fw-bold header-option">BẠN ĐỌC</li>
-                        <li className="list-inline-item fw-bold header-option">NET ZERO</li>
-                        <li className="list-inline-item fw-bold header-option">KINH TẾ</li>
-                        <li className="list-inline-item fw-bold header-option">SỨC KHỎE</li>
-                        <li className="list-inline-item fw-bold header-option">GIÁO DỤC</li>
-                        <li className="list-inline-item fw-bold header-option">PHÁP LUẬT</li>
-                        <li className="list-inline-item fw-bold header-option">VĂN HÓA - VĂN NGHỆ</li>
-                        <li className="list-inline-item fw-bold header-option">GIẢI TRÍ</li>
-                        <li className="list-inline-item fw-bold header-option">THỂ THAO</li>
-                        <li className="list-inline-item fw-bold header-option">AI 365</li>
-                        <li className="list-inline-item fw-bold header-option">PHỤ NỮ</li>
-                        <li className="list-inline-item fw-bold header-option">WORLD CUP 2026</li>
-                        <li className="list-inline-item fw-bold header-option">ĐỊA ỐC</li>
+                        {categoriesList.map((title) => (
+                            <li className="list-inline-item fw-bold header-option">
+                                {title.toUpperCase()}
+                            </li>
+                        ))}
                         <li className="list-inline-item fw-bold header-option"
                             onClick={() => setShowCategory(!showCategory)}
                             style={{cursor: "pointer"}}
