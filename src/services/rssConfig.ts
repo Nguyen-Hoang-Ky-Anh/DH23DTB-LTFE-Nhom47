@@ -1,8 +1,7 @@
 export const RSS_FEEDS = {
-    home: "home",
-    vip: "danh-cho-ban-doc-vip",
-
     categories: {
+        home: "home",
+        vip: "danh-cho-ban-doc-vip",
         thoiSu: "thoi-su",
         quocTe: "quoc-te",
         laoDong: "lao-dong",

@@ -3,11 +3,7 @@ import type {NewsItem} from "../../services/rssService.ts";
 import fetchRSS from "../../services/rssService.ts";
 import {RSS_FEEDS} from "../../services/rssConfig.ts";
 
-const feedPaths = {
-    home: RSS_FEEDS.home,
-    vip: RSS_FEEDS.vip,
-    ...RSS_FEEDS.categories,
-};
+const feedPaths = RSS_FEEDS.categories;
 
 export type FeedName = keyof typeof feedPaths;
 
