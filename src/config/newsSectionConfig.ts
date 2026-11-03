@@ -1,3 +1,4 @@
+import { RSS_FEEDS } from "../services/rssConfig.ts";
 import type {FeedName} from "../store/slice/newsSlice.ts";
 import {RSS_FEEDS} from "../services/rssConfig.ts";
 
@@ -18,6 +19,7 @@ export interface NewsSectionConfig {
 export const SECTIONS = {
   thiTruong: {
     title: "Thị trường",
+    href: `/${RSS_FEEDS.categories.thiTruong}`,
     icon: "fa-solid fa-store",
     feed: "thiTruong",
     links: [
@@ -33,6 +35,7 @@ export const SECTIONS = {
   },
   vanHoaVanNghe: {
     title: "Văn hóa - Văn nghệ",
+    href: `/${RSS_FEEDS.categories.vanHoaVanNghe}`,
     icon: "fa-solid fa-masks-theater",
     feed: "vanHoaVanNghe",
     links: [
@@ -47,6 +50,7 @@ export const SECTIONS = {
   },
   phuNu: {
     title: "Phụ nữ",
+    href: `/${RSS_FEEDS.categories.phuNu}`,
     icon: "fa-solid fa-venus",
     feed: "phuNu",
     links: [
@@ -64,24 +68,28 @@ export const SECTIONS = {
   },
   khoaHoc: {
     title: "Khoa học",
+    href: `/${RSS_FEEDS.categories.khoaHoc}`,
     icon: "fa-solid fa-flask",
     feed: "khoaHoc",
     links: [],
   },
   doiSong: {
     title: "Đời sống",
+    href: `/${RSS_FEEDS.categories.doiSong}`,
     icon: "fa-solid fa-person",
     feed: "doiSong",
     links: [],
   },
   moiTruong: {
     title: "Môi trường",
+    href: `/${RSS_FEEDS.categories.moiTruong}`,
     icon: "fa-solid fa-seedling",
     feed: "moiTruong",
     links: [],
   },
   diaOc: {
     title: "Địa ốc",
+    href: `/${RSS_FEEDS.categories.diaOc}`,
     icon: "fa-solid fa-building",
     feed: "diaOc",
     links: [
@@ -98,6 +106,7 @@ export const SECTIONS = {
   },
   giaDinh: {
     title: "Gia đình",
+    href: `/${RSS_FEEDS.categories.giaDinh}`,
     icon: "fa-solid fa-house",
     feed: "giaDinh",
     links: [
@@ -108,6 +117,7 @@ export const SECTIONS = {
   },
   duLichXanh: {
     title: "Du lịch xanh",
+    href: `/${RSS_FEEDS.categories.duLichXanh}`,
     icon: "fa-solid fa-plane",
     feed: "duLichXanh",
     links: [
@@ -122,6 +132,7 @@ export const SECTIONS = {
 
   thoiSu: {
     title: "Thời sự",
+    href: `/${RSS_FEEDS.categories.thoiSu}`,
     icon: "fa fa-newspaper",
     feed: "thoiSu",
     links: [
@@ -139,6 +150,7 @@ export const SECTIONS = {
 
   quocTe: {
     title: "Quốc tế",
+    href: `/${RSS_FEEDS.categories.quocTe}`,
     icon: "fa-solid fa-globe",
     feed: "quocTe",
     links: [
@@ -160,6 +172,7 @@ export const SECTIONS = {
 
   kinhTe: {
     title: "Kinh tế",
+    href: `/${RSS_FEEDS.categories.kinhTe}`,
     icon: "fa-solid fa-chart-line",
     feed: "kinhTe",
     links: [
@@ -185,6 +198,7 @@ export const SECTIONS = {
 
   netZero: {
     title: "Net Zero",
+    href: `/${RSS_FEEDS.categories.netZero}`,
     icon: "fa-solid fa-leaf",
     feed: "netZero",
     links: [
@@ -202,6 +216,7 @@ export const SECTIONS = {
 
   ai365: {
     title: "AI 365",
+    href: `/${RSS_FEEDS.categories.ai365}`,
     icon: "fa-solid fa-microchip",
     feed: "ai365",
     links: [
@@ -219,6 +234,7 @@ export const SECTIONS = {
 
   laoDong: {
     title: "Lao động",
+    href: `/${RSS_FEEDS.categories.laoDong}`,
     icon: "fa-solid fa-person-digging",
     feed: "laoDong",
     links: [
@@ -240,6 +256,7 @@ export const SECTIONS = {
 
   phapLuat: {
     title: "Pháp luật",
+    href: `/${RSS_FEEDS.categories.phapLuat}`,
     icon: "fa-solid fa-scale-balanced",
     feed: "phapLuat",
     links: [
@@ -415,6 +432,7 @@ export const SECTIONS = {
 
   banDoc: {
     title: "Bạn đọc",
+    href: `/${RSS_FEEDS.categories.banDoc}`,
     icon: "fa-solid fa-book",
     feed: "banDoc",
     links: [
