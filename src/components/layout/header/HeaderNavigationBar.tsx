@@ -1,13 +1,12 @@
 import {useState} from "react";
+import { Link } from "react-router-dom";
 import {CategoryMegaMenu} from "../../features/category-mega-menu/CategoryMegaMenu.tsx";
 import {SECTIONS} from "../../../config/newsSectionConfig.ts";
 
 export default function HeaderNavigationBar() {
     const [showCategory, setShowCategory] = useState(false);
 
-    const categoriesList = Object.values(SECTIONS)
-        .slice(0, 16)
-        .map((section) => section.title);
+    const categoriesList = Object.values(SECTIONS).slice(0, 16);
 
     return (
         <div style={{ backgroundColor: "white" }}>
@@ -24,9 +23,11 @@ export default function HeaderNavigationBar() {
                     />
 
                     <ul className="list-inline mb-0">
-                        {categoriesList.map((title) => (
-                            <li className="list-inline-item fw-bold header-option">
-                                {title.toUpperCase()}
+                        {categoriesList.map((section) => (
+                            <li key={section.feed} className="list-inline-item fw-bold header-option">
+                                <Link to={section.href} className="text-decoration-none text-dark">
+                                    {section.title.toUpperCase()}
+                                </Link>
                             </li>
                         ))}
                         <li className="list-inline-item fw-bold header-option"

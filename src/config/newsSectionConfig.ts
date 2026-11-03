@@ -1,4 +1,6 @@
 import type {FeedName} from "../store/slice/newsSlice.ts";
+import {RSS_FEEDS} from "../services/rssConfig.ts";
+
 export interface NavLink {
     label: string;
     href: string;
@@ -6,6 +8,7 @@ export interface NavLink {
 
 interface NewsSectionConfig {
     title: string;
+    href: string;
     icon: string;
     feed: FeedName;
     links: NavLink[];
@@ -15,6 +18,7 @@ interface NewsSectionConfig {
 export const SECTIONS = {
     thoiSu: {
         title: "Thời sự",
+        href: `/${RSS_FEEDS.categories.thoiSu}`,
         icon: "fa fa-newspaper",
         feed: "thoiSu",
         links: [
@@ -32,6 +36,7 @@ export const SECTIONS = {
 
     quocTe: {
         title: "Quốc tế",
+        href: `/${RSS_FEEDS.categories.quocTe}`,
         icon: "fa-solid fa-globe",
         feed: "quocTe",
         links: [
@@ -53,6 +58,7 @@ export const SECTIONS = {
 
     kinhTe: {
         title: "Kinh tế",
+        href: `/${RSS_FEEDS.categories.kinhTe}`,
         icon: "fa-solid fa-chart-line",
         feed: "kinhTe",
         links: [
@@ -78,6 +84,7 @@ export const SECTIONS = {
 
     netZero: {
         title: "Net Zero",
+        href: `/${RSS_FEEDS.categories.netZero}`,
         icon: "fa-solid fa-leaf",
         feed: "netZero",
         links: [
@@ -95,6 +102,7 @@ export const SECTIONS = {
 
     ai365: {
         title: "AI 365",
+        href: `/${RSS_FEEDS.categories.ai365}`,
         icon: "fa-solid fa-microchip",
         feed: "ai365",
         links: [
@@ -112,6 +120,7 @@ export const SECTIONS = {
 
     laoDong: {
         title: "Lao động",
+        href: `/${RSS_FEEDS.categories.laoDong}`,
         icon: "fa-solid fa-person-digging",
         feed: "laoDong",
         links: [
@@ -133,6 +142,7 @@ export const SECTIONS = {
 
     phapLuat: {
         title: "Pháp luật",
+        href: `/${RSS_FEEDS.categories.phapLuat}`,
         icon: "fa-solid fa-scale-balanced",
         feed: "phapLuat",
         links: [
@@ -145,6 +155,7 @@ export const SECTIONS = {
 
     banDoc: {
         title: "Bạn đọc",
+        href: `/${RSS_FEEDS.categories.banDoc}`,
         icon: "fa-solid fa-book",
         feed: "banDoc",
         links: [
