@@ -18,12 +18,10 @@ const descriptionStyle = {fontSize: 14, color: "#555555"};
 
 export default function TopNews() {
     const dispatch = useDispatch<AppDispatch>();
-    const {feeds, states} = useSelector((state: RootState) => state.news);
+    const {feeds, } = useSelector((state: RootState) => state.news);
 
     const news = feeds.home ?? [];
     const vipNews = feeds.vip ?? [];
-    const loading = states.home === 'loading' || states.vip === 'loading';
-    const failedFeeds = (['home', 'vip'] as const).filter(feed => states[feed] === 'failed');
 
     const mainNews = news[0];
 
@@ -35,17 +33,11 @@ export default function TopNews() {
     return (
         <div className="text-start" style={{letterSpacing: "normal"}}>
             <section className="mx-auto px-3 py-4" style={{width: 1140}}>
-                {loading && <p className="alert alert-light border">Đang tải tin mới...</p>}
-                {failedFeeds.length > 0 && (
-                    <div className="alert alert-warning">
-                        Không tải được một số nguồn RSS. Vui lòng thử lại.
-                        <button type="button" className="btn btn-outline-primary btn-sm ms-3" onClick={() => failedFeeds.forEach(feed => dispatch(fetchNews(feed)))}>
-                            Thử lại
-                        </button>
-                    </div>
-                )}
                 <div className="row g-4">
                     <div className="col-9">
+                        {/*
+                        Tin chinh thuc
+                         */}
                         {mainNews && (
                             <>
                                 <div className="row g-4">
