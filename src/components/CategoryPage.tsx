@@ -3,11 +3,11 @@ import NewsSection from "./features/news/NewsSection.tsx";
 
 export default function CategoryPage() {
     return (
-        <div className="d-flex flex-column min-vh-100">
+        <>
             <main className="flex-grow-1">
                 <CategoryHeader/>
                 <NewsSection layout={"vertical"} section={"thoiSu"}/>
             </main>
-        </div>
+        </>
     )
 }
