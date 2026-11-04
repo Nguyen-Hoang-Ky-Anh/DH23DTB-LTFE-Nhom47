@@ -81,8 +81,8 @@ export default function NewsSectionContent({news, layout}: NewsSectionContentPro
 
     return (
         <div className="pb-3">
-            <div className="row mb-4">
-                <div className="col-12">
+            <div className="row mb-4 mt-4">
+                <div className="col-9">
                     <HorizontalCard
                         image={featured.image}
                         title={featured.title}
@@ -92,10 +92,13 @@ export default function NewsSectionContent({news, layout}: NewsSectionContentPro
                 </div>
             </div>
 
-            <div className="row g-4 mt-2 border-top">
+            <div
+                className="d-flex flex-wrap gap-4 border-top pt-4 mt-2"
+                style={{ width: "fit-content", maxWidth: "100%" }}
+            >
                 {list.map(item => (
-                    <div key={item.link} className="col-4">
-                        <Card image={item.image} title={item.title}/>
+                    <div key={item.link} style={{ width: 303 }}>
+                        <Card image={item.image} title={item.title} />
                     </div>
                 ))}
             </div>
