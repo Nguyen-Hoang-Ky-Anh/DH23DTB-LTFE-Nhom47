@@ -10,7 +10,7 @@ function App() {
       <Routes>
           <Route element={<MainLayout/>}>
               <Route path="/" element={<HomePage />}/>
-              <Route path="/:category" element={<CategoryPage />}/>
+              <Route path="/:category/:subcategory?" element={<CategoryPage />}/>
           </Route>
       </Routes>
   )
