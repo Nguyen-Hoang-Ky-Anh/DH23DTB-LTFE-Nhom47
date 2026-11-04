@@ -14,7 +14,7 @@ interface NewsSectionProps {
 
 export default function NewsSection({section, layout = "horizontal", embedded = false}: NewsSectionProps) {
     const dispatch = useDispatch<AppDispatch>();
-    const {title, icon, feed, links, moreLinks}: NewsSectionConfig = SECTIONS[section];
+    const {title, href, icon, feed, links, moreLinks}: NewsSectionConfig = SECTIONS[section];
 
     const news = useSelector((s: RootState) => s.news.feeds[feed]) ?? [];
 
@@ -26,6 +26,7 @@ export default function NewsSection({section, layout = "horizontal", embedded = 
         <>
             <NewsSectionHeader
                 title={title}
+                href={href}
                 icon={icon}
                 links={links}
                 moreLinks={moreLinks}
