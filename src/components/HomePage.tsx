@@ -1,3 +1,4 @@
+import BottomNews from "./features/bottom-news/BottomNews.tsx";
 import Multimedia from "./features/multimedia/Multimedia.tsx";
 import NewsSection from "./features/news/NewsSection.tsx";
 import TopNews from "./features/top-news/TopNews.tsx";
@@ -7,7 +8,6 @@ export default function HomePage() {
         <>
             <TopNews />
             <Multimedia />
-
             <NewsSection section="thoiSu" />
             <NewsSection section="quocTe" />
             <NewsSection section="kinhTe" />
@@ -16,6 +16,7 @@ export default function HomePage() {
             <NewsSection section="laoDong" />
             <NewsSection section="phapLuat" />
             <NewsSection section="banDoc" />
+            <BottomNews/>
         </>
     );
 }
