@@ -3,6 +3,7 @@ import Footer from "./layout/footer/Footer.tsx";
 import Multimedia from "./features/multimedia/Multimedia.tsx";
 import NewsSection from "./features/news/NewsSection.tsx";
 import TopNews from "./features/top-news/TopNews.tsx";
+import HomeContent from "./features/home-content/HomeContent.tsx";
 
 export default function HomePage() {
     return (
@@ -10,6 +11,7 @@ export default function HomePage() {
             <Header/>
             <main className="flex-grow-1">
                 <TopNews/>
+                <HomeContent/>
                 <Multimedia/>
                 <NewsSection section="thoiSu"/>
                 <NewsSection section="quocTe"/>
