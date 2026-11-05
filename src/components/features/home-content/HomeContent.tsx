@@ -4,16 +4,24 @@ import {useEffect} from "react";
 import {fetchNews} from "../../../store/slice/newsSlice.ts";
 import HomeMainContent from "./HomeMainContent.tsx";
 import HomeSubContent from "./HomeSubContent.tsx";
+import {SECTIONS} from "../../../config/newsSectionConfig.ts";
 
 
 export default function HomeContent() {
     const dispatch = useDispatch<AppDispatch>();
     const {feeds, states} = useSelector((state: RootState) => state.news);
 
+    const xuatKhauLaoDong =
+        SECTIONS["laoDong"].moreLinks.
+        find((link) => link.feed === "nld/lao-dong/xuat-khau-lao-dong");
+    const xuatKhauLaoDongFeed = xuatKhauLaoDong?.feed;
+
     const homeNews = feeds.home ?? [];
     const mainList = homeNews.slice(0, 21);
     const seeMoreList = homeNews.slice(22, 27);
     const hoiNongDapNhanhNews = feeds.hoiNongDapNhanh ?? [];
+
+    const xuatKhauLaoDongNews = xuatKhauLaoDongFeed ? feeds[xuatKhauLaoDongFeed] ?? [] : [];
     const truyVetMXHNews = feeds.truyVetMXH ?? [];
     const noiThangNews = feeds.noiThang ?? [];
     const gocNhinNews = feeds.gocNhin ?? [];
@@ -36,6 +44,11 @@ export default function HomeContent() {
         dispatch(fetchNews('noiThang'));
         dispatch(fetchNews('gocNhin'));
         dispatch(fetchNews('NLDNEWS'))
+
+        if (xuatKhauLaoDongFeed) {
+            dispatch(fetchNews(xuatKhauLaoDongFeed));
+        }
+
     }, [dispatch]);
 
     return (
@@ -68,6 +81,7 @@ export default function HomeContent() {
                         gocNhinNews={gocNhinNews}
                         seeMoreNews={seeMoreList}
                         nguoiLaoDongNews={nguoiLaoDongNews}
+                        xuatKhauLaoDongNews={xuatKhauLaoDongNews}
                     />
                 </div>
             </div>

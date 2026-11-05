@@ -10,12 +10,13 @@ export interface HomeSubContentProbs {
     gocNhinNews: NewsItem[];
     seeMoreNews: NewsItem[];
     nguoiLaoDongNews: NewsItem[];
+    xuatKhauLaoDongNews: NewsItem[];
 }
 
 export default function HomeSubContent({
                                            hoiNongDapNhanhNews, truyVetMXHNews,
                                            noiThangNews, gocNhinNews, seeMoreNews,
-                                           nguoiLaoDongNews
+                                           nguoiLaoDongNews, xuatKhauLaoDongNews
                                        }: HomeSubContentProbs) {
 
     const hoiNongDapNhanh = SECTIONS["hoiNongDapNhanh"];
@@ -23,6 +24,9 @@ export default function HomeSubContent({
     const noiThang = SECTIONS["noiThang"];
     const gocNhin = SECTIONS["gocNhin"];
     const nldNews = SECTIONS["NLDNEWS"];
+
+    const docQuyen = SECTIONS["docQuyen"];
+
 
     return (
         <section className={'subMain'}>
@@ -133,7 +137,9 @@ export default function HomeSubContent({
                 )}
 
 
-
+                {xuatKhauLaoDongNews[0] && (
+                    <p>{xuatKhauLaoDongNews[0].title}</p>
+                )}
             </section>
 
         </section>
