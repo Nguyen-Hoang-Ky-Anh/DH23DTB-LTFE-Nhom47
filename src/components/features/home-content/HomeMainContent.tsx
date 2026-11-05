@@ -1,5 +1,5 @@
 import type {NewsItem} from "../../../services/rssService.ts";
-import HomeHorizontalCard from "../../ui/HomeHorizontalCard.tsx";
+import HomeHorizontalCard from "./HomeHorizontalCard.tsx";
 
 interface HomeMainContentProps {
     news: NewsItem[],

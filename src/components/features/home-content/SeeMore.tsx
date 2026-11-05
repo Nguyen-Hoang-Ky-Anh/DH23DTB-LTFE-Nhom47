@@ -1,4 +1,4 @@
-import type {NewsItem} from "../../services/rssService.ts";
+import type {NewsItem} from "../../../services/rssService.ts";
 
 interface SeeMoreProps {
     newsItem: NewsItem;

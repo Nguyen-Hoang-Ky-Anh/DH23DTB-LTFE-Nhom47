@@ -530,9 +530,9 @@ for (const [key, value] of Object.entries(RSS_CATEGORIES)) {
     FEED_PATHS[key] = category.feed;
 
     
-    console.log(category)
-    console.log(key)
-    console.log(FEED_PATHS[key]);
+    // console.log(category)
+    // console.log(key)
+    // console.log(FEED_PATHS[key]);
 
     for (const child of Object.values(category.children)) {
         FEED_PATHS[child.feed] = child.feed;
@@ -543,4 +543,4 @@ for (const [key, value] of Object.entries(RSS_CATEGORIES)) {
     }
 }
 
-console.log(FEED_PATHS)
+// console.log(FEED_PATHS)

@@ -17,14 +17,16 @@ export default function HomeContent() {
     const truyVetMXHNews = feeds.truyVetMXH ?? [];
     const noiThangNews = feeds.noiThang ?? [];
     const gocNhinNews = feeds.gocNhin ?? [];
+    const nguoiLaoDongNews = feeds.NLDNEWS ?? [];
     const loading = states.home === 'loading'
-                            || states.hoiNongDapNhanh === 'loading'
-                            || states.truyVetMXH === 'loading'
-                            || states.noiThang === 'loading'
-                            || states.gocNhin === 'loading';
+        || states.hoiNongDapNhanh === 'loading'
+        || states.truyVetMXH === 'loading'
+        || states.noiThang === 'loading'
+        || states.gocNhin === 'loading'
+        || states.NLDNEWS === 'loading';
 
     const failedFeeds = (['home', 'hoiNongDapNhanh', 'truyVetMXH',
-        'noiThang', 'gocNhin'] as const).filter(
+        'noiThang', 'gocNhin', 'NLDNEWS'] as const).filter(
         feed => states[feed] === 'failed');
 
     useEffect(() => {
@@ -33,18 +35,21 @@ export default function HomeContent() {
         dispatch(fetchNews('truyVetMXH'));
         dispatch(fetchNews('noiThang'));
         dispatch(fetchNews('gocNhin'));
-    },[dispatch]);
+        dispatch(fetchNews('NLDNEWS'))
+    }, [dispatch]);
 
     return (
-        <div className="container home-content border-top" style={{margin: '80px auto 40px auto',
-        paddingTop: '20px'}}>
-            <section className={`mx-auto px-3 py-4 ${loading ? "" : "d-none"}`} style={{ width: "100vw" }}>
+        <div className="container home-content border-top" style={{
+            margin: '80px auto 40px auto',
+            paddingTop: '20px'
+        }}>
+            <section className={`mx-auto px-3 py-4 ${loading ? "" : "d-none"}`} style={{width: "100vw"}}>
                 {loading && <p className="alert alert-light
                  border">Đang tải...</p>}
-                {failedFeeds.length > 0 &&(
+                {failedFeeds.length > 0 && (
                     <div className="alert alert-warning">
                         Không tải được một số ngồn RSS. Vui lòng thử lại.
-                        <button type ="button" className="btn btn-outline-primary btn-sm ms-3"
+                        <button type="button" className="btn btn-outline-primary btn-sm ms-3"
                                 onClick={() => failedFeeds.forEach(feed => dispatch(fetchNews(feed)))}>
                             Thử lại
                         </button>
@@ -62,6 +67,7 @@ export default function HomeContent() {
                         truyVetMXHNews={truyVetMXHNews}
                         gocNhinNews={gocNhinNews}
                         seeMoreNews={seeMoreList}
+                        nguoiLaoDongNews={nguoiLaoDongNews}
                     />
                 </div>
             </div>
