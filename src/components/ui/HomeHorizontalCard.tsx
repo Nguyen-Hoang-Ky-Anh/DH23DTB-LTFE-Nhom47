@@ -32,7 +32,7 @@ export default function HomeHorizontalCard({
                                            }: HomeHorizontalCardProps,) {
     return (
         <div className={`home-horizontal-card text-start 
-        ${index !== 20 ? "border-bottom pb-3 me-4 mb-4" : ""} me-4`}>
+        ${index !== 20 ? "border-bottom pb-2 me-4 mb-4" : ""} me-4`}>
             <a className="home-horizontal-card-title" href={link}>{title}</a>
             <div className="home-horizontal-card-content mt-3 gap-0">
                 <img src={image} alt={title} className={getImageType(index) + " me-3"}/>
