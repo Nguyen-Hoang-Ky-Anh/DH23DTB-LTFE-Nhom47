@@ -1,13 +1,13 @@
 import CategoryHeader from "./features/category/CategoryHeader.tsx";
-import NewsSection from "./features/news/NewsSection.tsx";
+import CategoryContent from "./features/category/CategoryContent.tsx";
 
 export default function CategoryPage() {
     return (
-        <div className="d-flex flex-column min-vh-100">
+        <>
             <main className="flex-grow-1">
                 <CategoryHeader/>
-                <NewsSection layout={"vertical"} section={"thoiSu"}/>
+                <CategoryContent/>
             </main>
-        </div>
+        </>
     )
 }

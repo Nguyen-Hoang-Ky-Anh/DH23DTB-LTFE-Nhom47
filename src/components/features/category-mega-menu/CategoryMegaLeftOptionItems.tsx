@@ -37,7 +37,7 @@ export default function CategoryMegaLeftOptionItems() {
 
                     <CategoryMegaMenuCard
                         title="Dành cho bạn đọc VIP"
-                        categoryItems={["Tiêu điểm quốc tế", "Chuyện thương trường", "Bí quyết cộng sống", "Hồ sơ \"nóng\""]}
+                        categoryItems={["Tiêu điểm quốc tế", "Chuyện thương trường", "Bí quyết cuộc sống", "Hồ sơ \"nóng\""]}
                     />
                 </div>
 
@@ -113,7 +113,7 @@ export default function CategoryMegaLeftOptionItems() {
                 <div className="col-lg-3 col-md-6 d-flex flex-column gap-5">
                     <CategoryMegaMenuCard
                         title="Bạn đọc"
-                        categoryItems={["Cuộc sống nhân ái", "Tôi lên miếng", "Góc ảnh bạn đọc", "Thư bạn đọc"]}
+                        categoryItems={["Cuộc sống nhân ái", "Tôi lên tiếng", "Góc ảnh bạn đọc", "Thư bạn đọc"]}
                     />
 
                     <CategoryMegaMenuCard

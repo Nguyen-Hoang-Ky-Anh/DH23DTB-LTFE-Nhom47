@@ -1,15 +1,9 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import type {NewsItem} from "../../services/rssService.ts";
 import fetchRSS from "../../services/rssService.ts";
-import {RSS_FEEDS} from "../../services/rssConfig.ts";
+import {FEED_PATHS, type FeedName} from "../../services/rssConfig.ts";
 
-const feedPaths = {
-    home: RSS_FEEDS.home,
-    vip: RSS_FEEDS.vip,
-    ...RSS_FEEDS.categories,
-};
-
-export type FeedName = keyof typeof feedPaths;
+export type {FeedName} from "../../services/rssConfig.ts";
 
 interface NewsState {
     feeds: Partial<Record<FeedName, NewsItem[]>>;
@@ -22,7 +16,7 @@ const initialState: NewsState = {
 }
 
 export const fetchNews = createAsyncThunk("news/fetchNews",
-    (feed: FeedName) => fetchRSS(feedPaths[feed]),
+    (feed: FeedName) => fetchRSS(FEED_PATHS[feed]),
     {
         condition: (feed, {getState}) =>
             (getState() as {news: NewsState}).news.states[feed] !== 'loading',

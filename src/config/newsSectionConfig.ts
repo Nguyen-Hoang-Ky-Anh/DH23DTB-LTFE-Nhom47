@@ -1,172 +1,112 @@
-import type {FeedName} from "../store/slice/newsSlice.ts";
+import {RSS_CATEGORIES, type RSSCategory, type RSSFeed, type FeedName, type CategoryName} from "../services/rssConfig.ts";
+
 export interface NavLink {
     label: string;
     href: string;
+    feed: FeedName;
 }
 
-interface NewsSectionConfig {
+export interface NewsSectionConfig {
     title: string;
+    href: string;
     icon: string;
     feed: FeedName;
     links: NavLink[];
-    moreLinks?: NavLink[];
+    moreLinks: NavLink[];
+}
+
+function childLink(child: RSSFeed): NavLink {
+    return {
+        label: child.title,
+        href: `/${child.feed.replace(/^nld\//, "")}`,
+        feed: child.feed as FeedName,
+    };
+}
+
+function createSection(key: CategoryName, icon: string): NewsSectionConfig {
+    const category: RSSCategory = RSS_CATEGORIES[key];
+    const links: NavLink[] = [];
+    const moreLinks: NavLink[] = [];
+
+    for (const child of Object.values(category.children)) {
+        const link = childLink(child);
+        if (links.length < 3) {
+            links.push(link);
+        } else {
+            moreLinks.push(link);
+        }
+    }
+
+    for (const child of Object.values(category.extraChildren)) {
+        moreLinks.push(childLink(child));
+    }
+
+    let href = `/${category.feed}`;
+    if (key === "home") {
+        href = "/";
+    }
+
+    return {
+        title: category.title,
+        href,
+        icon,
+        feed: key,
+        links,
+        moreLinks,
+    };
 }
 
 export const SECTIONS = {
-    thoiSu: {
-        title: "Thời sự",
-        icon: "fa fa-newspaper",
-        feed: "thoiSu",
-        links: [
-            { label: "Chính trị", href: "/thoi-su/chinh-tri" },
-            { label: "Xã hội", href: "/thoi-su/xa-hoi" },
-            { label: "Đô thị", href: "/thoi-su/do-thi" },
-        ],
-        moreLinks: [
-            {
-                label: "Chuyện thường ngày ở phường, xã",
-                href: "/chuyen-thuong-ngay-o-phuong-xa",
-            },
-        ],
-    },
-
-    quocTe: {
-        title: "Quốc tế",
-        icon: "fa-solid fa-globe",
-        feed: "quocTe",
-        links: [
-            { label: "Người Việt đó đây", href: "#" },
-            { label: "Hay - lạ", href: "#" },
-            { label: "Vấn đề nóng", href: "#" },
-        ],
-        moreLinks: [
-            {
-                label: "Hồ sơ",
-                href: "#",
-            },
-            {
-                label: "Quân sự - Quốc phòng",
-                href: "#",
-            },
-        ],
-    },
-
-    kinhTe: {
-        title: "Kinh tế",
-        icon: "fa-solid fa-chart-line",
-        feed: "kinhTe",
-        links: [
-            { label: "Kinh doanh", href: "#" },
-            { label: "Tiêu dùng", href: "#" },
-            { label: "Ôtô - Xe - Điện máy", href: "#" },
-        ],
-        moreLinks: [
-            {
-                label: "Bất động sản",
-                href: "#",
-            },
-            {
-                label: "Tài chính - Chứng khoán",
-                href: "#",
-            },
-            {
-                label: "Diễn đàn kinh tế",
-                href: "#",
-            },
-        ],
-    },
-
-    netZero: {
-        title: "Net Zero",
-        icon: "fa-solid fa-leaf",
-        feed: "netZero",
-        links: [
-            { label: "Tin tức & Xu hướng", href: "#" },
-            { label: "Chuyển đổi xanh", href: "#" },
-            { label: "Sống xanh", href: "#" },
-        ],
-        moreLinks: [
-            {
-                label: "Cẩm nang",
-                href: "#",
-            },
-        ],
-    },
-
-    ai365: {
-        title: "AI 365",
-        icon: "fa-solid fa-microchip",
-        feed: "ai365",
-        links: [
-            { label: "Công nghệ số", href: "#" },
-            { label: "Bảo mật", href: "#" },
-            { label: "Mạng xã hội", href: "#" },
-        ],
-        moreLinks: [
-            {
-                label: "Giải trí cùng AI",
-                href: "#",
-            },
-        ],
-    },
-
-    laoDong: {
-        title: "Lao động",
-        icon: "fa-solid fa-person-digging",
-        feed: "laoDong",
-        links: [
-            { label: "Công đoàn - Công nhân", href: "#" },
-            { label: "Việc làm", href: "#" },
-            { label: "An sinh xã hội", href: "#" },
-        ],
-        moreLinks: [
-            {
-                label: "Chính sách",
-                href: "#",
-            },
-            {
-                label: "Xuất khẩu lao động",
-                href: "#",
-            },
-        ],
-    },
-
-    phapLuat: {
-        title: "Pháp luật",
-        icon: "fa-solid fa-scale-balanced",
-        feed: "phapLuat",
-        links: [
-            { label: "Luật sư của bạn", href: "#" },
-            { label: "Truy nã", href: "#" },
-            { label: "Chuyện pháp đình", href: "#" },
-        ],
-        moreLinks: [],
-    },
-
-    banDoc: {
-        title: "Bạn đọc",
-        icon: "fa-solid fa-book",
-        feed: "banDoc",
-        links: [
-            { label: "Những câu chuyện nhỏ", href: "#" },
-            { label: "Nhà ở xã hội", href: "#" },
-            { label: "Tôi lên tiếng", href: "#" },
-        ],
-        moreLinks: [
-            {
-                label: "Góc ảnh bạn đọc",
-                href: "#",
-            },
-            {
-                label: "Cuộc sống nhân ái",
-                href: "#",
-            },
-            {
-                label: "Thư bạn đọc",
-                href: "#",
-            },
-        ],
-    },
-}  satisfies Record<string, NewsSectionConfig>;
+    thoiSu: createSection("thoiSu", "fa fa-newspaper"),
+    quocTe: createSection("quocTe", "fa-solid fa-globe"),
+    kinhTe: createSection("kinhTe", "fa-solid fa-chart-line"),
+    netZero: createSection("netZero", "fa-solid fa-leaf"),
+    ai365: createSection("ai365", "fa-solid fa-microchip"),
+    laoDong: createSection("laoDong", "fa-solid fa-person-digging"),
+    phapLuat: createSection("phapLuat", "fa-solid fa-scale-balanced"),
+    banDoc: createSection("banDoc", "fa-solid fa-book"),
+    thiTruong: createSection("thiTruong", "fa-solid fa-store"),
+    vanHoaVanNghe: createSection("vanHoaVanNghe", "fa-solid fa-masks-theater"),
+    phuNu: createSection("phuNu", "fa-solid fa-venus"),
+    khoaHoc: createSection("khoaHoc", "fa-solid fa-flask"),
+    doiSong: createSection("doiSong", "fa-solid fa-person"),
+    moiTruong: createSection("moiTruong", "fa-solid fa-seedling"),
+    diaOc: createSection("diaOc", "fa-solid fa-building"),
+    giaDinh: createSection("giaDinh", "fa-solid fa-house"),
+    duLichXanh: createSection("duLichXanh", "fa-solid fa-plane"),
+    sucKhoe: createSection("sucKhoe", "fa fa-newspaper"),
+    giaoDuc: createSection("giaoDuc", "fa fa-newspaper"),
+    giaiTri: createSection("giaiTri", "fa fa-newspaper"),
+    theThao: createSection("theThao", "fa fa-newspaper"),
+    truyVetMXH: createSection("truyVetMXH", "fa fa-newspaper"),
+    hoiNongDapNhanh: createSection("hoiNongDapNhanh", "fa fa-newspaper"),
+    maiVang: createSection("maiVang", "fa fa-newspaper"),
+    vungMien: createSection("vungMien", "fa fa-newspaper"),
+    vip: createSection("vip", "fa fa-newspaper"),
+    nguoiVietYeuSuViet: createSection("nguoiVietYeuSuViet", "fa fa-newspaper"),
+    WorldCup2026: createSection("WorldCup2026", "fa fa-newspaper"),
+    home: createSection("home", "fa fa-newspaper"),
+    noiThang: createSection("noiThang", "fa fa-newspaper"),
+    gocNhin: createSection("gocNhin", "fa fa-newspaper"),
+    docQuyen: createSection("docQuyen", "fa fa-newspaper"),
+    trichDanNong: createSection("trichDanNong", "fa fa-newspaper"),
+    viTuyenDauChongDich: createSection("viTuyenDauChongDich", "fa fa-newspaper"),
+    tuHaoCoToQuoc: createSection("tuHaoCoToQuoc", "fa fa-newspaper"),
+    duLich: createSection("duLich", "fa fa-newspaper"),
+    chuyenTuNoiCachLy: createSection("chuyenTuNoiCachLy", "fa fa-newspaper"),
+    bienDao: createSection("bienDao", "fa fa-newspaper"),
+    video: createSection("video", "fa fa-newspaper"),
+    lyTuongSong: createSection("lyTuongSong", "fa fa-newspaper"),
+    dongTienThongMinh: createSection("dongTienThongMinh", "fa fa-newspaper"),
+    tuHaoHangViet: createSection("tuHaoHangViet", "fa fa-newspaper"),
+    ketQuaXoSo: createSection("ketQuaXoSo", "fa fa-newspaper"),
+    podcast: createSection("podcast", "fa fa-newspaper"),
+    cuocVanDongSangTacCaKhuc: createSection("cuocVanDongSangTacCaKhuc", "fa fa-newspaper"),
+    toanCanhDaiHoiXIV: createSection("toanCanhDaiHoiXIV", "fa fa-newspaper"),
+    NamMuoiNamThanhPhoMangTenBac: createSection("NamMuoiNamThanhPhoMangTenBac", "fa fa-newspaper"),
+    bauCuDaiBieuQuocHoi: createSection("bauCuDaiBieuQuocHoi", "fa fa-newspaper"),
+    NLDNEWS: createSection("NLDNEWS", "fa fa-newspaper"),
+    SEAGame33: createSection("SEAGame33", "fa fa-newspaper"),
+} satisfies Record<string, NewsSectionConfig>;
 
 export type SectionKey = keyof typeof SECTIONS;
