@@ -28,6 +28,7 @@ export default function TopNews() {
     useEffect(() => {
         dispatch(fetchNews('home'));
         dispatch(fetchNews('vip'));
+
     }, [dispatch]);
 
     return (
