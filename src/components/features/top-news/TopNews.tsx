@@ -13,7 +13,7 @@ const topics = [
     "Cấp bách tiết kiệm năng lượng",
 ];
 
-const titleStyle = {lineHeight: 1.4, color: "#292929"};
+const titleStyle = {lineHeight: 1.4, color: "#292929", fontFamily: "Merriweather, serif"};
 const descriptionStyle = {fontSize: 14, color: "#555555"};
 
 export default function TopNews() {

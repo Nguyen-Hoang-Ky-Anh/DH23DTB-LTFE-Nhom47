@@ -18,7 +18,7 @@ export default function HomeContent() {
     },[dispatch]);
 
     return (
-        <div className="container home-content border-top" style={{margin: '80px auto 40px auto', minWidth: 1200,
+        <div className="container home-content border-top" style={{margin: '80px auto 40px auto',
         paddingTop: '20px'}}>
             <section className={`mx-auto px-3 py-4 ${loading ? "" : "d-none"}`} style={{ width: "100vw" }}>
                 {loading && <p className="alert alert-light

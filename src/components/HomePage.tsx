@@ -8,6 +8,7 @@ export default function HomePage() {
     return (
         <>
             <TopNews />
+            <HomeContent/>
             <Multimedia />
             <NewsSection section="thoiSu" />
             <NewsSection section="quocTe" />
