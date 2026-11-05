@@ -2,6 +2,7 @@ import BottomNews from "./features/bottom-news/BottomNews.tsx";
 import Multimedia from "./features/multimedia/Multimedia.tsx";
 import NewsSection from "./features/news/NewsSection.tsx";
 import TopNews from "./features/top-news/TopNews.tsx";
+import HomeContent from "./features/home-content/HomeContent.tsx";
 
 export default function HomePage() {
     return (
