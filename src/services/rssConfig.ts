@@ -516,7 +516,11 @@ export const RSS_FEEDS = {
 
 export const RSS_CATEGORIES = {...RSS_FEEDS.categories, ...RSS_FEEDS.otherCategories};
 
+console.log(RSS_CATEGORIES);
+
 export type CategoryName = keyof typeof RSS_CATEGORIES;
+
+
 export type FeedName = CategoryName | `nld/${string}`;
 
 export const FEED_PATHS: Record<string, string> = {};
@@ -524,6 +528,11 @@ export const FEED_PATHS: Record<string, string> = {};
 for (const [key, value] of Object.entries(RSS_CATEGORIES)) {
     const category: RSSCategory = value;
     FEED_PATHS[key] = category.feed;
+
+    
+    console.log(category)
+    console.log(key)
+    console.log(FEED_PATHS[key]);
 
     for (const child of Object.values(category.children)) {
         FEED_PATHS[child.feed] = child.feed;
@@ -533,3 +542,5 @@ for (const [key, value] of Object.entries(RSS_CATEGORIES)) {
         FEED_PATHS[child.feed] = child.feed;
     }
 }
+
+console.log(FEED_PATHS)

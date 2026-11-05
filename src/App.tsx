@@ -1,18 +1,11 @@
 import './App.css'
-import HomePage from "./components/HomePage.tsx";
-import { Routes, Route } from "react-router-dom";
-import CategoryPage from "./components/CategoryPage.tsx";
-import MainLayout from "./MainLayout.tsx";
+import {RouterProvider} from "react-router-dom";
+import {router} from "./route/Route.tsx";
 
 function App() {
 
   return (
-      <Routes>
-          <Route element={<MainLayout/>}>
-              <Route path="/" element={<HomePage />}/>
-              <Route path="/:category/:subcategory?" element={<CategoryPage />}/>
-          </Route>
-      </Routes>
+      <RouterProvider router={router}/>
   )
 }
 
