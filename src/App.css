@@ -26,6 +26,13 @@
     font-weight: 100 900;
 }
 
+@font-face {
+    font-family: "BungeeShade";
+    src: url("./resources/font/BungeeShade-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 100 900;
+}
+
 #root {
     width: 100%;
     max-width: none;

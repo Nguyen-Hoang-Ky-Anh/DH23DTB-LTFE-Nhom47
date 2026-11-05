@@ -11,6 +11,8 @@ export default function HomeContent() {
     const {feeds, states} = useSelector((state: RootState) => state.news);
 
     const homeNews = feeds.home ?? [];
+    const mainList = homeNews.slice(0, 21);
+    const seeMoreList = homeNews.slice(22, 27);
     const hoiNongDapNhanhNews = feeds.hoiNongDapNhanh ?? [];
     const truyVetMXHNews = feeds.truyVetMXH ?? [];
     const noiThangNews = feeds.noiThang ?? [];
@@ -51,7 +53,7 @@ export default function HomeContent() {
             </section>
             <div className="row">
                 <div className="col home-main p-0" style={{maxWidth: '46.7%'}}>
-                    <HomeMainContent news={homeNews}/>
+                    <HomeMainContent news={mainList}/>
                 </div>
                 <div className="col home-sub border-start">
                     <HomeSubContent
@@ -59,6 +61,7 @@ export default function HomeContent() {
                         noiThangNews={noiThangNews}
                         truyVetMXHNews={truyVetMXHNews}
                         gocNhinNews={gocNhinNews}
+                        seeMoreNews={seeMoreList}
                     />
                 </div>
             </div>
