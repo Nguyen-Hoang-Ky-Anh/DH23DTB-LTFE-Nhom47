@@ -3,7 +3,7 @@ import HeaderNavigationBar from "./HeaderNavigationBar.tsx";
 
 export default function Header() {
     return (
-        <header className="w-100">
+        <header className="w-100 border-bottom">
             <TopHeader/>
             <HeaderNavigationBar/>
         </header>

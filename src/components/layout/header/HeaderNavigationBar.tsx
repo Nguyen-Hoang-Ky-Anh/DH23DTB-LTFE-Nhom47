@@ -11,15 +11,16 @@ export default function HeaderNavigationBar() {
     return (
       <div style={{ backgroundColor: "white" }}>
         <div className="container">
-          <div className="d-flex flex-row align-items-center justify-content-center p-2">
+          <div className="d-flex flex-row align-items-center justify-content-between p-2"
+          >
             <Link to="/">
               <img
                 src="https://static.mediacdn.vn/nld.com.vn/images/logo_blue.png"
                 alt="Tuổi trẻ"
                 style={{
                   paddingRight: "10px",
-                  width: "170px",
-                  height: "30px",
+                  width: "130px",
+                  height: "20px",
                 }}
               />
             </Link>
@@ -29,6 +30,7 @@ export default function HeaderNavigationBar() {
                 <li
                   key={section.feed}
                   className="list-inline-item fw-bold header-option"
+                  style={{fontSize:11, fontFamily:"Inter, sans-serif"}}
                 >
                   <Link
                     to={section.href}

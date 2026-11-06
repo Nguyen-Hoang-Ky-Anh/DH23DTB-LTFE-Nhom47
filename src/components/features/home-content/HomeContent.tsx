@@ -3,22 +3,38 @@ import type {AppDispatch, RootState} from "../../../store/store.ts";
 import {useEffect} from "react";
 import {fetchNews} from "../../../store/slice/newsSlice.ts";
 import HomeMainContent from "./HomeMainContent.tsx";
+import HomeSubContent from "./HomeSubContent.tsx";
 
 
 export default function HomeContent() {
     const dispatch = useDispatch<AppDispatch>();
     const {feeds, states} = useSelector((state: RootState) => state.news);
 
-    const news = feeds.home ?? [];
-    const loading = states.home === 'loading';
-    const failedFeeds = (['home'] as const).filter(feed => states[feed] === 'failed');
+    const homeNews = feeds.home ?? [];
+    const hoiNongDapNhanhNews = feeds.hoiNongDapNhanh ?? [];
+    const truyVetMXHNews = feeds.truyVetMXH ?? [];
+    const noiThangNews = feeds.noiThang ?? [];
+    const gocNhinNews = feeds.gocNhin ?? [];
+    const loading = states.home === 'loading'
+                            || states.hoiNongDapNhanh === 'loading'
+                            || states.truyVetMXH === 'loading'
+                            || states.noiThang === 'loading'
+                            || states.gocNhin === 'loading';
+
+    const failedFeeds = (['home', 'hoiNongDapNhanh', 'truyVetMXH',
+        'noiThang', 'gocNhin'] as const).filter(
+        feed => states[feed] === 'failed');
 
     useEffect(() => {
         dispatch(fetchNews('home'));
+        dispatch(fetchNews('hoiNongDapNhanh'));
+        dispatch(fetchNews('truyVetMXH'));
+        dispatch(fetchNews('noiThang'));
+        dispatch(fetchNews('gocNhin'));
     },[dispatch]);
 
     return (
-        <div className="container home-content border-top" style={{margin: '80px auto 40px auto', minWidth: 1200,
+        <div className="container home-content border-top" style={{margin: '80px auto 40px auto',
         paddingTop: '20px'}}>
             <section className={`mx-auto px-3 py-4 ${loading ? "" : "d-none"}`} style={{ width: "100vw" }}>
                 {loading && <p className="alert alert-light
@@ -35,10 +51,15 @@ export default function HomeContent() {
             </section>
             <div className="row">
                 <div className="col home-main p-0" style={{maxWidth: '46.7%'}}>
-                    <HomeMainContent news={news}/>
+                    <HomeMainContent news={homeNews}/>
                 </div>
                 <div className="col home-sub border-start">
-                    home sub
+                    <HomeSubContent
+                        hoiNongDapNhanhNews={hoiNongDapNhanhNews}
+                        noiThangNews={noiThangNews}
+                        truyVetMXHNews={truyVetMXHNews}
+                        gocNhinNews={gocNhinNews}
+                    />
                 </div>
             </div>
         </div>
