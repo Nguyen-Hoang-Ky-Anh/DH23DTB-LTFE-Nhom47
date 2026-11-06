@@ -1,5 +1,7 @@
 import type {NewsItem} from "../../../services/rssService.ts";
-import HomeSec1Card from "../../ui/HomeSec1Card.tsx";
+import HomeSec1Card from "./HomeSec1Card.tsx";
+import {SECTIONS} from "../../../config/newsSectionConfig.ts";
+import HomeEnglishNews from "./HomeEnglishNews.tsx";
 
 export interface HomeSubContentProbs {
     hoiNongDapNhanhNews: NewsItem[];
@@ -7,24 +9,37 @@ export interface HomeSubContentProbs {
     noiThangNews: NewsItem[];
     gocNhinNews: NewsItem[];
     seeMoreNews: NewsItem[];
+    nguoiLaoDongNews: NewsItem[];
 }
 
 export default function HomeSubContent({
                                            hoiNongDapNhanhNews, truyVetMXHNews,
-                                           noiThangNews, gocNhinNews, seeMoreNews
+                                           noiThangNews, gocNhinNews, seeMoreNews,
+                                           nguoiLaoDongNews
                                        }: HomeSubContentProbs) {
+
+    const hoiNongDapNhanh = SECTIONS["hoiNongDapNhanh"];
+    const truyVetMXH = SECTIONS["truyVetMXH"];
+    const noiThang = SECTIONS["noiThang"];
+    const gocNhin = SECTIONS["gocNhin"];
+    const nldNews = SECTIONS["NLDNEWS"];
+
     return (
         <section className={'subMain'}>
+
+            {/* sub-main-section-1 */}
             <section className={'row sub-main-section-1'}>
                 <div className={'col-8'}>
                     {/* Hoi nong dap nhanh / Truy vet mang xa hoi */}
                     <div className={'row d-flex border-bottom mb-3 pb-3 mx-1'}>
                         {hoiNongDapNhanhNews[0] && (
-                            <HomeSec1Card news={hoiNongDapNhanhNews[0]} title={"Hỏi nóng đáp nhanh"}/>
+                            <HomeSec1Card news={hoiNongDapNhanhNews[0]} title={"Hỏi nóng đáp nhanh"}
+                                          cateHref={hoiNongDapNhanh.href}/>
                         )}
 
                         {truyVetMXHNews[0] && (
-                            <HomeSec1Card news={truyVetMXHNews[0]} title={"Truy vết mạng xã hội"}/>
+                            <HomeSec1Card news={truyVetMXHNews[0]} title={"Truy vết mạng xã hội"}
+                                          cateHref={truyVetMXH.href}/>
                         )}
                     </div>
 
@@ -32,11 +47,11 @@ export default function HomeSubContent({
                     <div className={'row d-flex flex-row my-1 mx-1'}
                     >
                         {noiThangNews[0] && (
-                            <HomeSec1Card news={noiThangNews[0]} title={"Nói thẳng"}/>
+                            <HomeSec1Card news={noiThangNews[0]} title={"Nói thẳng"} cateHref={noiThang.href}/>
                         )}
 
                         {gocNhinNews[0] && (
-                            <HomeSec1Card news={gocNhinNews[0]} title={"Góc nhìn"}/>
+                            <HomeSec1Card news={gocNhinNews[0]} title={"Góc nhìn"} cateHref={gocNhin.href}/>
                         )}
                     </div>
 
@@ -51,7 +66,7 @@ export default function HomeSubContent({
                             fontSize: 18,
                             fontWeight: 700,
                             lineHeight: 1.5,
-                    }}
+                        }}
 
                     >Xem nhiều</strong>
 
@@ -74,7 +89,7 @@ export default function HomeSubContent({
                                     <span
                                         style={{
                                             position: "relative",
-                                            zIndex:1,
+                                            zIndex: 1,
                                         }}
                                     >{item.title}</span>
 
@@ -98,7 +113,7 @@ export default function HomeSubContent({
 
                         <a
                             style={{
-                             fontFamily: "Inter",
+                                fontFamily: "Inter",
                                 marginTop: "10px",
                                 fontSize: "14px",
                                 color: "silver"
@@ -106,6 +121,18 @@ export default function HomeSubContent({
                             href={"/"}>Xem thêm</a>
                     </div>
                 </div>
+            </section>
+
+            {/* sub-main-section-2 nguoi-lao-dong-news */}
+            <section
+                className={"row mx-1 sub-main-section-2"}
+            >
+                {nguoiLaoDongNews[0] && (
+                    <HomeEnglishNews href={nldNews.href} links={nldNews.links}
+                                     news={nguoiLaoDongNews}></HomeEnglishNews>
+                )}
+
+
 
             </section>
 
