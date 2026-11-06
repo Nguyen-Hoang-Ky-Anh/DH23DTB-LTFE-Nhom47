@@ -2,6 +2,7 @@ import type {NewsItem} from "../../../services/rssService.ts";
 import HomeSec1Card from "./HomeSec1Card.tsx";
 import {SECTIONS} from "../../../config/newsSectionConfig.ts";
 import HomeEnglishNews from "./HomeEnglishNews.tsx";
+import HomeSec2Card from "./HomeSec2Card.tsx";
 
 export interface HomeSubContentProbs {
     hoiNongDapNhanhNews: NewsItem[];
@@ -10,12 +11,16 @@ export interface HomeSubContentProbs {
     gocNhinNews: NewsItem[];
     seeMoreNews: NewsItem[];
     nguoiLaoDongNews: NewsItem[];
+    docQuyenNews: NewsItem[];
+    xuatKhauLaoDongNews: NewsItem[];
+    taiChinhChungKhoanNews: NewsItem[];
 }
 
 export default function HomeSubContent({
                                            hoiNongDapNhanhNews, truyVetMXHNews,
                                            noiThangNews, gocNhinNews, seeMoreNews,
-                                           nguoiLaoDongNews
+                                           nguoiLaoDongNews, docQuyenNews, xuatKhauLaoDongNews,
+                                           taiChinhChungKhoanNews
                                        }: HomeSubContentProbs) {
 
     const hoiNongDapNhanh = SECTIONS["hoiNongDapNhanh"];
@@ -23,6 +28,12 @@ export default function HomeSubContent({
     const noiThang = SECTIONS["noiThang"];
     const gocNhin = SECTIONS["gocNhin"];
     const nldNews = SECTIONS["NLDNEWS"];
+    const docQuyen = SECTIONS["docQuyen"];
+
+    const xuatKhauLaoDong =
+        SECTIONS["laoDong"].moreLinks.find((link) => link.feed === "nld/lao-dong/xuat-khau-lao-dong");
+    const taiChinhChungKhoan =
+        SECTIONS["kinhTe"].moreLinks.find((link) => link.feed === "nld/kinh-te/tai-chinh-chung-khoan");
 
     return (
         <section className={'subMain'}>
@@ -125,7 +136,7 @@ export default function HomeSubContent({
 
             {/* sub-main-section-2 nguoi-lao-dong-news */}
             <section
-                className={"row mx-1 sub-main-section-2"}
+                className={"mx-1 sub-main-section-2"}
             >
                 {nguoiLaoDongNews[0] && (
                     <HomeEnglishNews href={nldNews.href} links={nldNews.links}
@@ -133,6 +144,25 @@ export default function HomeSubContent({
                 )}
 
 
+                <div className={'row g-3 mt-3'}>
+                    <div className={"col-4"}>
+                        {docQuyenNews[0] && (
+                            <HomeSec2Card title={"Độc quyền"} cateHref={docQuyen.href} newsItem={docQuyenNews[0]}/>
+                        )}
+                    </div>
+
+                    <div className={"col-4"}>
+                    {xuatKhauLaoDongNews[0] && (
+                        <HomeSec2Card title={"Xuất khẩu lao động"} cateHref={xuatKhauLaoDong?.href} newsItem={xuatKhauLaoDongNews[0]}/>
+                    )}
+                    </div>
+
+                    <div className={"col-4"}>
+                    {taiChinhChungKhoanNews[0] && (
+                        <HomeSec2Card title={"Tài chính - Chứng khoán"} cateHref={taiChinhChungKhoan?.href} newsItem={taiChinhChungKhoanNews[0]}/>
+                    )}
+                    </div>
+                </div>
 
             </section>
 

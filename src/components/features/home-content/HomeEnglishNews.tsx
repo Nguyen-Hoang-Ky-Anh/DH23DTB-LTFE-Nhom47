@@ -70,17 +70,17 @@ export default function HomeEnglishNews({href, links, news}: HomeEnglishNewsProp
                     </ul>
                 </div>
             </div>
-            <div className={"content text-start p-1"}>
+            <div className={"content text-start p-1"} style={{backgroundColor: "#fafafc"}}>
                 {/* First news */}
                 <div className={"row border-bottom mx-2 pb-2 align-items-center mb-2"}>
-                    <div className={"col-4 ps-0 py-0"}>
+                    <div className={"col-5 ps-0 py-0"}>
                         <Link to={"/"}>
                             <img src={firstNews.image} alt={firstNews.title} width={"100%"}
                             />
                         </Link>
                     </div>
 
-                    <div className={"col-8 p-0"}>
+                    <div className={"col-7 p-0"}>
                         <Link to={"/"}
                         style={{
                             fontFamily: "MerriWeather",
@@ -95,6 +95,7 @@ export default function HomeEnglishNews({href, links, news}: HomeEnglishNewsProp
                         <p style={{
                             fontFamily: "Inter",
                             fontSize: 14,
+                            color: "#727272"
                         }}
                         >{firstNews.description}</p>
                     </div>
