@@ -6,11 +6,10 @@ interface HomeMainContentProps {
 }
 
 export default function HomeMainContent({news}: HomeMainContentProps) {
-    const list = news.slice(0, 21);
-    const randomSeeMore = news[Math.floor(Math.random() * list.length)];
+    const randomSeeMore = news[Math.floor(Math.random() * news.length)];
     return (
         <div>
-            {list.map(((item, index) => (
+            {news.map(((item, index) => (
                 <HomeHorizontalCard
                     index={index}
                     image={item.image}
