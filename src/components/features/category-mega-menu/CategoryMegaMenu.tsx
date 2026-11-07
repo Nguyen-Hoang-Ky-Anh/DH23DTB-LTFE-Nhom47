@@ -3,7 +3,7 @@ import CategoryMegaLeftOptionItems from "./CategoryMegaLeftOptionItems.tsx";
 
 export function CategoryMegaMenu() {
     return (
-        <div style={{backgroundColor: "#fafafa"}}>
+        <div className="category-mega-menu">
             <div className="container p-3">
                 <div className="row">
                     <div className="col-lg-9">

@@ -6,7 +6,7 @@ import Error from "../route/Error.tsx";
 
 export default function CategoryPage() {
     // Lấy params trên web (Ví dụ: /thoi-su/chinh-tri) trong đó thoi-su là category, chinh-tri là subCategory
-    const {category, subCategory} = useParams();
+    const {category, subcategory} = useParams();
 
     if (!category)  return <Error/>;
 
@@ -15,7 +15,7 @@ export default function CategoryPage() {
 
     // Xác định đường dẫn hiện tại: Kiểm tra xem có subCategory không, nếu không thì trả về luôn sectionPath là dường
     // dẫn chỉ có mỗi category
-    const currentPath = subCategory ? `/${category}/${subCategory}` : sectionPath;
+    const currentPath = subcategory ? `/${category}/${subcategory}` : sectionPath;
 
     // Vào trong values của SECTIONS tìm (find()) xem là có section nào có đường dẫn khớp với lại đường dẫn
     // của sectionPath hiện tại không ? (VD: sectionPath = '/thoi-su', hàm sẽ tìm trong tất cả thành phần trong SECTIONS
@@ -32,9 +32,9 @@ export default function CategoryPage() {
     // Tìm trong allLinks để kiểm tra xem là có link nào có href khớp với lại currentPath hiện tại
     const matchedLink = allLinks.find(link => link.href === currentPath)
 
-    if (subCategory && !matchedLink) return <Error />;
+    if (subcategory && !matchedLink) return <Error />;
 
-    const currentFeed = subCategory
+    const currentFeed = subcategory
         ? matchedLink!.feed
         : currentSection.feed;
 
