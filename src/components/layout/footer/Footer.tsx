@@ -8,7 +8,7 @@ export default function Footer() {
         <footer className="d-flex flex-column">
             <div className="d-flex flex-column align-items-center justify-content-center">
                 <FooterNavigationBar/>
-                <div className="d-flex flex-row align-items-start justify-content-center gap-5 p-4" style={{borderTop: "3px solid #c90009", width: "100vw"}}>
+                <div className="d-flex flex-row align-items-start justify-content-center gap-5 p-4 w-100" style={{borderTop: "3px solid #c90009"}}>
                     <FooterLeftContent/>
                     <FooterRightContent/>
                 </div>

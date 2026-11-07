@@ -48,7 +48,7 @@
 }
 
 .list-inline-item {
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 500;
     line-height: 20px;
     color: #222;
@@ -246,10 +246,6 @@
     line-height: 1.5;
     color: #454545;
     text-align: left;
-}
-
-li:hover {
-    cursor: pointer;
 }
 
 a {
@@ -455,4 +451,15 @@ a {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
+}
+
+
+/*Top news*/
+.news-list {
+  scrollbar-width: thin;
+  scrollbar-color: #8B8B8B transparent;
+}
+
+li:hover {
+  cursor: default;
 }

@@ -28,6 +28,7 @@ export default function NewsSection({section, layout = "horizontal", embedded = 
                 title={title}
                 href={href}
                 icon={icon}
+                color={section === "phuNu" ? "#EE508B" : undefined}
                 links={links}
                 moreLinks={moreLinks}
                 compact={layout === "compact"}
