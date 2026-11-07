@@ -456,3 +456,18 @@ a {
     -webkit-line-clamp: 3;
     overflow: hidden;
 }
+
+
+/*Top news*/
+.news-list {
+  scrollbar-width: thin;
+  scrollbar-color: #8B8B8B transparent;
+}
+
+.news-list li:hover {
+  cursor: default;
+}
+
+.news-list a {
+  cursor: pointer;
+}

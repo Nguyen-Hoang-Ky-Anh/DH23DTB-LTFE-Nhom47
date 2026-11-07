@@ -10,6 +10,7 @@ interface DragCarouselProps {
 export default function DragCarousel({children, showControls = false, showProgress = false}: DragCarouselProps) {
     const viewportRef = useRef<HTMLDivElement>(null);
     const drag = useRef<{x: number; left: number} | null>(null);
+    const progressDrag = useRef<{x: number; left: number} | null>(null);
     const [progress, setProgress] = useState(0);
 
     return (
@@ -63,7 +64,30 @@ export default function DragCarousel({children, showControls = false, showProgre
             </div>
             {showProgress && (
                 <div className="progress bg-white rounded mx-auto mt-4" style={{height: 5, width: 260}}>
-                    <div className="progress-bar rounded w-50" style={{marginLeft: `${progress * 50}%`}}/>
+                    <div
+                        className="progress-bar rounded w-50"
+                        style={{marginLeft: `${progress * 50}%`, cursor: "grab", touchAction: "none", userSelect: "none"}}
+                        onPointerDown={event => {
+                            const viewport = viewportRef.current;
+                            if (event.button !== 0 || !viewport) return;
+                            progressDrag.current = {x: event.clientX, left: viewport.scrollLeft};
+                            event.currentTarget.setPointerCapture(event.pointerId);
+                            event.currentTarget.style.cursor = "grabbing";
+                        }}
+                        onPointerMove={event => {
+                            const viewport = viewportRef.current;
+                            if (!progressDrag.current || !viewport) return;
+                            const bar = event.currentTarget;
+                            const distance = bar.parentElement!.clientWidth - bar.offsetWidth;
+                            viewport.scrollLeft = progressDrag.current.left +
+                                (event.clientX - progressDrag.current.x) / Math.max(1, distance) *
+                                (viewport.scrollWidth - viewport.clientWidth);
+                        }}
+                        onLostPointerCapture={event => {
+                            progressDrag.current = null;
+                            event.currentTarget.style.cursor = "grab";
+                        }}
+                    />
                 </div>
             )}
         </div>

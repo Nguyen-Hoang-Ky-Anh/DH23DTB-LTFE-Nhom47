@@ -32,87 +32,148 @@ export default function TopNews() {
     }, [dispatch]);
 
     return (
-        <div className="text-start" style={{letterSpacing: "normal"}}>
-            <section className="container px-3 py-4">
-                <div className="row g-4">
-                    <div className="col-9">
-                        {/*
+      <div className="text-start" style={{ letterSpacing: "normal" }}>
+        <section className="container px-3 py-4">
+          <div className="row g-4">
+            <div className="col-9">
+              {/*
                         Tin chinh thuc
                          */}
-                        {mainNews && (
-                            <>
-                                <div className="row g-4">
-                                    <article className="col-8">
-                                        <h2 className="fw-bold mb-3" style={{...titleStyle, fontSize: 26}}>{mainNews.title}</h2>
-                                        <img className="w-100 mb-2" src={mainNews.image} alt=""/>
-                                        <p className="mb-0" style={descriptionStyle}>{mainNews.description}</p>
-                                    </article>
-                                    <div className="col-4">
-                                        {news.slice(1, 3).map(item => (
-                                            <article key={item.link} className="mb-3">
-                                                <img className="w-100 mb-2" src={item.image} alt=""/>
-                                                <h3 className="fs-6 fw-bold mb-0" style={titleStyle}>{item.title}</h3>
-                                            </article>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="row g-3 border-top mt-4 pt-3 pb-3">
-                                    {news.slice(3, 6).map(item => (
-                                        <article key={item.link} className="col-4">
-                                            <h3 className="fs-6 fw-bold mb-2" style={titleStyle}>{item.title}</h3>
-                                            <p className="mb-0" style={descriptionStyle}>{item.description}</p>
-                                        </article>
-                                    ))}
-                                </div>
-                            </>
-                        )}
-                        {/*
-                        
-                        */}
-                        <div className="d-flex align-items-center gap-3 border-top border-bottom py-3 my-3 small">
-                            <i className="fa-solid fa-arrow-trend-up text-danger"/>
-                            <DragCarousel showControls>
-                                {topics.map(topic => <span className="bg-light py-1 px-3 text-nowrap" key={topic}>{topic}</span>)}
-                            </DragCarousel>
-                        </div>
-                        <img className="w-100" src="https://static.mediacdn.vn/nld.com.vn/Banner_Nhung_cau_chuyen_nho_PC.png" alt="Những câu chuyện nhỏ"/>
+              {mainNews && (
+                <>
+                  <div className="row g-4">
+                    <article className="col-8">
+                      <h2
+                        className="fw-bold mb-3"
+                        style={{ ...titleStyle, fontSize: 26 }}
+                      >
+                        {mainNews.title}
+                      </h2>
+                      <img className="w-100 mb-2" src={mainNews.image} alt="" />
+                      <p className="mb-0" style={descriptionStyle}>
+                        {mainNews.description}
+                      </p>
+                    </article>
+                    <div className="col-4">
+                      {news.slice(1, 3).map((item) => (
+                        <article key={item.link} className="mb-3">
+                          <img className="w-100 mb-2" src={item.image} alt="" />
+                          <h3 className="fs-6 fw-bold mb-0" style={titleStyle}>
+                            {item.title}
+                          </h3>
+                        </article>
+                      ))}
                     </div>
+                  </div>
+                  <div className="row g-3 border-top mt-4 pt-3 pb-3">
+                    {news.slice(3, 6).map((item, index) => (
+                      <article
+                        key={item.link}
+                        className={`col-4 ${index > 0 ? "border-start" : ""}`}
+                      >
+                        <h3 className="fs-6 fw-bold mb-2" style={titleStyle}>
+                          {item.title}
+                        </h3>
+                        <p className="mb-0" style={descriptionStyle}>
+                          {item.description}
+                        </p>
+                      </article>
+                    ))}
+                  </div>
+                </>
+              )}
 
-                    { /*
+              <div className="d-flex align-items-center gap-3 border-top border-bottom py-3 my-3 small">
+                <i className="fa-solid fa-arrow-trend-up text-danger" />
+                <DragCarousel showControls>
+                  {topics.map((topic) => (
+                    <span
+                      className="bg-light py-1 px-3 text-nowrap"
+                      key={topic}
+                    >
+                      {topic}
+                    </span>
+                  ))}
+                </DragCarousel>
+              </div>
+              <img
+                className="w-100"
+                src="https://static.mediacdn.vn/nld.com.vn/Banner_Nhung_cau_chuyen_nho_PC.png"
+                alt="Những câu chuyện nhỏ"
+              />
+            </div>
+
+            {/*
                     Tinh Nong + Cuoc thi tim hieu nong thon...
                      */}
-                    <aside className="col-3">
-                        <div className="d-flex align-items-center justify-content-between gap-2 border-bottom border-primary border-2 pb-2">
-                            <h2 className="fs-6 fw-bold text-uppercase text-nowrap mb-0" style={titleStyle}>Tin nóng</h2>
-                            <img style={{width: 140, minWidth: 0}} src="https://static.mediacdn.vn/thumb_w/226/nld.com.vn/banner_WC2026.png" alt="World Cup 2026"/>
-                        </div>
-                        <ul className="list-unstyled overflow-auto fs-6 fw-bold mb-4" style={{...titleStyle, maxHeight: 430}}>
-                            {news.slice(6, 13).map(item => (
-                                <li key={item.link} className="border-bottom py-3" style={{cursor: "default"}}>{item.title}</li>
-                            ))}
-                        </ul>
-                        <img className="w-100" src="https://static.mediacdn.vn/zoom/300_250/nld/images/BannerCTMTNT.jpg" alt="Cuộc thi tìm hiểu ngành nghề nông thôn và bảo vệ môi trường nông thôn TP Hồ Chí Minh" loading="lazy"/>
-                    </aside>
-                </div>
-            </section>
-            {/*
+            <aside className="col-3">
+              <div className="d-flex align-items-center justify-content-between gap-2 pb-2">
+                <h2
+                  className="fs-6 fw-bold text-uppercase text-nowrap mb-0"
+                  style={titleStyle}
+                >
+                  Tin nóng
+                </h2>
+                <img
+                  style={{ minWidth: 0 }}
+                  src="https://static.mediacdn.vn/thumb_w/226/nld.com.vn/banner_WC2026.png"
+                  alt="World Cup 2026"
+                />
+              </div>
+              <ul
+                className="border-top border-bottom border-2 list-unstyled overflow-auto mb-4 news-list"
+                style={{ ...titleStyle, maxHeight: 430, fontSize: 14 }}
+              >
+                {news.slice(6, 16).map((item) => (
+                  <li key={item.link} className="border-bottom py-3">
+                    <a
+                      href={"#"}
+                      className="text-reset text-decoration-none"
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <img
+                className="w-100"
+                src="https://static.mediacdn.vn/zoom/300_250/nld/images/BannerCTMTNT.jpg"
+                alt="Cuộc thi tìm hiểu ngành nghề nông thôn và bảo vệ môi trường nông thôn TP Hồ Chí Minh"
+                loading="lazy"
+              />
+            </aside>
+          </div>
+        </section>
+        {/*
             Khach doc vip
              */}
-            <section className="py-4" style={{backgroundColor: "#afeafa"}}>
-                <div className="mx-auto px-3" style={{width: 1140}}>
-                    <h2 className="fs-6 fw-bold text-uppercase mb-3" style={titleStyle}>
-                        <i className="fa-solid fa-crown text-warning me-2"/>Dành cho bạn đọc VIP
-                    </h2>
-                    <DragCarousel showProgress>
-                        {vipNews.slice(0, 10).map(item => (
-                            <article key={item.link} style={{width: 190}}>
-                                <img className="w-100 mb-2" src={item.image} alt="" loading="lazy" draggable={false}/>
-                                <h3 className="fs-6 fw-bold mb-0" style={titleStyle}>{item.title}</h3>
-                            </article>
-                        ))}
-                    </DragCarousel>
-                </div>
-            </section>
-        </div>
+        <section className="py-4" style={{ backgroundColor: "#afeafa" }}>
+          <div className="px-3">
+            <h2
+              className="fs-6 fw-bold text-uppercase mb-3"
+              style={{ ...titleStyle, color: "#0959AB" }}
+            >
+              <i className="fa-solid fa-crown text-warning me-2" />
+              Dành cho bạn đọc VIP
+            </h2>
+            <DragCarousel showProgress>
+              {vipNews.slice(0, 14).map((item) => (
+                <article key={item.link} style={{ width: 260 }}>
+                  <img
+                    className="w-100 mb-2"
+                    src={item.image}
+                    alt=""
+                    loading="lazy"
+                    draggable={false}
+                  />
+                  <h3 className="fs-6 fw-bold mb-0" style={titleStyle}>
+                    {item.title}
+                  </h3>
+                </article>
+              ))}
+            </DragCarousel>
+          </div>
+        </section>
+      </div>
     );
 }
