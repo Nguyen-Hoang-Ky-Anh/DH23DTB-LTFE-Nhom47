@@ -318,6 +318,20 @@ a {
 .second-category-item {
     font-size: 14px;
 }
+.category-mega-menu {
+    background-color: #fafafa;
+    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 0 8px 16px rgb(0 0 0 / 0.08);
+
+    max-height: calc(100vh - 120px);
+    max-height: calc(100dvh - 120px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: #c4c4c4 transparent;
+}
 
 .bottom-news .sub-card-image {
     height: auto;
