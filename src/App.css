@@ -48,7 +48,7 @@
 }
 
 .list-inline-item {
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 500;
     line-height: 20px;
     color: #222;
@@ -246,10 +246,6 @@
     line-height: 1.5;
     color: #454545;
     text-align: left;
-}
-
-li:hover {
-    cursor: pointer;
 }
 
 a {
@@ -464,10 +460,6 @@ a {
   scrollbar-color: #8B8B8B transparent;
 }
 
-.news-list li:hover {
+li:hover {
   cursor: default;
-}
-
-.news-list a {
-  cursor: pointer;
 }
