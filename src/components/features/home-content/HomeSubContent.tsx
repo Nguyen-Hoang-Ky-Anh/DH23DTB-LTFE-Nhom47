@@ -75,30 +75,12 @@ export default function HomeSubContent({
                 </div>
                 {/* see more */}
                 <div className={'col-4 border-start text-start'}>
-                    <strong
-
-                        style={{
-                            fontFamily: 'MerriWeather',
-                            fontSize: 18,
-                            fontWeight: 700,
-                            lineHeight: 1.5,
-                        }}
-
-                    >Xem nhiều</strong>
+                    <strong className={'main-title'}>Xem nhiều</strong>
 
                     <div className={'SubMainSec1SeeMore d-flex flex-column mt-2'}>
                         {seeMoreNews.map(((item, index) => (
                             <div className={'py-3 border-bottom'}>
-                                <a style={{
-                                    fontFamily: 'MerriWeather',
-                                    fontSize: 15,
-                                    fontWeight: 400,
-                                    lineHeight: 1.5,
-                                    cursor: "pointer",
-                                    position: "relative",
-                                    isolation: "isolate",
-                                    display: "block"
-                                }}
+                                <a className={'see-more-item'}
                                    href={item.link}
                                    title={item.title}
                                 >
@@ -110,31 +92,14 @@ export default function HomeSubContent({
                                     >{item.title}</span>
 
                                     <span
-                                        style={{
-                                            position: "absolute",
-                                            right: 0,
-                                            top: "50%",
-                                            transform: "translateY(-50%)",
-                                            fontSize: "64px",
-                                            fontWeight: "bold",
-                                            zIndex: -1,
-                                            fontFamily: "BungeeShade",
-                                            color: "silver"
-                                        }}>
+                                        className={'see-more-background-number'}>
                                         {index}
                                     </span>
                                 </a>
                             </div>
                         )))}
 
-                        <a
-                            style={{
-                                fontFamily: "Inter",
-                                marginTop: "10px",
-                                fontSize: "14px",
-                                color: "silver"
-                            }}
-                            href={"/"}>Xem thêm</a>
+                        <Link className={'pt-2 see-more-link'} to={"/"}>Xem thêm</Link>
                     </div>
                 </div>
             </section>

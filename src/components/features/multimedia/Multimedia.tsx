@@ -42,32 +42,32 @@ export default function Multimedia() {
 
                     <div className="col-12 col-lg-8">
                         <div className="row g-4">
-                            <div className="col-12 col-lg-4 col-sm-6">
+                            <div className="col-12 col-lg-4 col-sm-6 text-white">
                                 <Card
                                     image={"https://cdn2.tuoitre.vn/nld/291774122806476800/2026/6/30/n-bay-thu-hai-van-chuyen-hang-hoa-ho-tro-cua-viet-nam-toi-venezuela-nham-giup-do-nuoc-ban-vuot-qua-tham-hoa-dong-dat-178278-57-0-1657-2560-crop-1782784592202820797981.jpg"}
                                     title={"Chuyến bay đặc biệt thứ hai từ Việt Nam tới Venezuela"}/>
                             </div>
-                            <div className="col-12 col-lg-4 col-sm-6">
+                            <div className="col-12 col-lg-4 col-sm-6 text-white">
                                 <Card
                                     image={"https://cdn2.tuoitre.vn/nld/291774122806476800/2026/6/29/bia-30-6-2026-17827486228422113875852-8-0-624-986-crop-17827486482752069849836.png"}
                                     title={"Báo in ngày 30-6: Những điều còn lại sau một tờ báo"}/>
                             </div>
-                            <div className="col-12 col-lg-4 col-sm-6">
+                            <div className="col-12 col-lg-4 col-sm-6 text-white">
                                 <Card
                                     image={"https://cdn2.tuoitre.vn/nld/291774122806476800/2026/6/28/dsc3331-1782611226498334312533-94-0-1694-2560-crop-1782612051617209849937.jpg"}
                                     title={"Khám phá trang trại nuôi chồn hương đặc biệt ở TP Đồng Nai"}/>
                             </div>
-                            <div className="col-12 col-lg-4 col-sm-6">
+                            <div className="col-12 col-lg-4 col-sm-6 text-white">
                                 <Card
                                     image={"https://cdn2.tuoitre.vn/nld/291774122806476800/2026/6/27/vlcsnap-2026-06-26-13h30m54s831-178255081670887815549-340-0-790-720-crop-17825510442191864636461.png"}
                                     title={"Diễn biến mới vụ clip trúng độc đắc xổ số miền Nam gây “bão” mạng xã hội"}/>
                             </div>
-                            <div className="col-12 col-lg-4 col-sm-6">
+                            <div className="col-12 col-lg-4 col-sm-6 text-white">
                                 <Card
                                     image={"https://tse2.mm.bing.net/th/id/OIP.dVdxpDE0kw__xCip0E-YTgAAAA?r=0&pid=Api&h=220&P=0"}
                                     title={"VIDEO: Thánh đường Tắc Sậy trước lễ Tuyên phong Chân phước linh mục Phanxicô Xaviê Trương Bửu Diệp"}/>
                             </div>
-                            <div className="col-12 col-lg-4 col-sm-6">
+                            <div className="col-12 col-lg-4 col-sm-6 text-white">
                                 <Card
                                     image={"https://cdn2.tuoitre.vn/nld/291774122806476800/2026/6/26/non-la-1782455949613371909120-74-0-880-1290-crop-17824561043221155653294.jpg"}
                                     title={"Đồng diễn dân vũ thể thao chào mừng 50 năm thành phố mang tên Bác"}/>

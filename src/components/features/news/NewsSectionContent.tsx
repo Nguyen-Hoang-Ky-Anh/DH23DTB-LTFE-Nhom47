@@ -18,9 +18,9 @@ export default function NewsSectionContent({news, layout}: NewsSectionContentPro
             <div className="compact-news border-top pt-3">
                 <Card image={featured.image} title={featured.title}/>
                 {rest.slice(0, 2).map(item => (
-                    <p key={item.link} className="border-top pt-3 mt-3 mb-0 text-start"
+                    <p key={item.link} className="border-top pt-3 mt-3 mb-0 text-start description"
                        style={{fontSize: 16, lineHeight: 1.5, color: "#454545"}}>
-                        <span className="text-primary me-1 fs-5">›</span>
+                        <span className="text-primary me-1 fs-5 sub-title">›</span>
                         {item.title}
                     </p>
                 ))}

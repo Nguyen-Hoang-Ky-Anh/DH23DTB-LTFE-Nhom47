@@ -11,23 +11,12 @@ export default function HomeSec1Card({news, title, cateHref} : HomeSec1CardProps
         return (
             <div className={'col-6 d-flex text-start m-0 p-0 pe-1'}>
                 <Link to={cateHref} title={title}>
-                    <p style={{fontSize:"18px",
-                        lineHeight: 1.5,
-                        fontWeight: 700,
-                        fontFamily: 'MerriWeather'}}>{title}</p>
+                    <p className={'main-title'} style={{fontSize: 18}}>{title}</p>
                     <img src={news.image}
                          alt={news.title}
-                         style={{width: "100%", height: "auto", margin: '10px 0', justifyContent: "center", alignItems:"center"}}
+                         className={'home-sec-1-image'}
                     />
-                    <p
-                        style={
-                            {
-                                fontSize: 15,
-                                fontWeight: 700,
-                                lineHeight: 1.5,
-                                fontFamily: 'MerriWeather'
-                            }
-                        }>
+                    <p className={'main-title'} style={{fontSize: 15}}>
                         {news.title}
                     </p>
                 </Link>

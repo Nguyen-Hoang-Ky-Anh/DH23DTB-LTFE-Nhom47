@@ -18,12 +18,7 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
     const contentNews = news.slice(1, 3);
     return (
         <div className={"nguoi-lao-dong-news-box border rounded p-0 mt-3"}>
-            <div className={"header d-flex align-items-center justify-content-between text-start rounded-top"}
-                 style={{
-                     backgroundImage: "url(https://static.mediacdn.vn/nld.com.vn/images/bg-podcast.png)",
-                     backgroundSize: "cover",
-                     padding: 12
-                 }}>
+            <div className={"podcast-news-header d-flex align-items-center justify-content-between text-start rounded-top px-3 py-2"}>
                 <div>
                     <h5 className={"mb-0"}>
                         <Link to={href}>
@@ -40,36 +35,13 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                 <div className="d-flex align-items-center">
                     <ul className="list-inline mb-0 d-flex flew-row justify-content-between align-items-center">
                         {links.map(link => (
-                            <li key={link.label}
-                                style={{
-                                    color: "white",
-                                    padding: 4,
-                                    fontSize: 12,
-                                    fontWeight: 500,
-                                    fontFamily: "Inter",
-                                    backgroundColor: "#FFFFFF2E",
-                                    marginRight: 5,
-                                    borderRadius: 5,
-                                }}
-                            >
-                                <Link to={link.href}
-                                      style={{
-                                          color: "white"
-                                      }}
+                            <li key={link.label} className={'category-more-link'}>
+                                <Link to={link.href} className={'text-white'}
                                 >{link.label}</Link>
                             </li>
                         ))}
                         <li key={moreLinks[0].label}
-                            style={{
-                                color: "white",
-                                padding: 4,
-                                fontSize: 12,
-                                fontWeight: 500,
-                                fontFamily: "Inter",
-                                backgroundColor: "#FFFFFF2E",
-                                marginRight: 5,
-                                borderRadius: 5,
-                            }}
+                            className={'category-more-link'}
                         >
                             <Link to={moreLinks[0].href}
                                   style={{
@@ -96,12 +68,10 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                     </Link>
                     <div>
                         <p style={{
-                            fontFamily: "MerriWeather",
-                            fontWeight: 700,
                             fontSize: 15,
-                            lineHeight: 1.5,
-                            marginBottom: 16,
-                        }}>{firstNews.title}</p>
+                        }}
+                        className={'main-title pb-3'}
+                        >{firstNews.title}</p>
                         <div className={"d-flex flex-row gap-3 align-items-center"}>
                             <button type={"button"} className={"py-1 px-2 rounded btn border"} style={{backgroundColor:"#F5F5F58C"}}>
                                 <div className={"align-items-center d-flex flex-row justify-content-between gap-1 p-0"}
@@ -115,7 +85,6 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                                     style={{
                                         fontSize: 16,
                                         color: "#0055CC"
-
                                     }}></i>
                                     <p style={{
                                         fontSize: 14,
@@ -125,12 +94,10 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                                     </p>
                                 </div>
                             </button>
-                            <p style={{
-                             color: "#828282",
-                             fontFamily: "Inter",
+                            <p className={'description'}
+                                style={{
                                 fontSize: 12,
-
-                            }}>07:08</p>
+                                }}>07:08</p>
                         </div>
                     </div>
                 </div>
@@ -139,10 +106,8 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                 <div className={'col-4 d-flex flex-column border-start'}>
                     <div className={"mx-1 pb-3 border-bottom"}>
                         <Link to={contentNews[0].link} title={contentNews[0].title}
-                        style={{
-                            fontFamily: "MerriWeather",
-                            fontSize: 15,
-                        }}>
+                        className={'sub-title'}
+                            style={{fontSize: 15}}>
                             <p><i className="fa-solid fa-headphones"
                                style={{
                                    fontSize: 16,
