@@ -5,6 +5,7 @@ import HomeEnglishNews from "./HomeEnglishNews.tsx";
 import HomeSec2Card from "./HomeSec2Card.tsx";
 import {Link} from "react-router-dom";
 import HomePodcastTable from "./HomePodcastTable.tsx";
+import TuHaoCoToQuoc from "./TuHaoCoToQuoc.tsx";
 
 export interface HomeSubContentProbs {
     hoiNongDapNhanhNews: NewsItem[];
@@ -17,13 +18,15 @@ export interface HomeSubContentProbs {
     xuatKhauLaoDongNews: NewsItem[];
     taiChinhChungKhoanNews: NewsItem[];
     podcastNews: NewsItem[];
+    tuHaoCoToQuocNews: NewsItem[];
 }
 
 export default function HomeSubContent({
                                            hoiNongDapNhanhNews, truyVetMXHNews,
                                            noiThangNews, gocNhinNews, seeMoreNews,
                                            nguoiLaoDongNews, docQuyenNews, xuatKhauLaoDongNews,
-                                           taiChinhChungKhoanNews, podcastNews
+                                           taiChinhChungKhoanNews, podcastNews,
+                                            tuHaoCoToQuocNews
                                        }: HomeSubContentProbs) {
 
     const hoiNongDapNhanh = SECTIONS["hoiNongDapNhanh"];
@@ -34,6 +37,7 @@ export default function HomeSubContent({
     const docQuyen = SECTIONS["docQuyen"];
     const tpMTBac = SECTIONS["NamMuoiNamThanhPhoMangTenBac"];
     const podcast = SECTIONS["podcast"];
+    const tuHaoCoToQuoc = SECTIONS['tuHaoCoToQuoc'];
 
     const xuatKhauLaoDong =
         SECTIONS["laoDong"].moreLinks.find((link) => link.feed === "nld/lao-dong/xuat-khau-lao-dong");
@@ -154,6 +158,12 @@ export default function HomeSubContent({
                 {podcastNews[0] &&
                     <HomePodcastTable href={podcast.href} links={podcast.links} moreLinks={podcast.moreLinks} news={podcastNews}/>
                 }
+            </section>
+
+            {/* Tự hào cờ tổ quốc */}
+            <section>
+                {tuHaoCoToQuocNews[0] &&
+                    <TuHaoCoToQuoc href={tuHaoCoToQuoc.href} news={tuHaoCoToQuocNews}/>}
             </section>
 
         </section>

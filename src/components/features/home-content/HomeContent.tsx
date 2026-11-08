@@ -27,6 +27,7 @@ export default function HomeContent() {
     const gocNhinNews = feeds.gocNhin ?? [];
     const nguoiLaoDongNews = feeds.NLDNEWS ?? [];
     const podcastNews = feeds.podcast ?? [];
+    const tuHaoCoToQuocNews = feeds.tuHaoCoToQuoc ?? [];
 
     const loading = states.home === 'loading'
         || states.hoiNongDapNhanh === 'loading'
@@ -36,10 +37,12 @@ export default function HomeContent() {
         || states.NLDNEWS === 'loading'
         || states[xuatKhauLaoDongFeed] === 'loading'
     || states[taiChinhChungKhoanFeed] === 'loading'
-    || states.podcast === 'loading';
+    || states.podcast === 'loading'
+    || states.tuHaoCoToQuoc === 'loading';
 
     const failedFeeds = (['home', 'hoiNongDapNhanh', 'truyVetMXH',
-        'noiThang', 'gocNhin', 'NLDNEWS', 'podcast', taiChinhChungKhoanFeed, xuatKhauLaoDongFeed] as const).filter(
+        'noiThang', 'gocNhin', 'NLDNEWS', 'podcast', taiChinhChungKhoanFeed,
+        xuatKhauLaoDongFeed, 'tuHaoCoToQuoc'] as const).filter(
         feed => states[feed] === 'failed');
 
     useEffect(() => {
@@ -58,8 +61,8 @@ export default function HomeContent() {
             dispatch(fetchNews(taiChinhChungKhoanFeed));
         }
 
-        dispatch(fetchNews('podcast'))
-
+        dispatch(fetchNews('podcast'));
+        dispatch(fetchNews('tuHaoCoToQuoc'));
     }, [dispatch]);
 
     return (
@@ -96,6 +99,7 @@ export default function HomeContent() {
                         xuatKhauLaoDongNews={xuatKhauLaoDongNews}
                         taiChinhChungKhoanNews={taiChinhChungKhoanNews}
                         podcastNews={podcastNews}
+                        tuHaoCoToQuocNews={tuHaoCoToQuocNews}
                     />
                 </div>
             </div>
