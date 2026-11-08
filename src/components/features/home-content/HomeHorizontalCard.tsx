@@ -33,13 +33,13 @@ export default function HomeHorizontalCard({
     return (
         <div className={`home-horizontal-card text-start 
         ${index !== 20 ? "border-bottom pb-2 me-4 mb-4" : ""} me-4`}>
-            <a className="home-horizontal-card-title" href={link}>{title}</a>
+            <a className="main-title" href={link}>{title}</a>
             <div className="home-horizontal-card-content mt-3 gap-0">
                 <img src={image} alt={title} className={(index ? getImageType(index) : "home-horizontal-card-image") + " me-3"}/>
 
                 <div className={'d-flex flex-column gap-2 justify-content-between'}>
                     {index !== 9 && description && (
-                        <p className="home-horizontal-card-description">{description}</p>
+                        <p className="description">{description}</p>
                     )}
                     {index !== 9 && index !== 8 && seeMore && <SeeMore
                         newsItem={seeMore}

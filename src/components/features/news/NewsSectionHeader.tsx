@@ -12,13 +12,13 @@ interface NewsSectionHeaderProps {
 }
 
 export default function NewsSectionHeader({title, href, icon, color, links, moreLinks, compact=false}: NewsSectionHeaderProps) {
-    const titleStyle = {lineHeight: 1.4, color: color ?? "#292929", fontFamily: "Merriweather, serif"};
     const linkStyle = {fontFamily: "Inter"};
         return (
             <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 text-start mb-2">
                 <div>
-                    <h5 className="mb-0" style={compact ? {fontSize: 18, lineHeight: 1.4} : undefined}>
-                        <i className={icon} style={{color: color ?? "#0959ab"}}></i> {href ? <Link to={href} style={titleStyle} className="fw-bold">{title}</Link> : <span style={titleStyle}>{title}</span>}
+                    <h5 className="mb-0 title" style={compact ? {fontSize: 18, lineHeight: 1.4} : undefined}>
+                        <i className={icon} style={{color: color ?? "#0959ab"}}></i> {href ? <Link to={href} className={"fw-bold main-title fs-5"}
+                    >{title}</Link> : <span className={"main-title"}>{title}</span>}
                     </h5>
                 </div>
                 <div className="d-flex align-items-center">
@@ -29,7 +29,7 @@ export default function NewsSectionHeader({title, href, icon, color, links, more
                             </li>
                         ))}
                         {moreLinks && moreLinks.length > 0 && (
-                            <li className="list-inline-item fs-6 category-dropdown" style={{color: "#3e3e3e", ...linkStyle}}>
+                            <li className="list-inline-item category-dropdown" style={{color: "#3e3e3e", ...linkStyle}}>
                                 <i className="fa fa-angle-down"></i>
                                 <div className="category-box">
                                     {moreLinks.map(link => (
