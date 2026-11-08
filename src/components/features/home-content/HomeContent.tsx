@@ -14,7 +14,7 @@ export default function HomeContent() {
     const taiChinhChungKhoanFeed = "nld/kinh-te/tai-chinh-chung-khoan";
 
     const homeNews = feeds.home ?? [];
-    const mainList = homeNews.slice(0, 21);
+    const mainList = homeNews.slice(17, 38);
     const seeMoreList = homeNews.slice(22, 27);
     const hoiNongDapNhanhNews = feeds.hoiNongDapNhanh ?? [];
 
@@ -26,6 +26,8 @@ export default function HomeContent() {
     const noiThangNews = feeds.noiThang ?? [];
     const gocNhinNews = feeds.gocNhin ?? [];
     const nguoiLaoDongNews = feeds.NLDNEWS ?? [];
+    const podcastNews = feeds.podcast ?? [];
+
     const loading = states.home === 'loading'
         || states.hoiNongDapNhanh === 'loading'
         || states.truyVetMXH === 'loading'
@@ -33,10 +35,11 @@ export default function HomeContent() {
         || states.gocNhin === 'loading'
         || states.NLDNEWS === 'loading'
         || states[xuatKhauLaoDongFeed] === 'loading'
-    || states[taiChinhChungKhoanFeed] === 'loading';
+    || states[taiChinhChungKhoanFeed] === 'loading'
+    || states.podcast === 'loading';
 
     const failedFeeds = (['home', 'hoiNongDapNhanh', 'truyVetMXH',
-        'noiThang', 'gocNhin', 'NLDNEWS'] as const).filter(
+        'noiThang', 'gocNhin', 'NLDNEWS', 'podcast', taiChinhChungKhoanFeed, xuatKhauLaoDongFeed] as const).filter(
         feed => states[feed] === 'failed');
 
     useEffect(() => {
@@ -54,6 +57,8 @@ export default function HomeContent() {
         if (taiChinhChungKhoanFeed) {
             dispatch(fetchNews(taiChinhChungKhoanFeed));
         }
+
+        dispatch(fetchNews('podcast'))
 
     }, [dispatch]);
 
@@ -90,6 +95,7 @@ export default function HomeContent() {
                         docQuyenNews={docQuyenNews}
                         xuatKhauLaoDongNews={xuatKhauLaoDongNews}
                         taiChinhChungKhoanNews={taiChinhChungKhoanNews}
+                        podcastNews={podcastNews}
                     />
                 </div>
             </div>

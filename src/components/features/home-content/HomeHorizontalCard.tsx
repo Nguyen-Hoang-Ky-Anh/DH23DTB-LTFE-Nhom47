@@ -2,7 +2,7 @@ import type {NewsItem} from "../../../services/rssService.ts";
 import SeeMore from "./SeeMore.tsx";
 
 interface HomeHorizontalCardProps {
-    index: number;
+    index?: number;
     image: string;
     title: string;
     link: string;
@@ -35,7 +35,7 @@ export default function HomeHorizontalCard({
         ${index !== 20 ? "border-bottom pb-2 me-4 mb-4" : ""} me-4`}>
             <a className="home-horizontal-card-title" href={link}>{title}</a>
             <div className="home-horizontal-card-content mt-3 gap-0">
-                <img src={image} alt={title} className={getImageType(index) + " me-3"}/>
+                <img src={image} alt={title} className={(index ? getImageType(index) : "home-horizontal-card-image") + " me-3"}/>
 
                 <div className={'d-flex flex-column gap-2 justify-content-between'}>
                     {index !== 9 && description && (

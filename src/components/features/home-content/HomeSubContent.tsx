@@ -3,6 +3,8 @@ import HomeSec1Card from "./HomeSec1Card.tsx";
 import {SECTIONS} from "../../../config/newsSectionConfig.ts";
 import HomeEnglishNews from "./HomeEnglishNews.tsx";
 import HomeSec2Card from "./HomeSec2Card.tsx";
+import {Link} from "react-router-dom";
+import HomePodcastTable from "./HomePodcastTable.tsx";
 
 export interface HomeSubContentProbs {
     hoiNongDapNhanhNews: NewsItem[];
@@ -14,13 +16,14 @@ export interface HomeSubContentProbs {
     docQuyenNews: NewsItem[];
     xuatKhauLaoDongNews: NewsItem[];
     taiChinhChungKhoanNews: NewsItem[];
+    podcastNews: NewsItem[];
 }
 
 export default function HomeSubContent({
                                            hoiNongDapNhanhNews, truyVetMXHNews,
                                            noiThangNews, gocNhinNews, seeMoreNews,
                                            nguoiLaoDongNews, docQuyenNews, xuatKhauLaoDongNews,
-                                           taiChinhChungKhoanNews
+                                           taiChinhChungKhoanNews, podcastNews
                                        }: HomeSubContentProbs) {
 
     const hoiNongDapNhanh = SECTIONS["hoiNongDapNhanh"];
@@ -29,6 +32,8 @@ export default function HomeSubContent({
     const gocNhin = SECTIONS["gocNhin"];
     const nldNews = SECTIONS["NLDNEWS"];
     const docQuyen = SECTIONS["docQuyen"];
+    const tpMTBac = SECTIONS["NamMuoiNamThanhPhoMangTenBac"];
+    const podcast = SECTIONS["podcast"];
 
     const xuatKhauLaoDong =
         SECTIONS["laoDong"].moreLinks.find((link) => link.feed === "nld/lao-dong/xuat-khau-lao-dong");
@@ -136,7 +141,7 @@ export default function HomeSubContent({
 
             {/* sub-main-section-2 nguoi-lao-dong-news */}
             <section
-                className={"mx-1 sub-main-section-2"}
+                className={"sub-main-section-2 border-bottom pb-5 mb-3"}
             >
                 {nguoiLaoDongNews[0] && (
                     <HomeEnglishNews href={nldNews.href} links={nldNews.links}
@@ -164,6 +169,26 @@ export default function HomeSubContent({
                     </div>
                 </div>
 
+            </section>
+
+
+            {/* Banner + Poscd */}
+            <section>
+                <div className={"mb-3"}>
+                    <Link to={tpMTBac.href} title={"50 năm thành phố mang tên Bác"}>
+                        <img src={"https://static.mediacdn.vn/nld.com.vn/banner-thanh-pho-mang-ten-bac-pc.png"}
+                             alt={"50 năm thành phố mang tên Bác"}/>
+                    </Link>
+                </div>
+                <div className={"mb-3"}>
+                    <Link to={"/"} title={"E-paper"}>
+                        <img src={"https://static.mediacdn.vn/nld/images/e-paper.png"} alt={"E-paper"}/>
+                    </Link>
+                </div>
+
+                {podcastNews[0] &&
+                    <HomePodcastTable href={podcast.href} links={podcast.links} moreLinks={podcast.moreLinks} news={podcastNews}/>
+                }
             </section>
 
         </section>
