@@ -65,7 +65,7 @@ export default function CategoryContent({feed}: CategoryContentProps) {
                     {news.slice(0, 15).map((item, index) => (
                         <HomeHorizontalCard
                             key={item.link}
-                            index={index}
+                            // index={index}
                             image={item.image}
                             title={item.title}
                             link={item.link}
