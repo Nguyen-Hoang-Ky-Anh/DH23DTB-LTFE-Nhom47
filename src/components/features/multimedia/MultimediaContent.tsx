@@ -1,7 +1,7 @@
 import Card from "../../ui/Card.tsx";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../../store/store.ts";
-import {FEED_PATHS, type FeedName} from "../../../services/rssConfig.ts";
+import {type FeedName} from "../../../services/rssConfig.ts";
 
 const multimediaContent = [
     { label: "VIP", feed: "vip" },
@@ -18,12 +18,10 @@ export function MultimediaContent() {
 
     const multiMediaItems = multimediaContent.map(item => {
         const article = feeds[item.feed]?.[0];
-        const path = FEED_PATHS[item.feed];
 
         return {
             ...item,
             article,
-            path
         };
     });
 
@@ -51,12 +49,19 @@ export function MultimediaContent() {
     return (
         <div className="row g-4 text-white pb-5">
             <div className="col-12 col-lg-4">
-                <Card
-                    image={featuredCard.article.image}
-                    title={featuredCard.article.title}
-                    description={featuredCard.article.description}
-                    feature
-                />
+                <a
+                    href={featuredCard.article.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="card-link"
+                >
+                    <Card
+                        image={featuredCard.article.image}
+                        title={featuredCard.article.title}
+                        description={featuredCard.article.description}
+                        feature
+                    />
+                </a>
             </div>
 
             <div className="col-12 col-lg-8">
@@ -66,10 +71,17 @@ export function MultimediaContent() {
 
                         return (
                             <div className="col-12 col-lg-4 col-sm-6" key={card.feed}>
-                                <Card
-                                    image={card.article.image}
-                                    title={card.article.title}
-                                />
+                                <a
+                                    href={card.article.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="card-link"
+                                >
+                                    <Card
+                                        image={card.article.image}
+                                        title={card.article.title}
+                                    />
+                                </a>
                             </div>
                         );
                     })}

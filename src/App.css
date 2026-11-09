@@ -104,6 +104,21 @@
     display: block;
 }
 
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-link .main-title {
+    text-decoration: none;
+    color: inherit;
+}
+
 .description {
     font-family: Inter, serif;
     color: #727272;
