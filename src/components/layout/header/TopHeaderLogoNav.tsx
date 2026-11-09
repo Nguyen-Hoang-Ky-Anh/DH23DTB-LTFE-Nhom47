@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 
 export default function TopHeaderLogoNav() {
+    const today = new Date();
+
+    const formatedDate = today.toLocaleDateString("vi-VN", {
+        weekday: "long",
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+    })
+
     return (
       <div className="d-flex flex-row px-1 my-2 align-items-center ">
         <Link to="/">
@@ -21,12 +30,16 @@ export default function TopHeaderLogoNav() {
             }}
           ></img>
         </Link>
-        <p
-          className="mb-0 ms-2 justify-content-center"
-          style={{ color: "white", fontSize: "14px", fontWeight: "500" }}
-        >
-          Thứ Ba, 27/10/2026
-        </p>
+          <p
+              className="mb-0 ms-2 d-flex align-items-center"
+              style={{
+                  color: "white",
+                  fontSize: "14px",
+                  fontWeight: "500",
+              }}
+          >
+              {formatedDate}
+          </p>
       </div>
     );
 }
