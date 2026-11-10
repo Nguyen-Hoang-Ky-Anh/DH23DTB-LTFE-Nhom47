@@ -8,6 +8,7 @@ import HomePodcastTable from "./HomePodcastTable.tsx";
 import TuHaoCoToQuoc from "./TuHaoCoToQuoc.tsx";
 import DragCarousel from "../../ui/DragCarousel.tsx";
 import type {ExchangeRate} from "../../../services/currencyRateService.ts";
+import type {GoldPrice} from "../../../services/sjcService.ts";
 
 export interface HomeSubContentProbs {
     hoiNongDapNhanhNews: NewsItem[];
@@ -22,6 +23,7 @@ export interface HomeSubContentProbs {
     podcastNews: NewsItem[];
     tuHaoCoToQuocNews: NewsItem[];
     usdExchangeRateData: ExchangeRate | null;
+    sjcData: GoldPrice | null;
     exchangeRateLoading: boolean;
     error?: string;
 }
@@ -31,7 +33,7 @@ export default function HomeSubContent({
                                            noiThangNews, gocNhinNews, seeMoreNews,
                                            nguoiLaoDongNews, docQuyenNews, xuatKhauLaoDongNews,
                                            taiChinhChungKhoanNews, podcastNews,
-                                           tuHaoCoToQuocNews, usdExchangeRateData, error
+                                           tuHaoCoToQuocNews, usdExchangeRateData, sjcData, error
                                        }: HomeSubContentProbs) {
     if (usdExchangeRateData) console.log(usdExchangeRateData.buy);
 
@@ -290,37 +292,53 @@ export default function HomeSubContent({
             <section>
                 <div className={'row my-3 border-bottom pb-3'}>
                     <div className={"col-auto border-end pe-3 mb-0"}>
-                            {usdExchangeRateData ? (
-                                <table className={'table table-bordered text-start'}
-                                       style={{
-                                           backgroundColor: "#f8fbff"
-                                       }}>
-                                    <thead style={{fontSize: 12, fontWeight: 700}}>
-                                    <tr>
-                                        <th scope="col">TỶ GIÁ</th>
-                                        <th scope="col">MUA</th>
-                                        <th scope="col">BÁN</th>
-                                    </tr>
-                                    </thead>
+                        {usdExchangeRateData ? (
+                            <table className={'table table-bordered text-start'}
+                                   style={{
+                                       width: "100%",
+                                       height: "100%",
+                                       minWidth: 0,
+                                       backgroundColor: "#f8fbff",
+                                       verticalAlign: "middle"
+                                   }}>
+                                <thead style={{fontSize: 12, fontWeight: 700}}>
+                                <tr>
+                                    <th scope="col">TỶ GIÁ</th>
+                                    <th scope="col">MUA</th>
+                                    <th scope="col">BÁN</th>
+                                </tr>
+                                </thead>
 
-                                    <tbody className={'semi-bold'} style={{fontSize: 12, fontWeight: 400}}>
+                                <tbody className={'semi-bold'} style={{fontSize: 12, fontWeight: 400}}>
+                                <tr>
+                                    <td scope={'row'}>USD/VNĐ</td>
+                                    <td>{usdExchangeRateData.buy}</td>
+                                    <td>{usdExchangeRateData.sell}</td>
+                                </tr>
+                                {sjcData && (
                                     <tr>
-                                        <td scope={'row'}>USD/VNĐ</td>
-                                        <td>{usdExchangeRateData.buy}</td>
-                                        <td>{usdExchangeRateData.sell}</td>
-                                    </tr>
-                                    </tbody>
+                                        <td scope={'row'}>SJC/LƯỢNG</td>
+                                        <td>{sjcData.buy}</td>
+                                        <td>{sjcData.sell}</td>
+                                    </tr>)}
 
-                                </table>
-                            ) : (
-                                <p>Error : {error}</p>
-                            )}
+                                </tbody>
+
+                            </table>
+                        ) : (
+                            <p>Error : {error}</p>
+                        )}
                     </div>
 
                     <div className={'col d-flex'}>
                         <Link to={ketQuaSoXo.href} title={'Kết quả sổ xố'}>
                             <img src="https://static.mediacdn.vn/nld.com.vn/images/g-kqxs.svg" alt="Kết quả xổ số"
-                                 width="94" height="91"/>
+                                 style={{
+                                     width: "100%",
+                                     height: "100%",
+                                     minWidth: 0
+                                 }}
+                            />
                         </Link>
                     </div>
                 </div>
