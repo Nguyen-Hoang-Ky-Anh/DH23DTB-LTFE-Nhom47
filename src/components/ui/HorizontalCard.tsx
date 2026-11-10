@@ -2,13 +2,14 @@ interface HorizontalCardProps {
     image: string;
     title: string;
     description?: string;
-    feature?: boolean
+    feature?: boolean;
+    whiteText?: boolean;
 }
 
-export default function HorizontalCard({ image, title, description, feature }: HorizontalCardProps) {
+export default function HorizontalCard({image, title, description, feature, whiteText}: HorizontalCardProps) {
     return (
-        <div className={`horizontal-card ${feature ? "horizontal-card-featured" : ""}`}>
-            <img src={image} alt={title} className="horizontal-card-image" />
+        <div className={`horizontal-card ${feature ? "horizontal-card-featured" : ""} ${whiteText ? "horizontal-card-white" : ""}`}>
+            <img src={image} alt={title} className="horizontal-card-image"/>
             <div className="horizontal-card-content">
                 <h3 className="horizontal-card-title main-title">{title}</h3>
                 {feature && description && (
@@ -16,5 +17,5 @@ export default function HorizontalCard({ image, title, description, feature }: H
                 )}
             </div>
         </div>
-    )
+    );
 }
