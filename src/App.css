@@ -611,6 +611,144 @@ li:hover {
   cursor: default;
 }
 
+/*WorldCup2026*/
+.world-cup-page {
+    color: #292929;
+    letter-spacing: normal;
+    font-family: Inter, sans-serif;
+    color-scheme: light;
+}
+
+.world-cup-page h1,
+.world-cup-page h2,
+.world-cup-page h3 {
+    color: inherit;
+}
+
+.world-cup-page nav a {
+    white-space: nowrap;
+}
+
+.world-cup-page a:hover {
+    color: #0959ab;
+}
+
+.world-cup-page .main-title {
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.world-cup-page .wc-page-title {
+    font-size: 28px;
+    letter-spacing: normal;
+}
+
+.world-cup-page .wc-feature-title,
+.world-cup-page .horizontal-card-featured .horizontal-card-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.world-cup-page .horizontal-card-featured {
+    min-height: 280px;
+    align-items: stretch;
+}
+
+.world-cup-page .horizontal-card-featured .horizontal-card-image {
+    width: 58.333333%;
+    height: auto;
+    min-height: 280px;
+}
+
+.world-cup-page .horizontal-card-featured .horizontal-card-content {
+    width: 41.666667%;
+    height: auto;
+}
+
+.world-cup-page .wc-news-image,
+.world-cup-page .sub-card-image {
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.world-cup-page .description,
+.world-cup-page .horizontal-card-description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555555;
+    text-align: left;
+}
+
+.world-cup-page .description:empty {
+    display: none;
+}
+
+.world-cup-page .side-feature-title,
+.world-cup-page .side-item-title {
+    font-family: Merriweather, serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    display: block;
+}
+
+.world-cup-page .wc-article {
+    max-width: 900px;
+}
+
+.world-cup-page .wc-scores {
+    color: white;
+    background: #030d32 url("https://static.mediacdn.vn/kenh14/world_cup_2026/images/bg-live-section.png") center / cover;
+    scroll-margin-top: 20px;
+}
+
+.world-cup-page .wc-score-title {
+    font-family: Inter, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: white;
+}
+
+.world-cup-page .wc-match {
+    background: rgb(24 37 71 / 90%);
+    font-size: 14px;
+}
+
+.world-cup-page .wc-match-date {
+    color: #c7cee0;
+    font-size: 12px;
+}
+
+.world-cup-page .wc-flag {
+    width: 28px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.world-cup-page .wc-standings {
+    font-size: 12px;
+}
+
+.world-cup-page .wc-standings th {
+    font-weight: 400;
+    color: #666;
+}
+
+@media (max-width: 767.98px) {
+    .world-cup-page .horizontal-card-featured {
+        flex-direction: column;
+    }
+
+    .world-cup-page .horizontal-card-featured .horizontal-card-image,
+    .world-cup-page .horizontal-card-featured .horizontal-card-content {
+        width: 100%;
+}
+  
+  
 .news-theme-green {
     background: linear-gradient(180deg, #8bc63f 0%, #1f9a3f 100%);
     border-radius: 6px;
