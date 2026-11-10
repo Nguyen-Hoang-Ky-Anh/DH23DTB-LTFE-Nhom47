@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "../../../store/store.ts";
 import {fetchNews} from "../../../store/slice/newsSlice.ts";
 import DragCarousel from "../../ui/DragCarousel.tsx";
+import {Link} from "react-router-dom";
+import {SECTIONS} from "../../../config/newsSectionConfig.ts";
 
 const topics = [
     "50 năm thành phố mang tên Bác",
@@ -96,11 +98,13 @@ export default function TopNews() {
                   ))}
                 </DragCarousel>
               </div>
-              <img
-                className="w-100"
-                src="https://static.mediacdn.vn/nld.com.vn/Banner_Nhung_cau_chuyen_nho_PC.png"
-                alt="Những câu chuyện nhỏ"
-              />
+              <Link to="/ban-doc/nhung-cau-chuyen-nho">
+                <img
+                  className="w-100"
+                  src="https://static.mediacdn.vn/nld.com.vn/Banner_Nhung_cau_chuyen_nho_PC.png"
+                  alt="Những câu chuyện nhỏ"
+                />
+              </Link>
             </div>
 
             {/*
@@ -114,11 +118,12 @@ export default function TopNews() {
                 >
                   Tin nóng
                 </h2>
-                <img
-                  style={{ minWidth: 0 }}
-                  src="https://static.mediacdn.vn/thumb_w/226/nld.com.vn/banner_WC2026.png"
-                  alt="World Cup 2026"
-                />
+                <Link to={SECTIONS.WorldCup2026.href} style={{minWidth: 0}}>
+                  <img className="img-fluid"
+                       src="https://static.mediacdn.vn/thumb_w/226/nld.com.vn/banner_WC2026.png"
+                       alt="World Cup 2026"
+                  />
+                </Link>
               </div>
               <ul
                 className="border-top border-bottom border-2 list-unstyled overflow-auto mb-4 news-list"

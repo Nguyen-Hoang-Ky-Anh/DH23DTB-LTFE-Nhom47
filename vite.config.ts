@@ -10,6 +10,11 @@ export default defineConfig({
         target: 'https://tuoitre.vn/',
         changeOrigin : true,
         rewrite: (path) => path.replace(/^\/rss/, ""),
+      },
+      "/api/world-cup/": {
+        target: "https://eth.cnnd.vn",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/world-cup/, ""),
       }
     }
   }
