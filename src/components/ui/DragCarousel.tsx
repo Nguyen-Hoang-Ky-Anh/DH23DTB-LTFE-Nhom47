@@ -5,13 +5,33 @@ interface DragCarouselProps {
     children: ReactNode;
     showControls?: boolean;
     showProgress?: boolean;
+    showRadio?: boolean;
 }
 
-export default function DragCarousel({children, showControls = false, showProgress = false}: DragCarouselProps) {
+export default function DragCarousel({
+                                         children,
+                                         showControls,
+                                         showRadio = false,
+                                         showProgress = false
+                                     }: DragCarouselProps) {
     const viewportRef = useRef<HTMLDivElement>(null);
-    const drag = useRef<{x: number; left: number} | null>(null);
-    const progressDrag = useRef<{x: number; left: number} | null>(null);
+    const drag = useRef<{ x: number; left: number } | null>(null);
+    const progressDrag = useRef<{ x: number; left: number } | null>(null);
     const [progress, setProgress] = useState(0);
+    const [index, setIndex] = useState(0);
+
+    const snapToSide = (viewport: HTMLDivElement) => {
+        const maxScroll = Math.max(0,
+            viewport.scrollWidth - viewport.clientWidth);
+
+        const target = viewport.scrollLeft >= maxScroll / 2 ?
+            maxScroll : 0;
+
+        viewport.scrollTo({
+            left: target,
+            behavior: "smooth"
+        });
+    };
 
     return (
         <div className="flex-grow-1" style={{minWidth: 0}}>
@@ -34,12 +54,22 @@ export default function DragCarousel({children, showControls = false, showProgre
                         }
                     }}
                     onLostPointerCapture={event => {
+                        if (showRadio && drag.current) {
+                            snapToSide(event.currentTarget);
+                        }
                         drag.current = null;
                         event.currentTarget.style.cursor = "grab";
                     }}
                     onScroll={event => {
                         const viewport = event.currentTarget;
-                        setProgress(viewport.scrollLeft / Math.max(1, viewport.scrollWidth - viewport.clientWidth));
+                        const currentProgress = viewport.scrollLeft / Math.max(1, viewport.scrollWidth - viewport.clientWidth);
+                        setProgress(currentProgress);
+
+                        if (showRadio) {
+                            setIndex(currentProgress >= 0.5 ? 1 : 0);
+                        } else if (viewport.clientWidth > 0) {
+                            setIndex(Math.round(viewport.scrollLeft / viewport.clientWidth))
+                        }
                     }}
                     onKeyDown={event => {
                         const viewport = event.currentTarget;
@@ -88,6 +118,36 @@ export default function DragCarousel({children, showControls = false, showProgre
                             event.currentTarget.style.cursor = "grab";
                         }}
                     />
+                </div>
+            )}
+
+            {showRadio && (
+                <div className="d-flex justify-content-center align-items-center gap-2 mt-2">
+                    {[0, 1].map((i) => (
+                        <button
+                            key={i}
+                            type="button"
+                            className={`border-0`}
+                            style={{
+                                borderRadius: "50%",
+                                height: 10,
+                                width: 10,
+                                opacity: index === i ? 1 : 0.4,
+                                cursor: "pointer",
+                                backgroundColor: index === i ? "blue" : "silver",
+                            }}
+
+                            onClick={() => {
+                                const viewport = viewportRef.current;
+                                if (!viewport) return;
+                                const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+                                viewport.scrollTo({
+                                    left: i === 0 ? 0 : maxScroll,
+                                    behavior: "smooth"
+                                });
+                            }}
+                        />
+                    ))}
                 </div>
             )}
         </div>

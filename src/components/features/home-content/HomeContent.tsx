@@ -84,10 +84,18 @@ export default function HomeContent() {
                 )}
             </section>
             <div className="row">
-                <div className="col home-main p-0" style={{maxWidth: '46.7%'}}>
+                <div className="col home-main p-0" style={{
+                    flex: "0 0 46.7%",
+                    maxWidth: '46.7%',
+                    minWidth: 0
+                }}>
                     <HomeMainContent news={mainList}/>
                 </div>
-                <div className="col home-sub border-start">
+                <div className="col home-sub border-start"
+                style ={{
+                    flex: " 1 1 0%",
+                    minWidth: 0,
+                }}>
                     <HomeSubContent
                         hoiNongDapNhanhNews={hoiNongDapNhanhNews}
                         noiThangNews={noiThangNews}
