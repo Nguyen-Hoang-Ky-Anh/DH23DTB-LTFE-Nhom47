@@ -1,17 +1,52 @@
 import Card from "../../ui/Card.tsx";
 import HorizontalCard from "../../ui/HorizontalCard.tsx";
 import type {NewsItem} from "../../../services/rssService.ts";
+import type {SectionKey} from "../../../config/newsSectionConfig.ts";
 
 export type NewsLayout = "horizontal" | "vertical" | "columns" | "compact";
 
 interface NewsSectionContentProps {
     news: NewsItem[];
     layout: NewsLayout;
+    sectionKey?: SectionKey;
+    whiteText?: boolean;
 }
 
-export default function NewsSectionContent({news, layout}: NewsSectionContentProps) {
+export default function NewsSectionContent({news, layout, sectionKey, whiteText = false}: NewsSectionContentProps) {
     const [featured, ...rest] = news;
     if (!featured) return null;
+
+    const line = whiteText ? "rgba(255,255,255,.6)" : "#ddd";
+    const accent = whiteText ? "#fff" : "#0959ab";
+
+    let sideItemTitle = "";
+
+    switch (sectionKey) {
+        case "thoiSu":
+            sideItemTitle = "Xã hội";
+            break;
+        case "quocTe":
+            sideItemTitle = "Vấn đề nóng";
+            break;
+        case "kinhTe":
+            sideItemTitle = "Tài chính - Chứng khoán";
+            break;
+        case "netZero":
+            sideItemTitle = "Chuyển đổi xanh";
+            break;
+        case "ai365":
+            sideItemTitle = "Công nghệ số";
+            break;
+        case "laoDong":
+            sideItemTitle = "Chính sách";
+            break;
+        case "phapLuat":
+            sideItemTitle = "Luật sư của bạn";
+            break;
+        case "banDoc":
+            sideItemTitle = "Cuộc sống nhân ái";
+            break;
+    }
 
     if (layout === "compact") {
         return (
@@ -51,7 +86,7 @@ export default function NewsSectionContent({news, layout}: NewsSectionContentPro
     if (layout === "horizontal") {
         return (
             <div className="row pt-3 pb-3"
-                 style={{borderBottom: "1px solid #ddd", borderTop: "1px solid #ddd"}}>
+                 style={{borderBottom: `1px solid ${line}`, borderTop: `1px solid ${line}`}}>
                 <div className="col-lg-4">
                     <Card
                         image={featured.image}
@@ -60,15 +95,16 @@ export default function NewsSectionContent({news, layout}: NewsSectionContentPro
                         feature
                     />
                 </div>
-                <div className="d-flex flex-column col-lg-5 gap-3">
-                    {list.map(item => (
-                        <HorizontalCard key={item.link} image={item.image} title={item.title}/>
+                <div className="d-flex flex-column col-lg-5">
+                    {list.map((item) => (
+                        <HorizontalCard key={item.link} image={item.image} title={item.title} whiteText={whiteText}/>
+
                     ))}
                 </div>
                 {sideItem && (
-                    <div className="d-flex flex-column col-lg-3 w-25" style={{borderLeft: "1px solid #ddd"}}>
-                        {/*<h6 className="text-start mb-2"*/}
-                        {/*    style={{borderBottom: "3px solid #0959ab", width: "fit-content"}}>Xã hội</h6>*/}
+                    <div className="d-flex flex-column col-lg-3 w-25" style={{borderLeft: `1px solid ${line}`}}>
+                        <h6 className="text-start mb-2"
+                            style={{borderBottom: `3px solid ${accent}`, width: "fit-content"}}>{sideItemTitle}</h6>
                         <Card
                             image={sideItem.image}
                             title={sideItem.title}

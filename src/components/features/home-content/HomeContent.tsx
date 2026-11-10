@@ -4,11 +4,15 @@ import {useEffect} from "react";
 import {fetchNews} from "../../../store/slice/newsSlice.ts";
 import HomeMainContent from "./HomeMainContent.tsx";
 import HomeSubContent from "./HomeSubContent.tsx";
+import {fetchExchangeRate} from "../../../store/slice/currencyRateSlice.ts";
 
 
 export default function HomeContent() {
     const dispatch = useDispatch<AppDispatch>();
     const {feeds, states} = useSelector((state: RootState) => state.news);
+
+    const {data, status, error} = useSelector((state: RootState) => state.exchangeRate);
+    const usdExchangeRateData = data ?? null;
 
     const xuatKhauLaoDongFeed = "nld/lao-dong/xuat-khau-lao-dong";
     const taiChinhChungKhoanFeed = "nld/kinh-te/tai-chinh-chung-khoan";
@@ -40,10 +44,13 @@ export default function HomeContent() {
     || states.podcast === 'loading'
     || states.tuHaoCoToQuoc === 'loading';
 
+    const exchangeRateIsLoading = status === 'loading';
+
     const failedFeeds = (['home', 'hoiNongDapNhanh', 'truyVetMXH',
         'noiThang', 'gocNhin', 'NLDNEWS', 'podcast', taiChinhChungKhoanFeed,
         xuatKhauLaoDongFeed, 'tuHaoCoToQuoc'] as const).filter(
         feed => states[feed] === 'failed');
+
 
     useEffect(() => {
         dispatch(fetchNews('home'));
@@ -63,6 +70,7 @@ export default function HomeContent() {
 
         dispatch(fetchNews('podcast'));
         dispatch(fetchNews('tuHaoCoToQuoc'));
+        dispatch(fetchExchangeRate('USD'));
     }, [dispatch]);
 
     return (
@@ -91,11 +99,7 @@ export default function HomeContent() {
                 }}>
                     <HomeMainContent news={mainList}/>
                 </div>
-                <div className="col home-sub border-start"
-                style ={{
-                    flex: " 1 1 0%",
-                    minWidth: 0,
-                }}>
+                <div className="col home-sub border-start">
                     <HomeSubContent
                         hoiNongDapNhanhNews={hoiNongDapNhanhNews}
                         noiThangNews={noiThangNews}
@@ -108,6 +112,9 @@ export default function HomeContent() {
                         taiChinhChungKhoanNews={taiChinhChungKhoanNews}
                         podcastNews={podcastNews}
                         tuHaoCoToQuocNews={tuHaoCoToQuocNews}
+                        usdExchangeRateData = {usdExchangeRateData}
+                        exchangeRateLoading = {exchangeRateIsLoading}
+                        error={error? error : undefined}
                     />
                 </div>
             </div>
