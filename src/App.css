@@ -309,19 +309,9 @@
     text-overflow: ellipsis;
 }
 
-.subMain {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-}
 
 .home-sub {
     min-width: 0;
-}
-
-.home-sub img:not(.drag-carousel img) {
-    max-width: 100%;
-    height: auto;
 }
 
 .home-sec-1-image {

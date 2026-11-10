@@ -10,6 +10,12 @@ export default defineConfig({
         target: 'https://tuoitre.vn/',
         changeOrigin : true,
         rewrite: (path) => path.replace(/^\/rss/, ""),
+      },
+
+      "/vcb-api": {
+        target: 'https://portal.vietcombank.com.vn/',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/vcb-api/, ""),
       }
     }
   }
