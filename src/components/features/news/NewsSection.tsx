@@ -23,7 +23,7 @@ export default function NewsSection({section, layout = "horizontal", embedded = 
     },[dispatch, feed]);
 
     const content = (
-        <>
+        <div className={section === "netZero" ? "news-theme-green" : undefined}>
             <NewsSectionHeader
                 title={title}
                 href={href}
@@ -33,8 +33,8 @@ export default function NewsSection({section, layout = "horizontal", embedded = 
                 moreLinks={moreLinks}
                 compact={layout === "compact"}
             />
-            <NewsSectionContent layout={layout} news={news}/>
-        </>
+            <NewsSectionContent layout={layout} news={news} sectionKey={section} whiteText={section === "netZero"} />
+        </div>
     );
 
     if (layout === "vertical") {

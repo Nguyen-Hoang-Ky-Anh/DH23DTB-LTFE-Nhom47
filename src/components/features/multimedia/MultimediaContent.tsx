@@ -52,7 +52,6 @@ export function MultimediaContent() {
                 <a
                     href={featuredCard.article.link}
                     target="_blank"
-                    rel="noopener noreferrer"
                     className="card-link"
                 >
                     <Card
@@ -74,7 +73,6 @@ export function MultimediaContent() {
                                 <a
                                     href={card.article.link}
                                     target="_blank"
-                                    rel="noopener noreferrer"
                                     className="card-link"
                                 >
                                     <Card
