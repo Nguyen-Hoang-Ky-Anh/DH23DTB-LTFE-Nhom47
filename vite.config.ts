@@ -22,7 +22,7 @@ export default defineConfig({
         target: "https://eth.cnnd.vn",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/world-cup/, "")
-
+       }
     }
   }
 })

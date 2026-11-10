@@ -746,8 +746,8 @@ li:hover {
     .world-cup-page .horizontal-card-featured .horizontal-card-image,
     .world-cup-page .horizontal-card-featured .horizontal-card-content {
         width: 100%;
+    }
 }
-  
   
 .news-theme-green {
     background: linear-gradient(180deg, #8bc63f 0%, #1f9a3f 100%);
