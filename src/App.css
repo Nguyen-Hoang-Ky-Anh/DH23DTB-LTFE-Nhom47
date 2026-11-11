@@ -482,6 +482,11 @@ a {
     scrollbar-color: #c4c4c4 transparent;
 }
 
+.category-mega-card {
+    width: 10rem;
+    min-height: 10rem;
+}
+
 .bottom-news .sub-card-image {
     height: auto;
     aspect-ratio: 16 / 10;

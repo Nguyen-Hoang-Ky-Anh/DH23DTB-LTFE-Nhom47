@@ -6,7 +6,7 @@ interface CategoryCardProps {
     section: NewsSectionConfig
 }
 
-const VISIBLE_LINKS = 6
+const VISIBLE_LINKS = 3
 
 export default function CategoryMegaMenuCard({ section }: CategoryCardProps) {
     const [expanded, setExpanded] = useState(false);
@@ -16,7 +16,7 @@ export default function CategoryMegaMenuCard({ section }: CategoryCardProps) {
     const showLinks = expanded ? links : links.slice(0, VISIBLE_LINKS);
 
     return (
-        <div className="card border-0" style={{width: '10rem', height: '12rem', backgroundColor: "#FAFAFA"}}>
+        <div className="card border-0 category-mega-card" style={{backgroundColor: "#FAFAFA"}}>
             <Link to={section?.href ?? "/"} className="card-title text-start fw-bold mb-0" style={{borderBottom: "1px solid #0959ab", width: "fit-content"}}>{section.title}</Link>
             <div className="card-text text-start d-flex flex-column">
                 {showLinks.map((link) => (
