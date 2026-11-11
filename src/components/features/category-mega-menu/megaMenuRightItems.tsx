@@ -23,9 +23,9 @@ const fa = (name: string) => <i className={`fa ${name} category-icon`}></i>;
 export const MEGA_MENU_COLUMNS_RIGHT: MenuItem[][] = [
     [
         fromSection("video", fa("fa-video")),
-        {label: "Photo", href: "/photo", icon: fa("fa-photo-film")},
-        {label: "Longform", href: "/longform", icon: fa("fa-chart-column")},
-        {label: "Infographic", href: "/infographic", icon: fa("fa-newspaper")},
+        {label: "Photo", href: "/video", icon: fa("fa-photo-film")},
+        {label: "Longform", href: "/video", icon: fa("fa-chart-column")},
+        {label: "Infographic", href: "/video", icon: fa("fa-newspaper")},
     ],
     [
         fromSection("lyTuongSong", <LyTuongSongIcon/>),

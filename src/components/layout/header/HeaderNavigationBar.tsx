@@ -1,22 +1,29 @@
-import {useState} from "react";
-import {Link, useLocation} from "react-router-dom";
-import {CategoryMegaMenu} from "../../features/category-mega-menu/CategoryMegaMenu.tsx";
-import {SECTIONS} from "../../../config/newsSectionConfig.ts";
+
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { CategoryMegaMenu } from "../../features/category-mega-menu/CategoryMegaMenu.tsx";
+import { SECTIONS } from "../../../config/newsSectionConfig.ts";
 
 export default function HeaderNavigationBar() {
     const [showCategory, setShowCategory] = useState(false);
-    const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
     const categoriesList = Object.values(SECTIONS).slice(0, 16);
     const location = useLocation();
 
     const isHomepage = location.pathname === "/";
 
+    const activeCategory = categoriesList.find(
+        (section) => section.href === location.pathname
+    )?.feed;
+
+    useEffect(() => {
+        setShowCategory(false);
+    }, [location.pathname]);
+
     return (
-        <div style={{backgroundColor: "white"}}>
+        <div style={{ backgroundColor: "white" }}>
             <div className="container">
-                <div className="d-flex flex-row align-items-center justify-content-between p-2"
-                >
+                <div className="d-flex flex-row align-items-center justify-content-between p-2">
                     <Link to="/">
                         <img
                             src="https://static.mediacdn.vn/nld.com.vn/images/logo_blue.png"
@@ -34,30 +41,37 @@ export default function HeaderNavigationBar() {
                             <li
                                 key={section.feed}
                                 className="list-inline-item fw-bold header-option"
-                                style={{fontSize: 11, fontFamily: "Inter, sans-serif"}}
+                                style={{
+                                    fontSize: 11,
+                                    fontFamily: "Inter, sans-serif",
+                                }}
                             >
                                 <Link
                                     to={section.href}
-                                    className={`text-decoration-none 
-                                    ${!isHomepage && activeCategory === section.feed ? "header-nav-item-active" : "text-dark"}`
-                                    }
-                                    onClick={() => setActiveCategory(section.feed)}
+                                    className={`text-decoration-none ${
+                                        !isHomepage &&
+                                        activeCategory === section.feed
+                                            ? "header-nav-item-active"
+                                            : "text-dark"
+                                    }`}
                                 >
                                     {section.title.toUpperCase()}
                                 </Link>
                             </li>
                         ))}
+
                         <li
                             className="list-inline-item fw-bold header-option"
-                            onClick={() => setShowCategory(!showCategory)}
-                            style={{cursor: "pointer"}}
+                            onClick={() => setShowCategory((prev) => !prev)}
+                            style={{ cursor: "pointer" }}
                         >
                             <i className="fa-solid fa-ellipsis"></i>
                         </li>
                     </ul>
                 </div>
             </div>
-            {showCategory && <CategoryMegaMenu/>}
+
+            {showCategory && <CategoryMegaMenu />}
         </div>
     );
 }
