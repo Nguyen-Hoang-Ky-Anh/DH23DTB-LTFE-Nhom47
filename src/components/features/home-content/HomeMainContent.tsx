@@ -6,7 +6,7 @@ interface HomeMainContentProps {
 }
 
 export default function HomeMainContent({news}: HomeMainContentProps) {
-    const randomSeeMore = news[Math.floor(Math.random() * news.length)];
+    const seeMore = news.pop();
     return (
         <div>
             {news.map(((item, index) => (
@@ -16,7 +16,7 @@ export default function HomeMainContent({news}: HomeMainContentProps) {
                     title={item.title}
                     link={item.link}
                     description={item.description}
-                    seeMore = {randomSeeMore}
+                    seeMore = {seeMore}
                 />
             )))}
         </div>

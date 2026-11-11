@@ -181,20 +181,20 @@ export default function HomeSubContent({
                 <div className={'row g-3 mt-3'}>
                     <div className={"col-4"}>
                         {docQuyenNews[0] && (
-                            <HomeSec2Card title={"Độc quyền"} cateHref={docQuyen.href} newsItem={docQuyenNews[0]}/>
+                            <HomeSec2Card icon="fa-solid fa-bolt" title={"Độc quyền"} cateHref={docQuyen.href} newsItem={docQuyenNews[0]}/>
                         )}
                     </div>
 
                     <div className={"col-4"}>
-                        {xuatKhauLaoDongNews[0] && (
-                            <HomeSec2Card title={"Xuất khẩu lao động"} cateHref={xuatKhauLaoDong?.href}
+                        {xuatKhauLaoDongNews[0] && xuatKhauLaoDong && (
+                            <HomeSec2Card icon="fa-solid fa-helmet-safety" title={"Xuất khẩu lao động"} cateHref={xuatKhauLaoDong?.href}
                                           newsItem={xuatKhauLaoDongNews[0]}/>
                         )}
                     </div>
 
                     <div className={"col-4"}>
-                        {taiChinhChungKhoanNews[0] && (
-                            <HomeSec2Card title={"Tài chính - Chứng khoán"} cateHref={taiChinhChungKhoan?.href}
+                        {taiChinhChungKhoanNews[0] && taiChinhChungKhoan && (
+                            <HomeSec2Card icon={"fa-solid fa-chart-column"} title={"Tài chính - Chứng khoán"} cateHref={taiChinhChungKhoan?.href}
                                           newsItem={taiChinhChungKhoanNews[0]}/>
                         )}
                     </div>
@@ -208,12 +208,24 @@ export default function HomeSubContent({
                 <div className={"mb-3"}>
                     <Link to={tpMTBac.href} title={"50 năm thành phố mang tên Bác"}>
                         <img src={"https://static.mediacdn.vn/nld.com.vn/banner-thanh-pho-mang-ten-bac-pc.png"}
-                             alt={"50 năm thành phố mang tên Bác"}/>
+                             alt={"50 năm thành phố mang tên Bác"}
+                             style={{
+                                 height: "100%",
+                                 width: "100%",
+                                 minWidth: "100%"
+                             }}
+                        />
                     </Link>
                 </div>
                 <div className={"mb-3"}>
                     <Link to={"/"} title={"E-paper"}>
-                        <img src={"https://static.mediacdn.vn/nld/images/e-paper.png"} alt={"E-paper"}/>
+                        <img src={"https://static.mediacdn.vn/nld/images/e-paper.png"} alt={"E-paper"}
+                             style={{
+                                 height: "100%",
+                                 width: "100%",
+                                 minWidth: "100%"
+                             }}
+                        />
                     </Link>
                 </div>
 
