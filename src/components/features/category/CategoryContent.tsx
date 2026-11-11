@@ -9,14 +9,6 @@ import HomeHorizontalCard from "../home-content/HomeHorizontalCard.tsx";
 import SideGroupCard from "./SideGroupCard.tsx";
 import WorldCupScores from "../world-cup/WorldCupScores.tsx";
 
-const topics = [
-    "50 năm thành phố mang tên Bác",
-    "Tuyển sinh lớp 10 năm 2026",
-    "Biến động giá vàng",
-    "Thời tiết hôm nay",
-    "Thi tốt nghiệp THPT 2026",
-    "Cấp bách tiết kiệm năng lượng",
-];
 
 interface CategoryContentProps {
     feed: FeedName;
@@ -44,14 +36,11 @@ export default function CategoryContent({feed, isWorldCup = false}: CategoryCont
 
                         <div className="flex-grow-1 overflow-hidden">
                             <DragCarousel showControls>
-                                {topics.map(topic => (
-                                    <span
-                                        className="bg-light py-1 px-3 text-nowrap"
-                                        key={topic}
-                                    >
-                                        {topic}
-                                    </span>
-                                ))}
+                            {news.map((item) => (
+                                <span className="bg-light py-1 px-3 text-nowrap">
+                                    {`${item.title.slice(0, 20)}...`}
+                                </span>
+                        ))}
                             </DragCarousel>
                         </div>
                     </div>
