@@ -4,7 +4,6 @@ import HomePage from "../components/HomePage.tsx";
 import CategoryPage from "../components/CategoryPage.tsx"
 import Error from "./Error.tsx";
 import { SECTIONS } from "../config/newsSectionConfig.ts";
-import WorldCupPage from "../components/WorldCupPage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -15,19 +14,6 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
-      },
-      {
-        path: `${SECTIONS.WorldCup2026.href}/:subcategory?`,
-        element: <WorldCupPage />,
-        loader: ({ params }) => {
-          const section = SECTIONS.WorldCup2026;
-          const links = [...section.links, ...section.moreLinks];
-          const path = `${section.href}/${params.subcategory}`;
-          if (params.subcategory && !links.some(link => link.href === path)) {
-            throw new Response("Not Found", { status: 404 });
-          }
-          return null;
-        },
       },
       {
         path: ":category/:subcategory?",

@@ -120,22 +120,13 @@ export default function NewsSectionContent({news, layout, sectionKey, whiteText 
         <div className="pb-3">
             <div className="row mb-4 mt-4">
                 <div className="col-9">
-                    <HorizontalCard
-                        image={featured.image}
-                        title={featured.title}
-                        description={featured.description}
-                        feature
-                    />
+                    <HorizontalCard image={featured.image} title={featured.title} description={featured.description} feature/>
                 </div>
             </div>
-
-            <div
-                className="d-flex flex-wrap gap-4 border-top pt-4 mt-2"
-                style={{ width: "fit-content", maxWidth: "100%" }}
-            >
+            <div className="d-flex flex-wrap gap-4 border-top pt-4 mt-2" style={{width: "fit-content", maxWidth: "100%"}}>
                 {list.map(item => (
-                    <div key={item.link} style={{ width: 303 }}>
-                        <Card image={item.image} title={item.title} />
+                    <div key={item.link} style={{width: 303}}>
+                        <Card image={item.image} title={item.title}/>
                     </div>
                 ))}
             </div>

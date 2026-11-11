@@ -8,6 +8,7 @@ interface HomeHorizontalCardProps {
     link: string;
     description?: string;
     seeMore?: NewsItem;
+    linkArticles?: boolean;
 }
 
 function getImageType(index: number) {
@@ -28,22 +29,26 @@ export default function HomeHorizontalCard({
                                                title,
                                                link,
                                                description,
-                                               seeMore
+                                               seeMore,
+                                               linkArticles = true
                                            }: HomeHorizontalCardProps,) {
     return (
         <div className={`home-horizontal-card text-start 
         ${index !== 20 ? "border-bottom pb-2 me-4 mb-4" : ""} me-4`}>
-            <a className="main-title" href={link}>{title}</a>
+            <a className="main-title" href={linkArticles ? link : undefined}>{title}</a>
             <div className="home-horizontal-card-content mt-3 gap-0">
                 <img src={image} alt={title} className={(index ? getImageType(index) : "home-horizontal-card-image") + " me-3"}/>
 
-                <div className={'d-flex flex-column gap-2 justify-content-between'}>
+                <div className={'d-flex flex-column gap-2'}>
                     {index !== 9 && description && (
                         <p className="description">{description}</p>
                     )}
-                    {index !== 9 && index !== 8 && seeMore && <SeeMore
+                    {index !== 9 && index !== 8 && seeMore && <div className="mt-2">
+                        <SeeMore
                         newsItem={seeMore}
-                        isUl={index !== 5 && index !== 13}/>}
+                        linkArticles={linkArticles}
+                        isUl={index !== 5 && index !== 13}/>
+                        </div>}
                 </div>
             </div>
         </div>
