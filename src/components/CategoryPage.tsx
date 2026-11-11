@@ -42,7 +42,7 @@ export default function CategoryPage() {
         <>
             <main className="flex-grow-1">
                 <CategoryHeader section={currentSection}/>
-                <CategoryContent feed = {currentFeed}/>
+                <CategoryContent feed={currentFeed} isWorldCup={currentSection.feed === "WorldCup2026"}/>
             </main>
         </>
     )
