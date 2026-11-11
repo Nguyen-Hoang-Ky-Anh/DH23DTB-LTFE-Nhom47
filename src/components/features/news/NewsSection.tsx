@@ -37,11 +37,6 @@ export default function NewsSection({section, layout = "horizontal", embedded = 
         </div>
     );
 
-    if (layout === "vertical") {
-        return (
-            <NewsSectionContent layout={layout} news={news}/>
-        )
-    }
 
     {/*
         Neu embedded = true thi khong tao lai cot rong 9/12
