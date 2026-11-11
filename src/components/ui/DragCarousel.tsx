@@ -38,15 +38,15 @@ export default function DragCarousel({
             <div className="d-flex align-items-center gap-3">
                 <div
                     ref={viewportRef}
-                    className="flex-grow-1 overflow-hidden"
+                    className="drag-carousel flex-grow-1 overflow-hidden"
                     tabIndex={0}
-                    style={{minWidth: 0, cursor: "grab", userSelect: "none", touchAction: "pan-y"}}
+                    style={{minWidth: 0, userSelect: "none", touchAction: "pan-y"}}
                     onDragStart={event => event.preventDefault()}
                     onPointerDown={event => {
                         if (event.button !== 0) return;
                         drag.current = {x: event.clientX, left: event.currentTarget.scrollLeft};
                         event.currentTarget.setPointerCapture(event.pointerId);
-                        event.currentTarget.style.cursor = "grabbing";
+                        event.currentTarget.classList.add("dragging");
                     }}
                     onPointerMove={event => {
                         if (drag.current) {
@@ -58,7 +58,7 @@ export default function DragCarousel({
                             snapToSide(event.currentTarget);
                         }
                         drag.current = null;
-                        event.currentTarget.style.cursor = "grab";
+                        event.currentTarget.classList.remove("dragging");
                     }}
                     onScroll={event => {
                         const viewport = event.currentTarget;
@@ -96,13 +96,12 @@ export default function DragCarousel({
                 <div className="progress bg-white rounded mx-auto mt-4" style={{height: 5, width: 260}}>
                     <div
                         className="progress-bar rounded w-50"
-                        style={{marginLeft: `${progress * 50}%`, cursor: "grab", touchAction: "none", userSelect: "none"}}
+                        style={{marginLeft: `${progress * 50}%`, cursor: "pointer", touchAction: "none", userSelect: "none"}}
                         onPointerDown={event => {
                             const viewport = viewportRef.current;
                             if (event.button !== 0 || !viewport) return;
                             progressDrag.current = {x: event.clientX, left: viewport.scrollLeft};
                             event.currentTarget.setPointerCapture(event.pointerId);
-                            event.currentTarget.style.cursor = "grabbing";
                         }}
                         onPointerMove={event => {
                             const viewport = viewportRef.current;
@@ -113,9 +112,8 @@ export default function DragCarousel({
                                 (event.clientX - progressDrag.current.x) / Math.max(1, distance) *
                                 (viewport.scrollWidth - viewport.clientWidth);
                         }}
-                        onLostPointerCapture={event => {
+                        onLostPointerCapture={() => {
                             progressDrag.current = null;
-                            event.currentTarget.style.cursor = "grab";
                         }}
                     />
                 </div>

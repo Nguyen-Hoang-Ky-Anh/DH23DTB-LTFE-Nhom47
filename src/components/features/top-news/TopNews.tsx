@@ -13,6 +13,10 @@ const topics = [
     "Thời tiết hôm nay",
     "Thi tốt nghiệp THPT 2026",
     "Cấp bách tiết kiệm năng lượng",
+    "Xung đột Nga - Ukraine",
+    "Giai Pickleball Bao Người Lao Động 2026",
+    `Vườn chim Hai Chìa "kêu cứu"`
+
 ];
 
 const titleStyle = {lineHeight: 1.4, color: "#292929", fontFamily: "Merriweather, serif"};
