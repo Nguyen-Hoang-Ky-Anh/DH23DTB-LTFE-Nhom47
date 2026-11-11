@@ -5,14 +5,18 @@ import {fetchNews} from "../../../store/slice/newsSlice.ts";
 import HomeMainContent from "./HomeMainContent.tsx";
 import HomeSubContent from "./HomeSubContent.tsx";
 import {fetchExchangeRate} from "../../../store/slice/currencyRateSlice.ts";
+import {fetchGoldPrice} from "../../../store/slice/goldPriceSlice.ts";
 
 
 export default function HomeContent() {
     const dispatch = useDispatch<AppDispatch>();
     const {feeds, states} = useSelector((state: RootState) => state.news);
 
-    const {data, status, error} = useSelector((state: RootState) => state.exchangeRate);
-    const usdExchangeRateData = data ?? null;
+    const usdState = useSelector((state: RootState) => state.exchangeRate);
+    const usdExchangeRateData = usdState.data ?? null;
+
+    const sjcState = useSelector((state: RootState) => state.goldPrice);
+    const sjcData = sjcState.data ?? null;
 
     const xuatKhauLaoDongFeed = "nld/lao-dong/xuat-khau-lao-dong";
     const taiChinhChungKhoanFeed = "nld/kinh-te/tai-chinh-chung-khoan";
@@ -44,7 +48,7 @@ export default function HomeContent() {
     || states.podcast === 'loading'
     || states.tuHaoCoToQuoc === 'loading';
 
-    const exchangeRateIsLoading = status === 'loading';
+    const exchangeRateIsLoading = usdState.status === 'loading' || sjcState.status === 'loading';
 
     const failedFeeds = (['home', 'hoiNongDapNhanh', 'truyVetMXH',
         'noiThang', 'gocNhin', 'NLDNEWS', 'podcast', taiChinhChungKhoanFeed,
@@ -71,6 +75,7 @@ export default function HomeContent() {
         dispatch(fetchNews('podcast'));
         dispatch(fetchNews('tuHaoCoToQuoc'));
         dispatch(fetchExchangeRate('USD'));
+        dispatch(fetchGoldPrice('SJL1L10'));
     }, [dispatch]);
 
     return (
@@ -113,8 +118,9 @@ export default function HomeContent() {
                         podcastNews={podcastNews}
                         tuHaoCoToQuocNews={tuHaoCoToQuocNews}
                         usdExchangeRateData = {usdExchangeRateData}
+                        sjcData = {sjcData}
                         exchangeRateLoading = {exchangeRateIsLoading}
-                        error={error? error : undefined}
+                        error={usdState.error? usdState.error : undefined}
                     />
                 </div>
             </div>
