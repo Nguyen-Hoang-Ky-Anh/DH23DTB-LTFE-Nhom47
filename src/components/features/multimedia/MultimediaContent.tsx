@@ -32,18 +32,16 @@ export function MultimediaContent() {
         return null;
     }
 
-    const randomIndex = Math.floor(
-        Math.random() * filteredItems.length
-    );
+    const demoIndex = 3;
 
-    const featuredCard = filteredItems[randomIndex];
+    const featuredCard = filteredItems[demoIndex];
 
     if (!featuredCard?.article) {
         return null;
     }
 
     const remainedCards = filteredItems.filter(
-        (_, index) => index !== randomIndex
+        (_, index) => index !== demoIndex
     );
 
     return (
