@@ -776,3 +776,47 @@ li:hover {
     font-weight: 700;
     line-height: 1.4;
 }
+
+.vietLott-title{
+    font-family: Inter, serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.vietLott-table-text {
+    font-family: Inter, serif;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+.vietLott-number {
+    display: flex;
+    font-family: Inter, serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: red;
+    justify-content: center;
+    justify-items: center;
+    border: 1px solid silver;
+    border-radius: 300px;
+    padding: 2px;
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+}
+.special-vietLott-number {
+    display: flex;
+    font-family: Inter, serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #FAA61A;
+    justify-content: center;
+    justify-items: center;
+    border: 1px solid #FAA61A;
+    border-radius: 300px;
+    padding: 2px;
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+}

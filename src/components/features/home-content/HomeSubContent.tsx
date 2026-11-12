@@ -9,6 +9,8 @@ import TuHaoCoToQuoc from "./TuHaoCoToQuoc.tsx";
 import DragCarousel from "../../ui/DragCarousel.tsx";
 import type {ExchangeRate} from "../../../services/currencyRateService.ts";
 import type {GoldPrice} from "../../../services/sjcService.ts";
+import type {VietLott} from "../../../services/lotteryService.ts";
+import HomeVietLott from "./HomeVietLott.tsx";
 
 export interface HomeSubContentProbs {
     hoiNongDapNhanhNews: NewsItem[];
@@ -26,6 +28,9 @@ export interface HomeSubContentProbs {
     sjcData: GoldPrice | null;
     exchangeRateLoading: boolean;
     error?: string;
+    powerVietLottData: VietLott | null | undefined;
+    megaVietLottData: VietLott | null | undefined;
+    vietLottIsLoading: boolean;
 }
 
 export default function HomeSubContent({
@@ -33,7 +38,8 @@ export default function HomeSubContent({
                                            noiThangNews, gocNhinNews, seeMoreNews,
                                            nguoiLaoDongNews, docQuyenNews, xuatKhauLaoDongNews,
                                            taiChinhChungKhoanNews, podcastNews,
-                                           tuHaoCoToQuocNews, usdExchangeRateData, sjcData, error
+                                           tuHaoCoToQuocNews, usdExchangeRateData, sjcData, error, powerVietLottData,
+                                            megaVietLottData, vietLottIsLoading
                                        }: HomeSubContentProbs) {
     if (usdExchangeRateData) console.log(usdExchangeRateData.buy);
 
@@ -301,8 +307,8 @@ export default function HomeSubContent({
             </section>
 
             {/* Tỷ giá */}
-            <section>
-                <div className={'row my-3 border-bottom pb-3'}>
+            <section className={'border-bottom pb-1 mb-3'}>
+                <div className={'row my-3'}>
                     <div className={"col-auto border-end pe-3 mb-0"}>
                         {usdExchangeRateData ? (
                             <table className={'table table-bordered text-start'}
@@ -355,6 +361,19 @@ export default function HomeSubContent({
                     </div>
                 </div>
             </section>
+
+            {/* VietLott */}
+            {powerVietLottData && megaVietLottData && (
+                <section className={'border-bottom pb-3'}>
+                    {vietLottIsLoading ? (
+                        <p>Đang tải</p>
+                    ): (
+                        <HomeVietLott powerData={powerVietLottData} megaData={megaVietLottData}/>
+                    )}
+
+                </section>
+            )}
+
         </section>
     );
 }
