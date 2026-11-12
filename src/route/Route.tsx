@@ -4,6 +4,7 @@ import HomePage from "../components/HomePage.tsx";
 import CategoryPage from "../components/CategoryPage.tsx"
 import Error from "./Error.tsx";
 import { SECTIONS } from "../config/newsSectionConfig.ts";
+import {VideoPage} from "../components/VideoPage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
           }
           return null;
         },
+      },
+      {
+        path: "/video",
+        element: <VideoPage />
       },
       { path: "*", element: <Error /> },
     ],
