@@ -6,6 +6,7 @@ import HomeMainContent from "./HomeMainContent.tsx";
 import HomeSubContent from "./HomeSubContent.tsx";
 import {fetchExchangeRate} from "../../../store/slice/currencyRateSlice.ts";
 import {fetchGoldPrice} from "../../../store/slice/goldPriceSlice.ts";
+import {fetchVietLott} from "../../../store/slice/vietLottSlice.ts";
 
 
 export default function HomeContent() {
@@ -17,6 +18,10 @@ export default function HomeContent() {
 
     const sjcState = useSelector((state: RootState) => state.goldPrice);
     const sjcData = sjcState.data ?? null;
+
+    const vietLottResult = useSelector((state: RootState) => state.vietLott);
+    const powerVietLottData = vietLottResult.feeds.power;
+    const megaVietLottData = vietLottResult.feeds.mega;
 
     const xuatKhauLaoDongFeed = "nld/lao-dong/xuat-khau-lao-dong";
     const taiChinhChungKhoanFeed = "nld/kinh-te/tai-chinh-chung-khoan";
@@ -50,6 +55,8 @@ export default function HomeContent() {
 
     const exchangeRateIsLoading = usdState.status === 'loading' || sjcState.status === 'loading';
 
+    const vietLottIsLoading = vietLottResult.states.power === 'loading' || vietLottResult.states.mega === 'loading';
+
     const failedFeeds = (['home', 'hoiNongDapNhanh', 'truyVetMXH',
         'noiThang', 'gocNhin', 'NLDNEWS', 'podcast', taiChinhChungKhoanFeed,
         xuatKhauLaoDongFeed, 'tuHaoCoToQuoc'] as const).filter(
@@ -76,6 +83,9 @@ export default function HomeContent() {
         dispatch(fetchNews('tuHaoCoToQuoc'));
         dispatch(fetchExchangeRate('USD'));
         dispatch(fetchGoldPrice('SJL1L10'));
+
+        dispatch(fetchVietLott('mega'));
+        dispatch(fetchVietLott('power'));
     }, [dispatch]);
 
     return (
@@ -121,6 +131,9 @@ export default function HomeContent() {
                         sjcData = {sjcData}
                         exchangeRateLoading = {exchangeRateIsLoading}
                         error={usdState.error? usdState.error : undefined}
+                        powerVietLottData = {powerVietLottData}
+                        megaVietLottData = {megaVietLottData}
+                        vietLottIsLoading = {vietLottIsLoading}
                     />
                 </div>
             </div>
