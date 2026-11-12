@@ -4,6 +4,9 @@ import HomePage from "../components/HomePage.tsx";
 import CategoryPage from "../components/CategoryPage.tsx"
 import Error from "./Error.tsx";
 import { SECTIONS } from "../config/newsSectionConfig.ts";
+import TrendingPage from "../components/TrendingPage.tsx";
+import {TRENDING_TOPICS} from "../config/trendingConfig.ts";
+import fetchRSS from "../services/rssService.ts";
 import {VideoPage} from "../components/VideoPage.tsx";
 
 export const router = createBrowserRouter([
@@ -15,6 +18,18 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: "dong-su-kien/:topic",
+        element: <TrendingPage />,
+        loader: async ({params}) => {
+          const path = `/dong-su-kien/${params.topic}`;
+          const topic = TRENDING_TOPICS.find(topic => topic.href === path);
+          if (!topic?.feed) {
+            throw new Response("Not Found", {status: 404});
+          }
+          return {title: topic.title, news: await fetchRSS(topic.feed)};
+        },
       },
       {
         path: ":category/:subcategory?",
@@ -42,7 +57,13 @@ export const router = createBrowserRouter([
         path: "/video",
         element: <VideoPage />
       },
-      { path: "*", element: <Error /> },
+      {
+        path: "*",
+        loader: () => {
+          throw new Response("Not Found", {status: 404});
+        },
+        errorElement: <Error />
+      },
     ],
   },
 ]);
