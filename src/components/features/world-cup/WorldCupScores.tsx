@@ -1,28 +1,26 @@
 import {useEffect, useState} from "react";
-import {fetchWorldCupGroups, fetchWorldCupMatches, type WorldCupGroup, type WorldCupMatch} from "../../../services/worldCupService.ts";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchWorldCup} from "../../../store/slice/worldCupSlice.ts";
+import type {AppDispatch, RootState} from "../../../store/store.ts";
 
 const MATCHES_PER_PAGE = 6;
 
 export default function WorldCupScores() {
-    const [schedule, setSchedule] = useState<WorldCupMatch[] | string>("Đang tải lịch thi đấu...");
-    const [standings, setStandings] = useState<WorldCupGroup[] | string>("Đang tải bảng xếp hạng...");
+    const dispatch = useDispatch<AppDispatch>();
+    const {feeds, states} = useSelector((state: RootState) => state.worldCup);
     const [page, setPage] = useState(0);
     const [group, setGroup] = useState(0);
-    const allMatches = Array.isArray(schedule) ? schedule : [];
+    const allMatches = feeds.schedule;
     const firstMatch = page * MATCHES_PER_PAGE;
     const matches = allMatches.slice(firstMatch, firstMatch + MATCHES_PER_PAGE);
     const hasNextPage = firstMatch + MATCHES_PER_PAGE < allMatches.length;
-    const groups = Array.isArray(standings) ? standings : [];
+    const groups = feeds.standings;
     const selectedGroup = groups[group];
 
     useEffect(() => {
-        fetchWorldCupMatches()
-            .then(setSchedule)
-            .catch(() => setSchedule("Không tải được lịch thi đấu."));
-        fetchWorldCupGroups()
-            .then(setStandings)
-            .catch(() => setStandings("Không tải được bảng xếp hạng."));
-    }, []);
+        dispatch(fetchWorldCup("schedule"));
+        dispatch(fetchWorldCup("standings"));
+    }, [dispatch]);
 
     return (
         <section id="lich-thi-dau" className="wc-scores p-4 my-4 text-start">
@@ -42,7 +40,8 @@ export default function WorldCupScores() {
                         </div>
                     </div>
                     {!allMatches.length && (
-                        <p>{typeof schedule === "string" ? schedule : "Chưa có lịch thi đấu."}</p>
+                        <p>{states.schedule === "error" ? "Không tải được lịch thi đấu." :
+                            states.schedule === "succeeded" ? "Chưa có lịch thi đấu." : "Đang tải lịch thi đấu..."}</p>
                     )}
                     <div className="row g-3">
                         {matches.map(match => (
@@ -70,7 +69,8 @@ export default function WorldCupScores() {
                 <div className="col-12 col-lg-4">
                     <h2 className="wc-score-title mb-3">Bảng xếp hạng</h2>
                     {!groups.length && (
-                        <p>{typeof standings === "string" ? standings : "Chưa có bảng xếp hạng."}</p>
+                        <p>{states.standings === "error" ? "Không tải được bảng xếp hạng." :
+                            states.standings === "succeeded" ? "Chưa có bảng xếp hạng." : "Đang tải bảng xếp hạng..."}</p>
                     )}
                     {selectedGroup && (
                         <div className="bg-white text-dark rounded p-3">
