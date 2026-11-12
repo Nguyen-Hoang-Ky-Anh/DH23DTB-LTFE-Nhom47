@@ -16,6 +16,7 @@ export default function DragCarousel({
                                      }: DragCarouselProps) {
     const viewportRef = useRef<HTMLDivElement>(null);
     const drag = useRef<{ x: number; left: number } | null>(null);
+    const dragged = useRef(false);
     const progressDrag = useRef<{ x: number; left: number } | null>(null);
     const [progress, setProgress] = useState(0);
     const [index, setIndex] = useState(0);
@@ -45,12 +46,28 @@ export default function DragCarousel({
                     onPointerDown={event => {
                         if (event.button !== 0) return;
                         drag.current = {x: event.clientX, left: event.currentTarget.scrollLeft};
-                        event.currentTarget.setPointerCapture(event.pointerId);
-                        event.currentTarget.classList.add("dragging");
+                        dragged.current = false;
                     }}
                     onPointerMove={event => {
                         if (drag.current) {
+                            if (Math.abs(drag.current.x - event.clientX) < 5 && !dragged.current) return;
+                            dragged.current = true;
+                            event.currentTarget.setPointerCapture(event.pointerId);
+                            event.currentTarget.classList.add("dragging");
                             event.currentTarget.scrollLeft = drag.current.left + drag.current.x - event.clientX;
+                        }
+                    }}
+                    onPointerUp={event => {
+                        if (!event.currentTarget.hasPointerCapture(event.pointerId)) drag.current = null;
+                    }}
+                    onPointerLeave={event => {
+                        if (!event.currentTarget.hasPointerCapture(event.pointerId)) drag.current = null;
+                    }}
+                    onClickCapture={event => {
+                        if (dragged.current) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            dragged.current = false;
                         }
                     }}
                     onLostPointerCapture={event => {

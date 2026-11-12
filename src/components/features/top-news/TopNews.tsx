@@ -5,19 +5,7 @@ import {fetchNews} from "../../../store/slice/newsSlice.ts";
 import DragCarousel from "../../ui/DragCarousel.tsx";
 import {Link} from "react-router-dom";
 import {SECTIONS} from "../../../config/newsSectionConfig.ts";
-
-const topics = [
-    "50 năm thành phố mang tên Bác",
-    "Tuyển sinh lớp 10 năm 2026",
-    "Biến động giá vàng",
-    "Thời tiết hôm nay",
-    "Thi tốt nghiệp THPT 2026",
-    "Cấp bách tiết kiệm năng lượng",
-    "Xung đột Nga - Ukraine",
-    "Giai Pickleball Bao Người Lao Động 2026",
-    `Vườn chim Hai Chìa "kêu cứu"`
-
-];
+import {TRENDING_TOPICS} from "../../../config/trendingConfig.ts";
 
 const titleStyle = {lineHeight: 1.4, color: "#292929", fontFamily: "Merriweather, serif"};
 const descriptionStyle = {fontSize: 14, color: "#555555"};
@@ -92,12 +80,17 @@ export default function TopNews() {
               <div className="d-flex align-items-center gap-3 border-top border-bottom py-3 my-3 small">
                 <i className="fa-solid fa-arrow-trend-up text-danger" />
                 <DragCarousel showControls>
-                  {topics.map((topic) => (
-                    <span
+                  {TRENDING_TOPICS.map((topic) => topic.href ? (
+                    <Link
+                      to={topic.href}
                       className="bg-light py-1 px-3 text-nowrap"
-                      key={topic}
+                      key={topic.title}
                     >
-                      {topic}
+                      {topic.title}
+                    </Link>
+                  ) : (
+                    <span key={topic.title} className="bg-light py-1 px-3 text-nowrap">
+                      {topic.title}
                     </span>
                   ))}
                 </DragCarousel>

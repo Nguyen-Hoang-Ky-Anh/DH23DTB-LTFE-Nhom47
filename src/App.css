@@ -623,6 +623,7 @@ a {
 }
 
 .drag-carousel img,
+.drag-carousel a,
 .drag-carousel span,
 .drag-carousel h3 {
     cursor: pointer;
@@ -714,4 +715,24 @@ li:hover {
 .news-theme-green h6,
 .news-theme-green .title {
     font-weight: 700;
+}
+
+.news-results .horizontal-card {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+}
+
+.news-results .horizontal-card-image {
+    flex-shrink: 0;
+    aspect-ratio: 16 / 10;
+}
+
+.news-results .horizontal-card-content {
+    min-width: 0;
+}
+
+.news-results .horizontal-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
 }

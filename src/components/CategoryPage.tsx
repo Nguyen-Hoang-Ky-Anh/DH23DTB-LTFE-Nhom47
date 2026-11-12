@@ -42,7 +42,8 @@ export default function CategoryPage() {
         <>
             <main className="flex-grow-1">
                 <CategoryHeader section={currentSection}/>
-                <CategoryContent feed={currentFeed} isWorldCup={currentSection.feed === "WorldCup2026"}/>
+                {/*cap nhap key de react khong dung lai useState */}
+                <CategoryContent key={currentFeed} feed={currentFeed} isWorldCup={currentSection.feed === "WorldCup2026"}/>
             </main>
         </>
     )
