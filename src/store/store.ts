@@ -3,6 +3,7 @@ import newsReducer from "./slice/newsSlice";
 import exchangeRateReducer from "./slice/currencyRateSlice";
 import goldPriceReducer from "./slice/goldPriceSlice";
 import vietLottReducer from "./slice/vietLottSlice";
+import worldCupReducer from "./slice/worldCupSlice";
 
 export const store = configureStore({
     reducer : {
@@ -10,6 +11,7 @@ export const store = configureStore({
         exchangeRate: exchangeRateReducer,
         goldPrice: goldPriceReducer,
         vietLott: vietLottReducer,
+        worldCup: worldCupReducer,
     }
 });
 
