@@ -11,6 +11,7 @@ import type {ExchangeRate} from "../../../services/currencyRateService.ts";
 import type {GoldPrice} from "../../../services/sjcService.ts";
 import type {VietLott} from "../../../services/lotteryService.ts";
 import HomeVietLott from "./HomeVietLott.tsx";
+import NewsSection from "../news/NewsSection.tsx";
 
 export interface HomeSubContentProbs {
     hoiNongDapNhanhNews: NewsItem[];
@@ -364,7 +365,7 @@ export default function HomeSubContent({
 
             {/* VietLott */}
             {powerVietLottData && megaVietLottData && (
-                <section className={'border-bottom pb-3'}>
+                <section className={'border-bottom pb-3 mb-3'}>
                     {vietLottIsLoading ? (
                         <p>Đang tải</p>
                     ): (
@@ -373,6 +374,22 @@ export default function HomeSubContent({
 
                 </section>
             )}
+
+            {/* Giáo dục */}
+            <section>
+                <NewsSection section={'giaoDuc'} layout={'home-sub-main-1'} embedded={true}/>
+            </section>
+
+            {/* Thể thao */}
+            <section>
+                <NewsSection section={'theThao'} layout={'home-sub-main-1'} embedded={true}/>
+            </section>
+
+            {/* Đôồng tiền thông minh */}
+            <section>
+                <NewsSection section={'dongTienThongMinh'} layout={'home-sub-main-1'} embedded={true}/>
+            </section>
+
 
         </section>
     );
