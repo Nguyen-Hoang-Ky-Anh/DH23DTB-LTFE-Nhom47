@@ -393,7 +393,7 @@ export default function HomeSubContent({
                     {soccerMatchesIsLoading ? (
                         <p>Đang tải lịch thi đấu...</p>
                     ) : (
-                        soccerMatchesPLData.slice(0,10)?.map((match: match) => (
+                        soccerMatchesPLData?.slice(0,10).map((match: match) => (
                             <div key={match.id}>
                                 <p>{match.homeTeam.name}</p>
                                 <p>{match.awayTeam.name}</p>

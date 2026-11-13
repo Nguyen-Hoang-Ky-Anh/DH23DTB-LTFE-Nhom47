@@ -21,7 +21,7 @@ export default function MultimediaHeader() {
                 <ul className="list-inline mb-0 d-flex gap-3">
                     {multimediaHeaderItems.map(item => (
                         <li className="list-inline-item multimedia-option border-end pe-3" key={item.title}>
-                            <Link to={`/${item.href}`} style={{color: "white"}}>
+                            <Link to={item.href} style={{color: "white"}}>
                                 <i className={`fa ${item.icon} multimedia-icon`}></i> {item.title}
                             </Link>
                         </li>
