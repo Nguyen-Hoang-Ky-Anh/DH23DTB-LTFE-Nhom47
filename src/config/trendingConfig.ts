@@ -1,12 +1,6 @@
 import {RSS_FEEDS} from "../services/rssConfig.ts";
 
-interface TrendingTopic {
-    title: string;
-    href?: string;
-    feed?: string;
-}
-
-export const TRENDING_TOPICS: TrendingTopic[] = [
+export const trendingTopics = [
     {
         title: "50 năm thành phố mang tên Bác",
         href: "/dong-su-kien/50-nam-thanh-pho-mang-ten-bac",

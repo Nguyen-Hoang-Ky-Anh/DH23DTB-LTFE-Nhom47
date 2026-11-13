@@ -104,7 +104,7 @@ export default function NewsSectionContent({news, layout, sectionKey, whiteText 
                 </div>
                 {sideItem && (
                     <div className="d-flex flex-column col-lg-3 w-25" style={{borderLeft: `1px solid ${line}`}}>
-                        <h6 className="text-start mb-2"
+                        <h6 className="text-start mb-2 main-title"
                             style={{borderBottom: `3px solid ${accent}`, width: "fit-content"}}>{sideItemTitle}</h6>
                         <Card
                             image={sideItem.image}
@@ -161,8 +161,8 @@ export default function NewsSectionContent({news, layout, sectionKey, whiteText 
 
                         <Link to={sideItem.link}>
                             <h3 className={`main-title`} style={{fontSize:15}}>
-                            {sideItem.title}
-                        </h3>
+                                {sideItem.title}
+                            </h3>
                         </Link>
                     </div>
                 )}

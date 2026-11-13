@@ -5,6 +5,7 @@ import goldPriceReducer from "./slice/goldPriceSlice";
 import vietLottReducer from "./slice/vietLottSlice";
 import soccerMatchesCompetitionsReducer from "./slice/soccerMatchesCompetitionSlice.ts";
 import soccerStandingsCompetitionsReducer from "./slice/soccerStandingsCompetitionSlice.ts";
+import worldCupReducer from "./slice/worldCupSlice";
 
 export const store = configureStore({
     reducer : {
@@ -14,6 +15,7 @@ export const store = configureStore({
         vietLott: vietLottReducer,
         soccerMatches: soccerMatchesCompetitionsReducer,
         soccerStanding: soccerStandingsCompetitionsReducer
+        worldCup: worldCupReducer,
     }
 });
 
