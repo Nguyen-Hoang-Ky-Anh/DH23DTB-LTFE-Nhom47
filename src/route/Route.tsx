@@ -5,10 +5,12 @@ import CategoryPage from "../components/CategoryPage.tsx"
 import Error from "./Error.tsx";
 import { SECTIONS } from "../config/newsSectionConfig.ts";
 import TrendingPage from "../components/TrendingPage.tsx";
-import {TRENDING_TOPICS} from "../config/trendingConfig.ts";
-import fetchRSS from "../services/rssService.ts";
+import {trendingTopics} from "../config/trendingConfig.ts";
+import MultimediaItemPage from "../components/MultimediaItemPage.tsx";
 import {VideoPage} from "../components/VideoPage.tsx";
 import EPaperPage from "../components/EPaperPage.tsx";
+import { multimediaItems } from "../config/multimediaConfig.ts";
+import {FEED_PATHS, type FeedName} from "../services/rssConfig.ts";
 
 export const router = createBrowserRouter([
   {
@@ -23,13 +25,26 @@ export const router = createBrowserRouter([
       {
         path: "dong-su-kien/:topic",
         element: <TrendingPage />,
-        loader: async ({params}) => {
+        loader: ({params}) => {
           const path = `/dong-su-kien/${params.topic}`;
-          const topic = TRENDING_TOPICS.find(topic => topic.href === path);
-          if (!topic?.feed) {
+          const topic = trendingTopics.find(topic => topic.href === path);
+          const feed = Object.keys(FEED_PATHS).find(key => FEED_PATHS[key] === topic?.feed) as FeedName | undefined;
+          if (!topic || !feed) {
             throw new Response("Not Found", {status: 404});
           }
-          return {title: topic.title, news: await fetchRSS(topic.feed)};
+
+          return {title: topic.title, feed};
+        },
+      },
+      {
+        path: "multimedia/:item",
+        element: <MultimediaItemPage />,
+        loader: ({params}) => {
+          const item = multimediaItems.find(item => item.href === `/multimedia/${params.item}`);
+          if (!item) {
+            throw new Response("Not Found", {status: 404});
+          }
+          return {title: item.title, feed: item.feed};
         },
       },
       {

@@ -1,26 +1,13 @@
 import {Link} from "react-router-dom";
+import {multimediaItems} from "../../../config/multimediaConfig.ts";
 
 const multimediaHeaderItems = [
     {
         title: "Video",
         icon: "fa-video",
-        href: "video"
+        href: "/video"
     },
-    {
-        title: "Photo",
-        icon: "fa-photo-film",
-        href: "mai-vang/album-anh"
-    },
-    {
-        title: "Longform",
-        icon: "fa fa-newspaper",
-        href: "thoi-su"
-    },
-    {
-        title: "Infographic",
-        icon: "fa-chart-column",
-        href: "thoi-su"
-    }
+    ...multimediaItems,
 ]
 
 export default function MultimediaHeader() {

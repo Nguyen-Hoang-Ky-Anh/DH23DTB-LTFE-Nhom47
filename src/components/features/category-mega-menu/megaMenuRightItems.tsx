@@ -1,5 +1,6 @@
 import type {ReactNode} from "react";
 import {SECTIONS, type SectionKey} from "../../../config/newsSectionConfig";
+import {multimediaItems} from "../../../config/multimediaConfig.ts";
 import {
     LyTuongSongIcon, NoiThangIcon, TinDocQuyenIcon, ThiTruongIcon,
     LienHeIcon, ThongTinToaSoanIcon, DichVuTruyenThongIcon,
@@ -23,9 +24,7 @@ const fa = (name: string) => <i className={`fa ${name} category-icon`}></i>;
 export const MEGA_MENU_COLUMNS_RIGHT: MenuItem[][] = [
     [
         fromSection("video", fa("fa-video")),
-        {label: "Photo", href: "/video", icon: fa("fa-photo-film")},
-        {label: "Longform", href: "/video", icon: fa("fa-chart-column")},
-        {label: "Infographic", href: "/video", icon: fa("fa-newspaper")},
+        ...multimediaItems.map(({title, href, icon}) => ({label: title, href, icon: fa(icon)})),
     ],
     [
         fromSection("lyTuongSong", <LyTuongSongIcon/>),
