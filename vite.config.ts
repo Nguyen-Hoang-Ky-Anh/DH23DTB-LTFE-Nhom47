@@ -17,6 +17,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: path => path.replace(/^\/vcb-api/, ""),
       },
+        "/api": {
+          target: 'https://api.football-data.org/v4',
+            changeOrigin: true,
+            rewrite: path => path.replace(/^\/api/, ""),
+        },
       
        "/api/world-cup/": {
         target: "https://eth.cnnd.vn",
