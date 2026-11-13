@@ -8,6 +8,7 @@ import TrendingPage from "../components/TrendingPage.tsx";
 import {TRENDING_TOPICS} from "../config/trendingConfig.ts";
 import fetchRSS from "../services/rssService.ts";
 import {VideoPage} from "../components/VideoPage.tsx";
+import EPaperPage from "../components/EPaperPage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
       {
         path: "/video",
         element: <VideoPage />
+      },
+      {
+        path: "/e-paper",
+        element: <EPaperPage/>
       },
       {
         path: "*",

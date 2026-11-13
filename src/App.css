@@ -88,11 +88,16 @@
 }
 
 .multimedia-option {
-    font-size: 18px;
+    font-size: 16px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     font-weight: inherit;
+}
+
+.multimedia-option:last-child {
+    border-right: none !important;
+    padding-right: 0 !important;
 }
 
 .card-image {
@@ -302,6 +307,20 @@
     line-height: 1.5;
     font-weight: 700;
     text-decoration: none;
+}
+
+.news-section-title {
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 700;
+    text-decoration: none;
+    padding-left: 8px;
+}
+
+.main-title.compact-title {
+    font-size: 18px;
+    line-height: 1.4;
 }
 
 .sub-title {
