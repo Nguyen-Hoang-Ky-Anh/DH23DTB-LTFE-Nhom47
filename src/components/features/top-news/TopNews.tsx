@@ -5,7 +5,7 @@ import {fetchNews} from "../../../store/slice/newsSlice.ts";
 import DragCarousel from "../../ui/DragCarousel.tsx";
 import {Link} from "react-router-dom";
 import {SECTIONS} from "../../../config/newsSectionConfig.ts";
-import {TRENDING_TOPICS} from "../../../config/trendingConfig.ts";
+import {trendingTopics} from "../../../config/trendingConfig.ts";
 
 const titleStyle = {lineHeight: 1.4, color: "#292929", fontFamily: "Merriweather, serif"};
 const descriptionStyle = {fontSize: 14, color: "#555555"};
@@ -80,7 +80,7 @@ export default function TopNews() {
               <div className="d-flex align-items-center gap-3 border-top border-bottom py-3 my-3 small">
                 <i className="fa-solid fa-arrow-trend-up text-danger" />
                 <DragCarousel showControls>
-                  {TRENDING_TOPICS.map((topic) => topic.href ? (
+                  {trendingTopics.map((topic) => topic.href ? (
                     <Link
                       to={topic.href}
                       className="bg-light py-1 px-3 text-nowrap"

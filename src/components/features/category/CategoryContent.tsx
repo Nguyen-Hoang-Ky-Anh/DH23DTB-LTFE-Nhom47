@@ -9,7 +9,7 @@ import HomeHorizontalCard from "../home-content/HomeHorizontalCard.tsx";
 import SideGroupCard from "./SideGroupCard.tsx";
 import WorldCupScores from "../world-cup/WorldCupScores.tsx";
 import {Link} from "react-router-dom";
-import {TRENDING_TOPICS} from "../../../config/trendingConfig.ts";
+import {trendingTopics} from "../../../config/trendingConfig.ts";
 
 interface CategoryContentProps {
     feed: FeedName;
@@ -41,7 +41,7 @@ export default function CategoryContent({feed, isWorldCup = false}: CategoryCont
 
                         <div className="flex-grow-1 overflow-hidden">
                             <DragCarousel showControls>
-                                {TRENDING_TOPICS.map(topic => topic.href ? (
+                                {trendingTopics.map(topic => topic.href ? (
                                     <Link key={topic.title} to={topic.href} className="bg-light py-1 px-3 text-nowrap">
                                         {topic.title}
                                     </Link>

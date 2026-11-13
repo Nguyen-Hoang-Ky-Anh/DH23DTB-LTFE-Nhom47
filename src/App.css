@@ -777,6 +777,14 @@ li:hover {
     line-height: 1.4;
 }
 
+.news-listing-cover,
+.news-listing-highlights .sub-card-image {
+    aspect-ratio: 16 / 10;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
 .vietLott-title{
     font-family: Inter, serif;
     font-size: 16px;

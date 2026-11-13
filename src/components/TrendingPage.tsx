@@ -1,27 +1,19 @@
-import {useLoaderData, useLocation} from "react-router-dom";
-import type {NewsItem} from "../services/rssService.ts";
-import NewsResults from "./features/trending/NewsResults.tsx";
-import { useEffect } from "react";
+import {useEffect} from "react";
+import {useLoaderData} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import type {FeedName} from "../services/rssConfig.ts";
+import {fetchNews} from "../store/slice/newsSlice.ts";
+import type {AppDispatch, RootState} from "../store/store.ts";
+import NewsListingPage from "./features/news/NewsListingPage.tsx";
 
 export default function TrendingPage() {
-    const data = useLoaderData<{title: string; news: NewsItem[]}>();
-    const location = useLocation();
+    const {title, feed} = useLoaderData<{title: string; feed: FeedName}>();
+    const dispatch = useDispatch<AppDispatch>();
+    const news = useSelector((state: RootState) => state.news.feeds[feed]);
 
-    {/*Keo len vi tri goc trai tren cung khi dung Link to */}
     useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [location.pathname])
+        dispatch(fetchNews(feed));
+    }, [dispatch, feed]);
 
-    return (
-        <div className="container text-start">
-            <h1 className="main-title fs-4 fw-bold text-dark mb-4" style={{letterSpacing: "normal", borderBottom: "2px solid #0959ab"}}>
-                {data.title}
-            </h1>
-            <div className="row">
-                <div className="col-12 col-lg-9">
-                    <NewsResults news={data.news}/>
-                </div>
-            </div>
-        </div>
-    );
+    return <NewsListingPage title={title} news={news ?? []}/>;
 }
