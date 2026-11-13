@@ -14,12 +14,14 @@ interface NewsSectionHeaderProps {
 export default function NewsSectionHeader({title, href, icon, color, links, moreLinks, compact=false}: NewsSectionHeaderProps) {
     const linkStyle = {fontFamily: "Inter", fontSize: 14};
         return (
-            <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 text-start mb-2">
+            <div className="d-flex flex-wrap justify-content-between align-items-center gap-auto text-start mb-2">
                 <div>
-                    <h5 className="mb-0 title" style={compact ? {fontSize: 18, lineHeight: 1.4} : undefined}>
-                        <i className={icon} style={{color: color ?? "#0959ab"}}></i> {href ?
-                        <Link to={href} className={"fw-bold main-title"}
-                    >{title}</Link> : <span className={"main-title"}>{title}</span>}
+                    <h5 className="mb-0 title">
+                        <i className={icon} style={{color: color ?? "#0959ab"}}></i>
+                        {href ?
+                            <Link to={href} className={`fw-bold news-section-title ${compact ? "compact-title" : ""}`}>{title}</Link> :
+                            <span className={`main-title ${compact ? "compact-title" : ""}`}>{title}</span>
+                        }
                     </h5>
                 </div>
                 <div className="d-flex align-items-center">

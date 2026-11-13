@@ -18,6 +18,7 @@ export default function HeaderNavigationBar() {
 
     useEffect(() => {
         setShowCategory(false);
+        window.scrollTo(0, 0);
     }, [location.pathname]);
 
     return (

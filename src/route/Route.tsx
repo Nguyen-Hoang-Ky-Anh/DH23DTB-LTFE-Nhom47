@@ -8,6 +8,7 @@ import TrendingPage from "../components/TrendingPage.tsx";
 import {trendingTopics} from "../config/trendingConfig.ts";
 import MultimediaItemPage from "../components/MultimediaItemPage.tsx";
 import {VideoPage} from "../components/VideoPage.tsx";
+import EPaperPage from "../components/EPaperPage.tsx";
 import { multimediaItems } from "../config/multimediaConfig.ts";
 import {FEED_PATHS, type FeedName} from "../services/rssConfig.ts";
 
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
       {
         path: "/video",
         element: <VideoPage />
+      },
+      {
+        path: "/e-paper",
+        element: <EPaperPage/>
       },
       {
         path: "*",
