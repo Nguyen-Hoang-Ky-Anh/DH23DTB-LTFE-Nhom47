@@ -12,6 +12,7 @@ import type {GoldPrice} from "../../../services/sjcService.ts";
 import type {VietLott} from "../../../services/lotteryService.ts";
 import HomeVietLott from "./HomeVietLott.tsx";
 import NewsSection from "../news/NewsSection.tsx";
+import type {match} from "../../../services/soccerCompetitionService.ts";
 
 export interface HomeSubContentProbs {
     hoiNongDapNhanhNews: NewsItem[];
@@ -32,6 +33,8 @@ export interface HomeSubContentProbs {
     powerVietLottData: VietLott | null | undefined;
     megaVietLottData: VietLott | null | undefined;
     vietLottIsLoading: boolean;
+    soccerMatchesPLData: match[];
+    soccerMatchesIsLoading: boolean;
 }
 
 export default function HomeSubContent({
@@ -40,10 +43,9 @@ export default function HomeSubContent({
                                            nguoiLaoDongNews, docQuyenNews, xuatKhauLaoDongNews,
                                            taiChinhChungKhoanNews, podcastNews,
                                            tuHaoCoToQuocNews, usdExchangeRateData, sjcData, error, powerVietLottData,
-                                            megaVietLottData, vietLottIsLoading
+                                            megaVietLottData, vietLottIsLoading,
+                                           soccerMatchesPLData, soccerMatchesIsLoading
                                        }: HomeSubContentProbs) {
-    if (usdExchangeRateData) console.log(usdExchangeRateData.buy);
-
     const hoiNongDapNhanh = SECTIONS["hoiNongDapNhanh"];
     const truyVetMXH = SECTIONS["truyVetMXH"];
     const noiThang = SECTIONS["noiThang"];
@@ -54,7 +56,6 @@ export default function HomeSubContent({
     const podcast = SECTIONS["podcast"];
     const tuHaoCoToQuoc = SECTIONS['tuHaoCoToQuoc'];
     const ketQuaSoXo = SECTIONS['ketQuaXoSo'];
-
     const contests = {
         langNgheNguoiDanHienKe:
             {
@@ -382,7 +383,24 @@ export default function HomeSubContent({
 
             {/* Thể thao */}
             <section>
-                <NewsSection section={'theThao'} layout={'home-sub-main-1'} embedded={true}/>
+                <NewsSection
+                    section="theThao"
+                    layout="home-sub-main-1"
+                    embedded={true}
+                />
+
+                <div>
+                    {soccerMatchesIsLoading ? (
+                        <p>Đang tải lịch thi đấu...</p>
+                    ) : (
+                        soccerMatchesPLData.slice(0,10)?.map((match: match) => (
+                            <div key={match.id}>
+                                <p>{match.homeTeam.name}</p>
+                                <p>{match.awayTeam.name}</p>
+                            </div>
+                        ))
+                    )}
+                </div>
             </section>
 
             {/* Đôồng tiền thông minh */}

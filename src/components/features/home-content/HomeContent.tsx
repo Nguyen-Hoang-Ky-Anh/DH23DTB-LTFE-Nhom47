@@ -7,6 +7,9 @@ import HomeSubContent from "./HomeSubContent.tsx";
 import {fetchExchangeRate} from "../../../store/slice/currencyRateSlice.ts";
 import {fetchGoldPrice} from "../../../store/slice/goldPriceSlice.ts";
 import {fetchVietLott} from "../../../store/slice/vietLottSlice.ts";
+import {
+    fetchSoccerMatchesCompetitionsFromDateToDate
+} from "../../../store/slice/soccerMatchesCompetitionSlice.ts";
 
 
 export default function HomeContent() {
@@ -22,6 +25,9 @@ export default function HomeContent() {
     const vietLottResult = useSelector((state: RootState) => state.vietLott);
     const powerVietLottData = vietLottResult.feeds.power;
     const megaVietLottData = vietLottResult.feeds.mega;
+
+    const soccerMatchesResult = useSelector((state: RootState) => state.soccerMatches);
+    const soccerMatchesPLData = soccerMatchesResult.feeds.PL;
 
     const xuatKhauLaoDongFeed = "nld/lao-dong/xuat-khau-lao-dong";
     const taiChinhChungKhoanFeed = "nld/kinh-te/tai-chinh-chung-khoan";
@@ -42,6 +48,7 @@ export default function HomeContent() {
     const podcastNews = feeds.podcast ?? [];
     const tuHaoCoToQuocNews = feeds.tuHaoCoToQuoc ?? [];
 
+
     const loading = states.home === 'loading'
         || states.hoiNongDapNhanh === 'loading'
         || states.truyVetMXH === 'loading'
@@ -56,6 +63,8 @@ export default function HomeContent() {
     const exchangeRateIsLoading = usdState.status === 'loading' || sjcState.status === 'loading';
 
     const vietLottIsLoading = vietLottResult.states.power === 'loading' || vietLottResult.states.mega === 'loading';
+
+    const soccerMatchesIsLoading = soccerMatchesResult.states.PL === 'loading';
 
     const failedFeeds = (['home', 'hoiNongDapNhanh', 'truyVetMXH',
         'noiThang', 'gocNhin', 'NLDNEWS', 'podcast', taiChinhChungKhoanFeed,
@@ -86,7 +95,14 @@ export default function HomeContent() {
 
         dispatch(fetchVietLott('mega'));
         dispatch(fetchVietLott('power'));
-    }, [dispatch]);
+
+        dispatch(fetchSoccerMatchesCompetitionsFromDateToDate({
+            type: "PL",
+            fromDate: "2026-11-13",
+            toDate: "2026-11-20"
+        }));
+
+        }, [dispatch]);
 
     return (
         <div className="container home-content border-top" style={{
@@ -134,6 +150,8 @@ export default function HomeContent() {
                         powerVietLottData = {powerVietLottData}
                         megaVietLottData = {megaVietLottData}
                         vietLottIsLoading = {vietLottIsLoading}
+                        soccerMatchesPLData = {soccerMatchesPLData}
+                        soccerMatchesIsLoading = {soccerMatchesIsLoading}
                     />
                 </div>
             </div>
