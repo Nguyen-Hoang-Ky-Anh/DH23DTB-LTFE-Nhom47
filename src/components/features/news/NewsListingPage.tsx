@@ -7,20 +7,37 @@ interface NewsListingPageProps {
     title: string;
     news: NewsItem[];
     showHighlights?: boolean;
+    searchKeyword?: string;
 }
 
-export default function NewsListingPage({title, news, showHighlights = false}: NewsListingPageProps) {
-    const featured = showHighlights ? news[0] : undefined;
+export default function NewsListingPage({title, news, showHighlights = false, searchKeyword}: NewsListingPageProps) {
+    const keyword = searchKeyword?.trim().toLowerCase() ?? "";
+
+    const filteredItems = keyword
+        ? news.filter(item =>
+            item.title.toLowerCase().includes(keyword) ||
+            (item.description ?? "").toLowerCase().includes(keyword)
+        )
+        : news;
+
+    const featured = showHighlights ? filteredItems[0] : undefined;
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [title]);
+    }, [title, keyword]);
 
     return (
         <div className="container text-start">
             <h1 className="main-title fs-4 fw-bold text-dark mb-4"
                 style={{letterSpacing: "normal", borderBottom: "2px solid #0959ab"}}>
-                {title}
+                {searchKeyword?.trim() ? (
+                    <>
+                        <span style={{ color: "#0959ab" }}>
+                            Kết quả tìm kiếm:{" "}
+                        </span>
+                        {searchKeyword.trim()}
+                    </>
+                ) : title}
             </h1>
             {featured && (
                 <section className="news-listing-highlights border-bottom pb-3 mb-4">
@@ -34,7 +51,7 @@ export default function NewsListingPage({title, news, showHighlights = false}: N
                         </div>
                     </article>
                     <div className="row g-3 border-top mt-3">
-                        {news.slice(1, 5).map(item => (
+                        {filteredItems.slice(1, 5).map(item => (
                             <article key={item.guid || item.link} className="col-6 col-lg-3">
                                 <Card image={item.image} title={item.title}/>
                             </article>
@@ -44,7 +61,7 @@ export default function NewsListingPage({title, news, showHighlights = false}: N
             )}
             <div className="row">
                 <div className="col-12 col-lg-9">
-                    <NewsResults key={title} news={featured ? news.slice(5) : news}/>
+                    <NewsResults key={title} news={featured ? filteredItems.slice(5) : filteredItems}/>
                 </div>
             </div>
         </div>

@@ -11,6 +11,8 @@ import {VideoPage} from "../components/VideoPage.tsx";
 import EPaperPage from "../components/EPaperPage.tsx";
 import { multimediaItems } from "../config/multimediaConfig.ts";
 import {FEED_PATHS, type FeedName} from "../services/rssConfig.ts";
+import {searchPage} from "../services/searchConfig.ts";
+import SearchPage from "../components/SearchPage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +47,23 @@ export const router = createBrowserRouter([
             throw new Response("Not Found", {status: 404});
           }
           return {title: item.title, feed: item.feed};
+        },
+      },
+      {
+        path: "search/:keyword",
+        element: <SearchPage />,
+        loader: ({ params }) => {
+          const keyword = (params.keyword ?? "").trim();
+
+          if (!keyword) {
+            throw new Response("Not Found", { status: 404 });
+          }
+
+          return {
+            title: searchPage.title,
+            feed: searchPage.feed,
+            keyword
+          };
         },
       },
       {

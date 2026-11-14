@@ -1,4 +1,18 @@
-export default function TopHeaderLink() {
+import {useState} from "react";
+
+interface TopHeaderLinkProps {
+    searchInput: string;
+    setSearchInput: (value: string) => void;
+    onSearch: (keyword: string) => void;
+}
+
+export default function TopHeaderLink({searchInput, setSearchInput, onSearch}: TopHeaderLinkProps) {
+    const [searchClicked, setVisibleSearchBar] = useState(false);
+
+    const handleSearch = () => {
+        onSearch(searchInput.trim());
+    };
+
     return (
         <div className="d-flex flex-row align-items-center gap-3">
             <ul className="list-inline mb-0">
@@ -9,7 +23,49 @@ export default function TopHeaderLink() {
             </ul>
 
             <div className="d-flex flex-row align-items-center gap-2">
-                <i className="fa fa-magnifying-glass" style={{color:"white"}}></i>
+                {searchClicked ? (
+                    <div className="d-inline-flex gap-1 search-bar align-items-center p-2" style={{backgroundColor: "#9f0009", borderRadius: "5px"}}>
+                        <input
+                            className="search-input"
+                            placeholder="Nhập nội dung cần tìm"
+                            autoFocus
+                            value={searchInput}
+                            onChange={e => setSearchInput(e.target.value)}
+                            onKeyDown={e => {
+                                if (e.key === "Enter") {
+                                    handleSearch();
+                                }
+                            }}
+                        />
+
+                        <button
+                            type="button"
+                            className="search-btn"
+                            onClick={handleSearch}
+                        >
+                            <i className="fa fa-magnifying-glass"></i>
+                        </button>
+
+                        <button
+                            type="button"
+                            className="search-btn"
+                            onClick={() => {
+                                setSearchInput("");
+                                onSearch("");
+                                setVisibleSearchBar(false);
+                            }}
+                        >
+                            <i className="fa fa-xmark"></i>
+                        </button>
+                    </div>
+                ) : (
+                    <button
+                        className="search-btn"
+                        onClick={() => setVisibleSearchBar(true)}
+                    >
+                        <i className="fa fa-magnifying-glass"></i>
+                    </button>
+                )}
                 <div className="btn fw-semibold text-nowrap fw-bold" style={{backgroundColor: "#5580df", color: "white", fontSize: "15px"}}>Đăng ký Tuổi Trẻ Sao</div>
                 <div className="btn rounded-circle d-flex align-items-center justify-content-center p-2" style={{ width: "25px", height: "25px", backgroundColor: "#5580df", color: "white"}}><i className="fa fa-question"></i></div>
             </div>
