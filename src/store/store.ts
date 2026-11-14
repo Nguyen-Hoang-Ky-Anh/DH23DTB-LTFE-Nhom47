@@ -14,7 +14,7 @@ export const store = configureStore({
         goldPrice: goldPriceReducer,
         vietLott: vietLottReducer,
         soccerMatches: soccerMatchesCompetitionsReducer,
-        soccerStanding: soccerStandingsCompetitionsReducer
+        soccerStanding: soccerStandingsCompetitionsReducer,
         worldCup: worldCupReducer,
     }
 });
