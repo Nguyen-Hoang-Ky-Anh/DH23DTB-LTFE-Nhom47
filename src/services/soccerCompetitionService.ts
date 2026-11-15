@@ -117,13 +117,13 @@ export interface soccerStandingsCompetitionAPIResponse {
 }
 
 export async function getMatchesCompetitionsFromDateToDate(competition: soccerCompetitions,
-                                                               fromDate?: string, toDate?: string) {
+                                                               dateFrom?: string, dateTo?: string) {
     const url = new URL(
         `/api/competitions/${competition}/matches`,
         window.location.origin
     );
-    if(fromDate) url.searchParams.set("fromDate", fromDate);
-    if(toDate) url.searchParams.set("toDate", toDate);
+    if(dateFrom) url.searchParams.set("dateFrom", dateFrom);
+    if(dateTo) url.searchParams.set("dateTo", dateTo);
 
     const response = await fetch(url.toString(), {
         headers: {

@@ -25,7 +25,7 @@ export const fetchSoccerStandingCompetitions = createAsyncThunk(
             const state = getState() as RootState;
 
             return state.soccerStanding.states[type] === undefined ||
-                state.soccerMatches.states[type] === "error";
+                state.soccerStanding.states[type] === "error";
         }
     }
 );

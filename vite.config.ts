@@ -17,7 +17,7 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: path => path.replace(/^\/vcb-api/, ""),
       },
-        "/api": {
+        "/api/competition/": {
           target: 'https://api.football-data.org/v4',
             changeOrigin: true,
             rewrite: path => path.replace(/^\/api/, ""),
