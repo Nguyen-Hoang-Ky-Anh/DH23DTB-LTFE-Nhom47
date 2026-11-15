@@ -17,7 +17,7 @@ const initialState: SoccerStandingsState = {
 };
 
 export const fetchSoccerStandingCompetitions = createAsyncThunk(
-    "soccerMatches/fetchSoccerMatches",
+    "soccerStanding/fetchStandings",
     (type: soccerCompetitions) =>
         getStandingsCompetitions(type),
     {

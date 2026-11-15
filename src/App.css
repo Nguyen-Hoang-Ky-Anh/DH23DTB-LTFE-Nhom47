@@ -42,6 +42,171 @@
     box-sizing: border-box;
 }
 
+body * {
+    scrollbar-width: thin;
+    scrollbar-color: #8B8B8B transparent;
+}
+
+.sports-league {
+    width: 190px;
+    min-height: 100px;
+    flex-shrink: 0;
+    background-color: #edf5ff;
+    color: #005bb2;
+}
+
+.sports-competition {
+    position: relative;
+    min-width: 0;
+}
+
+.sports-competition summary {
+    padding: 4px;
+    cursor: pointer;
+    list-style: none;
+    height: 100%;
+}
+
+.sports-competition summary::-webkit-details-marker {
+    display: none;
+}
+
+.sports-fixtures .sports-competition {
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.sports-fixtures summary {
+    padding: 12px;
+    min-height: 100px;
+    font-size: 13px;
+}
+
+.sports-competition .fa-angle-down {
+    transition: transform 0.3s;
+}
+
+.sports-competition[open] .fa-angle-down {
+    transform: rotate(180deg);
+}
+
+.sports-competition-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    min-width: 190px;
+    z-index: 20;
+    color: #454545;
+    color-scheme: light;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.sports-competition-menu button {
+    color: inherit;
+}
+
+.sports-competition-menu button:hover,
+.sports-competition-menu .sports-option-selected {
+    color: #005bb2;
+}
+
+.sports-option-selected {
+    font-weight: 700;
+}
+
+.sports-date {
+    width: 48%;
+    flex-shrink: 0;
+}
+
+.sports-date .sports-competition-menu {
+    left: auto;
+    right: 0;
+    min-width: 100%;
+}
+
+.sports-schedule-match {
+    border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 16px;
+}
+
+.sports-schedule-match:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.sports-match {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+}
+
+.sports-match img,
+.sports-scoreboard img {
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.sports-scoreboard {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+}
+
+.sports-scoreboard .sports-tab {
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    padding: 16px 6px;
+    font-size: 16px;
+    color: #999;
+}
+
+.sports-scoreboard .sports-tab.active {
+    border-bottom-color: #00aeef;
+    color: #172b3a;
+}
+
+.sports-ranking-header {
+    padding: 12px 0 18px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.sports-ranking-header select {
+    min-width: 0;
+    padding-left: 4px;
+}
+
+.sports-ranking-header > span {
+    width: 48px;
+    flex-shrink: 0;
+    text-align: right;
+    color: #999;
+}
+
+.sports-scoreboard table {
+    table-layout: fixed;
+    --bs-table-border-color: #f2f2f2;
+}
+
+.sports-scoreboard td {
+    padding: 20px 0;
+}
+
+.sports-scoreboard tr:last-child td {
+    border-bottom: 0;
+}
+
+.sports-position {
+    width: 32px;
+    height: 34px;
+}
+
+.sports-rank {
+    background-color: #bfebfa;
+}
+
 .top-header-link-item {
     padding: 0 8px;
     border-right: 1px solid rgb(255 255 255 / 0.6);
@@ -537,8 +702,6 @@ a {
     overscroll-behavior: contain;
 
     scrollbar-gutter: stable;
-    scrollbar-width: thin;
-    scrollbar-color: #c4c4c4 transparent;
 }
 
 .category-mega-card {
@@ -593,12 +756,32 @@ a {
 }
 
 .side-group {
+    font-family: "Merriweather", serif;
     display: flex;
     flex-direction: column;
     width: 100%;
     min-width: 0;
-    border-bottom: 1px solid #e5e5e5;
-    padding-bottom: 32px;
+}
+
+.side-group-boxed {
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    padding: 8px;
+}
+
+.side-group .side-group-heading {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0 0 10px;
+}
+
+.side-group-heading a {
+    display: inline-block;
+    max-width: 100%;
+    padding-bottom: 3px;
+    border-bottom: 1px solid currentColor;
+    text-decoration: none;
 }
 
 .side-feature {
@@ -611,12 +794,12 @@ a {
     width: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 0;
 }
 
 .side-feature-title {
     margin: 8px 0 0;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     line-height: 1.45;
     color: #292929;
@@ -634,10 +817,13 @@ a {
     padding: 0;
 }
 
-.side-list li + li {
-    margin-top: 12px;
-    padding-top: 12px;
+.side-list li {
+    padding-top: 10px;
     border-top: 1px solid #e5e5e5;
+}
+
+.side-list li + li {
+    margin-top: 10px;
 }
 
 .side-item {
@@ -648,16 +834,17 @@ a {
 }
 
 .side-item-image {
-    flex: 0 0 96px;
-    width: 96px;
-    height: 60px;
+    flex: 0 0 28%;
+    width: 28%;
+    height: auto;
+    aspect-ratio: 1;
     object-fit: cover;
-    border-radius: 3px;
+    border-radius: 0;
 }
 
 .side-item-title {
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.45;
     color: #292929;
 }
@@ -672,11 +859,6 @@ a {
 
 
 /*Top news*/
-.news-list {
-  scrollbar-width: thin;
-  scrollbar-color: #8B8B8B transparent;
-}
-
 .drag-carousel {
     cursor: default;
 }

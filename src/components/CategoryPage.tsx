@@ -3,6 +3,7 @@ import CategoryContent from "./features/category/CategoryContent.tsx";
 import {useParams} from "react-router-dom";
 import {SECTIONS} from "../config/newsSectionConfig.ts";
 import Error from "../route/Error.tsx";
+import SportsScores from "./features/sports/SportsScores.tsx";
 
 export default function CategoryPage() {
     // Lấy params trên web (Ví dụ: /thoi-su/chinh-tri) trong đó thoi-su là category, chinh-tri là subCategory
@@ -37,13 +38,16 @@ export default function CategoryPage() {
     const currentFeed = subcategory
         ? matchedLink!.feed
         : currentSection.feed;
+    const isSports = currentSection.feed === "theThao";
 
     return (
         <>
             <main className="flex-grow-1">
+                {isSports && <div className="container"><SportsScores/></div>}
                 <CategoryHeader section={currentSection}/>
                 {/*cap nhap key de react khong dung lai useState */}
-                <CategoryContent key={currentFeed} feed={currentFeed} isWorldCup={currentSection.feed === "WorldCup2026"}/>
+                <CategoryContent key={currentFeed} feed={currentFeed} isWorldCup={currentSection.feed === "WorldCup2026"}
+                                 isSports={isSports} sidebarLinks={allLinks}/>
             </main>
         </>
     )
