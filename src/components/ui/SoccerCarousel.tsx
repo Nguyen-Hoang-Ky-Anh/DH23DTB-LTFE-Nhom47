@@ -15,16 +15,20 @@ export default function SoccerCarousel({soccerMatchesData}:SoccerCarouselProps){
                 .slice(0, 10)
                 .map(match => (
                     <div key={match.id} className={'border-end pe-3 ' +
-                        'align-items-center py-1 '
-                    }>
-                        <p className={'description'}
-                           style={{
-                               fontSize: 13,
-                               color: "#9f9f9f"
-                           }}
-                        >
-                            {soccerVNDateFormat(new Date(match.utcDate))}
-                        </p>
+                        'align-items-start py-1 d-flex flex-column justify-content-between'
+                    }
+                    style={{minHeight: 100}}
+                    >
+                        <div className={'text-start mt-1'}>
+                            <p className={'description'}
+                               style={{
+                                   fontSize: 13,
+                                   color: "#9f9f9f"
+                               }}
+                            >
+                                {soccerVNDateFormat(new Date(match.utcDate))}
+                            </p>
+                        </div>
                         <div className={'d-flex flex-column gap-2 justify-content-between my-1'}>
                             <div className={'row description align-items-center p-0'}
                                  style={{

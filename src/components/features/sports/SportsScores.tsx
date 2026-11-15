@@ -1,18 +1,30 @@
 import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import type {match, soccerCompetitions} from "../../../services/soccerCompetitionService.ts";
-import {fetchSoccerMatchesCompetitionsFromDateToDate} from "../../../store/slice/soccerMatchesCompetitionSlice.ts";
+import {
+    type match,
+    type soccerCompetitions
+} from "../../../services/soccerCompetitionService.ts";
+import {
+    fetchNearestSoccerMatches,
+    fetchSoccerMatchesCompetitionsFromDateToDate
+} from "../../../store/slice/soccerMatchesCompetitionSlice.ts";
 import {fetchSoccerStandingCompetitions} from "../../../store/slice/soccerStandingsCompetitionSlice.ts";
 import type {AppDispatch, RootState} from "../../../store/store.ts";
-import DragCarousel from "../../ui/DragCarousel.tsx";
+import SoccerCarousel from "../../ui/SoccerCarousel.tsx";
 
 const competitions: {title: string; value: soccerCompetitions}[] = [
     {title: "Premier League", value: "PL"},
-    {title: "Champions League", value: "CL"},
+    {title: "UEFA Champions League", value: "CL"},
     {title: "Serie A", value: "SA"},
-    {title: "LaLiga", value: "PD"},
+    {title: "Primera Division", value: "PD"},
     {title: "Bundesliga", value: "BL1"},
     {title: "Ligue 1", value: "FL1"},
+    {title: "World Cup", value: "WC"},
+    {title: "Eredivisie", value: "DED"},
+    {title: "Championship", value: "ELC"},
+    {title: "Primeira Liga", value: "PPL"},
+    {title: "European Championship", value: "EC"},
+    {title: "Campeonato Brasileiro Série A", value: "BSA"},
 ];
 
 interface SportsDropdownProps {
@@ -39,9 +51,11 @@ function SportsDropdown({value, options, onChange, className = ""}: SportsDropdo
                  onKeyDown={event => {
                      if (event.key === "Escape") event.currentTarget.open = false;
                  }}>
-            <summary className="d-flex align-items-center justify-content-between gap-2 fw-bold">
+            <summary className="d-flex align-items-center justify-content-between gap-2 fw-bold "
+                     style={{fontSize: 15}}
+            >
                 {options.find(option => option.value === value)?.title ?? value}
-                <i className="fa fa-angle-down"/>
+                <i className="fa-solid fa-caret-down" style={{fontSize: 22}}/>
             </summary>
             <div className="sports-competition-menu bg-white border rounded shadow-sm">
                 {options.map(option => (
@@ -64,12 +78,10 @@ function matchDay(item: match) {
 }
 
 function SportsMatch({item, sidebar = false}: {item: match; sidebar?: boolean}) {
-    const score = item.score as match["score"] & {
-        fullTime?: {home: number | null; away: number | null};
-    };
+    const score = item.score;
     const teams = [
-        {side: "home", team: item.homeTeam, score: score.fullTime?.home ?? score.home ?? "–"},
-        {side: "away", team: item.awayTeam, score: score.fullTime?.away ?? score.away ?? "–"},
+        {side: "home", team: item.homeTeam, score: score.fullTime.home},
+        {side: "away", team: item.awayTeam, score: score.fullTime.away},
     ];
 
     return (
@@ -111,13 +123,15 @@ export default function SportsScores({sidebar = false}: {sidebar?: boolean}) {
         .sort((first, second) => Date.parse(first.utcDate) - Date.parse(second.utcDate));
     const groups = (standingsState.feeds[competition] ?? []).filter(group => group.type === "TOTAL");
     const today = new Date().setHours(0, 0, 0, 0);
-    const upcoming = matches.filter(item => Date.parse(item.utcDate) >= today);
-    const carouselMatches = upcoming.length > 0 ? upcoming : matches.slice(-10);
-    const dates = [...new Set(matches.map(matchDay))];
-    const selectedDate = date || (carouselMatches[0] ? matchDay(carouselMatches[0]) : "");
+    const carouselMatches = matchesState.nearestFeeds[competition] ?? [];
+    const upcomingMatches = matches.filter(
+        item => new Date(item.utcDate).getTime() >= today);
+    const dates = [...new Set(upcomingMatches.map(matchDay))];
+    const selectedDate = date || dates[0] || "";
 
     useEffect(() => {
         dispatch(fetchSoccerMatchesCompetitionsFromDateToDate({type: competition}));
+        dispatch(fetchNearestSoccerMatches(competition));
         if (sidebar && tab === "standings") {
             dispatch(fetchSoccerStandingCompetitions(competition));
         }
@@ -137,17 +151,11 @@ export default function SportsScores({sidebar = false}: {sidebar?: boolean}) {
 
     if (!sidebar) {
         return (
-            <section className="sports-fixtures d-flex flex-column flex-md-row gap-3 my-3">
+            <section className="sports-fixtures align-items-start d-flex flex-column flex-md-row gap-3 mt-3">
                 {competitionSelect}
-                <div className="border rounded p-2 d-flex align-items-center flex-grow-1" style={{minWidth: 0}}>
+                <div className="d-flex align-items-center" style={{minWidth: 0}}>
                     {carouselMatches.length > 0 ? (
-                        <DragCarousel key={competition} showControls>
-                            {carouselMatches.map(item => (
-                                <div key={item.id} className="border-end px-2" style={{width: 180}}>
-                                    <SportsMatch item={item}/>
-                                </div>
-                            ))}
-                        </DragCarousel>
+                        <SoccerCarousel soccerMatchesData={carouselMatches}/>
                     ) : <p className="small mb-0">{matchMessage}</p>}
                 </div>
             </section>
@@ -207,7 +215,7 @@ export default function SportsScores({sidebar = false}: {sidebar?: boolean}) {
                     )
                 ) : (
                     <div className="d-flex flex-column gap-3 mt-3">
-                        {matches.filter(item => matchDay(item) === selectedDate).map(item => (
+                        {upcomingMatches.filter(item => matchDay(item) === selectedDate).map(item => (
                             <SportsMatch key={item.id} item={item} sidebar/>
                         ))}
                         {matches.length === 0 && <p className="small mb-0">{matchMessage}</p>}
