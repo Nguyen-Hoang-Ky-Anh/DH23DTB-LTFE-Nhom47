@@ -226,7 +226,7 @@ export default function HomeSubContent({
                     </Link>
                 </div>
                 <div className={"mb-3"}>
-                    <Link to={"/"} title={"E-paper"}>
+                    <Link to={"/e-paper"} title={"E-paper"}>
                         <img src={"https://static.mediacdn.vn/nld/images/e-paper.png"} alt={"E-paper"}
                              style={{
                                  height: "100%",
