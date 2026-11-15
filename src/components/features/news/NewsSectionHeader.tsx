@@ -13,6 +13,8 @@ interface NewsSectionHeaderProps {
 
 export default function NewsSectionHeader({title, href, icon, color, links, moreLinks, compact=false}: NewsSectionHeaderProps) {
     const linkStyle = {fontFamily: "Inter", fontSize: 14};
+    const visibleLinks = compact ? links.slice(0, 2) : links;
+    const dropdownLinks = [...links.slice(visibleLinks.length), ...(moreLinks ?? [])];
         return (
             <div className="d-flex flex-wrap justify-content-between align-items-center gap-auto text-start mb-2">
                 <div>
@@ -26,16 +28,16 @@ export default function NewsSectionHeader({title, href, icon, color, links, more
                 </div>
                 <div className="d-flex align-items-center">
                     <ul className="list-inline mb-0">
-                        {links.map(link => (
+                        {visibleLinks.map(link => (
                             <li key={link.label} className={compact ? "list-inline-item" : "list-inline-item fs-6"}>
                                 <Link to={link.href} style={{color: "#3e3e3e", ...linkStyle}}>{link.label}</Link>
                             </li>
                         ))}
-                        {moreLinks && moreLinks.length > 0 && (
+                        {dropdownLinks.length > 0 && (
                             <li className="list-inline-item category-dropdown" style={{color: "#3e3e3e", ...linkStyle}}>
                                 <i className="fa fa-angle-down"></i>
                                 <div className="category-box">
-                                    {moreLinks.map(link => (
+                                    {dropdownLinks.map(link => (
                                         <Link key={link.label} to={link.href} title={link.label}>{link.label}</Link>
                                     ))}
                                 </div>

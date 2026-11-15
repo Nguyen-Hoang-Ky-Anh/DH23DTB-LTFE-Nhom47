@@ -847,3 +847,79 @@ li:hover {
     height: 25px;
     flex-shrink: 0;
 }
+
+.up-to-top-btn {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 99;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 3px;
+    border-radius: 5px;
+    line-height: 1;
+    gap: 1px;
+}
+
+.up-to-top-icon {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.search-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.search-bar {
+    width: fit-content;
+}
+
+.search-btn:hover,
+.search-btn:focus,
+.search-btn:active {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.search-input {
+    width: 175px;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    font-size: 13px;
+    padding: 0;
+}
+
+.search-input::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.search-input:focus {
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.search-input::placeholder {
+    color: white;
+}
