@@ -3,6 +3,8 @@ import HorizontalCard from "../../ui/HorizontalCard.tsx";
 import type {NewsItem} from "../../../services/rssService.ts";
 import type {SectionKey} from "../../../config/newsSectionConfig.ts";
 import {Link} from "react-router-dom";
+import SoccerCarousel from "../../ui/SoccerCarousel.tsx";
+import type {match} from "../../../services/soccerCompetitionService.ts";
 
 export type NewsLayout = "horizontal" | "vertical" | "columns" | "compact" | "home-sub-main-1";
 
@@ -11,9 +13,12 @@ interface NewsSectionContentProps {
     layout: NewsLayout;
     sectionKey?: SectionKey;
     whiteText?: boolean;
+    soccerMatchesIsLoading?: boolean;
+    soccerMatchesData?: match[];
 }
 
-export default function NewsSectionContent({news, layout, sectionKey, whiteText = false}: NewsSectionContentProps) {
+export default function NewsSectionContent({news, layout, sectionKey, whiteText = false,
+                                               soccerMatchesIsLoading, soccerMatchesData=[]}: NewsSectionContentProps) {
     const [featured, ...rest] = news;
     if (!featured) return null;
 
@@ -48,6 +53,16 @@ export default function NewsSectionContent({news, layout, sectionKey, whiteText 
             sideItemTitle = "Cuộc sống nhân ái";
             break;
     }
+
+    const soccer = (
+        <div>
+            {soccerMatchesIsLoading ? (
+                <p>Đang tải lịch thi đấu...</p>
+            ) : (
+                <SoccerCarousel soccerMatchesData={soccerMatchesData}/>
+            )}
+        </div>
+    )
 
     if (layout === "compact") {
         return (
@@ -164,6 +179,12 @@ export default function NewsSectionContent({news, layout, sectionKey, whiteText 
                                 {sideItem.title}
                             </h3>
                         </Link>
+                    </div>
+                )}
+
+                {sectionKey == 'theThao' && (
+                    <div className={'mt-3 px-0'}>
+                        {soccer}
                     </div>
                 )}
             </div>
