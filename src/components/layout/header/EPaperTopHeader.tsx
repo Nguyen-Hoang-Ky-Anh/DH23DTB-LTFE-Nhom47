@@ -9,25 +9,28 @@ export default function EPaperTopHeader({ hotline }: EPaperTopHeaderProps) {
         <div style={{ backgroundColor: "white" }}>
             <div className="container">
                 <div className="d-flex flex-row justify-content-between align-items-center py-3">
-                    <Link to="/e-paper" className="d-flex flex-row align-items-center text-decoration-none">
-                        <img
-                            src="https://static-tuoitre.tuoitre.vn/images/logo-tuoitre-2026-do.svg"
-                            alt="Tuổi trẻ"
-                            style={{ height: "55px", paddingRight: "15px", borderRight: "1px solid #e0e0e0" }}
-                        />
-                        <span
-                            style={{
-                                marginLeft: "22px",
-                                color: "#0c4fa1",
-                                fontSize: "20px",
-                                fontWeight: 700,
-                                fontFamily: "Georgia, 'Times New Roman', serif",
-                            }}
-                        >
-                            E-PAPER
-                        </span>
-                    </Link>
-
+                    <div className="d-flex flex-row align-items-center">
+                        <Link to={"/"}>
+                            <img
+                                src="https://static-tuoitre.tuoitre.vn/images/logo-tuoitre-2026-do.svg"
+                                alt="Tuổi trẻ"
+                                style={{ height: "55px", paddingRight: "15px", borderRight: "1px solid #e0e0e0" }}
+                            />
+                        </Link>
+                        <Link to="/e-paper" className="d-flex flex-row align-items-center text-decoration-none">
+                            <span
+                                style={{
+                                    marginLeft: "22px",
+                                    color: "#0c4fa1",
+                                    fontSize: "20px",
+                                    fontWeight: 700,
+                                    fontFamily: "Georgia, 'Times New Roman', serif",
+                                }}
+                            >
+                                E-PAPER
+                            </span>
+                        </Link>
+                    </div>
                     <div className="d-flex flex-row align-items-center gap-3">
                         <a
                             href="#"

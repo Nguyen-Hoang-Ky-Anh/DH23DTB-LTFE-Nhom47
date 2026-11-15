@@ -16,8 +16,6 @@ export default function EPaperContent() {
                                 <img src={item.thumbnail}
                                      alt={item.title}
                                      className="card"
-                                     width={320}
-                                     height={400}
                                      loading={index < 4 ? "eager" : "lazy"}
                                      decoding="async"
                                      style={{ aspectRatio: "5 / 7", objectFit: "cover", objectPosition: "top" }}
