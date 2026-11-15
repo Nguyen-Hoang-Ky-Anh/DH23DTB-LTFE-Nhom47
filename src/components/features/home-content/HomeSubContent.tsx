@@ -214,7 +214,7 @@ export default function HomeSubContent({
             </section>
 
 
-            {/* Banner + Poscd */}
+            {/* Banner + Poscard */}
             <section>
                 <div className={"mb-3"}>
                     <Link to={tpMTBac.href} title={"50 năm thành phố mang tên Bác"}>
@@ -395,12 +395,22 @@ export default function HomeSubContent({
                 />
             </section>
 
+            {/* Giải trí 8 */}
+            <section>
+                <NewsSection section={"giaiTri"}
+                             layout={"home-sub-main-2"}
+                             embedded={true}/>
+            </section>
+
             {/* Đồng tiền thông minh */}
             <section>
                 <NewsSection section={'dongTienThongMinh'} layout={'home-sub-main-1'} embedded={true}/>
             </section>
 
-
+            {/* Vùng miền */}
+            <section>
+                <NewsSection section={'vungMien'} layout={'home-sub-main-2'} embedded={true}/>
+            </section>
         </section>
     );
 }

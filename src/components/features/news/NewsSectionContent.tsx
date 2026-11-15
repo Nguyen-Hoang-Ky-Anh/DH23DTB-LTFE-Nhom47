@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import SoccerCarousel from "../../ui/SoccerCarousel.tsx";
 import type {match} from "../../../services/soccerCompetitionService.ts";
 
-export type NewsLayout = "horizontal" | "vertical" | "columns" | "compact" | "home-sub-main-1";
+export type NewsLayout = "horizontal" | "vertical" | "columns" | "compact" | "home-sub-main-1" | "home-sub-main-2";
 
 interface NewsSectionContentProps {
     news: NewsItem[];
@@ -17,8 +17,10 @@ interface NewsSectionContentProps {
     soccerMatchesData?: match[];
 }
 
-export default function NewsSectionContent({news, layout, sectionKey, whiteText = false,
-                                               soccerMatchesIsLoading, soccerMatchesData=[]}: NewsSectionContentProps) {
+export default function NewsSectionContent({
+                                               news, layout, sectionKey, whiteText = false,
+                                               soccerMatchesIsLoading, soccerMatchesData = []
+                                           }: NewsSectionContentProps) {
     const [featured, ...rest] = news;
     if (!featured) return null;
 
@@ -175,7 +177,7 @@ export default function NewsSectionContent({news, layout, sectionKey, whiteText 
                         </div>
 
                         <Link to={sideItem.link}>
-                            <h3 className={`main-title`} style={{fontSize:15}}>
+                            <h3 className={`main-title`} style={{fontSize: 15}}>
                                 {sideItem.title}
                             </h3>
                         </Link>
@@ -187,6 +189,66 @@ export default function NewsSectionContent({news, layout, sectionKey, whiteText 
                         {soccer}
                     </div>
                 )}
+            </div>
+        )
+    }
+
+    if (layout === "home-sub-main-2") {
+        return (
+            <div className=" row mx-0 mb-3 pt-3 text-start align-items-start border-bottom border-top">
+                <div className={"border-bottom d-flex flex-row pb-2 mb-2"}>
+                    <div className="col-lg-8 pe-3 me-2 border-end">
+                        <div className={'home-sub-main-news-section-card'}>
+                            <div className={"row me-2 pb-3 align-items-center mb-2"}>
+                                <div className={"col-5 ps-0 py-0"}>
+                                    <Link to={"/"}>
+                                        <img src={featured.image} alt={featured.title} width={130} height={130}
+                                             style={{
+                                                 objectFit: "cover"
+                                             }}/>
+                                    </Link>
+                                </div>
+
+                                <div className={"col-7 p-0"}>
+                                    <Link to={"/"} className={'main-title'}
+                                          style={{fontSize: 15}}> {featured.title}</Link>
+                                    <p className={'description'}
+                                       style={{
+                                           color: "#727272"
+                                       }}>{featured.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {sideItem && (
+                        <div className="d-flex flex-column col-lg-4">
+                            <Link to={sideItem.link}>
+                                <h3 className={`main-title`} style={{fontSize: 15}}>
+                                    {sideItem.title}
+                                </h3>
+                            </Link>
+
+                            <p className={'truncate-description'}
+                               style={{
+                                   color: "#727272"
+                               }}
+                            >{sideItem.description}</p>
+                        </div>
+                    )}
+                </div>
+
+
+                <div className={'d-flex flex-row'}>
+                    <ul className={'d-flex justify-content-between gap-5 px-2 gap-3'}>
+                        {list.slice(0, 3).map(item => (
+                            <li>
+                                <Link to={"/"} title={item.title} className={'sub-title'}
+                                      style={{fontSize: 15}}>
+                                    {item.title}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         )
     }
