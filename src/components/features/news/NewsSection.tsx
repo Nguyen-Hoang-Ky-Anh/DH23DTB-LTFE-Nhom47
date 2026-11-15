@@ -5,14 +5,17 @@ import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "../../../store/store.ts";
 import {useEffect} from "react";
 import {fetchNews} from "../../../store/slice/newsSlice.ts";
+import type {match} from "../../../services/soccerCompetitionService.ts";
 
 interface NewsSectionProps {
     section: SectionKey
     layout?: NewsLayout;
     embedded?: boolean;
+    soccerMatchesIsLoading?: boolean;
+    soccerMatchesData?: match[];
 }
 
-export default function NewsSection({section, layout = "horizontal", embedded = false}: NewsSectionProps) {
+export default function NewsSection({section, layout = "horizontal", embedded = false, soccerMatchesIsLoading, soccerMatchesData = []}: NewsSectionProps) {
     const dispatch = useDispatch<AppDispatch>();
     const {title, href, icon, feed, links, moreLinks}: NewsSectionConfig = SECTIONS[section];
 
@@ -33,10 +36,13 @@ export default function NewsSection({section, layout = "horizontal", embedded = 
                 moreLinks={moreLinks}
                 compact={layout === "compact"}
             />
-            <NewsSectionContent layout={layout} news={news} sectionKey={section} whiteText={section === "netZero"} />
+            <NewsSectionContent layout={layout} news={news} sectionKey={section}
+                                whiteText={section === "netZero"}
+                                soccerMatchesIsLoading={soccerMatchesIsLoading}
+                                soccerMatchesData={soccerMatchesData}
+            />
         </div>
     );
-
 
     {/*
         Neu embedded = true thi khong tao lai cot rong 9/12

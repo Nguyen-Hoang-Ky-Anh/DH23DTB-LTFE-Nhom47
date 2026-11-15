@@ -4,6 +4,7 @@ import type {ReactNode} from "react";
 interface DragCarouselProps {
     children: ReactNode;
     showControls?: boolean;
+    showControlsStartEnd?: boolean;
     showProgress?: boolean;
     showRadio?: boolean;
 }
@@ -11,6 +12,7 @@ interface DragCarouselProps {
 export default function DragCarousel({
                                          children,
                                          showControls,
+                                         showControlsStartEnd=false,
                                          showRadio = false,
                                          showProgress = false
                                      }: DragCarouselProps) {
@@ -36,7 +38,15 @@ export default function DragCarousel({
 
     return (
         <div className="flex-grow-1" style={{minWidth: 0}}>
-            <div className="d-flex align-items-center gap-3">
+            <div className={`d-flex ${showControlsStartEnd? "border rounded" : "align-items-center"}`}>
+                {showControlsStartEnd &&(
+                    <div className={'border-end d-flex align-items-center me-3' }>
+                        <button type="button" className="h-100 btn m-0 p-0" disabled={progress === 0}
+                                onClick={() => viewportRef.current?.scrollBy({left: -320, behavior: "smooth"})}>
+                            <i className="fa-solid fa-angle-left"/>
+                        </button>
+                    </div>
+                )}
                 <div
                     ref={viewportRef}
                     className="drag-carousel flex-grow-1 overflow-hidden"
@@ -108,6 +118,16 @@ export default function DragCarousel({
                         </button>
                     </div>
                 )}
+
+                {showControlsStartEnd && (
+                    <div className="border-start d-flex align-items-center">
+                        <button type="button" className="h-100 btn m-0 p-0" disabled={progress >= 0.999}
+                                onClick={() => viewportRef.current?.scrollBy({left: 320, behavior: "smooth"})}>
+                            <i className="fa-solid fa-angle-right"/>
+                        </button>
+                    </div>
+                )}
+
             </div>
             {showProgress && (
                 <div className="progress bg-white rounded mx-auto mt-4" style={{height: 5, width: 260}}>

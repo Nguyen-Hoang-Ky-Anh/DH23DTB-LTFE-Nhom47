@@ -43,7 +43,7 @@ export default function HomeSubContent({
                                            nguoiLaoDongNews, docQuyenNews, xuatKhauLaoDongNews,
                                            taiChinhChungKhoanNews, podcastNews,
                                            tuHaoCoToQuocNews, usdExchangeRateData, sjcData, error, powerVietLottData,
-                                            megaVietLottData, vietLottIsLoading,
+                                           megaVietLottData, vietLottIsLoading,
                                            soccerMatchesPLData, soccerMatchesIsLoading
                                        }: HomeSubContentProbs) {
     const hoiNongDapNhanh = SECTIONS["hoiNongDapNhanh"];
@@ -189,20 +189,23 @@ export default function HomeSubContent({
                 <div className={'row g-3 mt-3'}>
                     <div className={"col-4"}>
                         {docQuyenNews[0] && (
-                            <HomeSec2Card icon="fa-solid fa-bolt" title={"Độc quyền"} cateHref={docQuyen.href} newsItem={docQuyenNews[0]}/>
+                            <HomeSec2Card icon="fa-solid fa-bolt" title={"Độc quyền"} cateHref={docQuyen.href}
+                                          newsItem={docQuyenNews[0]}/>
                         )}
                     </div>
 
                     <div className={"col-4"}>
                         {xuatKhauLaoDongNews[0] && xuatKhauLaoDong && (
-                            <HomeSec2Card icon="fa-solid fa-helmet-safety" title={"Xuất khẩu lao động"} cateHref={xuatKhauLaoDong?.href}
+                            <HomeSec2Card icon="fa-solid fa-helmet-safety" title={"Xuất khẩu lao động"}
+                                          cateHref={xuatKhauLaoDong?.href}
                                           newsItem={xuatKhauLaoDongNews[0]}/>
                         )}
                     </div>
 
                     <div className={"col-4"}>
                         {taiChinhChungKhoanNews[0] && taiChinhChungKhoan && (
-                            <HomeSec2Card icon={"fa-solid fa-chart-column"} title={"Tài chính - Chứng khoán"} cateHref={taiChinhChungKhoan?.href}
+                            <HomeSec2Card icon={"fa-solid fa-chart-column"} title={"Tài chính - Chứng khoán"}
+                                          cateHref={taiChinhChungKhoan?.href}
                                           newsItem={taiChinhChungKhoanNews[0]}/>
                         )}
                     </div>
@@ -369,7 +372,7 @@ export default function HomeSubContent({
                 <section className={'border-bottom pb-3 mb-3'}>
                     {vietLottIsLoading ? (
                         <p>Đang tải</p>
-                    ): (
+                    ) : (
                         <HomeVietLott powerData={powerVietLottData} megaData={megaVietLottData}/>
                     )}
 
@@ -387,23 +390,12 @@ export default function HomeSubContent({
                     section="theThao"
                     layout="home-sub-main-1"
                     embedded={true}
+                    soccerMatchesIsLoading={soccerMatchesIsLoading}
+                    soccerMatchesData={soccerMatchesPLData}
                 />
-
-                <div>
-                    {soccerMatchesIsLoading ? (
-                        <p>Đang tải lịch thi đấu...</p>
-                    ) : (
-                        soccerMatchesPLData?.slice(0,10).map((match: match) => (
-                            <div key={match.id}>
-                                <p>{match.homeTeam.name}</p>
-                                <p>{match.awayTeam.name}</p>
-                            </div>
-                        ))
-                    )}
-                </div>
             </section>
 
-            {/* Đôồng tiền thông minh */}
+            {/* Đồng tiền thông minh */}
             <section>
                 <NewsSection section={'dongTienThongMinh'} layout={'home-sub-main-1'} embedded={true}/>
             </section>

@@ -1,3 +1,5 @@
+import {formatDate} from "../utils/dateServices.ts";
+
 const API_KEY = import.meta.env.VITE_SOCCER_API_KEY;
 
 export type soccerCompetitions = "WC" | "CL" | "BL1" |
@@ -50,8 +52,14 @@ export interface match {
     homeTeam: team,
     awayTeam: team,
     score: {
-        home: number,
-        away: number
+        fullTime: {
+            home: number,
+            away: number
+        },
+        halfTime: {
+            home: number,
+            away: number
+        }
     },
     odds: {
         msg: string
@@ -60,10 +68,10 @@ export interface match {
 }
 
 export interface soccerCompetitionAPIResponseHeader {
-    filters :{
+    filters: {
         season: string
     },
-    area? : {
+    area?: {
         id: number,
         name: string,
         code: string,
@@ -117,13 +125,13 @@ export interface soccerStandingsCompetitionAPIResponse {
 }
 
 export async function getMatchesCompetitionsFromDateToDate(competition: soccerCompetitions,
-                                                               dateFrom?: string, dateTo?: string) {
+                                                           dateFrom?: string, dateTo?: string) {
     const url = new URL(
-        `/api/competitions/${competition}/matches`,
+        `api/competitions/competitions/${competition}/matches`,
         window.location.origin
     );
-    if(dateFrom) url.searchParams.set("dateFrom", dateFrom);
-    if(dateTo) url.searchParams.set("dateTo", dateTo);
+    if (dateFrom) url.searchParams.set("dateFrom", dateFrom);
+    if (dateTo) url.searchParams.set("dateTo", dateTo);
 
     const response = await fetch(url.toString(), {
         headers: {
@@ -143,7 +151,7 @@ export async function getMatchesCompetitionsFromDateToDate(competition: soccerCo
 
 export async function getStandingsCompetitions(competition: soccerCompetitions) {
     const url = new URL(
-        `/api/competitions/${competition}/standings`,
+        `/api/competitions/competitions/${competition}/standings`,
         window.location.origin
     );
 
@@ -161,4 +169,20 @@ export async function getStandingsCompetitions(competition: soccerCompetitions) 
         return null;
     }
     return raw.standings;
+}
+
+export async function getNearestMatchesCompetition(competition: soccerCompetitions) {
+    const today = new Date();
+
+    const dateFrom = new Date(today);
+    dateFrom.setDate(today.getDate() - 7);
+
+    const dateTo = new Date(today);
+    dateTo.setDate(today.getDate() + 14);
+
+    return getMatchesCompetitionsFromDateToDate(
+        competition,
+        formatDate(dateFrom),
+        formatDate(dateTo)
+    );
 }

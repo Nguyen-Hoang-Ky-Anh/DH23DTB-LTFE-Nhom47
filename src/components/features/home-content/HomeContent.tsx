@@ -8,7 +8,7 @@ import {fetchExchangeRate} from "../../../store/slice/currencyRateSlice.ts";
 import {fetchGoldPrice} from "../../../store/slice/goldPriceSlice.ts";
 import {fetchVietLott} from "../../../store/slice/vietLottSlice.ts";
 import {
-    fetchSoccerMatchesCompetitionsFromDateToDate
+    fetchNearestSoccerMatches
 } from "../../../store/slice/soccerMatchesCompetitionSlice.ts";
 
 
@@ -27,7 +27,7 @@ export default function HomeContent() {
     const megaVietLottData = vietLottResult.feeds.mega;
 
     const soccerMatchesResult = useSelector((state: RootState) => state.soccerMatches);
-    const soccerMatchesPLData = soccerMatchesResult.feeds.PL;
+    const soccerMatchesPLData = soccerMatchesResult.nearestFeeds.PL ?? [];
 
     const xuatKhauLaoDongFeed = "nld/lao-dong/xuat-khau-lao-dong";
     const taiChinhChungKhoanFeed = "nld/kinh-te/tai-chinh-chung-khoan";
@@ -56,16 +56,15 @@ export default function HomeContent() {
         || states.gocNhin === 'loading'
         || states.NLDNEWS === 'loading'
         || states[xuatKhauLaoDongFeed] === 'loading'
-    || states[taiChinhChungKhoanFeed] === 'loading'
-    || states.podcast === 'loading'
-    || states.tuHaoCoToQuoc === 'loading';
+        || states[taiChinhChungKhoanFeed] === 'loading'
+        || states.podcast === 'loading'
+        || states.tuHaoCoToQuoc === 'loading';
 
     const exchangeRateIsLoading = usdState.status === 'loading' || sjcState.status === 'loading';
 
     const vietLottIsLoading = vietLottResult.states.power === 'loading' || vietLottResult.states.mega === 'loading';
 
-    const soccerMatchesIsLoading = soccerMatchesResult.states.PL === 'loading';
-
+    const soccerMatchesIsLoading = soccerMatchesResult.nearestStates.PL === "loading";
     const failedFeeds = (['home', 'hoiNongDapNhanh', 'truyVetMXH',
         'noiThang', 'gocNhin', 'NLDNEWS', 'podcast', taiChinhChungKhoanFeed,
         xuatKhauLaoDongFeed, 'tuHaoCoToQuoc'] as const).filter(
@@ -96,13 +95,8 @@ export default function HomeContent() {
         dispatch(fetchVietLott('mega'));
         dispatch(fetchVietLott('power'));
 
-        dispatch(fetchSoccerMatchesCompetitionsFromDateToDate({
-            type: "PL",
-            fromDate: "2026-11-13",
-            toDate: "2026-11-20"
-        }));
-
-        }, [dispatch]);
+        dispatch(fetchNearestSoccerMatches("PL"));
+    }, [dispatch]);
 
     return (
         <div className="container home-content border-top" style={{
@@ -143,15 +137,15 @@ export default function HomeContent() {
                         taiChinhChungKhoanNews={taiChinhChungKhoanNews}
                         podcastNews={podcastNews}
                         tuHaoCoToQuocNews={tuHaoCoToQuocNews}
-                        usdExchangeRateData = {usdExchangeRateData}
-                        sjcData = {sjcData}
-                        exchangeRateLoading = {exchangeRateIsLoading}
-                        error={usdState.error? usdState.error : undefined}
-                        powerVietLottData = {powerVietLottData}
-                        megaVietLottData = {megaVietLottData}
-                        vietLottIsLoading = {vietLottIsLoading}
-                        soccerMatchesPLData = {soccerMatchesPLData}
-                        soccerMatchesIsLoading = {soccerMatchesIsLoading}
+                        usdExchangeRateData={usdExchangeRateData}
+                        sjcData={sjcData}
+                        exchangeRateLoading={exchangeRateIsLoading}
+                        error={usdState.error ? usdState.error : undefined}
+                        powerVietLottData={powerVietLottData}
+                        megaVietLottData={megaVietLottData}
+                        vietLottIsLoading={vietLottIsLoading}
+                        soccerMatchesPLData={soccerMatchesPLData}
+                        soccerMatchesIsLoading={soccerMatchesIsLoading}
                     />
                 </div>
             </div>

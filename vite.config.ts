@@ -20,7 +20,7 @@ export default defineConfig({
         "/api/competitions/": {
           target: 'https://api.football-data.org/v4',
             changeOrigin: true,
-            rewrite: path => path.replace(/^\/api/, ""),
+            rewrite: path => path.replace(/^\/api\/competitions/, ""),
         },
       
        "/api/world-cup/": {
