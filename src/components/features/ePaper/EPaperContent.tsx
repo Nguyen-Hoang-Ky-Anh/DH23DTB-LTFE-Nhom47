@@ -9,12 +9,17 @@ export default function EPaperContent() {
         <div className="container my-4">
             <EPaperHeader/>
             <div className="row g-4">
-                {E_PAPER_ITEMS.slice(0, PAGE_SIZE).map(item => (
+                {E_PAPER_ITEMS.slice(0, PAGE_SIZE).map((item, index) => (
                     <div className="col-3 g-3">
                         <a href={item.readUrl} target="_blank" className="text-decoration-none">
                             <div className="card h-100">
                                 <img src={item.thumbnail}
-                                     alt={item.title} className="card"
+                                     alt={item.title}
+                                     className="card"
+                                     width={320}
+                                     height={400}
+                                     loading={index < 4 ? "eager" : "lazy"}
+                                     decoding="async"
                                      style={{ aspectRatio: "5 / 7", objectFit: "cover", objectPosition: "top" }}
                                 />
                                 <div className="card-body text-center">
