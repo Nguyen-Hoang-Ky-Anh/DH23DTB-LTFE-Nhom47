@@ -10,13 +10,18 @@ import SideGroupCard from "./SideGroupCard.tsx";
 import WorldCupScores from "../world-cup/WorldCupScores.tsx";
 import {Link} from "react-router-dom";
 import {trendingTopics} from "../../../config/trendingConfig.ts";
+import SportsScores from "../sports/SportsScores.tsx";
+import type {NavLink} from "../../../config/newsSectionConfig.ts";
+import CategorySideSection from "./CategorySideSection.tsx";
 
 interface CategoryContentProps {
     feed: FeedName;
+    sidebarLinks: NavLink[];
     isWorldCup?: boolean;
+    isSports?: boolean;
 }
 
-export default function CategoryContent({feed, isWorldCup = false}: CategoryContentProps) {
+export default function CategoryContent({feed, sidebarLinks, isWorldCup = false, isSports = false}: CategoryContentProps) {
     const dispatch = useDispatch<AppDispatch>();
     const news = useSelector((state: RootState) => state.news.feeds[feed]) ?? [];
     const [visibleCount, setVisibleCount] = useState(15);
@@ -25,13 +30,11 @@ export default function CategoryContent({feed, isWorldCup = false}: CategoryCont
         dispatch(fetchNews(feed));
     }, [dispatch, feed]);
 
-    const SIDE_START = 6;
-
     return (
         <div className="container">
             <NewsSectionContent layout="vertical" news={news}/>
 
-            {isWorldCup ? <WorldCupScores/> : (
+            {isWorldCup ? <WorldCupScores/> : !isSports && (
                 <div className="row align-items-center">
                     <div className="col-9 d-flex align-items-center gap-3 py-3 my-3 border-top border-bottom">
                         <div className="d-flex align-items-center gap-2 text-danger flex-shrink-0">
@@ -57,7 +60,7 @@ export default function CategoryContent({feed, isWorldCup = false}: CategoryCont
             )}
 
             <div className="row">
-                <div className="col-9 d-flex flex-column">
+                <div className={`${isSports ? "col-12 col-lg-9" : "col-9"} d-flex flex-column`}>
                     {news.slice(0, visibleCount).map((item, index) => (
                         <HomeHorizontalCard
                             key={item.link}
@@ -80,25 +83,13 @@ export default function CategoryContent({feed, isWorldCup = false}: CategoryCont
                     )}
                 </div>
 
-                <div className="col-3 d-flex flex-column gap-4">
-                    {[0, 1, 2].map(i => {
-                        const start = SIDE_START + i * 3;
-                        return (
-                            <SideGroupCard
-                                key={start}
-                                feature={news[start]}
-                                items={news.slice(start + 1, start + 3)}
-                                linkArticles={!isWorldCup}
-                            />
-                        );
-                    })}
-
-                    <SideGroupCard
-                        feature={news[15]}
-                        items={news.slice(16, 20)}
-                        variant="text"
-                        linkArticles={!isWorldCup}
-                    />
+                <div className={`${isSports ? "col-12 col-lg-3" : "col-3"} d-flex flex-column gap-3`}>
+                    {isSports && <SportsScores sidebar/>}
+                    {sidebarLinks.map(link => (
+                        <CategorySideSection key={link.feed} link={link}/>
+                    ))}
+                    <SideGroupCard title="Đọc nhiều" feature={news[0]} items={news.slice(1, 5)}
+                                   variant="text"/>
                 </div>
             </div>
         </div>
