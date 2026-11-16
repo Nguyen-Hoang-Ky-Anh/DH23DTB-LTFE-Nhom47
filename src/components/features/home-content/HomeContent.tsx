@@ -31,6 +31,8 @@ export default function HomeContent() {
 
     const xuatKhauLaoDongFeed = "nld/lao-dong/xuat-khau-lao-dong";
     const taiChinhChungKhoanFeed = "nld/kinh-te/tai-chinh-chung-khoan";
+    const batDongSanKinhTeFeed = "nld/kinh-te/bat-dong-san";
+    const oToKinhTeFeed = "nld/kinh-te/oto-xe-dien-may";
 
     const homeNews = feeds.home ?? [];
     const mainList = homeNews.slice(17, 38);
@@ -40,6 +42,8 @@ export default function HomeContent() {
     const docQuyenNews = feeds.docQuyen ?? []
     const xuatKhauLaoDongNews = xuatKhauLaoDongFeed ? feeds[xuatKhauLaoDongFeed] ?? [] : [];
     const taiChinhChungKhoanNews = taiChinhChungKhoanFeed ? feeds[taiChinhChungKhoanFeed] ?? [] : [];
+    const batDongSanKinhTeNews = batDongSanKinhTeFeed ? feeds[batDongSanKinhTeFeed] ?? [] : [];
+    const oToKinhTeNews = oToKinhTeFeed ? feeds[oToKinhTeFeed] ?? [] : [];
 
     const truyVetMXHNews = feeds.truyVetMXH ?? [];
     const noiThangNews = feeds.noiThang ?? [];
@@ -57,6 +61,8 @@ export default function HomeContent() {
         || states.NLDNEWS === 'loading'
         || states[xuatKhauLaoDongFeed] === 'loading'
         || states[taiChinhChungKhoanFeed] === 'loading'
+        || states[batDongSanKinhTeFeed] === 'loading'
+        || states[oToKinhTeFeed] === 'loading'
         || states.podcast === 'loading'
         || states.tuHaoCoToQuoc === 'loading';
 
@@ -67,7 +73,7 @@ export default function HomeContent() {
     const soccerMatchesIsLoading = soccerMatchesResult.nearestStates.PL === "loading";
     const failedFeeds = (['home', 'hoiNongDapNhanh', 'truyVetMXH',
         'noiThang', 'gocNhin', 'NLDNEWS', 'podcast', taiChinhChungKhoanFeed,
-        xuatKhauLaoDongFeed, 'tuHaoCoToQuoc'] as const).filter(
+        xuatKhauLaoDongFeed,batDongSanKinhTeFeed, oToKinhTeFeed, 'tuHaoCoToQuoc'] as const).filter(
         feed => states[feed] === 'failed');
 
 
@@ -85,6 +91,14 @@ export default function HomeContent() {
 
         if (taiChinhChungKhoanFeed) {
             dispatch(fetchNews(taiChinhChungKhoanFeed));
+        }
+
+        if (batDongSanKinhTeFeed) {
+            dispatch(fetchNews(batDongSanKinhTeFeed));
+        }
+
+        if (oToKinhTeFeed) {
+            dispatch(fetchNews(oToKinhTeFeed));
         }
 
         dispatch(fetchNews('podcast'));
@@ -146,6 +160,8 @@ export default function HomeContent() {
                         vietLottIsLoading={vietLottIsLoading}
                         soccerMatchesPLData={soccerMatchesPLData}
                         soccerMatchesIsLoading={soccerMatchesIsLoading}
+                        batDongSanKinhTeNews={batDongSanKinhTeNews}
+                        oToKinhTeNews={oToKinhTeNews}
                     />
                 </div>
             </div>

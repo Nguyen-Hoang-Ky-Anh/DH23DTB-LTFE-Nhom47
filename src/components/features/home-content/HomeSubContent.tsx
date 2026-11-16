@@ -35,16 +35,32 @@ export interface HomeSubContentProbs {
     vietLottIsLoading: boolean;
     soccerMatchesPLData: match[];
     soccerMatchesIsLoading: boolean;
+    batDongSanKinhTeNews: NewsItem[];
+    oToKinhTeNews: NewsItem[];
 }
 
 export default function HomeSubContent({
-                                           hoiNongDapNhanhNews, truyVetMXHNews,
-                                           noiThangNews, gocNhinNews, seeMoreNews,
-                                           nguoiLaoDongNews, docQuyenNews, xuatKhauLaoDongNews,
-                                           taiChinhChungKhoanNews, podcastNews,
-                                           tuHaoCoToQuocNews, usdExchangeRateData, sjcData, error, powerVietLottData,
-                                           megaVietLottData, vietLottIsLoading,
-                                           soccerMatchesPLData, soccerMatchesIsLoading
+                                           hoiNongDapNhanhNews,
+                                           truyVetMXHNews,
+                                           noiThangNews,
+                                           gocNhinNews,
+                                           seeMoreNews,
+                                           nguoiLaoDongNews,
+                                           docQuyenNews,
+                                           xuatKhauLaoDongNews,
+                                           taiChinhChungKhoanNews,
+                                           podcastNews,
+                                           tuHaoCoToQuocNews,
+                                           usdExchangeRateData,
+                                           sjcData,
+                                           error,
+                                           powerVietLottData,
+                                           megaVietLottData,
+                                           vietLottIsLoading,
+                                           soccerMatchesPLData,
+                                           soccerMatchesIsLoading,
+                                           batDongSanKinhTeNews,
+                                           oToKinhTeNews
                                        }: HomeSubContentProbs) {
     const hoiNongDapNhanh = SECTIONS["hoiNongDapNhanh"];
     const truyVetMXH = SECTIONS["truyVetMXH"];
@@ -111,6 +127,10 @@ export default function HomeSubContent({
         SECTIONS["laoDong"].moreLinks.find((link) => link.feed === "nld/lao-dong/xuat-khau-lao-dong");
     const taiChinhChungKhoan =
         SECTIONS["kinhTe"].moreLinks.find((link) => link.feed === "nld/kinh-te/tai-chinh-chung-khoan");
+    const batDongSanKinhte =
+        SECTIONS["kinhTe"].moreLinks.find((link) => link.feed === "nld/kinh-te/bat-dong-san");
+    const oToKinhTe =
+        SECTIONS["kinhTe"].moreLinks.find((link) => link.feed === "nld/kinh-te/oto-xe-dien-may");
 
     return (
         <section className={'subMain'}>
@@ -405,6 +425,121 @@ export default function HomeSubContent({
             {/* Đồng tiền thông minh */}
             <section>
                 <NewsSection section={'dongTienThongMinh'} layout={'home-sub-main-1'} embedded={true}/>
+            </section>
+
+            {/* Bất động sản + Ô tô */}
+            <section>
+                {batDongSanKinhTeNews && batDongSanKinhTeNews[0] && oToKinhTeNews && oToKinhTeNews[0] && (
+                    <div className={'mt-3 border-bottom pb-3 mb-5'}>
+                        <div className={'row'}>
+                            <div className={'col-8'}>
+                                <div className={'border-bottom mb-2 pb-2 main-title text-start gap-2 d-flex '}
+                                     style={{
+                                         fontSize: 18
+                                     }}>
+                                    <Link to={batDongSanKinhte?.href ?? "/"} title={"Bất động sản"}>
+                                        <i className="fa-regular fa-building" style={{
+                                            color: "#0d6efd"
+                                        }}></i>
+                                    </Link>
+                                    <Link to={batDongSanKinhte?.href ?? "/"} title={"Bất động sản"}>
+                                        <span>Bất động sản</span>
+                                    </Link>
+                                </div>
+
+                                <div className={'border-bottom pb-3'}>
+                                    <div className={'row align-items-center'}>
+                                        <div className={'col-5 px-0'}>
+                                            <Link to={batDongSanKinhTeNews[0].link}>
+                                                <img src={batDongSanKinhTeNews[0].image}
+                                                     alt={batDongSanKinhTeNews[0].title}
+                                                     height={130} width={130}
+                                                     style={{objectFit: "cover"}}/>
+                                            </Link>
+                                        </div>
+                                        <div className={'col-7 px-0 text-start'}>
+                                            <Link to={batDongSanKinhTeNews[0].link}
+                                                  className={'main-title'}>{batDongSanKinhTeNews[0].title}</Link>
+                                            <p className={'description'}
+                                               style={{color: "#727272"}}
+                                            >{batDongSanKinhTeNews[0].description}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <ul>
+                                        <li className={'sub-title px-0 text-start pt-2'}
+                                            style={{fontSize: 15}}>
+                                            <Link
+                                                to={batDongSanKinhTeNews[1].link}>{batDongSanKinhTeNews[1].title}</Link>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div className={'border-bottom mb-2 pb-2 main-title text-start gap-2 d-flex '}
+                                     style={{
+                                         fontSize: 18
+                                     }}>
+                                    <Link to={oToKinhTe?.href ?? "/"} title={"Ô tô"}>
+                                        <i className="fa-solid fa-car" style={{
+                                            color: "#0d6efd"
+                                        }}></i>
+                                    </Link>
+                                    <Link to={oToKinhTe?.href ?? "/"} title={"Ô tô"}>
+                                        <span>Ô tô</span>
+                                    </Link>
+                                </div>
+
+                                <div className={'border-bottom pb-3'}>
+                                    <div className={'row align-items-center'}>
+                                        <div className={'col-5 px-0'}>
+                                            <Link to={oToKinhTeNews[0].link}>
+                                                <img src={oToKinhTeNews[0].image}
+                                                     alt={oToKinhTeNews[0].title}
+                                                     height={130} width={130}
+                                                     style={{objectFit: "cover"}}/>
+                                            </Link>
+                                        </div>
+                                        <div className={'col-7 px-0 text-start'}>
+                                            <Link to={oToKinhTeNews[0].link}
+                                                  className={'main-title'}>{oToKinhTeNews[0].title}</Link>
+                                            <p className={'description'}
+                                               style={{color: "#727272"}}
+                                            >{oToKinhTeNews[0].description}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <ul>
+                                        <li className={'sub-title px-0 text-start pt-2'}
+                                            style={{fontSize: 15}}>
+                                            <Link
+                                                to={oToKinhTeNews[1].link}>{oToKinhTeNews[1].title}</Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className={'col-4'}>
+                                <div className={'text-start p-2'}
+                                    style={{
+                                    background: "#f2f8ff",
+                                    height: "100%",
+                                    width: "100%"
+                                }}>
+                                    <p className={'main-title mb-2 border-bottom pb-2'}
+                                    style={{fontSize: 18}}>Bình chọn</p>
+                                    <p className={'sub-title mb-2'} >Theo bạn cần bổ sung các hành vi nào vào Bộ luật Hình sự?</p>
+                                    <div className={'d-flex flex-row align-items-center justify-content-between gap-1'}>
+                                        <button className={'tbn btn-light border rounded sub-title p-1'}>Kết quả</button>
+                                        <button className={'btn btn-primary sub-title p-1 px-2'}>Bỏ phiếu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </section>
 
             {/* Vùng miền */}
