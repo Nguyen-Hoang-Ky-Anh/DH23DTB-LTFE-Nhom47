@@ -137,12 +137,14 @@ export default function TopNews() {
                   </li>
                 ))}
               </ul>
-              <img
-                className="w-100"
-                src="https://static.mediacdn.vn/zoom/300_250/nld/images/BannerCTMTNT.jpg"
-                alt="Cuộc thi tìm hiểu ngành nghề nông thôn và bảo vệ môi trường nông thôn TP Hồ Chí Minh"
-                loading="lazy"
-              />
+              <Link to="/dong-su-kien/dong-nam-bo">
+                <img
+                  className="w-100"
+                  src="https://static.mediacdn.vn/zoom/300_250/nld/images/BannerCTMTNT.jpg"
+                  alt="Cuộc thi tìm hiểu ngành nghề nông thôn và bảo vệ môi trường nông thôn TP Hồ Chí Minh"
+                  loading="lazy"
+                />
+              </Link>
             </aside>
           </div>
         </section>

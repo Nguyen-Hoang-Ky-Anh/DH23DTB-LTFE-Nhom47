@@ -8,8 +8,6 @@ import NewsSectionContent from "../news/NewsSectionContent.tsx";
 import HomeHorizontalCard from "../home-content/HomeHorizontalCard.tsx";
 import SideGroupCard from "./SideGroupCard.tsx";
 import WorldCupScores from "../world-cup/WorldCupScores.tsx";
-import {Link} from "react-router-dom";
-import {trendingTopics} from "../../../config/trendingConfig.ts";
 import SportsScores from "../sports/SportsScores.tsx";
 import type {NavLink} from "../../../config/newsSectionConfig.ts";
 import CategorySideSection from "./CategorySideSection.tsx";
@@ -44,13 +42,10 @@ export default function CategoryContent({feed, sidebarLinks, isWorldCup = false,
 
                         <div className="flex-grow-1 overflow-hidden">
                             <DragCarousel showControls>
-                                {trendingTopics.map(topic => topic.href ? (
-                                    <Link key={topic.title} to={topic.href} className="bg-light py-1 px-3 text-nowrap">
-                                        {topic.title}
-                                    </Link>
-                                ) : (
-                                    <span key={topic.title} className="bg-light py-1 px-3 text-nowrap">
-                                        {topic.title}
+                                {news.map(item => (
+                                    <span title={item.title}
+                                          className="bg-light py-1 px-3 text-truncate" style={{maxWidth: 260}}>
+                                        {item.title}
                                     </span>
                                 ))}
                             </DragCarousel>
