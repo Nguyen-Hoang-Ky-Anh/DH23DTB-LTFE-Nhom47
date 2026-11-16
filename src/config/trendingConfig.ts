@@ -32,4 +32,9 @@ export const trendingTopics = [
     {
         title: 'Vườn chim Hai Chìa "kêu cứu"',
     },
+    {
+        title: "Cuộc thi tìm hiểu ngành nghề nông thôn và bảo vệ môi trường nông thôn TPHCM",
+        href: "/dong-su-kien/dong-nam-bo",
+        feed: RSS_FEEDS.categories.vungMien.extraChildren.dongNamBo.feed,
+    },
 ];
