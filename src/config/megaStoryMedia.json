@@ -1,0 +1,59 @@
+[
+    {
+        "id":  "so-bao-dau-tien",
+        "title":  "Khoảnh khắc 30-6",
+        "blocks":  [
+                       {
+                           "type":  "album",
+                           "rows":  [
+                                        [
+                                            [
+                                                "tru-so-1",
+                                                1200,
+                                                900
+                                            ],
+                                            [
+                                                "tru-so-2",
+                                                2560,
+                                                1707
+                                            ],
+                                            [
+                                                "tru-so-3",
+                                                1284,
+                                                1712
+                                            ]
+                                        ]
+                                    ],
+                           "caption":  "Trụ sở Báo Người Lao Động tọa lạc tại số 123-127 Võ Văn Tần, phường Xuân Hòa, TP HCM"
+                       },
+                       {
+                           "type":  "album",
+                           "rows":  [
+                                        [
+                                            [
+                                                "giao-ban-1",
+                                                2362,
+                                                1256
+                                            ],
+                                            [
+                                                "giao-ban-2",
+                                                2362,
+                                                1575
+                                            ]
+                                        ]
+                                    ],
+                           "caption":  "Họp giao ban Hội đồng Biên tập"
+                       },
+                       {
+                           "type":  "photo",
+                           "image":  [
+                                         "toa-soan",
+                                         2560,
+                                         1648
+                                     ],
+                           "layout":  "full",
+                           "caption":  "Đội ngũ phóng viên, biên tập viên, nhân viên làm việc tại trụ sở Báo Người Lao Động"
+                       }
+                   ]
+    }
+]

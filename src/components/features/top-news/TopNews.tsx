@@ -6,6 +6,7 @@ import DragCarousel from "../../ui/DragCarousel.tsx";
 import {Link} from "react-router-dom";
 import {SECTIONS} from "../../../config/newsSectionConfig.ts";
 import {trendingTopics} from "../../../config/trendingConfig.ts";
+import {findMegaStory, megaStory} from "../../../config/megaStoryConfig.ts";
 
 const titleStyle = {lineHeight: 1.4, color: "#292929", fontFamily: "Merriweather, serif"};
 const descriptionStyle = {fontSize: 14, color: "#555555"};
@@ -17,11 +18,13 @@ export default function TopNews() {
     const news = feeds.home ?? [];
     const vipNews = feeds.vip ?? [];
 
-    const mainNews = news[0];
+    const featuredStory = findMegaStory(feeds[megaStory.feed]);
+    const mainNews = featuredStory ?? megaStory;
 
     useEffect(() => {
         dispatch(fetchNews('home'));
         dispatch(fetchNews('vip'));
+        dispatch(fetchNews(megaStory.feed));
 
     }, [dispatch]);
 
@@ -33,49 +36,44 @@ export default function TopNews() {
               {/*
                         Tin chinh thuc
                          */}
-              {mainNews && (
-                <>
-                  <div className="row g-4">
-                    <article className="col-8">
-                      <h2
-                        className="fw-bold mb-3"
-                        style={{ ...titleStyle, fontSize: 26 }}
-                      >
-                        {mainNews.title}
-                      </h2>
-                      <img className="w-100 mb-2" src={mainNews.image} alt="" />
-                      <p className="mb-0" style={descriptionStyle}>
-                        {mainNews.description}
-                      </p>
+              <div className="row g-4">
+                <article className="col-8">
+                  <h2 className="fw-bold mb-3" style={{ ...titleStyle, fontSize: 26 }}>
+                    <Link to={megaStory.href} className="text-reset">{mainNews.title}</Link>
+                  </h2>
+                  <Link to={megaStory.href}>
+                    <img className="w-100 mb-2" src={megaStory.thumbnail} alt={mainNews.title} />
+                  </Link>
+                  <p className="mb-0" style={descriptionStyle}>
+                    {mainNews.description}
+                  </p>
+                </article>
+                <div className="col-4">
+                  {news.slice(1, 3).map((item) => (
+                    <article key={item.guid || item.title} className="mb-3">
+                      <img className="w-100 mb-2" src={item.image} alt="" />
+                      <h3 className="fs-6 fw-bold mb-0" style={titleStyle}>
+                        {item.title}
+                      </h3>
                     </article>
-                    <div className="col-4">
-                      {news.slice(1, 3).map((item) => (
-                        <article key={item.link} className="mb-3">
-                          <img className="w-100 mb-2" src={item.image} alt="" />
-                          <h3 className="fs-6 fw-bold mb-0" style={titleStyle}>
-                            {item.title}
-                          </h3>
-                        </article>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="row g-3 border-top mt-4 pt-3 pb-3">
-                    {news.slice(3, 6).map((item, index) => (
-                      <article
-                        key={item.link}
-                        className={`col-4 ${index > 0 ? "border-start" : ""}`}
-                      >
-                        <h3 className="fs-6 fw-bold mb-2" style={titleStyle}>
-                          {item.title}
-                        </h3>
-                        <p className="mb-0" style={descriptionStyle}>
-                          {item.description}
-                        </p>
-                      </article>
-                    ))}
-                  </div>
-                </>
-              )}
+                  ))}
+                </div>
+              </div>
+              <div className="row g-3 border-top mt-4 pt-3 pb-3">
+                {news.slice(3, 6).map((item, index) => (
+                  <article
+                    key={item.guid || item.title}
+                    className={`col-4 ${index > 0 ? "border-start" : ""}`}
+                  >
+                    <h3 className="fs-6 fw-bold mb-2" style={titleStyle}>
+                      {item.title}
+                    </h3>
+                    <p className="mb-0" style={descriptionStyle}>
+                      {item.description}
+                    </p>
+                  </article>
+                ))}
+              </div>
 
               <div className="d-flex align-items-center gap-3 border-top border-bottom py-3 my-3 small">
                 <i className="fa-solid fa-arrow-trend-up text-danger" />
@@ -127,7 +125,7 @@ export default function TopNews() {
                 style={{ ...titleStyle, maxHeight: 430, fontSize: 14 }}
               >
                 {news.slice(6, 16).map((item) => (
-                  <li key={item.link} className="border-bottom py-3">
+                  <li key={item.guid || item.title} className="border-bottom py-3">
                     <a
                       href={"#"}
                       className="text-reset text-decoration-none"
@@ -162,7 +160,7 @@ export default function TopNews() {
             </h2>
             <DragCarousel showProgress>
               {vipNews.slice(0, 14).map((item) => (
-                <article key={item.link} style={{ width: 260 }}>
+                <article key={item.guid || item.title} style={{ width: 260 }}>
                   <img
                     className="w-100 mb-2"
                     src={item.image}

@@ -13,8 +13,15 @@ import { multimediaItems } from "../config/multimediaConfig.ts";
 import {FEED_PATHS, type FeedName} from "../services/rssConfig.ts";
 import {searchPage} from "../services/searchConfig.ts";
 import SearchPage from "../components/SearchPage.tsx";
+import {megaStory} from "../config/megaStoryConfig.ts";
 
 export const router = createBrowserRouter([
+  {
+    path: megaStory.href,
+    lazy: async () => ({Component: (await import("../components/MegaStoryPage.tsx")).default}),
+    hydrateFallbackElement: <p className="p-3" role="status">Đang tải Mega Story…</p>,
+    errorElement: <Error />,
+  },
   {
     path: "/",
     element: <MainLayout />,
