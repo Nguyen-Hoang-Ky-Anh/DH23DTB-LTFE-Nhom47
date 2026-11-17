@@ -4,7 +4,6 @@ import {megaStory} from "../config/megaStoryConfig.ts";
 import {chapters, megaStoryImagePath, type MegaStoryBlock, type MegaStoryComparison, type MegaStoryPhoto} from "../config/megaStoryContent.ts";
 import MegaStoryAlbum, {MediaCaption} from "./MegaStoryAlbum.tsx";
 import UpToTopBtn from "./ui/UpToTopBtn.tsx";
-import "./MegaStoryPage.css";
 
 function Photo({image: [file, width, height], caption, captionSpace, layout}: Omit<MegaStoryPhoto, "type">) {
     return (
@@ -82,7 +81,20 @@ export default function MegaStoryPage() {
                     <img src="/mega-story/tuoi-tre.webp" alt="Tuổi Trẻ" width={129} height={41} />
                 </Link>
                 <img className="mega-story-edition" src="/mega-story/emagazine.webp" alt="eMagazine" width={149} height={28} />
-                <Link to="/multimedia/longform" className="mega-story-longform">Longform</Link>
+                <div className="mega-story-actions">
+                    <button type="button">
+                        <i className="fa-regular fa-comment-dots" aria-hidden="true" />
+                        Bình luận
+                    </button>
+                    <button type="button">
+                        <i className="fa-brands fa-facebook-f" aria-hidden="true" />
+                        Facebook
+                    </button>
+                    <button type="button">
+                        <i className="fa-regular fa-paper-plane" aria-hidden="true" />
+                        Góp ý
+                    </button>
+                </div>
             </header>
             <main>
                 <article>
