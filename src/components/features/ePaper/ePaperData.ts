@@ -5,6 +5,7 @@ export interface EPaperItem {
     readUrl: string;
     buyUrl: string;
     videoUrl?: string;
+    type?: "special-news" | "e-card" | "bao-xuan";
 }
 
 export const E_PAPER_ITEMS: EPaperItem[] = [
@@ -377,4 +378,28 @@ export const E_PAPER_ITEMS: EPaperItem[] = [
         buyUrl: "https://tuoitre.vn/nld/e-paper/pay.htm?id=28&eppid=459",
         videoUrl: "https://nld.com.vn/bao-in-ngay-14-5-thau-hieu-doi-song-cong-nhan-196260513221717216.htm",
     },
+    {
+        title: "Số báo 10495 (Số báo ĐB ngày 2-9)",
+        date: "02/09/2025",
+        thumbnail: "/epaper/special1.webp",
+        readUrl: "#",
+        buyUrl: "#",
+        type: "special-news"
+    },
+    {
+        title: "Kỷ yếu 50 năm báo Người Lao Động",
+        date: "28/7/2025",
+        thumbnail: "/epaper/special2.webp",
+        readUrl: "#",
+        buyUrl: "#",
+        type: "special-news"
+    },
+    {
+        title: "E-card \"Mai Vàng nhân ái, Mai Vàng tri ân: Hành trình lan tỏa yêu thương\"",
+        date: "15/11/2025",
+        thumbnail: "/epaper/eCard.webp",
+        readUrl: "#",
+        buyUrl: "#",
+        type: "e-card"
+    }
 ];

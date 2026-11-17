@@ -6,9 +6,9 @@ export interface EPaperNavigationBarItem {
 export const E_PAPER_HOTLINE = "0819.123.127";
 
 export const E_PAPER_MENU: EPaperNavigationBarItem[] = [
-    { label: "NHẬT BÁO", href: "#" },
-    { label: "SỐ BÁO ĐẶC BIỆT", href: "#" },
-    { label: "BÁO XUÂN", href: "#" },
-    { label: "E-CARD MAI VÀNG", href: "#" },
-    { label: "MUA GÓI", href: "#" },
+    { label: "NHẬT BÁO", href: "/e-paper" },
+    { label: "SỐ BÁO ĐẶC BIỆT", href: "/e-paper/special-news" },
+    { label: "BÁO XUÂN", href: "/e-paper/bao-xuan" },
+    { label: "E-CARD MAI VÀNG", href: "/e-paper/e-card" },
+    { label: "MUA GÓI", href: "/e-paper/pack" },
 ];

@@ -93,8 +93,15 @@ export const router = createBrowserRouter([
         element: <VideoPage />
       },
       {
-        path: "/e-paper",
-        element: <EPaperPage/>
+        path: "/e-paper/:category?",
+        element: <EPaperPage/>,
+        loader: ({ params }) => {
+          const valid = ["special-news", "e-card", "bao-xuan", "pack"];
+          if (params.category && !valid.includes(params.category)) {
+            throw new Response("Not Found", { status: 404 });
+          }
+          return null;
+        },
       },
       {
         path: "*",
