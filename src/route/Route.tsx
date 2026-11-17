@@ -13,6 +13,8 @@ import { multimediaItems } from "../config/multimediaConfig.ts";
 import {FEED_PATHS, type FeedName} from "../services/rssConfig.ts";
 import {searchPage} from "../services/searchConfig.ts";
 import SearchPage from "../components/SearchPage.tsx";
+import {megaStory} from "../config/megaStoryConfig.ts";
+import MegaStoryPage from "../components/MegaStoryPage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -112,6 +114,12 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  
+  {
+    path: megaStory.href,
+    element: <MegaStoryPage />,
+    errorElement: <Error />,
+  }
 ]);
 
 
