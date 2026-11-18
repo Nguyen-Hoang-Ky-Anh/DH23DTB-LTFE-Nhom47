@@ -8,7 +8,8 @@ export default function MainLayout() {
     const [searchInput, setSearchInput] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
-    const isEPaper = location.pathname.startsWith("/e-paper");
+    const firstSlashIndex = location.pathname.indexOf('/');
+    const headerType = location.pathname.substring(firstSlashIndex);
 
     const handleSearch = (keyword: string) => {
         const trimmedKeyword = keyword.trim();
@@ -23,7 +24,7 @@ export default function MainLayout() {
     return (
         <div className="d-flex flex-column min-vh-100">
             <Header
-                variant={isEPaper ? "epaper" : "news"}
+                variant={headerType}
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
                 onSearch={handleSearch}

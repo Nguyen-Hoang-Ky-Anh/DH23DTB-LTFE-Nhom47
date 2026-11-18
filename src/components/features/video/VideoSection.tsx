@@ -9,13 +9,14 @@ interface VideoSectionProps {
     title: string,
     feed: FeedName,
     hasSubContent?: boolean,
+    subContentTitle?: string,
     rows?: number
 }
 
 const COLUMNS = 3;
 const SIDE_NEWS_COUNT = 5;
 
-export default function VideoSection({title, feed, hasSubContent, rows = 2}: VideoSectionProps) {
+export default function VideoSection({title, feed, hasSubContent, subContentTitle, rows = 2}: VideoSectionProps) {
     const dispatch = useDispatch<AppDispatch>();
     const news = useSelector((s: RootState) => s.news.feeds[feed]) ?? [];
 
@@ -30,7 +31,7 @@ export default function VideoSection({title, feed, hasSubContent, rows = 2}: Vid
     return (
         <section className="mt-4">
             <h5 className="main-title text-start border-bottom pb-2">{title}</h5>
-            <div className="row">
+            <div className="row mt-4">
                 <div className="col-9">
                     <div className="row g-3">
                         {numberOfNewsInMainContent.map(item => (
@@ -47,11 +48,24 @@ export default function VideoSection({title, feed, hasSubContent, rows = 2}: Vid
                 </div>
                 {hasSubContent && (
                     <div className="col-3">
-                        {numberOfNewsInSideContent.map(item => (
-                            <HorizontalCard key={item.link} image={item.image} title={item.title}/>
-                        ))}
-                    </div>
-                )}
+                        <div className="border rounded p-2 text-start">
+                            <p
+                                className="main-title mb-3"
+                                style={{fontSize: 18}}
+                            >
+                                {subContentTitle}
+                            </p>
+
+                            {numberOfNewsInSideContent.map((item, index) => (
+                                <HorizontalCard
+                                    key={item.link}
+                                    image={item.image}
+                                    title={item.title}
+                                    borderBottom={index !== numberOfNewsInSideContent.length - 1}
+                                />
+                            ))}
+                        </div>
+                    </div>)}
             </div>
         </section>
     )

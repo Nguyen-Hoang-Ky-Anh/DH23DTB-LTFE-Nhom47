@@ -5,11 +5,15 @@ interface HorizontalCardProps {
     feature?: boolean;
     whiteText?: boolean;
     showDescription?: boolean;
+    borderBottom?: boolean;
 }
 
-export default function HorizontalCard({image, title, description, feature, whiteText, showDescription}: HorizontalCardProps) {
+export default function HorizontalCard({image, title, description, feature, whiteText, showDescription,
+                                           borderBottom=true}: HorizontalCardProps) {
     return (
-        <div className={`horizontal-card ${feature ? "horizontal-card-featured" : ""} ${whiteText ? "horizontal-card-white" : ""}`}>
+        <div className={`horizontal-card ${feature ? "horizontal-card-featured" : ""}
+         ${whiteText ? "horizontal-card-white" : ""}
+         ${borderBottom? "border-bottom pb-2" : ""} mb-2`}>
             <img src={image} alt={title} className="horizontal-card-image"/>
             <div className="horizontal-card-content">
                 <h3 className="horizontal-card-title main-title">{title}</h3>
