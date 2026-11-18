@@ -53,6 +53,79 @@
                                      ],
                            "layout":  "full",
                            "caption":  "Đội ngũ phóng viên, biên tập viên, nhân viên làm việc tại trụ sở Báo Người Lao Động"
+                       },
+                       {
+                           "type":  "album",
+                           "rows":  [
+                                        [
+                                            [
+                                                "bao-cu-1",
+                                                840,
+                                                1260
+                                            ],
+                                            [
+                                                "bao-cu-2",
+                                                1260,
+                                                1890
+                                            ],
+                                            [
+                                                "bao-cu-3",
+                                                1260,
+                                                1890
+                                            ]
+                                        ],
+                                        [
+                                            [
+                                                "bao-cu-4",
+                                                1260,
+                                                1890
+                                            ],
+                                            [
+                                                "bao-cu-5",
+                                                1260,
+                                                1890
+                                            ],
+                                            [
+                                                "bao-cu-6",
+                                                1260,
+                                                1890
+                                            ]
+                                        ]
+                                    ],
+                           "extra":  [
+                                         [
+                                             "bao-cu-7",
+                                             840,
+                                             1260
+                                         ],
+                                         [
+                                             "bao-cu-8",
+                                             1260,
+                                             1890
+                                         ],
+                                         [
+                                             "bao-cu-9",
+                                             1260,
+                                             1890
+                                         ],
+                                         [
+                                             "bao-cu-10",
+                                             1260,
+                                             1890
+                                         ],
+                                         [
+                                             "bao-cu-11",
+                                             1260,
+                                             1890
+                                         ],
+                                         [
+                                             "bao-cu-12",
+                                             1575,
+                                             2362
+                                         ]
+                                     ],
+                           "archive":  true,
+                           "caption":  "Một vài số báo Công nhân giải phóng - tiền thân của Báo Người Lao Động"
                        }
                    ]
     }
