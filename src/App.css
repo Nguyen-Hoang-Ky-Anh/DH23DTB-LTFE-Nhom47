@@ -1429,3 +1429,63 @@ li:hover {
 .mega-story-footer {
     padding-top: 20px;
 }
+
+.epaper-banner {
+    position: relative;
+    width: 100%;
+}
+
+.epaper-banner-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.epaper-banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    min-height: 82px;
+    color: black;
+}
+
+.benefit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.benefit-text {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.btn-activate {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    background-color: #EAF4FF;
+    border: 2px solid #0D6EFD;
+    color: black;
+    border-radius: 28px;
+    padding: 10px 24px;
+}
+
+.btn-activate:hover {
+    background-color: #0D6EFD;
+    border-color: #0A58CA;
+    color: white;
+}
