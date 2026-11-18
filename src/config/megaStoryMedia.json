@@ -1,0 +1,132 @@
+[
+    {
+        "id":  "so-bao-dau-tien",
+        "title":  "Khoảnh khắc 30-6",
+        "blocks":  [
+                       {
+                           "type":  "album",
+                           "rows":  [
+                                        [
+                                            [
+                                                "tru-so-1",
+                                                1200,
+                                                900
+                                            ],
+                                            [
+                                                "tru-so-2",
+                                                2560,
+                                                1707
+                                            ],
+                                            [
+                                                "tru-so-3",
+                                                1284,
+                                                1712
+                                            ]
+                                        ]
+                                    ],
+                           "caption":  "Trụ sở Báo Người Lao Động tọa lạc tại số 123-127 Võ Văn Tần, phường Xuân Hòa, TP HCM"
+                       },
+                       {
+                           "type":  "album",
+                           "rows":  [
+                                        [
+                                            [
+                                                "giao-ban-1",
+                                                2362,
+                                                1256
+                                            ],
+                                            [
+                                                "giao-ban-2",
+                                                2362,
+                                                1575
+                                            ]
+                                        ]
+                                    ],
+                           "caption":  "Họp giao ban Hội đồng Biên tập"
+                       },
+                       {
+                           "type":  "photo",
+                           "image":  [
+                                         "toa-soan",
+                                         2560,
+                                         1648
+                                     ],
+                           "layout":  "full",
+                           "caption":  "Đội ngũ phóng viên, biên tập viên, nhân viên làm việc tại trụ sở Báo Người Lao Động"
+                       },
+                       {
+                           "type":  "album",
+                           "rows":  [
+                                        [
+                                            [
+                                                "bao-cu-1",
+                                                840,
+                                                1260
+                                            ],
+                                            [
+                                                "bao-cu-2",
+                                                1260,
+                                                1890
+                                            ],
+                                            [
+                                                "bao-cu-3",
+                                                1260,
+                                                1890
+                                            ]
+                                        ],
+                                        [
+                                            [
+                                                "bao-cu-4",
+                                                1260,
+                                                1890
+                                            ],
+                                            [
+                                                "bao-cu-5",
+                                                1260,
+                                                1890
+                                            ],
+                                            [
+                                                "bao-cu-6",
+                                                1260,
+                                                1890
+                                            ]
+                                        ]
+                                    ],
+                           "extra":  [
+                                         [
+                                             "bao-cu-7",
+                                             840,
+                                             1260
+                                         ],
+                                         [
+                                             "bao-cu-8",
+                                             1260,
+                                             1890
+                                         ],
+                                         [
+                                             "bao-cu-9",
+                                             1260,
+                                             1890
+                                         ],
+                                         [
+                                             "bao-cu-10",
+                                             1260,
+                                             1890
+                                         ],
+                                         [
+                                             "bao-cu-11",
+                                             1260,
+                                             1890
+                                         ],
+                                         [
+                                             "bao-cu-12",
+                                             1575,
+                                             2362
+                                         ]
+                                     ],
+                           "archive":  true,
+                           "caption":  "Một vài số báo Công nhân giải phóng - tiền thân của Báo Người Lao Động"
+                       }
+                   ]
+    }
+]
