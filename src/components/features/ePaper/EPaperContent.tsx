@@ -2,8 +2,9 @@ import {useEffect, useMemo, useState} from "react";
 import {E_PAPER_ITEMS} from "./ePaperData.ts";
 import EPaperHeader from "./EPaperHeader.tsx";
 import Pagination from "../../ui/Pagination.tsx";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import EPaperPack from "./EPaperPack.tsx";
+import EPaperPay from "./EPaperPay.tsx";
 
 const PAGE_SIZE = 16;
 const toISO = (d: string) => {
@@ -43,7 +44,7 @@ export default function EPaperContent() {
     const pageItems = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
     if (category === "pack") return <EPaperPack/>;
-
+    else if (category === "pay") return <EPaperPay/>;
     return (
         <div className="container my-4">
             <EPaperHeader onSearch={handleSearch}/>
@@ -54,8 +55,8 @@ export default function EPaperContent() {
                 <div className="row g-4">
                     {pageItems.map((item, index) => (
                         <div className="col-3 g-3" key={`${item.title}-${item.date}`}>
-                            <a href={item.readUrl} target="_blank" className="text-decoration-none">
-                                <div className="card h-100">
+                            <div className="epaper-card">
+                                <div className="epaper-card-image">
                                     <img src={item.thumbnail}
                                          alt={item.title}
                                          className="card"
@@ -63,13 +64,23 @@ export default function EPaperContent() {
                                          decoding="async"
                                          style={{aspectRatio: "5 / 7", objectFit: "cover", objectPosition: "top"}}
                                     />
-                                    <div className="card-body text-center">
-                                        <h5 className="card-title fw-bold main-title"
-                                            style={{fontSize: "18px"}}>{item.title}</h5>
-                                        <p className="card-text text-secondary fw-bold description text-center">{item.date}</p>
+                                    <div className="epaper-card-overlay">
+                                        <div className="epaper-card-actions">
+                                            <Link to={"/e-paper/pack"} className="btn btn-light">
+                                                Đọc báo ngay
+                                            </Link>
+                                            <Link to={"/e-paper/pay"} className="btn btn-primary">
+                                                Mua ngay
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </a>
+                                <div className="card-body text-center">
+                                    <h5 className="card-title fw-bold main-title"
+                                        style={{fontSize: "18px"}}>{item.title}</h5>
+                                    <p className="card-text text-secondary fw-bold description text-center">{item.date}</p>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>

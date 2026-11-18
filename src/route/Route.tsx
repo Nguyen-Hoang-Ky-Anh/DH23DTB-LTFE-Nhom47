@@ -98,7 +98,7 @@ export const router = createBrowserRouter([
         path: "/e-paper/:category?",
         element: <EPaperPage/>,
         loader: ({ params }) => {
-          const valid = ["special-news", "e-card", "bao-xuan", "pack"];
+          const valid = ["special-news", "e-card", "bao-xuan", "pack", "pay"];
           if (params.category && !valid.includes(params.category)) {
             throw new Response("Not Found", { status: 404 });
           }
