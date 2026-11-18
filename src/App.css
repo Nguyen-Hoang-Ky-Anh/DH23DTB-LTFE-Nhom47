@@ -344,8 +344,6 @@ body * {
     align-items: flex-start;
     gap: 16px;
     padding: 0 0 12px;
-    border-bottom: 1px solid #e5e5e5;
-    margin-bottom: 16px;
 }
 
 .sec-2-title {
@@ -1014,6 +1012,22 @@ li:hover {
     height: 25px;
     flex-shrink: 0;
 }
+
+.account-icon {
+    display: flex;
+    align-items: center;
+    font-family: Inter, serif;
+    font-size: 20px;
+    font-weight: 500;
+    justify-content: center;
+    justify-items: center;
+    border: 1px solid silver;
+    border-radius: 300px;
+    padding: 1px;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
 .special-vietLott-number {
     display: flex;
     font-family: Inter, serif;
@@ -1067,6 +1081,17 @@ li:hover {
     font-size: 14px;
 }
 
+.search-btn-2{
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0 4px;
+    color: #5f5f5f;
+    cursor: pointer;
+    font-size: 14px;
+}
+
 .search-bar {
     width: fit-content;
 }
@@ -1090,6 +1115,22 @@ li:hover {
     padding: 0;
 }
 
+.search-input-2 {
+    color: black;
+    background: transparent;
+    width: 175px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 13px;
+    padding: 0;
+}
+
+.search-input-2::placeholder {
+    color: #d2d2d2;
+    opacity: 1;
+}
+
 .search-input::placeholder {
     color: white;
     opacity: 1;
@@ -1106,6 +1147,10 @@ li:hover {
     color: white;
 }
 
+.search-box{
+    border: 1px solid #d2d2d2;
+    border-radius: 50px;
+}
 .mega-story {
     background: #fff;
     color: #292929;
