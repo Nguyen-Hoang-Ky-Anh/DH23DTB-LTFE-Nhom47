@@ -111,7 +111,10 @@ export default function DragCarousel({
                         }
                     }}
                 >
-                    <div className={`d-flex flex-nowrap ${fullWidthSlides ? "w-100 gap-0" : "gap-3"}`}>
+                    <div
+                        className={`d-flex flex-nowrap ${fullWidthSlides ? "w-100 gap-0" : "gap-3"}`}
+                        style={fullWidthSlides ? undefined : {width: "max-content"}}
+                    >
                         {children}
                     </div>
                 </div>

@@ -2,19 +2,19 @@ import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {megaStory} from "../config/megaStoryConfig.ts";
 import {chapters, megaStoryImagePath, type MegaStoryBlock, type MegaStoryComparison, type MegaStoryPhoto} from "../config/megaStoryContent.ts";
-import MegaStoryAlbum, {MediaCaption} from "./MegaStoryAlbum.tsx";
+import MegaStoryAlbum, {MediaCaption, MegaStoryText} from "./MegaStoryAlbum.tsx";
 import UpToTopBtn from "./ui/UpToTopBtn.tsx";
 
-function Photo({image: [file, width, height], caption, captionSpace, layout}: Omit<MegaStoryPhoto, "type">) {
+function Photo({image: [file, width, height], caption, captionSpace, layout, italicTitle, captionReading}: Omit<MegaStoryPhoto, "type">) {
     return (
-        <figure className={`mega-story-media mega-story-photo mega-story-${layout}`}>
+        <figure className={`mega-story-media mega-story-photo mega-story-${layout}${captionReading ? " mega-story-caption-reading" : ""}`}>
             <img src={megaStoryImagePath(file)} alt="" width={width} height={height} loading="lazy" decoding="async" />
-            <MediaCaption caption={caption} captionSpace={captionSpace} />
+            <MediaCaption caption={caption} captionSpace={captionSpace} italicTitle={italicTitle} />
         </figure>
     );
 }
 
-function Comparison({images: [before, after], caption, captionSpace}: MegaStoryComparison) {
+function Comparison({images: [before, after], caption, captionSpace, italicTitle}: MegaStoryComparison) {
     const [position, setPosition] = useState(50);
     return (
         <figure className="mega-story-media mega-story-comparison">
@@ -26,7 +26,7 @@ function Comparison({images: [before, after], caption, captionSpace}: MegaStoryC
                 <input type="range" min={0} max={100} value={position}
                        aria-label="So sánh ảnh trước và sau" onChange={event => setPosition(event.target.valueAsNumber)} />
             </div>
-            <MediaCaption caption={caption} captionSpace={captionSpace} />
+            <MediaCaption caption={caption} captionSpace={captionSpace} italicTitle={italicTitle} />
         </figure>
     );
 }
@@ -39,6 +39,13 @@ function StoryBlock({block}: {block: MegaStoryBlock}) {
             return <MegaStoryAlbum {...block} />;
         case "compare":
             return <Comparison {...block} />;
+        case "text":
+            return (
+                <div className="mega-story-reading mega-story-prose">
+                    {block.aside && <Photo {...block.aside} />}
+                    {block.paragraphs.map(paragraph => <p key={paragraph}><MegaStoryText text={paragraph} /></p>)}
+                </div>
+            );
         case "group":
             return (
                 <details className="mega-story-people">
