@@ -1251,7 +1251,7 @@ li:hover {
 }
 
 .mega-story-wide {
-    width: min(980px, calc(100% - 32px));
+    width: min(1020px, calc(100% - 32px));
 }
 
 .mega-story-photo.mega-story-reading {
@@ -1267,6 +1267,16 @@ li:hover {
     width: 450px;
     max-width: calc(100% - 32px);
     margin-inline: auto max(16px, calc(50% - 500px));
+}
+
+.mega-story-prose {
+    display: flow-root;
+}
+
+.mega-story-prose .mega-story-right {
+    float: right;
+    max-width: none;
+    margin: 0 -160px 24px 40px;
 }
 
 .mega-story-photo img {
@@ -1396,6 +1406,13 @@ li:hover {
     text-align: center;
 }
 
+.mega-story-caption-reading figcaption {
+    width: min(680px, 100%);
+    margin-inline: auto;
+    padding-inline: 0;
+    text-align: left;
+}
+
 .mega-story-caption-space {
     height: 30px;
 }
@@ -1405,7 +1422,7 @@ li:hover {
 }
 
 .mega-story-comparison {
-    width: min(520px, calc(100% - 32px));
+    width: min(680px, calc(100% - 32px));
 }
 
 .mega-story-comparison-images {

@@ -1,8 +1,17 @@
-import {useRef, useState} from "react";
+import {Fragment, useRef, useState} from "react";
 import {megaStoryImagePath, type MegaStoryAlbum, type MegaStoryImage} from "../config/megaStoryContent.ts";
 
-export function MediaCaption({caption, captionSpace}: {caption?: string; captionSpace?: boolean}) {
-    if (caption) return <figcaption>{caption}</figcaption>;
+export function MegaStoryText({text}: {text: string}) {
+    return text.split("Người Lao Động").map((part, index) => (
+        <Fragment key={index}>
+            {index > 0 && <em>Người Lao Động</em>}
+            {part}
+        </Fragment>
+    ));
+}
+
+export function MediaCaption({caption, captionSpace, italicTitle}: {caption?: string; captionSpace?: boolean; italicTitle?: boolean}) {
+    if (caption) return <figcaption>{italicTitle ? <MegaStoryText text={caption} /> : caption}</figcaption>;
     if (captionSpace) return <div className="mega-story-caption-space" aria-hidden="true" />;
     return null;
 }
