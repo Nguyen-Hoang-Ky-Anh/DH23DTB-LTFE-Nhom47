@@ -61,7 +61,7 @@ export type NewsContent =
     | ContentWrap;
 
 export interface NewsStructure {
-    typeOfNews: RSSCategory;
+    typeOfNews?: RSSCategory;
     detailTitle: string;
     detailSapo: string;
     detailAuthor: string[];

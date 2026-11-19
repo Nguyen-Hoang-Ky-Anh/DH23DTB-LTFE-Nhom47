@@ -36,14 +36,14 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                     <ul className="list-inline mb-0 d-flex flew-row justify-content-between align-items-center">
                         {links.map(link => (
                             <li key={link.label} className={'category-more-link'}>
-                                <Link to={link.href} className={'text-white'}
+                                <Link to={`news-detail?${new URLSearchParams(link.href).toString()}`} className={'text-white'}
                                 >{link.label}</Link>
                             </li>
                         ))}
                         <li key={moreLinks[0].label}
                             className={'category-more-link'}
                         >
-                            <Link to={moreLinks[0].href}
+                            <Link to={`news-detail?${new URLSearchParams(moreLinks[0].href).toString()}`}
                                   style={{
                                       color: "white"
                                   }}
@@ -56,7 +56,7 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
             <div className={"content row text-start p-2"}>
                 {/* First news col-8*/}
                 <div className={"col-8 d-flex flex-row gap-2 mt-1"}>
-                    <Link to={firstNews.link} title={firstNews.title}>
+                    <Link to={`news-detail?${new URLSearchParams(firstNews.link).toString()}`} title={firstNews.title}>
                         <img src={firstNews.image} alt={firstNews.title}
                              style={{
                                  width: 130,
@@ -105,7 +105,7 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                 {/* 2 next news*/}
                 <div className={'col-4 d-flex flex-column border-start'}>
                     <div className={"mx-1 pb-3 border-bottom"}>
-                        <Link to={contentNews[0].link} title={contentNews[0].title}
+                        <Link to={`news-detail?${new URLSearchParams(contentNews[0].link).toString()}`} title={contentNews[0].title}
                         className={'sub-title'}
                             style={{fontSize: 15}}>
                             <p><i className="fa-solid fa-headphones"
@@ -120,7 +120,7 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                     </div>
 
                     <div className={"mx-1 pt-3"}>
-                        <Link to={contentNews[1].link} title={contentNews[0].title}
+                        <Link to={new URLSearchParams(contentNews[1].link).toString()} title={contentNews[0].title}
                         style={{
                             fontFamily: "MerriWeather",
                             fontSize: 15,
