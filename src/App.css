@@ -1909,3 +1909,39 @@ li:hover {
     height: 100%;
     object-fit: cover;
 }
+
+.video-play-icon-podcast {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    left: 10px;
+    bottom: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #0c63e4;
+    color: #fff;
+    font-size: 14px;
+}
+
+.podcast-duration {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.video-play-icon-podcast {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.podcast-duration-text {
+    line-height: 1.4;
+}
