@@ -7,6 +7,8 @@ interface DragCarouselProps {
     showControlsStartEnd?: boolean;
     showProgress?: boolean;
     showRadio?: boolean;
+    nextSlide?: number;
+    fullWidthSlides?: boolean;
 }
 
 export default function DragCarousel({
@@ -14,7 +16,9 @@ export default function DragCarousel({
                                          showControls,
                                          showControlsStartEnd=false,
                                          showRadio = false,
-                                         showProgress = false
+                                         showProgress = false,
+                                         nextSlide = 240,
+                                         fullWidthSlides = false,
                                      }: DragCarouselProps) {
     const viewportRef = useRef<HTMLDivElement>(null);
     const drag = useRef<{ x: number; left: number } | null>(null);
@@ -42,7 +46,8 @@ export default function DragCarousel({
                 {showControlsStartEnd &&(
                     <div className={'border-end d-flex align-items-center me-3' }>
                         <button type="button" className="h-100 btn m-0 p-0" disabled={progress === 0}
-                                onClick={() => viewportRef.current?.scrollBy({left: -320, behavior: "smooth"})}>
+                                onClick={() =>
+                                    viewportRef.current?.scrollBy({left: fullWidthSlides ? -viewportRef.current.clientWidth : -nextSlide, behavior: "smooth"})}>
                             <i className="fa-solid fa-angle-left"/>
                         </button>
                     </div>
@@ -102,11 +107,13 @@ export default function DragCarousel({
                         const viewport = event.currentTarget;
                         if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
                             event.preventDefault();
-                            viewport.scrollBy({left: event.key === "ArrowLeft" ? -240 : 240, behavior: "smooth"});
+                            viewport.scrollBy({left: event.key === "ArrowLeft" ? -nextSlide : nextSlide, behavior: "smooth"});
                         }
                     }}
                 >
-                    <div className="d-flex gap-3" style={{width: "max-content"}}>{children}</div>
+                    <div className={`d-flex flex-nowrap ${fullWidthSlides ? "w-100 gap-0" : "gap-3"}`}>
+                        {children}
+                    </div>
                 </div>
                 {showControls && (
                     <div className="d-flex gap-2 flex-shrink-0">
@@ -122,7 +129,7 @@ export default function DragCarousel({
                 {showControlsStartEnd && (
                     <div className="border-start d-flex align-items-center">
                         <button type="button" className="h-100 btn m-0 p-0" disabled={progress >= 0.999}
-                                onClick={() => viewportRef.current?.scrollBy({left: 320, behavior: "smooth"})}>
+                                onClick={() => viewportRef.current?.scrollBy({left: fullWidthSlides ? viewportRef.current.clientWidth : nextSlide, behavior: "smooth"})}>
                             <i className="fa-solid fa-angle-right"/>
                         </button>
                     </div>

@@ -15,6 +15,8 @@ import {searchPage} from "../services/searchConfig.ts";
 import SearchPage from "../components/SearchPage.tsx";
 import {megaStory} from "../config/megaStoryConfig.ts";
 import MegaStoryPage from "../components/MegaStoryPage.tsx";
+import NewsDetailPage from "../components/NewsDetailPage.tsx";
+import PodcastPage from "../components/PodcastPage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -104,6 +106,14 @@ export const router = createBrowserRouter([
           }
           return null;
         },
+      },
+      {
+        path: "news-detail/:detail?",
+        element: <NewsDetailPage/>,
+      },
+      {
+        path: "podcast",
+        element: <PodcastPage/>
       },
       {
         path: "*",
