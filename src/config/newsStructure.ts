@@ -32,7 +32,6 @@ export interface RelatedLink {
 
 export interface RelativeBox {
     type: "relativeBox";
-    index: number;
     firstRelatedImg: string;
     firstRelatedDescription: string;
     relatedLinks: RelatedLink[],
@@ -44,6 +43,17 @@ export interface ContentWrap {
     title: string;
     paragraph: string;
 }
+
+export interface tabLink {
+    title: string;
+    href: string;
+}
+
+export interface DetailTab {
+    type: "detailTab";
+    tabLinks: tabLink[];
+}
+
 export type NewsContent =
     | Paragraph
     | NewsImage
@@ -58,4 +68,5 @@ export interface NewsStructure {
     detailTime: string;
     detailContent: NewsContent[];
     relativeBox: RelativeBox;
+    detailTab: DetailTab;
 }

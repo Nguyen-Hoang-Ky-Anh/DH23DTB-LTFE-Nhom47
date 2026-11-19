@@ -9,6 +9,10 @@ export interface NewsItem {
 
 const parser = new DOMParser();
 
+export function convertToProxyURL(url: URL) {
+    return url? `/news-detail-proxy${url.pathname}${url.search}` : "";
+}
+
 export default async function fetchRSS(feed: string) {
     const response = await fetch(`/nld/rss/${feed}.rss`);
 
@@ -28,9 +32,10 @@ export default async function fetchRSS(feed: string) {
         const description = item.querySelector("description")?.textContent || "";
         const doc2 = parser.parseFromString(description, "text/html");
         const img = doc2.querySelector("img")?.getAttribute("src") || "";
+        const link = new URL(item.querySelector("link")?.textContent?.trim() || "");
         return {
             title: item.querySelector("title")?.textContent?.trim() || "",
-            link: item.querySelector("link")?.textContent?.trim() || "",
+            link: convertToProxyURL(link),
             image: /^https?:\/\//i.test(img) ? img : "/news-placeholder.svg",
             description: doc2.body.textContent.trim(),
             pubDate: item.querySelector("pubDate")?.textContent?.trim() || "",
