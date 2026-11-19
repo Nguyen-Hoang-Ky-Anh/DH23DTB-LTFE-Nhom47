@@ -112,10 +112,6 @@ export const router = createBrowserRouter([
         element: <NewsDetailPage/>,
       },
       {
-        path: "podcast",
-        element: <PodcastPage/>
-      },
-      {
         path: "*",
         loader: () => {
           throw new Response("Not Found", {status: 404});
@@ -129,7 +125,13 @@ export const router = createBrowserRouter([
     path: megaStory.href,
     element: <MegaStoryPage />,
     errorElement: <Error />,
-  }
+  },
+  
+  {
+        path: "/podcast",
+        element: <PodcastPage/>,
+        errorElement: <Error />,
+  },
 ]);
 
 

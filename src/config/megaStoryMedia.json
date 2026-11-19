@@ -1,132 +1,240 @@
 [
-    {
-        "id":  "so-bao-dau-tien",
-        "title":  "Khoảnh khắc 30-6",
-        "blocks":  [
-                       {
-                           "type":  "album",
-                           "rows":  [
-                                        [
-                                            [
-                                                "tru-so-1",
-                                                1200,
-                                                900
-                                            ],
-                                            [
-                                                "tru-so-2",
-                                                2560,
-                                                1707
-                                            ],
-                                            [
-                                                "tru-so-3",
-                                                1284,
-                                                1712
-                                            ]
-                                        ]
-                                    ],
-                           "caption":  "Trụ sở Báo Người Lao Động tọa lạc tại số 123-127 Võ Văn Tần, phường Xuân Hòa, TP HCM"
-                       },
-                       {
-                           "type":  "album",
-                           "rows":  [
-                                        [
-                                            [
-                                                "giao-ban-1",
-                                                2362,
-                                                1256
-                                            ],
-                                            [
-                                                "giao-ban-2",
-                                                2362,
-                                                1575
-                                            ]
-                                        ]
-                                    ],
-                           "caption":  "Họp giao ban Hội đồng Biên tập"
-                       },
-                       {
-                           "type":  "photo",
-                           "image":  [
-                                         "toa-soan",
-                                         2560,
-                                         1648
-                                     ],
-                           "layout":  "full",
-                           "caption":  "Đội ngũ phóng viên, biên tập viên, nhân viên làm việc tại trụ sở Báo Người Lao Động"
-                       },
-                       {
-                           "type":  "album",
-                           "rows":  [
-                                        [
-                                            [
-                                                "bao-cu-1",
-                                                840,
-                                                1260
-                                            ],
-                                            [
-                                                "bao-cu-2",
-                                                1260,
-                                                1890
-                                            ],
-                                            [
-                                                "bao-cu-3",
-                                                1260,
-                                                1890
-                                            ]
-                                        ],
-                                        [
-                                            [
-                                                "bao-cu-4",
-                                                1260,
-                                                1890
-                                            ],
-                                            [
-                                                "bao-cu-5",
-                                                1260,
-                                                1890
-                                            ],
-                                            [
-                                                "bao-cu-6",
-                                                1260,
-                                                1890
-                                            ]
-                                        ]
-                                    ],
-                           "extra":  [
-                                         [
-                                             "bao-cu-7",
-                                             840,
-                                             1260
-                                         ],
-                                         [
-                                             "bao-cu-8",
-                                             1260,
-                                             1890
-                                         ],
-                                         [
-                                             "bao-cu-9",
-                                             1260,
-                                             1890
-                                         ],
-                                         [
-                                             "bao-cu-10",
-                                             1260,
-                                             1890
-                                         ],
-                                         [
-                                             "bao-cu-11",
-                                             1260,
-                                             1890
-                                         ],
-                                         [
-                                             "bao-cu-12",
-                                             1575,
-                                             2362
-                                         ]
-                                     ],
-                           "archive":  true,
-                           "caption":  "Một vài số báo Công nhân giải phóng - tiền thân của Báo Người Lao Động"
-                       }
-                   ]
-    }
+  {
+    "id": "so-bao-dau-tien",
+    "title": "Khoảnh khắc 30-6",
+    "blocks": [
+      {
+        "type": "album",
+        "rows": [
+          [
+            [
+              "tru-so-1",
+              1200,
+              900
+            ],
+            [
+              "tru-so-2",
+              2560,
+              1707
+            ],
+            [
+              "tru-so-3",
+              1284,
+              1712
+            ]
+          ]
+        ],
+        "caption": "Trụ sở Báo Người Lao Động tọa lạc tại số 123-127 Võ Văn Tần, phường Xuân Hòa, TP HCM"
+      },
+      {
+        "type": "album",
+        "rows": [
+          [
+            [
+              "giao-ban-1",
+              2362,
+              1256
+            ],
+            [
+              "giao-ban-2",
+              2362,
+              1575
+            ]
+          ]
+        ],
+        "caption": "Họp giao ban Hội đồng Biên tập"
+      },
+      {
+        "type": "photo",
+        "image": [
+          "toa-soan",
+          2560,
+          1648
+        ],
+        "layout": "full",
+        "caption": "Đội ngũ phóng viên, biên tập viên, nhân viên làm việc tại trụ sở Báo Người Lao Động"
+      },
+      {
+        "type": "album",
+        "rows": [
+          [
+            [
+              "bao-cu-1",
+              840,
+              1260
+            ],
+            [
+              "bao-cu-2",
+              1260,
+              1890
+            ],
+            [
+              "bao-cu-3",
+              1260,
+              1890
+            ]
+          ],
+          [
+            [
+              "bao-cu-4",
+              1260,
+              1890
+            ],
+            [
+              "bao-cu-5",
+              1260,
+              1890
+            ],
+            [
+              "bao-cu-6",
+              1260,
+              1890
+            ]
+          ]
+        ],
+        "extra": [
+          [
+            "bao-cu-7",
+            840,
+            1260
+          ],
+          [
+            "bao-cu-8",
+            1260,
+            1890
+          ],
+          [
+            "bao-cu-9",
+            1260,
+            1890
+          ],
+          [
+            "bao-cu-10",
+            1260,
+            1890
+          ],
+          [
+            "bao-cu-11",
+            1260,
+            1890
+          ],
+          [
+            "bao-cu-12",
+            1575,
+            2362
+          ]
+        ],
+        "archive": true,
+        "caption": "Một vài số báo Công nhân giải phóng - tiền thân của Báo Người Lao Động"
+      },
+      {
+        "type": "photo",
+        "image": [
+          "bia-bao",
+          1672,
+          941
+        ],
+        "layout": "full",
+        "captionSpace": true
+      }
+    ]
+  },
+  {
+    "id": "nhung-trang-bao-in",
+    "title": "Từ tiếng nói của công nhân",
+    "blocks": [
+      {
+        "type": "photo",
+        "image": [
+          "chuong-2",
+          2299,
+          1723
+        ],
+        "layout": "full"
+      },
+      {
+        "type": "text",
+        "paragraphs": [
+          "Ra đời trong những ngày đầu đất nước thống nhất, tiền thân là Báo Công nhân Giải phóng, Báo Người Lao Động mang theo sứ mệnh của một tờ báo cách mạng: đồng hành cùng công nhân, tổ chức Công đoàn và góp phần xây dựng TP HCM sau chiến tranh.",
+          "Từ những trang báo còn nhiều khó khăn của thời kỳ bao cấp đến giai đoạn đổi mới, hội nhập và chuyển đổi số, Báo Người Lao Động luôn hiện diện trong những bước chuyển mình của đất nước. Mỗi giai đoạn phát triển của thành phố đều in dấu trên từng trang báo; mỗi đổi thay trong đời sống công nhân, người lao động đều được phản ánh bằng trách nhiệm, sự sẻ chia và tinh thần dấn thân của người làm báo."
+        ]
+      },
+      {
+        "type": "photo",
+        "image": [
+          "anh-014-01",
+          1748,
+          777
+        ],
+        "layout": "wide"
+      },
+      {
+        "type": "text",
+        "aside": {
+          "type": "photo",
+          "image": [
+            "anh-015-01",
+            1179,
+            2966
+          ],
+          "layout": "right"
+        },
+        "paragraphs": [
+          "51 năm qua, hàng ngàn phóng viên, biên tập viên, kỹ thuật viên và người lao động của Báo đã đi đến mọi miền đất nước, có mặt ở những nơi khó khăn nhất, nóng bỏng nhất của đời sống xã hội; ghi lại những câu chuyện của đất nước, của thành phố và của hàng triệu con người bình dị đang lao động, cống hiến mỗi ngày.",
+          "Không chỉ phản ánh hiện thực, Báo Người Lao Động còn góp phần kết nối cộng đồng, thúc đẩy chính sách, lan tỏa những giá trị nhân văn và khơi dậy tinh thần trách nhiệm xã hội thông qua nhiều chương trình mang dấu ấn riêng của tờ báo.",
+          "Từ báo in truyền thống đến báo điện tử, từ những trang báo giấy đến hệ sinh thái số đa nền tảng với hàng triệu lượt tương tác mỗi ngày, Báo Người Lao Động không ngừng đổi mới để thích ứng với thời đại. Nhưng xuyên suốt hành trình ấy vẫn là những giá trị cốt lõi chưa từng thay đổi: phụng sự bạn đọc, bảo vệ lẽ phải, đồng hành cùng sự phát triển của đất nước, của TP HCM, đề cao trách nhiệm xã hội và giữ vững bản lĩnh của một cơ quan báo chí cách mạng.",
+          "Đó chính là sợi chỉ đỏ kết nối quá khứ, hiện tại và cũng là điều còn lại sau 51 năm hình thành và phát triển của Báo Người Lao Động."
+        ]
+      },
+      {
+        "type": "photo",
+        "image": [
+          "toa-soan-cu",
+          1891,
+          1263
+        ],
+        "layout": "wide",
+        "caption": "Tổng Biên tập Phan Hồng Chiến (bìa phải) làm việc tại Tòa soạn những năm đầu thập niên 1990.",
+        "captionReading": true
+      },
+      {
+        "type": "compare",
+        "images": [
+          [
+            "anh-022-01",
+            800,
+            486
+          ],
+          [
+            "anh-022-02",
+            800,
+            534
+          ]
+        ],
+        "caption": "Trụ sở Báo Người Lao Động tại địa chỉ 123-127 Võ Văn Tần những ngày mới thành lập và hiện nay",
+        "italicTitle": true
+      },
+      {
+        "type": "photo",
+        "image": [
+          "anh-023-01",
+          2560,
+          1393
+        ],
+        "layout": "wide",
+        "caption": "\"Nhanh - Hay - Chính xác - Trách nhiệm - Nhân văn\" là 5 tiêu chí được Báo Người Lao Động điện tử xác định là rất quan trọng để tạo nên một thương hiệu hấp dẫn bạn đọc.",
+        "italicTitle": true,
+        "captionReading": true
+      },
+      {
+        "type": "photo",
+        "image": [
+          "cot-moc",
+          2560,
+          1600
+        ],
+        "layout": "full"
+      }
+    ]
+  }
 ]

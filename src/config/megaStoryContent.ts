@@ -5,6 +5,8 @@ export type MegaStoryImage = [file: string, width: number, height: number];
 interface Caption {
     caption?: string;
     captionSpace?: boolean;
+    italicTitle?: boolean;
+    captionReading?: boolean;
 }
 
 export interface MegaStoryPhoto extends Caption {
@@ -29,6 +31,10 @@ export interface MegaStoryComparison extends Caption {
 type MediaBlock = MegaStoryPhoto | MegaStoryAlbum | MegaStoryComparison;
 
 export type MegaStoryBlock = MediaBlock | {
+    type: "text";
+    paragraphs: string[];
+    aside?: MegaStoryPhoto;
+} | {
     type: "group";
     title: string;
     blocks: MediaBlock[];
