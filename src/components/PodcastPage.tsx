@@ -2,6 +2,9 @@ import {type FeedName, RSS_CATEGORIES} from "../services/rssConfig.ts";
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
 import PodcastCarousel from "./ui/PodcastCarousel.tsx";
+import PodcastCard from "./features/podcast/PodcastCard.tsx";
+import {useSelector} from "react-redux";
+import type {RootState} from "../store/store.ts";
 
 export const PODCAST_SECTIONS: {title: string; feed: FeedName; hasSubContent?: boolean; subContentTitle?:string, rows?: number}[] = [
     {title: "11 giờ 30", feed: RSS_CATEGORIES.podcast.children["11Gio30"].feed, hasSubContent: true,
@@ -30,9 +33,31 @@ export default function PodcastPage() {
 
     const feedNames = PODCAST_SECTIONS.map((section) => section.feed);
 
+    const podcasts = useSelector((state: RootState) => {
+        const feeds = PODCAST_SECTIONS
+            .map((section) => state.news.feeds[section.feed] ?? [])
+            .filter((feed) => feed.length > 0)
+            .flat()
+
+        return feeds.filter(
+            (podcast, index, self) =>
+                index === self.findIndex(
+                    (item) => item.link === podcast.link
+                )
+        );
+    });
+
     return (
         <main className="flex-grow-1">
             <PodcastCarousel sections={PODCAST_SECTIONS} />
+            {podcasts.slice(0, 7).map((podcast) => (
+                <PodcastCard
+                    key={podcast.guid}
+                    title={podcast.title}
+                    image={podcast.image}
+                    link={podcast.link}
+                />
+            ))}
         </main>
     )
 }
