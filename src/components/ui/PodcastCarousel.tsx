@@ -1,9 +1,11 @@
-import {useEffect} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "../../store/store.ts";
 import {fetchNews} from "../../store/slice/newsSlice.ts";
 import type {FeedName} from "../../services/rssConfig.ts";
 import DragCarousel from "./DragCarousel.tsx";
+import {fetchPodcastDuration} from "../../services/podcastService.ts";
+import {Link} from "react-router-dom";
 
 interface PodcastSection {
     title: string;
@@ -16,6 +18,7 @@ interface PodcastCarouselProps {
 
 export default function PodcastCarousel({sections}: PodcastCarouselProps) {
     const dispatch = useDispatch<AppDispatch>();
+    const [durations, setDurations] = useState<Record<string, string | null>>({});
 
     const feeds = useSelector(
         (state: RootState) => state.news.feeds
@@ -27,13 +30,30 @@ export default function PodcastCarousel({sections}: PodcastCarouselProps) {
         });
     }, [dispatch, sections]);
 
-    const carouselItems = sections
-        .map((section) => ({
-            title: section.title,
-            feed: section.feed,
-            newsItem: feeds[section.feed]?.[0]
-        }))
-        .filter((item) => item.newsItem !== undefined);
+    const carouselItems = useMemo(() => {
+        return sections
+            .map((section) => ({
+                title: section.title,
+                feed: section.feed,
+                newsItem: feeds[section.feed]?.[0]
+            }))
+            .filter((item) => item.newsItem !== undefined);
+    }, [sections, feeds])
+
+    useEffect(() => {
+        async function getDurations() {
+            for (const item of carouselItems) {
+                const duration = await fetchPodcastDuration(
+                    item.newsItem.link
+                );
+                setDurations(prev => ({
+                    ...prev,
+                    [item.feed]: duration
+                }))
+            }
+        }
+        getDurations();
+    }, [carouselItems]);
 
     return (
         <DragCarousel
@@ -65,13 +85,14 @@ export default function PodcastCarousel({sections}: PodcastCarouselProps) {
                             </div>
 
                             <div className="podcast-actions">
-                                <a
-                                    href={item.newsItem?.link}
-                                    className="podcast-play-btn"
+                                <Link
+                                    to={item.newsItem?.link}
+                                    className="podcast-play-btn me-3"
                                 >
                                     <i className="fa-solid fa-circle-play"></i>
                                     Nghe podcast
-                                </a>
+                                </Link>
+                                <span className="description" style={{color: "#AAAAAA", fontWeight: "bold"}}>{durations[item.feed] || "00:00"}</span>
                             </div>
                         </div>
                         <div className="podcast-cover">

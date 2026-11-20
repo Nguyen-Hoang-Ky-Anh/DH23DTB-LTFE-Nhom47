@@ -7,9 +7,10 @@ interface PodcastCardProps {
     link: string;
     description?: string;
     style?: "vertical" | "horizontal";
+    category?: string;
 }
 
-export default function PodcastCard({ title, image, link, description, style = "vertical"}: PodcastCardProps) {
+export default function PodcastCard({ title, image, link, description, style = "vertical", category}: PodcastCardProps) {
     const [duration, setDuration] = useState<number | undefined>();
     const [loading, setLoading] = useState(false);
 
@@ -37,16 +38,17 @@ export default function PodcastCard({ title, image, link, description, style = "
 
     if (style === "vertical") {
         return (
-            <div className="card mb-4" style={{width:'18rem', fontFamily: "Merriweather"}}>
+            <div className="card shadow mb-4" style={{width:'18rem', fontFamily: "Inter"}}>
                 <img className="card-img" src={image} alt={title}/>
                 <div className="card-body">
                     <p className="card-title text-start" style={{fontWeight: "bold"}}>{title}</p>
                     {description && <p className="card-description">{description}</p>}
-                    <a href={link} className="podcast-duration">
-                        <span className="video-play-icon-podcast">
-                            <i className="fa fa-play"></i>
-                        </span>
-
+                    <div className="d-flex align-items-center gap-1">
+                        <a href={link} className="podcast-duration">
+                            <span className="video-play-icon-podcast">
+                                <i className="fa fa-play"></i>
+                            </span>
+                        </a>
                         <span className="podcast-duration-text">
                             {loading
                                 ? "Đang lấy thời lượng..."
@@ -54,9 +56,38 @@ export default function PodcastCard({ title, image, link, description, style = "
                                     ? duration
                                     : "Chưa có thời lượng"}
                         </span>
-                    </a>
+                    </div>
                 </div>
             </div>
         )
     }
+
+    return (
+        <div className="podcast-featured-card">
+            <img className="horizontal-card-image" src={image} alt={title}/>
+            <div className="horizontal-card-content">
+                <span className="podcast-category">
+                    {category}
+                    <i className="fa-solid fa-angle-right"></i>
+                </span>
+                <h3 className="horizontal-card-title">{title}</h3>
+                <p className="horizontal-card-description">{description}</p>
+                <div className="podcast-audio-actions">
+                    <a href={link} className="podcast-duration">
+                            <span className="video-play-icon-podcast">
+                                <i className="fa fa-play"></i>
+                            </span>
+                            Nghe podcast
+                    </a>
+                    <span className="podcast-duration-text">
+                            {loading
+                                ? "Đang lấy thời lượng..."
+                                : duration !== undefined
+                                    ? duration
+                                    : "Chưa có thời lượng"}
+                    </span>
+                </div>
+            </div>
+        </div>
+    )
 }

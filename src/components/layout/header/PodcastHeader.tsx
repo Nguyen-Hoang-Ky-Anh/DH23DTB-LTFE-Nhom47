@@ -20,7 +20,7 @@ export default function PodcastHeader() {
     function search(event: SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
         const keyword = new FormData(event.currentTarget).get("keyword")?.toString().trim();
-        if (keyword) navigate(`/search/${encodeURIComponent(keyword)}`);
+        if (keyword) navigate(`${SECTIONS.podcast.href}/search/${encodeURIComponent(keyword)}`);
     }
 
     return (

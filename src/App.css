@@ -1862,6 +1862,7 @@ li:hover {
 
 .podcast-actions {
     margin-top: 58px;
+    align-items: center;
 }
 
 .podcast-play-btn {
@@ -1931,5 +1932,207 @@ li:hover {
 }
 
 .podcast-duration-text {
+    color: #ADADAD;
     line-height: 1.4;
+    font-size: 14px;
+}
+
+.podcast-featured-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    min-height: 420px;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+}
+
+.podcast-featured-card .horizontal-card-image {
+    display: block;
+    flex: 0 0 30%;
+
+    width: 30%;
+    max-width: 360px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.podcast-featured-card .horizontal-card-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    height: auto;
+    padding: 0;
+    background: transparent;
+}
+
+.podcast-featured-card .podcast-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    padding: 8px 18px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 30px;
+    color: #454545;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.podcast-featured-card .horizontal-card-title {
+    margin: 0 0 14px;
+    color: #171717;
+    font-family: Inter, sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: left;
+}
+
+.podcast-featured-card .horizontal-card-description {
+    margin: 0 0 24px;
+    color: #454545;
+    font-family: Inter, sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.podcast-featured-card .podcast-audio-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.podcast-featured-card .podcast-duration {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 9px 22px;
+    background: #147de1;
+    border-radius: 30px;
+    color: #fff;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.podcast-featured-card .podcast-duration:hover {
+    background: #0868c5;
+    color: #fff;
+}
+
+.podcast-featured-card .video-play-icon-podcast {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+    background: #fff;
+    border-radius: 50%;
+    color: #147de1;
+    font-size: 12px;
+}
+
+.podcast-featured-card .podcast-duration-text {
+    color: #999;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.podcast-section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 32px;
+    font-family: Inter, sans-serif;
+}
+
+.podcast-section-header {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 12px;
+    border-top: 1px solid #147de1;
+    color: #147de1;
+}
+
+.podcast-section-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.podcast-section-header i {
+    font-size: 15px;
+}
+
+.podcast-section-featured {
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 16px;
+}
+
+.podcast-section-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    min-width: 0;
+    gap: 16px;
+}
+
+.podcast-section-subcontent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.podcast-section-subtitle {
+    margin: 0 0 12px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.podcast-section-footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.podcast-section-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #147de1;
+    font-size: 13px;
+    font-weight: 500;
 }
