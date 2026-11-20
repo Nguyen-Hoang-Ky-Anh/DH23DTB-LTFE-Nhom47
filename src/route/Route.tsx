@@ -86,7 +86,7 @@ export const router = createBrowserRouter([
                 (link) => link.href === path,
               ),
           );
-          if (!exists) {
+          if (!exists || path==="/podcast" ) {
             throw new Response("Not Found", { status: 404 });
           }
           return null;

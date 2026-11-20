@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {megaStory} from "../config/megaStoryConfig.ts";
 import {chapters, megaStoryImagePath, type MegaStoryBlock, type MegaStoryComparison, type MegaStoryPhoto} from "../config/megaStoryContent.ts";
 import MegaStoryAlbum, {MediaCaption, MegaStoryText} from "./MegaStoryAlbum.tsx";
+import MegaStoryTimeline from "./MegaStoryTimeline.tsx";
 import UpToTopBtn from "./ui/UpToTopBtn.tsx";
 
 function Photo({image: [file, width, height], caption, captionSpace, layout, italicTitle, captionReading}: Omit<MegaStoryPhoto, "type">) {
@@ -34,6 +35,9 @@ function Comparison({images: [before, after], caption, captionSpace, italicTitle
 function StoryBlock({block}: {block: MegaStoryBlock}) {
     switch (block.type) {
         case "photo":
+            if (block.image[0] === "cot-moc") {
+                return <><Photo {...block} /><MegaStoryTimeline /></>;
+            }
             return <Photo {...block} />;
         case "album":
             return <MegaStoryAlbum {...block} />;
