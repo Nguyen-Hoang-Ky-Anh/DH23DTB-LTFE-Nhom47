@@ -2,8 +2,8 @@ import type {
     ContentWrap, DetailTab, NewsCallOutLink, NewsCallOutUl, NewsContent, RelatedLink, RelativeBox,
 } from "../config/newsStructure.ts";
 import {convertToProxyURL} from "./rssService.ts";
-import type {RSSCategory} from "./rssConfig.ts";
 import type {NewsStructure} from "../config/newsStructure";
+import {RSS_CATEGORIES} from "./rssConfig.ts";
 
 
 function parseCallOutUl(element: Element, index: number): NewsCallOutUl {
@@ -86,7 +86,12 @@ function parseDetailContent(
     return blocks;
 }
 
-export function parseNewsDetail(doc: Document, category: RSSCategory,): NewsStructure {
+export function parseNewsDetail(doc: Document): NewsStructure {
+    let categoryNameAc = doc.querySelector(".category-name_ac")?.getAttribute("href") ?? "";
+    categoryNameAc = categoryNameAc.substring(categoryNameAc.lastIndexOf("/") + 1, categoryNameAc.indexOf("."));
+    const category = Object.values(RSS_CATEGORIES)
+        .find((category) => category.feed === categoryNameAc
+    );
     const mainContent = doc.querySelector(".detail-cmain");
     if (!mainContent) {
         throw new Error("Không tìm thấy nội dung chính");
@@ -96,8 +101,8 @@ export function parseNewsDetail(doc: Document, category: RSSCategory,): NewsStru
         .map(p => p.textContent?.trim() ?? "")
         .filter(Boolean);
 
-    const relativeElement = mainContent.querySelector(".detail__related");
-    const detailTabElement = mainContent.querySelector(".detail-tab");
+    const box_category = doc.querySelector(".box-category");
+    const detailTabElement = doc.querySelector(".detail-tab");
 
     const detailTab: DetailTab = {
         type: "detailTab",
@@ -114,7 +119,7 @@ export function parseNewsDetail(doc: Document, category: RSSCategory,): NewsStru
         detailAuthor: authors,
         detailTime: mainContent.querySelector(".detail-time time")?.textContent?.trim() ?? "",
         detailContent: parseDetailContent(mainContent),
-        relativeBox: relativeElement ? parseRelativeBox(relativeElement) : {
+        relativeBox: box_category ? parseRelativeBox(box_category) : {
             type: "relativeBox",
             firstRelatedImg: "",
             firstRelatedDescription: "",

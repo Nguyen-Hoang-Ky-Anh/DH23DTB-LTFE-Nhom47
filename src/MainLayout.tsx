@@ -4,7 +4,6 @@ import Footer from "./components/layout/footer/Footer.tsx";
 import UpToTopBtn from "./components/ui/UpToTopBtn.tsx";
 import {SECTIONS} from "./config/newsSectionConfig.ts";
 import { useState } from "react";
-import TestPage from "./test.tsx";
 
 export default function MainLayout() {
     const [searchInput, setSearchInput] = useState("");
@@ -51,7 +50,6 @@ export default function MainLayout() {
             </main>
 
             <Footer />
-            <TestPage/>
             <UpToTopBtn />
         </div>
     );

@@ -6,6 +6,7 @@ import vietLottReducer from "./slice/vietLottSlice";
 import soccerMatchesCompetitionsReducer from "./slice/soccerMatchesCompetitionSlice.ts";
 import soccerStandingsCompetitionsReducer from "./slice/soccerStandingsCompetitionSlice.ts";
 import worldCupReducer from "./slice/worldCupSlice";
+import newsDetailReducer from "./slice/newsDetailSlice.ts";
 
 export const store = configureStore({
     reducer : {
@@ -16,6 +17,7 @@ export const store = configureStore({
         soccerMatches: soccerMatchesCompetitionsReducer,
         soccerStanding: soccerStandingsCompetitionsReducer,
         worldCup: worldCupReducer,
+        newsDetail: newsDetailReducer,
     }
 });
 

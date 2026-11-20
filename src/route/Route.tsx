@@ -132,6 +132,12 @@ export const router = createBrowserRouter([
         element: <PodcastPage/>,
         errorElement: <Error />,
   },
+
+  {
+    path: "/news-detail",
+    element: <NewsDetailPage/>,
+    errorElement: <Error/>
+  },
 ]);
 
 

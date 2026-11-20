@@ -1,5 +1,6 @@
 import type {NewsItem} from "../../../services/rssService.ts";
 import SeeMore from "./SeeMore.tsx";
+import {Link} from "react-router-dom";
 
 interface HomeHorizontalCardProps {
     index?: number;
@@ -35,7 +36,7 @@ export default function HomeHorizontalCard({
     return (
         <div className={`home-horizontal-card text-start 
         ${index !== 20 ? "border-bottom pb-2 me-4 mb-4" : ""} me-4`}>
-            <a className="main-title" href={linkArticles ? link : undefined}>{title}</a>
+            <Link className="main-title" to={`/news-detail?${new URLSearchParams({url: link}).toString()}`}>{title}</Link>
             <div className="home-horizontal-card-content mt-3 gap-0">
                 <img src={image} alt={title} className={(index ? getImageType(index) : "home-horizontal-card-image") + " me-3"}/>
 
