@@ -1,10 +1,8 @@
 import type {
-    ContentWrap, DetailTab, NewsCallOutLink, NewsCallOutUl, NewsContent, RelatedLink, RelativeBox,
+    ContentWrap, DetailTab, NewsCallOutLink, NewsCallOutUl, NewsContent, RelatedLink, RelativeBox, typeOfNews,
 } from "../config/newsStructure.ts";
 import {convertToProxyURL} from "./rssService.ts";
 import type {NewsStructure} from "../config/newsStructure";
-import {RSS_CATEGORIES} from "./rssConfig.ts";
-
 
 function parseCallOutUl(element: Element, index: number): NewsCallOutUl {
     const links: NewsCallOutLink[] = Array.from(
@@ -87,17 +85,19 @@ function parseDetailContent(
 }
 
 export function parseNewsDetail(doc: Document): NewsStructure {
-    let categoryNameAc = doc.querySelector(".category-name_ac")?.getAttribute("href") ?? "";
-    categoryNameAc = categoryNameAc.substring(categoryNameAc.lastIndexOf("/") + 1, categoryNameAc.indexOf("."));
-    const category = Object.values(RSS_CATEGORIES)
-        .find((category) => category.feed === categoryNameAc
-    );
+    const categoryNameAcList = doc.querySelectorAll(".detail-cate a");
+
+    const category: typeOfNews[] = Array.from(categoryNameAcList).map(a => ({
+        title: a.textContent?.trim() ?? "",
+        feedName: a.getAttribute("href") ?? "",
+    }));
+
     const mainContent = doc.querySelector(".detail-cmain");
     if (!mainContent) {
         throw new Error("Không tìm thấy nội dung chính");
     }
 
-    const authors = Array.from(mainContent.querySelectorAll(".author-info p"))
+    const authors = Array.from(doc.querySelectorAll(".author-info p"))
         .map(p => p.textContent?.trim() ?? "")
         .filter(Boolean);
 
@@ -117,7 +117,7 @@ export function parseNewsDetail(doc: Document): NewsStructure {
         detailTitle: doc.querySelector("h1")?.textContent?.trim() ?? "",
         detailSapo: doc.querySelector("h2")?.textContent?.trim() ?? "",
         detailAuthor: authors,
-        detailTime: mainContent.querySelector(".detail-time time")?.textContent?.trim() ?? "",
+        detailTime: doc.querySelector(".detail-time time")?.textContent?.trim() ?? "",
         detailContent: parseDetailContent(mainContent),
         relativeBox: box_category ? parseRelativeBox(box_category) : {
             type: "relativeBox",

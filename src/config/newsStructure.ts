@@ -1,5 +1,7 @@
-import type {RSSCategory} from "../services/rssConfig.ts";
-
+export interface typeOfNews {
+    title: string;
+    feedName: string;
+}
 export interface Paragraph {
     type: "paragraph";
     index: number;
@@ -61,7 +63,7 @@ export type NewsContent =
     | ContentWrap;
 
 export interface NewsStructure {
-    typeOfNews?: RSSCategory;
+    typeOfNews?: typeOfNews[];
     detailTitle: string;
     detailSapo: string;
     detailAuthor: string[];

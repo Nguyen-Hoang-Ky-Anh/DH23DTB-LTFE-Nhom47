@@ -1,4 +1,10 @@
-import {RSS_CATEGORIES, type RSSCategory, type RSSFeed, type FeedName, type CategoryName} from "../services/rssConfig.ts";
+import {
+    RSS_CATEGORIES,
+    type RSSCategory,
+    type RSSFeed,
+    type FeedName,
+    type CategoryName
+} from "../services/rssConfig.ts";
 
 export interface NavLink {
     label: string;
@@ -108,5 +114,28 @@ export const SECTIONS = {
     NLDNEWS: createSection("NLDNEWS", "fa fa-newspaper"),
     SEAGame33: createSection("SEAGame33", "fa fa-newspaper"),
 } satisfies Record<string, NewsSectionConfig>;
+
+export function findChildrenSectionBySectionKey(feedName: string) {
+    const parentFeed = feedName.substring(0, feedName.lastIndexOf("/")) + ".htm";
+    return findSectionByFeedName(parentFeed)?.links.find(childLink =>
+            childLink.feed.toString() === feedName.substring(0, feedName.indexOf(".")).slice(1)) ??
+        findSectionByFeedName(parentFeed)?.moreLinks.find(extraLink =>
+            extraLink.feed.toString() === feedName.substring(0, feedName.indexOf(".")).slice(1));
+}
+
+function convertToSectionKey(text: string) {
+    return text.split("-").map((t, index) =>
+        index !== 0 ? t.charAt(0).toUpperCase() + t.slice(1) : t
+    ).join("")
+}
+
+export function findSectionByFeedName(feedName: string) {
+    let key = convertToSectionKey(feedName.substring(feedName.lastIndexOf("/") + 1,
+        feedName.indexOf(".")));
+    if (key === "giaoDucKhoaHoc") key = "giaoDuc";
+    return Object.values(SECTIONS).find(s =>
+        s.feed.toString() === key
+    );
+}
 
 export type SectionKey = keyof typeof SECTIONS;
