@@ -1,4 +1,4 @@
-import type {SubmitEvent} from "react";
+import {useState, type SubmitEvent} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {SECTIONS} from "../../../config/newsSectionConfig.ts";
 
@@ -15,6 +15,7 @@ const menu = [
 
 export default function PodcastHeader() {
     const navigate = useNavigate();
+    const [showSearch, setShowSearch] = useState(false);
 
     function search(event: SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -27,7 +28,6 @@ export default function PodcastHeader() {
             <div className="podcast-header-inner">
                 <Link to="/" className="podcast-home-link">
                     <i className="fa-solid fa-arrow-left"/>
-                    <span>Trang chủ</span>
                 </Link>
 
                 <Link to={SECTIONS.podcast.href} className="podcast-header-brand">
@@ -48,16 +48,24 @@ export default function PodcastHeader() {
                     })}
                 </nav>
 
-                <details className="podcast-header-search">
-                    <summary className="podcast-search-toggle" title="Tìm kiếm bài viết">
-                        <i className="fa-solid fa-magnifying-glass"/>
-                    </summary>
-                    <form className="podcast-search-form d-flex gap-2 p-2 rounded shadow" onSubmit={search}>
-                        <input name="keyword" type="search" placeholder="Tìm bài viết"
-                               className="form-control form-control-sm" required />
-                        <button type="submit" className="btn btn-primary btn-sm">Tìm</button>
+                {showSearch ? (
+                    <form className="podcast-header-search search-bar d-inline-flex gap-1 align-items-center p-2"
+                          onSubmit={search}>
+                        <input name="keyword" className="search-input" placeholder="Nhập nội dung cần tìm" autoFocus />
+                        <button type="submit" className="search-btn" title="Tìm kiếm bài viết">
+                            <i className="fa-solid fa-magnifying-glass" />
+                        </button>
+                        <button type="button" className="search-btn" title="Đóng tìm kiếm"
+                                onClick={() => setShowSearch(false)}>
+                            <i className="fa-solid fa-xmark" />
+                        </button>
                     </form>
-                </details>
+                ) : (
+                    <button type="button" className="podcast-header-search search-btn" title="Mở tìm kiếm"
+                            onClick={() => setShowSearch(true)}>
+                        <i className="fa-solid fa-magnifying-glass" />
+                    </button>
+                )}
             </div>
         </header>
     );
