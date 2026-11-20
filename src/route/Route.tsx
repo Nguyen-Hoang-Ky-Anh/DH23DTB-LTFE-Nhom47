@@ -17,6 +17,7 @@ import {megaStory} from "../config/megaStoryConfig.ts";
 import MegaStoryPage from "../components/MegaStoryPage.tsx";
 import NewsDetailPage from "../components/NewsDetailPage.tsx";
 import PodcastPage from "../components/PodcastPage.tsx";
+import PodcastSearchPage from "../components/PodcastSearchPage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -132,7 +133,21 @@ export const router = createBrowserRouter([
         element: <PodcastPage/>,
         errorElement: <Error />,
   },
+  {
+    path: "podcast/search/:keyword",
+    element: <PodcastSearchPage />,
+    loader: ({params}) => {
+      const keyword = (params.keyword ?? "").trim();
+      if (!keyword) {
+        throw new Response("Not Found", { status: 404 });
+      }
 
+      return {
+        keyword
+      };
+
+    }
+  },
   {
     path: "/news-detail",
     element: <NewsDetailPage/>,
