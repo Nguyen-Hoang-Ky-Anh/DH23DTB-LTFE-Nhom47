@@ -4,6 +4,18 @@ import {megaStoryImagePath} from "../config/megaStoryContent.ts";
 const videoPath = "291774122806476800/2026/6/24/2026-khep-lai-178234243589567230044.mp4";
 const videoCdn = "https://nld.mediacdn.vn";
 
+export function MegaStoryVideo({path, poster = `${videoCdn}/.v-thumb/${path}.jpg`}: {path: string; poster?: string}) {
+    return (
+        <figure className="mega-story-media mega-story-wide">
+            <video className="d-block w-100 h-auto" width={1280} height={720}
+                   poster={poster} controls playsInline preload="none">
+                <source src={`${videoCdn}/.hls/${path}.master.m3u8`} type="application/vnd.apple.mpegurl" />
+                <source src={`${videoCdn}/${path}`} type="video/mp4" />
+            </video>
+        </figure>
+    );
+}
+
 const milestones = [
     {file: "anh-025-01", date: "28-7-1975"},
     {file: "anh-026-01", date: "1984–1989"},
@@ -63,13 +75,7 @@ export default function MegaStoryTimeline() {
                     </figure>
                 </div>
             </div>
-            <figure className="mega-story-media mega-story-wide">
-                <video className="d-block w-100 h-auto" width={1280} height={720}
-                       poster="/mega-story/cot-moc-video-poster.webp" controls playsInline preload="none">
-                    <source src={`${videoCdn}/.hls/${videoPath}.master.m3u8`} type="application/vnd.apple.mpegurl" />
-                    <source src={`${videoCdn}/${videoPath}`} type="video/mp4" />
-                </video>
-            </figure>
+            <MegaStoryVideo path={videoPath} poster="/mega-story/cot-moc-video-poster.webp" />
         </>
     );
 }

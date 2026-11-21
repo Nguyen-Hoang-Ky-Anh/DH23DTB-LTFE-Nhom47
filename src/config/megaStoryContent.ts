@@ -12,6 +12,8 @@ interface Caption {
 export interface MegaStoryPhoto extends Caption {
     type: "photo";
     image: MegaStoryImage;
+    alt?: string;
+    reveal?: boolean;
     layout: "full" | "wide" | "reading" | "right";
 }
 
@@ -30,7 +32,7 @@ export interface MegaStoryComparison extends Caption {
 
 type MediaBlock = MegaStoryPhoto | MegaStoryAlbum | MegaStoryComparison;
 
-export type MegaStoryBlock = MediaBlock | {
+export type MegaStoryBlock = MediaBlock | {type: "video"; path: string} | {
     type: "text";
     paragraphs: string[];
     aside?: MegaStoryPhoto;
