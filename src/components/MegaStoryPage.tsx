@@ -3,13 +3,17 @@ import {Link} from "react-router-dom";
 import {megaStory} from "../config/megaStoryConfig.ts";
 import {chapters, megaStoryImagePath, type MegaStoryBlock, type MegaStoryComparison, type MegaStoryPhoto} from "../config/megaStoryContent.ts";
 import MegaStoryAlbum, {MediaCaption, MegaStoryText} from "./MegaStoryAlbum.tsx";
-import MegaStoryTimeline from "./MegaStoryTimeline.tsx";
+import MegaStoryLightbox from "./MegaStoryLightbox.tsx";
+import MegaStoryTimeline, {MegaStoryVideo} from "./MegaStoryTimeline.tsx";
 import UpToTopBtn from "./ui/UpToTopBtn.tsx";
 
-function Photo({image: [file, width, height], caption, captionSpace, layout, italicTitle, captionReading}: Omit<MegaStoryPhoto, "type">) {
+function Photo({image: [file, width, height], alt = "", reveal, caption, captionSpace, layout, italicTitle, captionReading}: Omit<MegaStoryPhoto, "type">) {
     return (
         <figure className={`mega-story-media mega-story-photo mega-story-${layout}${captionReading ? " mega-story-caption-reading" : ""}`}>
-            <img src={megaStoryImagePath(file)} alt="" width={width} height={height} loading="lazy" decoding="async" />
+            <button type="button" title="Phóng to ảnh" data-mega-story-photo={megaStoryImagePath(file)}
+                    className={`mega-story-photo-trigger${reveal ? " mega-story-scroll-quote" : ""}`}>
+                <img src={megaStoryImagePath(file)} alt={alt} width={width} height={height} loading="lazy" decoding="async" />
+            </button>
             <MediaCaption caption={caption} captionSpace={captionSpace} italicTitle={italicTitle} />
         </figure>
     );
@@ -43,6 +47,8 @@ function StoryBlock({block}: {block: MegaStoryBlock}) {
             return <MegaStoryAlbum {...block} />;
         case "compare":
             return <Comparison {...block} />;
+        case "video":
+            return <MegaStoryVideo path={block.path} />;
         case "text":
             return (
                 <div className="mega-story-reading mega-story-prose">
@@ -108,18 +114,14 @@ export default function MegaStoryPage() {
                 </div>
             </header>
             <main>
-                <article>
+                <MegaStoryLightbox>
                     <h1 className="visually-hidden">{megaStory.title}</h1>
-                    <img
-                        src={megaStory.image}
-                        srcSet={`${megaStory.thumbnail} 960w, ${megaStory.image} 1920w`}
-                        sizes="100vw"
-                        alt=""
-                        width={1920}
-                        height={1202}
-                        className="img-fluid w-100 d-block"
-                        fetchPriority="high"
-                    />
+                    <button type="button" className="mega-story-photo-trigger" title="Phóng to ảnh bìa"
+                            data-mega-story-photo={megaStory.image}>
+                        <img src={megaStory.image} srcSet={`${megaStory.thumbnail} 960w, ${megaStory.image} 1920w`}
+                             sizes="100vw" alt="" width={1920} height={1202} className="img-fluid w-100 d-block"
+                             fetchPriority="high" />
+                    </button>
 
                     {chapters.map(chapter => (
                         <section key={chapter.id} id={chapter.id} className="mega-story-chapter">
@@ -132,7 +134,7 @@ export default function MegaStoryPage() {
                     <footer className="mega-story-reading mega-story-footer border-top">
                         <Link to="/" className="btn btn-outline-secondary">Về trang chủ</Link>
                     </footer>
-                </article>
+                </MegaStoryLightbox>
             </main>
             <UpToTopBtn />
         </div>

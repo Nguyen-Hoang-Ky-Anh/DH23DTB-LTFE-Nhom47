@@ -236,5 +236,117 @@
         "layout": "full"
       }
     ]
+  },
+  {
+    "id": "cong-viec-lam-bao",
+    "title": "Những trang báo đi cùng đời sống",
+    "blocks": [
+      {
+        "type": "photo",
+        "image": [
+          "chuong-3",
+          1672,
+          1091
+        ],
+        "layout": "full"
+      },
+      {
+        "type": "text",
+        "paragraphs": [
+          "Suốt hơn nửa thế kỷ, Báo Người Lao Động luôn chọn đứng ở nơi cuộc sống đang diễn ra. Đó là những nhà máy rực sáng ca đêm, những công trường ngổn ngang bụi đất, những khu công nghiệp đông nghịt công nhân tan ca; là bệnh viện trong những ngày dịch bệnh căng thẳng, là trường học mỗi mùa thi, là những vùng quê chịu thiên tai, là những diễn đàn chính sách, nghị trường và các sự kiện lớn của thành phố, đất nước."
+        ]
+      },
+      {
+        "type": "photo",
+        "image": [
+          "moi-lan-tac-nghiep",
+          1748,
+          706
+        ],
+        "layout": "wide",
+        "reveal": true,
+        "alt": "Ở đâu có những vấn đề của đời sống, ở đó có những người làm Báo Người Lao Động"
+      },
+      {
+        "type": "text",
+        "paragraphs": [
+          "Từ những câu chuyện dân sinh bình dị đến những vấn đề lớn liên quan đến phát triển kinh tế - xã hội, từ tiếng nói của công nhân, người lao động đến tâm tư của doanh nghiệp, người dân và các tầng lớp xã hội, Báo Người Lao Động luôn nỗ lực phản ánh trung thực hiện thực cuộc sống, góp phần thúc đẩy những thay đổi tích cực trong xã hội."
+        ]
+      },
+      {
+        "type": "album",
+        "rows": [
+          [
+            [
+              "anh-039-01",
+              2256,
+              1569
+            ],
+            [
+              "phong-vien-1",
+              1280,
+              912
+            ],
+            [
+              "anh-039-03",
+              2560,
+              1707
+            ]
+          ],
+          [
+            [
+              "phong-vien-2",
+              2560,
+              1707
+            ],
+            [
+              "anh-039-05",
+              1440,
+              960
+            ],
+            [
+              "phong-vien-3",
+              2560,
+              2125
+            ]
+          ],
+          [
+            [
+              "anh-039-07",
+              2560,
+              1778
+            ],
+            [
+              "anh-039-08",
+              2560,
+              1707
+            ],
+            [
+              "anh-039-09",
+              1280,
+              960
+            ]
+          ]
+        ],
+        "caption": "Đội ngũ phóng viên Báo Người Lao Động lao động hăng say phục vụ bạn đọc"
+      },
+      {
+        "type": "text",
+        "paragraphs": [
+          "Nhiều tuyến bài điều tra, phản biện và giám sát xã hội đã góp phần hoàn thiện chính sách, bảo vệ người yếu thế, đấu tranh với cái xấu, cổ vũ điều tốt đẹp và lan tỏa những giá trị nhân văn trong cộng đồng. Không ít vụ việc đã được giải quyết, không ít số phận đã được sẻ chia, không ít chính sách đã được điều chỉnh từ những thông tin được phản ánh trên mặt báo.",
+          "Hơn 100 giải báo chí quốc gia, giải báo chí TP HCM và các giải báo chí chuyên ngành giai đoạn 2021-2026 là sự ghi nhận cho nỗ lực nghề nghiệp của nhiều thế hệ người làm báo. Nhưng phần thưởng lớn hơn cả chính là sự tin cậy của hàng triệu bạn đọc đã đồng hành cùng Báo Người Lao Động trong suốt nhiều thập niên."
+        ]
+      },
+      {
+        "type": "video",
+        "path": "291774122806476800/2026/6/24/timeline-2-17823432938921223649013.mp4"
+      },
+      {
+        "type": "text",
+        "paragraphs": [
+          "Đằng sau mỗi trang báo là những bước chân không mỏi của phóng viên trên hiện trường, những đêm thức trắng của Ban Biên tập, của Tòa soạn, những cuộc tranh luận nghề nghiệp để bảo vệ sự thật và trách nhiệm xã hội. Tất cả đã góp phần tạo nên một bản sắc làm báo được gìn giữ qua nhiều thế hệ: Nhanh - Hay - Chính xác - Trách nhiệm - Nhân văn."
+        ]
+      }
+    ]
   }
 ]

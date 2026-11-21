@@ -1,4 +1,4 @@
-import {Fragment, useRef, useState} from "react";
+import {Fragment} from "react";
 import {megaStoryImagePath, type MegaStoryAlbum, type MegaStoryImage} from "../config/megaStoryContent.ts";
 
 export function MegaStoryText({text}: {text: string}) {
@@ -17,25 +17,11 @@ export function MediaCaption({caption, captionSpace, italicTitle}: {caption?: st
 }
 
 export default function MegaStoryAlbum({rows, layout, archive, extra = [], caption, captionSpace}: MegaStoryAlbum) {
-    const photos = [...rows.flat(), ...extra];
-    const hiddenStart = photos.length - extra.length;
-    const [index, setIndex] = useState<number | null>(null);
-    const dialog = useRef<HTMLDialogElement>(null);
-    const currentPhoto = index === null ? undefined : photos[index];
-
-    function open(photoIndex: number) {
-        setIndex(photoIndex);
-        dialog.current?.showModal();
-    }
-
-    function step(direction: number) {
-        setIndex(current => ((current ?? 0) + direction + photos.length) % photos.length);
-    }
+    const lastRow = rows.at(-1);
 
     function showTile(photo: MegaStoryImage) {
         const [name, tileWidth, tileHeight] = photo;
-        const photoIndex = photos.indexOf(photo);
-        const showMore = extra.length > 0 && photoIndex === hiddenStart - 1;
+        const showMore = extra.length > 0 && photo === lastRow?.at(-1);
 
         return (
             <button
@@ -43,8 +29,9 @@ export default function MegaStoryAlbum({rows, layout, archive, extra = [], capti
                 type="button"
                 className="mega-story-tile"
                 style={{aspectRatio: archive ? "2 / 3" : `${tileWidth} / ${tileHeight}`}}
-                aria-label={showMore ? `Xem thêm ${extra.length} ảnh` : `Xem ảnh ${photoIndex + 1}`}
-                onClick={() => open(showMore ? hiddenStart : photoIndex)}
+                title={showMore ? `Xem thêm ${extra.length} ảnh` : "Phóng to ảnh"}
+                data-mega-story-photo={megaStoryImagePath(name)}
+                data-mega-story-more={showMore || undefined}
             >
                 <img src={megaStoryImagePath(name)} alt="" width={tileWidth} height={tileHeight} loading="lazy" decoding="async" />
                 {showMore && <span className="mega-story-tile-more" aria-hidden="true">+{extra.length}</span>}
@@ -63,30 +50,10 @@ export default function MegaStoryAlbum({rows, layout, archive, extra = [], capti
                     {row.map(showTile)}
                 </div>
             ))}
+            {extra.map(([name, width, height]) => (
+                <span key={name} hidden data-mega-story-photo={megaStoryImagePath(name)} data-width={width} data-height={height} />
+            ))}
             <MediaCaption caption={caption} captionSpace={captionSpace} />
-            <dialog
-                ref={dialog}
-                className="mega-story-lightbox"
-                aria-label={caption || "Album ảnh"}
-                onClose={() => setIndex(null)}
-                onKeyDown={event => {
-                    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-                        event.preventDefault();
-                        step(event.key === "ArrowLeft" ? -1 : 1);
-                    }
-                }}
-                onClick={event => {
-                    if (event.target === event.currentTarget) dialog.current?.close();
-                }}
-            >
-                <button type="button" className="mega-story-close" aria-label="Đóng album" onClick={() => dialog.current?.close()}>×</button>
-                <button type="button" className="mega-story-previous" aria-label="Ảnh trước" onClick={() => step(-1)}>‹</button>
-                {currentPhoto && (
-                    <img src={megaStoryImagePath(currentPhoto[0])} alt={`Ảnh ${(index ?? 0) + 1}`} width={currentPhoto[1]} height={currentPhoto[2]} />
-                )}
-                <button type="button" className="mega-story-next" aria-label="Ảnh sau" onClick={() => step(1)}>›</button>
-                {index !== null && <output className="mega-story-image-index" aria-live="polite">{index + 1} / {photos.length}</output>}
-            </dialog>
         </figure>
     );
 }
