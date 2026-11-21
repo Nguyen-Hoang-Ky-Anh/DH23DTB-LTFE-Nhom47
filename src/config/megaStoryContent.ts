@@ -32,7 +32,7 @@ export interface MegaStoryComparison extends Caption {
 
 type MediaBlock = MegaStoryPhoto | MegaStoryAlbum | MegaStoryComparison;
 
-export type MegaStoryBlock = MediaBlock | {type: "video"; path: string} | {
+export type MegaStoryBlock = MediaBlock | {type: "video"; path: string} | {type: "featured-articles"} | {
     type: "text";
     paragraphs: string[];
     aside?: MegaStoryPhoto;
@@ -53,3 +53,38 @@ export const chapters = media as MegaStoryChapter[];
 export function megaStoryImagePath(file: string) {
     return `/mega-story/${file}.webp`;
 }
+
+export const featuredArticles = [
+    {
+        title: "Tổng Bí thư, Chủ tịch nước Tô Lâm: Trung ương luôn quan tâm, đồng hành, ủng hộ TPHCM",
+        image: "bai-tieu-bieu-1",
+    },
+    {
+        title: "Người chỉ huy xe tăng 390 kể thời khắc lịch sử húc đổ cổng Dinh Độc Lập",
+        image: "bai-tieu-bieu-2",
+    },
+    {
+        title: "50 năm bền bỉ ươm mầm tri thức cho Tây Nguyên",
+        image: "bai-tieu-bieu-3",
+    },
+    {
+        title: "TP HCM: Tưng bừng \"Ngày hội non sông\"",
+        image: "bai-tieu-bieu-4",
+    },
+    {
+        title: "TP HCM hiện thực hóa khát vọng vươn tầm",
+        image: "bai-tieu-bieu-5",
+    },
+    {
+        title: "“Hướng đi lạ” của Đinh Võ Nam Hiếu, em trai Khoai Lang Thang",
+        image: "bai-tieu-bieu-6",
+    },
+    {
+        title: "Lễ trao giải Mai Vàng lần thứ 31 - hành trình tỏa sáng của nghệ thuật Việt",
+        image: "bai-tieu-bieu-7",
+    },
+    {
+        title: "Báo chí giữa tâm lũ: Cứu người, chặn tin giả và khơi dậy triệu trái tim",
+        image: "bai-tieu-bieu-8",
+    },
+];
