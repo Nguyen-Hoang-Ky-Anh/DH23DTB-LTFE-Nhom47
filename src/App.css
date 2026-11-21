@@ -122,7 +122,74 @@ body * {
     text-align: start;
 }
 
+.social-top {
+    height: 32px;
+}
 
+.share-btn {
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    padding: 4px 10px;
+    height: 100%;
+    text-align: center;
+}
+
+.news-detail-sapo {
+    color: #292929;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 28px;
+    font-family: Merriweather, serif;
+}
+
+.relative-box {
+    background: #fafafa;
+}
+
+.relative-box-title {
+    color: #292929;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    font-family: Inter, serif;
+}
+
+.first-related-img {
+    width: 205px;
+    height: 100%;
+}
+
+.related-title {
+    color: #292929;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 24px;
+    font-family: Merriweather, serif;
+}
+
+.first-related-description {
+    color: #454545;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+    font-family: Inter, serif;
+}
+
+.detail-social-bottom {
+    background: #fafafa;
+}
+
+.detail-tab-item {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background:  #f6f6f6;
+    color: #454545;
+    font-family: Inter, serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+}
 .sports-competition {
     position: relative;
     min-width: 0;
