@@ -1294,6 +1294,37 @@ li:hover {
     scroll-margin-top: 54px;
 }
 
+.mega-story-featured {
+    background: #ffbf69;
+    padding: 40px clamp(16px, 2vw, 32px);
+    font-family: Merriweather, serif;
+}
+
+.mega-story-featured h3 {
+    color: #0759a3;
+    font-size: 24px;
+}
+
+.mega-story-featured-card {
+    width: max(220px, 13vw);
+}
+
+.mega-story-featured-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.mega-story-featured-card h4 {
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.mega-story-featured-card h4:hover {
+    color: #0759a3;
+    cursor: pointer;
+}
+
 .mega-story-reading {
     width: min(680px, calc(100% - 32px));
     margin: 28px auto;

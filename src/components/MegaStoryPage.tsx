@@ -1,10 +1,11 @@
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {megaStory} from "../config/megaStoryConfig.ts";
-import {chapters, megaStoryImagePath, type MegaStoryBlock, type MegaStoryComparison, type MegaStoryPhoto} from "../config/megaStoryContent.ts";
+import {chapters, featuredArticles, megaStoryImagePath, type MegaStoryBlock, type MegaStoryComparison, type MegaStoryPhoto} from "../config/megaStoryContent.ts";
 import MegaStoryAlbum, {MediaCaption, MegaStoryText} from "./MegaStoryAlbum.tsx";
 import MegaStoryLightbox from "./MegaStoryLightbox.tsx";
 import MegaStoryTimeline, {MegaStoryVideo} from "./MegaStoryTimeline.tsx";
+import DragCarousel from "./ui/DragCarousel.tsx";
 import UpToTopBtn from "./ui/UpToTopBtn.tsx";
 
 function Photo({image: [file, width, height], alt = "", reveal, caption, captionSpace, layout, italicTitle, captionReading}: Omit<MegaStoryPhoto, "type">) {
@@ -49,6 +50,21 @@ function StoryBlock({block}: {block: MegaStoryBlock}) {
             return <Comparison {...block} />;
         case "video":
             return <MegaStoryVideo path={block.path} />;
+        case "featured-articles":
+            return (
+                <section className="mega-story-featured">
+                    <h3 className="text-center text-uppercase mb-4">Các bài báo tiêu biểu</h3>
+                    <DragCarousel showProgress>
+                        {featuredArticles.map(({title, image}) => (
+                            <article key={image} className="mega-story-featured-card">
+                                <img src={megaStoryImagePath(image)} width={640} height={335}
+                                     alt="" loading="lazy" decoding="async" draggable={false} />
+                                <h4 className="mb-0 mt-2">{title}</h4>
+                            </article>
+                        ))}
+                    </DragCarousel>
+                </section>
+            );
         case "text":
             return (
                 <div className="mega-story-reading mega-story-prose">
