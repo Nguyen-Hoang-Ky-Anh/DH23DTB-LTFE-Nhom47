@@ -7,6 +7,7 @@ import NewsContentSideBar from "./features/news-detail/detail-components/NewsCon
 import {findChildrenSectionBySectionKey, findSectionByFeedName} from "../config/newsSectionConfig.ts";
 import NewsDetailRelated from "./features/news-detail/detail-components/NewsDetailRelated.tsx";
 import CommentBlock from "./ui/CommentBlock.tsx";
+import NewsDetailRenderer from "./features/news-detail/NewsDetailRenderer.tsx";
 
 export default function NewsDetailPage() {
     const dispatch = useDispatch<AppDispatch>();
@@ -123,9 +124,10 @@ export default function NewsDetailPage() {
                             <div className={'news-detail'}>
                                 <h2 className={'news-detail-sapo'}>{news.detailSapo}</h2>
 
+                                <NewsDetailRenderer content={news.detailContent}/>
                             </div>
 
-                            <div className={'news-detail-bottom'}>
+                            <div className={'news-detail-bottom mt-5'}>
                                 <NewsDetailRelated relativeBox={news.relativeBox}/>
 
                                 {/* Social bottom*/}

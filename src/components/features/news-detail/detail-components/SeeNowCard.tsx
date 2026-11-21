@@ -1,57 +1,43 @@
-import { type FeedName } from "../../../../services/rssConfig.ts";
-import { useDispatch, useSelector } from "react-redux";
-import type { AppDispatch, RootState } from "../../../../store/store.ts";
-import { useEffect } from "react";
-import { fetchNews } from "../../../../store/slice/newsSlice.ts";
+import type {callOutVariant, NewsCallOutLink} from "../../../../config/newsStructure.ts";
+import {Link} from "react-router-dom";
 
 interface SeeNowCardProps {
-    feedName: FeedName;
+    variant: callOutVariant;
+    liImg?: string;
+    li: NewsCallOutLink[];
 }
 
-export default function SeeNowCard({ feedName }: SeeNowCardProps) {
-    const dispatch = useDispatch<AppDispatch>();
-
-    const news = useSelector(
-        (state: RootState) => state.news.feeds[feedName]
-    ) ?? [];
-
-    const selectedNews = news[0];
-
-    useEffect(() => {
-        dispatch(fetchNews(feedName));
-    }, [dispatch, feedName]);
-
-    if (!selectedNews) {
+export default function SeeNowCard({variant, liImg, li}: SeeNowCardProps) {
+    if (variant === 'type-1') {
         return (
-            <div className="card" style={{ width: "18rem" }}>
-                <div className="card-body">
-                    Đang tải tin tức...
+            <div className="card" style={{
+                width: "100%", fontFamily: "Merriweather, serif",
+                backgroundColor: "#EAEAEA"
+            }}>
+                <Link to={`/news-detail?${new URLSearchParams({url: li[1].src}).toString()}`}>
+                    <img className={'w-100'}
+                        src={liImg}
+                        alt={li[0].title}
+                    />
+                </Link>
+                <div className=" card-body p-2">
+                    <Link to={`/news-detail?${new URLSearchParams({url: li[1].src}).toString()}`}>
+                        <h5 className=" card-title text-start fw-bold" style={{fontSize: 16, lineHeight: "30px"}}>
+                            {li[1].title}
+                        </h5>
+                    </Link>
+
+                    <div className="d-flex justify-content-end mt-2">
+                        <Link to={`/news-detail?${new URLSearchParams({url: li[1].src}).toString()}`}
+                              className="see-now-btn">
+                            <span>XEM NGAY</span>
+                            <span className="see-now-icon">
+                            <i className="fa-solid fa-arrow-right"></i>
+                        </span>
+                        </Link>
+                    </div>
                 </div>
             </div>
         );
     }
-
-    return (
-        <div className="card" style={{ width: "18rem", fontFamily: "MarriWeather", backgroundColor: "#EAEAEA"}}>
-            <img
-                src={selectedNews.image}
-                alt={selectedNews.title}
-            />
-
-            <div className="card-body">
-                <h5 className="card-title text-start fw-bold">
-                    {selectedNews.title}
-                </h5>
-
-                <div className="d-flex justify-content-end mt-3">
-                    <a href={selectedNews.link} className="see-now-btn">
-                        <span>XEM NGAY</span>
-                        <span className="see-now-icon">
-                            <i className="fa-solid fa-arrow-right"></i>
-                        </span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    );
 }

@@ -2,9 +2,9 @@ import type {
     ContentWrap, DetailTab, NewsCallOutLink, NewsCallOutUl, NewsContent, RelatedLink, RelativeBox, typeOfNews,
 } from "../config/newsStructure.ts";
 import {convertToProxyURL} from "./rssService.ts";
-import type {NewsStructure} from "../config/newsStructure";
+import type {NewsStructure, callOutVariant} from "../config/newsStructure";
 
-function parseCallOutUl(element: Element, index: number): NewsCallOutUl {
+function parseCallOutUl(element: Element, type: callOutVariant, index: number): NewsCallOutUl {
     const links: NewsCallOutLink[] = Array.from(
         element.querySelectorAll("li a")).map(a => ({
         type: "callOutLink",
@@ -12,7 +12,8 @@ function parseCallOutUl(element: Element, index: number): NewsCallOutUl {
         title: a.textContent?.trim() ?? ""
     }));
 
-    return {type: "callOutUl", index, li: links};
+    const liImg = element.querySelector(".kbwscwlrl-thumb img")?.getAttribute("src") ?? "";
+    return {type: "callOutUl",variant: type, liImg: liImg, index, li: links};
 }
 
 function parseContentWrap(element: Element, index: number): ContentWrap {
@@ -55,12 +56,16 @@ function parseDetailContent(
     elements.forEach(element => {
         if (element.parentElement?.closest("figure, .content-wrap, .kbwscwl-relatedbox")) return;
 
-        const index = element.matches(".kbwscwl-relatedbox") ? blocks.length - 1 : blocks.length;
+        const index = element.matches(".kbwscwl-relatedbox") ?
+            Math.max(blocks.length - 1, 1) : blocks.length;
 
         if (element.matches(".content-wrap")) {
             blocks.push(parseContentWrap(element, index));
         } else if (element.matches(".kbwscwl-relatedbox")) {
-            blocks.push(parseCallOutUl(element, index));
+            const variant = (
+                ["type-1", "type-2", "type-3"] as const
+            ).find(type => element.classList.contains(type)) ?? "type-1";
+            blocks.push(parseCallOutUl(element, variant, index));
         } else if (element.matches("figure")) {
             const img = element.querySelector("img");
             const src = img?.getAttribute("src");
@@ -68,7 +73,7 @@ function parseDetailContent(
                 blocks.push({
                     type: "image",
                     index,
-                    src: convertToProxyURL(new URL(src)),
+                    src: src,
                     caption: element.querySelector("figcaption")
                         ?.textContent?.trim()
                 });
