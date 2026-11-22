@@ -19,6 +19,7 @@ interface PodcastSectionProps {
     rows?: number;
     showMore?: boolean;
     moreLink?: string;
+    hideHeader?: boolean;
 }
 
 export default function PodcastSection({
@@ -30,6 +31,7 @@ export default function PodcastSection({
                                            rows = 1,
                                            showMore = true,
                                            moreLink,
+                                           hideHeader = false,
                                        }: PodcastSectionProps) {
 
     const featuredPodcast = podcasts[0];
@@ -39,8 +41,12 @@ export default function PodcastSection({
         <section className={`podcast-section podcast-layout-${layout}`}>
 
             <div className="podcast-section-header">
-                <i className="fa-regular fa-clock"></i>
-                <h2 className="main-title" style={{fontSize: "18px", color: "#146ADE", fontWeight: "bold"}}>{title}</h2>
+                {!hideHeader && (
+                    <div className="podcast-section-header">
+                        <i className="fa-regular fa-clock"></i>
+                        <h2>{title}</h2>
+                    </div>
+                )}
             </div>
 
             {layout === "featured" && featuredPodcast && (

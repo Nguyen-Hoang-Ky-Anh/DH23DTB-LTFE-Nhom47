@@ -1,5 +1,5 @@
 import {useState, type SubmitEvent} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 import {SECTIONS} from "../../../config/newsSectionConfig.ts";
 
 const podcastLinks = [...SECTIONS.podcast.links, ...SECTIONS.podcast.moreLinks];
@@ -40,10 +40,10 @@ export default function PodcastHeader() {
                         if (!link) return null;
 
                         return (
-                            <Link key={link.href} to={link.href}>
+                            <NavLink key={link.href} to={link.href}>
                                 <i className={`fa-solid ${icon}`} />
                                 {link.label}
-                            </Link>
+                            </NavLink>
                         );
                     })}
                 </nav>
