@@ -18,6 +18,7 @@ import MegaStoryPage from "../components/MegaStoryPage.tsx";
 import NewsDetailPage from "../components/NewsDetailPage.tsx";
 import PodcastPage from "../components/PodcastPage.tsx";
 import PodcastSearchPage from "../components/PodcastSearchPage.tsx";
+import {findPodcastSection} from "../config/podcastConfig.ts";
 
 export const router = createBrowserRouter([
   {
@@ -129,9 +130,15 @@ export const router = createBrowserRouter([
   },
   
   {
-        path: "/podcast",
+        path: "/podcast/:category?",
         element: <PodcastPage/>,
         errorElement: <Error />,
+        loader: ({params}) => {
+            if (params.category && !findPodcastSection(params.category)) {
+              throw new Response("Not Found", { status: 404 });
+            }
+            return null;
+        }
   },
   {
     path: "podcast/search/:keyword",
