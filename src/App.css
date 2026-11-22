@@ -190,6 +190,32 @@ body * {
     font-weight: 400;
     line-height: 22px;
 }
+
+.news-detail-content {
+    display: flow-root;
+}
+
+.news-callout {
+    float: right;
+    width: 40%;
+    margin: 0 0 20px 20px;
+}
+
+.news-detail-paragraph {
+    font-size: 17px;
+    font-family: Inter, serif;
+    line-height: 26px;
+    font-weight: 400;
+}
+
+.news-detail-img-caption {
+    font-size: 15px;
+    color: #292929;
+    font-family: Inter, serif;
+    line-height: 22px;
+    text-align: center;
+    padding-top: 10px;
+}
 .sports-competition {
     position: relative;
     min-width: 0;
@@ -2023,7 +2049,8 @@ li:hover {
     border-radius: 50px;
     background-color: #FFFFFF;
     color: #0D4FA1;
-    font-size: 18px;
+    font-size: 15px;
+    line-height: 36px;
     font-weight: bold;
     text-decoration: none;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
