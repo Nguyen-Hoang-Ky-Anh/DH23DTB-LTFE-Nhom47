@@ -45,7 +45,7 @@ export type MegaStoryBlock = MediaBlock | MegaStoryVideoBlock | {type: "featured
 } | {
     type: "group";
     title: string;
-    blocks: MediaBlock[];
+    blocks: (MediaBlock | MegaStoryVideoBlock)[];
 };
 
 interface MegaStoryChapter {

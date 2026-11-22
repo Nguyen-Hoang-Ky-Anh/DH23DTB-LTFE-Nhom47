@@ -1,12 +1,14 @@
 import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {megaStory} from "../config/megaStoryConfig.ts";
 import {chapters, featuredArticles, megaStoryImagePath, type MegaStoryBlock, type MegaStoryComparison, type MegaStoryPhoto} from "../config/megaStoryContent.ts";
+import fetchRSS, {type NewsItem} from "../services/rssService.ts";
 import MegaStoryAlbum, {MediaCaption, MegaStoryText} from "./MegaStoryAlbum.tsx";
 import MegaStoryLightbox from "./MegaStoryLightbox.tsx";
 import MegaStoryTimeline, {MegaStoryMilestones, MegaStoryVideo} from "./MegaStoryTimeline.tsx";
 import DragCarousel from "./ui/DragCarousel.tsx";
 import UpToTopBtn from "./ui/UpToTopBtn.tsx";
+import Footer from "./layout/footer/Footer.tsx";
 
 function Photo({image: [file, width, height], alt = "", reveal, caption, captionSpace, layout, italicTitle, captionReading}: Omit<MegaStoryPhoto, "type">) {
     return (
@@ -99,13 +101,22 @@ function Opening() {
 }
 
 export default function MegaStoryPage() {
+    const [articles, setArticles] = useState<NewsItem[]>([]);
+    const {pathname} = useLocation();
+
     useEffect(() => {
-        if (window.location.hash) {
-            document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
-        } else {
-            window.scrollTo(0, 0);
-        }
+        let active = true;
+        fetchRSS("emagazine")
+            .catch(() => [])
+            .then(items => {
+                if (active) setArticles(items.filter(({title}) => title !== megaStory.title).slice(0, 12));
+            });
+        return () => { active = false; };
     }, []);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
     return (
         <div className="mega-story text-start">
@@ -117,7 +128,7 @@ export default function MegaStoryPage() {
                 </Link>
                 <img className="mega-story-edition" src="/mega-story/emagazine.webp" alt="eMagazine" width={149} height={28} />
                 <div className="mega-story-actions">
-                    <button type="button">
+                    <button type="button" onClick={() => document.getElementById("mega-story-comments")?.scrollIntoView()}>
                         <i className="fa-regular fa-comment-dots" aria-hidden="true" />
                         Bình luận
                     </button>
@@ -148,13 +159,45 @@ export default function MegaStoryPage() {
                             {chapter.blocks.map((block, index) => <StoryBlock key={index} block={block} />)}
                         </section>
                     ))}
-
-                    <footer className="mega-story-reading mega-story-footer border-top">
-                        <Link to="/" className="btn btn-outline-secondary">Về trang chủ</Link>
-                    </footer>
                 </MegaStoryLightbox>
+                <section id="mega-story-comments" className="mega-story-comments">
+                    <label htmlFor="mega-story-comment-input" className="form-label main-title">Bình luận (1)</label>
+                    <textarea id="mega-story-comment-input" className="form-control description" rows={3}
+                              placeholder="Chia sẻ ý kiến của bạn" readOnly />
+                    <div className="d-flex justify-content-end mt-3">
+                        <button type="button" className="btn btn-primary px-3" disabled>Gửi bình luận</button>
+                    </div>
+                    <div className="mega-story-comment-sort">
+                        <span>Quan tâm nhất</span>
+                        <span>Mới nhất</span>
+                    </div>
+                    <article className="mega-story-comment-entry">
+                        <span className="mega-story-comment-avatar" aria-hidden="true">CX</span>
+                        <div>
+                            <strong>cxuon**@gmail.com</strong>
+                            <p>Xin tạm biệt báo Người Lao Động - Sẽ rất nhớ và luôn nhớ mãi những dòng tin tức, những thông tin, những dòng thời sự trong và ngoài nước mà báo đã mang đến trong suốt hành trình 51 năm qua - Kính chúc Ban biên Tập, toàn thể các phóng viên, cộng tác viên ..... của báo mạnh giỏi, hạnh phúc cùng gia đình. Hy vọng và mong rằng sẽ lại được đọc những dòng tin tức mà quý báo sẽ lại mang đến trong thời gian sớm nhất</p>
+                            <div className="mega-story-comment-actions">
+                                <span><i className="fa-regular fa-thumbs-up me-1" aria-hidden="true" />18</span>
+                                <span>Trả lời 0</span>
+                                <span>5 tháng trước</span>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+                <section className="mega-story-see-more">
+                    <h2 className="main-title">Xem thêm</h2>
+                    <div className="mega-story-more-grid">
+                        {articles.map(({guid, title, image}) => (
+                            <article key={guid || title}>
+                                <img src={image} alt="" loading="lazy" decoding="async" />
+                                <h3 className="main-title mb-0">{title}</h3>
+                            </article>
+                        ))}
+                    </div>
+                </section>
             </main>
             <UpToTopBtn />
+            <Footer/>
         </div>
     );
 }

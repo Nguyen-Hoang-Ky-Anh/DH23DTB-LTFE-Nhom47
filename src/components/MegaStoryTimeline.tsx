@@ -11,7 +11,7 @@ export function MegaStoryVideo({path, caption, italicTitle, poster = `${videoCdn
             <video className="d-block w-100 h-auto" width={1280} height={720}
                    poster={poster} controls playsInline preload="none">
                 <source src={`${videoCdn}/.hls/${path}.master.m3u8`} type="application/vnd.apple.mpegurl" />
-                <source src={`${videoCdn}/${path}`} type="video/mp4" />
+                <source src={`${videoCdn}/${path}`} type={path.endsWith(".mp4") ? "video/mp4" : undefined} />
             </video>
             <MediaCaption caption={caption} italicTitle={italicTitle} />
         </figure>

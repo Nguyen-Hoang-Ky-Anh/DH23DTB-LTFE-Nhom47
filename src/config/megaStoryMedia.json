@@ -1,359 +1,51 @@
 [
-  {
-    "id": "so-bao-dau-tien",
-    "title": "Khoảnh khắc 30-6",
-    "blocks": [
-      {
-        "type": "album",
-        "rows": [
-          [
-            [
-              "tru-so-1",
-              1200,
-              900
-            ],
-            [
-              "tru-so-2",
-              2560,
-              1707
-            ],
-            [
-              "tru-so-3",
-              1284,
-              1712
-            ]
-          ]
-        ],
-        "caption": "Trụ sở Báo Người Lao Động tọa lạc tại số 123-127 Võ Văn Tần, phường Xuân Hòa, TP HCM"
-      },
-      {
-        "type": "album",
-        "rows": [
-          [
-            [
-              "giao-ban-1",
-              2362,
-              1256
-            ],
-            [
-              "giao-ban-2",
-              2362,
-              1575
-            ]
-          ]
-        ],
-        "caption": "Họp giao ban Hội đồng Biên tập"
-      },
-      {
-        "type": "photo",
-        "image": [
-          "toa-soan",
-          2560,
-          1648
-        ],
-        "layout": "full",
-        "caption": "Đội ngũ phóng viên, biên tập viên, nhân viên làm việc tại trụ sở Báo Người Lao Động"
-      },
-      {
-        "type": "album",
-        "rows": [
-          [
-            [
-              "bao-cu-1",
-              840,
-              1260
-            ],
-            [
-              "bao-cu-2",
-              1260,
-              1890
-            ],
-            [
-              "bao-cu-3",
-              1260,
-              1890
-            ]
-          ],
-          [
-            [
-              "bao-cu-4",
-              1260,
-              1890
-            ],
-            [
-              "bao-cu-5",
-              1260,
-              1890
-            ],
-            [
-              "bao-cu-6",
-              1260,
-              1890
-            ]
-          ]
-        ],
-        "extra": [
-          [
-            "bao-cu-7",
-            840,
-            1260
-          ],
-          [
-            "bao-cu-8",
-            1260,
-            1890
-          ],
-          [
-            "bao-cu-9",
-            1260,
-            1890
-          ],
-          [
-            "bao-cu-10",
-            1260,
-            1890
-          ],
-          [
-            "bao-cu-11",
-            1260,
-            1890
-          ],
-          [
-            "bao-cu-12",
-            1575,
-            2362
-          ]
-        ],
-        "archive": true,
-        "caption": "Một vài số báo Công nhân giải phóng - tiền thân của Báo Người Lao Động"
-      },
-      {
-        "type": "photo",
-        "image": [
-          "bia-bao",
-          1672,
-          941
-        ],
-        "layout": "full",
-        "captionSpace": true
-      }
-    ]
-  },
-  {
-    "id": "nhung-trang-bao-in",
-    "title": "Từ tiếng nói của công nhân",
-    "blocks": [
-      {
-        "type": "photo",
-        "image": [
-          "chuong-2",
-          2299,
-          1723
-        ],
-        "layout": "full"
-      },
-      {
-        "type": "text",
-        "paragraphs": [
-          "Ra đời trong những ngày đầu đất nước thống nhất, tiền thân là Báo Công nhân Giải phóng, Báo Người Lao Động mang theo sứ mệnh của một tờ báo cách mạng: đồng hành cùng công nhân, tổ chức Công đoàn và góp phần xây dựng TP HCM sau chiến tranh.",
-          "Từ những trang báo còn nhiều khó khăn của thời kỳ bao cấp đến giai đoạn đổi mới, hội nhập và chuyển đổi số, Báo Người Lao Động luôn hiện diện trong những bước chuyển mình của đất nước. Mỗi giai đoạn phát triển của thành phố đều in dấu trên từng trang báo; mỗi đổi thay trong đời sống công nhân, người lao động đều được phản ánh bằng trách nhiệm, sự sẻ chia và tinh thần dấn thân của người làm báo."
-        ]
-      },
-      {
-        "type": "photo",
-        "image": [
-          "anh-014-01",
-          1748,
-          777
-        ],
-        "layout": "wide"
-      },
-      {
-        "type": "text",
-        "aside": {
-          "type": "photo",
-          "image": [
-            "anh-015-01",
-            1179,
-            2966
-          ],
-          "layout": "right"
-        },
-        "paragraphs": [
-          "51 năm qua, hàng ngàn phóng viên, biên tập viên, kỹ thuật viên và người lao động của Báo đã đi đến mọi miền đất nước, có mặt ở những nơi khó khăn nhất, nóng bỏng nhất của đời sống xã hội; ghi lại những câu chuyện của đất nước, của thành phố và của hàng triệu con người bình dị đang lao động, cống hiến mỗi ngày.",
-          "Không chỉ phản ánh hiện thực, Báo Người Lao Động còn góp phần kết nối cộng đồng, thúc đẩy chính sách, lan tỏa những giá trị nhân văn và khơi dậy tinh thần trách nhiệm xã hội thông qua nhiều chương trình mang dấu ấn riêng của tờ báo.",
-          "Từ báo in truyền thống đến báo điện tử, từ những trang báo giấy đến hệ sinh thái số đa nền tảng với hàng triệu lượt tương tác mỗi ngày, Báo Người Lao Động không ngừng đổi mới để thích ứng với thời đại. Nhưng xuyên suốt hành trình ấy vẫn là những giá trị cốt lõi chưa từng thay đổi: phụng sự bạn đọc, bảo vệ lẽ phải, đồng hành cùng sự phát triển của đất nước, của TP HCM, đề cao trách nhiệm xã hội và giữ vững bản lĩnh của một cơ quan báo chí cách mạng.",
-          "Đó chính là sợi chỉ đỏ kết nối quá khứ, hiện tại và cũng là điều còn lại sau 51 năm hình thành và phát triển của Báo Người Lao Động."
-        ]
-      },
-      {
-        "type": "photo",
-        "image": [
-          "toa-soan-cu",
-          1891,
-          1263
-        ],
-        "layout": "wide",
-        "caption": "Tổng Biên tập Phan Hồng Chiến (bìa phải) làm việc tại Tòa soạn những năm đầu thập niên 1990.",
-        "captionReading": true
-      },
-      {
-        "type": "compare",
-        "images": [
-          [
-            "anh-022-01",
-            800,
-            486
-          ],
-          [
-            "anh-022-02",
-            800,
-            534
-          ]
-        ],
-        "caption": "Trụ sở Báo Người Lao Động tại địa chỉ 123-127 Võ Văn Tần những ngày mới thành lập và hiện nay",
-        "italicTitle": true
-      },
-      {
-        "type": "photo",
-        "image": [
-          "anh-023-01",
-          2560,
-          1393
-        ],
-        "layout": "wide",
-        "caption": "\"Nhanh - Hay - Chính xác - Trách nhiệm - Nhân văn\" là 5 tiêu chí được Báo Người Lao Động điện tử xác định là rất quan trọng để tạo nên một thương hiệu hấp dẫn bạn đọc.",
-        "italicTitle": true,
-        "captionReading": true
-      },
-      {
-        "type": "photo",
-        "image": [
-          "cot-moc",
-          2560,
-          1600
-        ],
-        "layout": "full"
-      }
-    ]
-  },
-  {
-    "id": "cong-viec-lam-bao",
-    "title": "Những trang báo đi cùng đời sống",
-    "blocks": [
-      {
-        "type": "photo",
-        "image": [
-          "chuong-3",
-          1672,
-          1091
-        ],
-        "layout": "full"
-      },
-      {
-        "type": "text",
-        "paragraphs": [
-          "Suốt hơn nửa thế kỷ, Báo Người Lao Động luôn chọn đứng ở nơi cuộc sống đang diễn ra. Đó là những nhà máy rực sáng ca đêm, những công trường ngổn ngang bụi đất, những khu công nghiệp đông nghịt công nhân tan ca; là bệnh viện trong những ngày dịch bệnh căng thẳng, là trường học mỗi mùa thi, là những vùng quê chịu thiên tai, là những diễn đàn chính sách, nghị trường và các sự kiện lớn của thành phố, đất nước."
-        ]
-      },
-      {
-        "type": "photo",
-        "image": [
-          "moi-lan-tac-nghiep",
-          1748,
-          706
-        ],
-        "layout": "wide",
-        "reveal": true,
-        "alt": "Ở đâu có những vấn đề của đời sống, ở đó có những người làm Báo Người Lao Động"
-      },
-      {
-        "type": "text",
-        "paragraphs": [
-          "Từ những câu chuyện dân sinh bình dị đến những vấn đề lớn liên quan đến phát triển kinh tế - xã hội, từ tiếng nói của công nhân, người lao động đến tâm tư của doanh nghiệp, người dân và các tầng lớp xã hội, Báo Người Lao Động luôn nỗ lực phản ánh trung thực hiện thực cuộc sống, góp phần thúc đẩy những thay đổi tích cực trong xã hội."
-        ]
-      },
-      {
-        "type": "album",
-        "rows": [
-          [
-            [
-              "anh-039-01",
-              2256,
-              1569
-            ],
-            [
-              "phong-vien-1",
-              1280,
-              912
-            ],
-            [
-              "anh-039-03",
-              2560,
-              1707
-            ]
-          ],
-          [
-            [
-              "phong-vien-2",
-              2560,
-              1707
-            ],
-            [
-              "anh-039-05",
-              1440,
-              960
-            ],
-            [
-              "phong-vien-3",
-              2560,
-              2125
-            ]
-          ],
-          [
-            [
-              "anh-039-07",
-              2560,
-              1778
-            ],
-            [
-              "anh-039-08",
-              2560,
-              1707
-            ],
-            [
-              "anh-039-09",
-              1280,
-              960
-            ]
-          ]
-        ],
-        "caption": "Đội ngũ phóng viên Báo Người Lao Động lao động hăng say phục vụ bạn đọc"
-      },
-      {
-        "type": "text",
-        "paragraphs": [
-          "Nhiều tuyến bài điều tra, phản biện và giám sát xã hội đã góp phần hoàn thiện chính sách, bảo vệ người yếu thế, đấu tranh với cái xấu, cổ vũ điều tốt đẹp và lan tỏa những giá trị nhân văn trong cộng đồng. Không ít vụ việc đã được giải quyết, không ít số phận đã được sẻ chia, không ít chính sách đã được điều chỉnh từ những thông tin được phản ánh trên mặt báo.",
-          "Hơn 100 giải báo chí quốc gia, giải báo chí TP HCM và các giải báo chí chuyên ngành giai đoạn 2021-2026 là sự ghi nhận cho nỗ lực nghề nghiệp của nhiều thế hệ người làm báo. Nhưng phần thưởng lớn hơn cả chính là sự tin cậy của hàng triệu bạn đọc đã đồng hành cùng Báo Người Lao Động trong suốt nhiều thập niên."
-        ]
-      },
-      {
-        "type": "video",
-        "path": "291774122806476800/2026/6/24/timeline-2-17823432938921223649013.mp4"
-      },
-      {
-        "type": "text",
-        "paragraphs": [
-          "Đằng sau mỗi trang báo là những bước chân không mỏi của phóng viên trên hiện trường, những đêm thức trắng của Ban Biên tập, của Tòa soạn, những cuộc tranh luận nghề nghiệp để bảo vệ sự thật và trách nhiệm xã hội. Tất cả đã góp phần tạo nên một bản sắc làm báo được gìn giữ qua nhiều thế hệ: Nhanh - Hay - Chính xác - Trách nhiệm - Nhân văn."
-        ]
-      },
-      {
-        "type": "featured-articles"
-      },
-      {"type": "photo", "image": ["anh-045-01", 878, 629], "layout": "full", "caption": "Cảm nhận của bạn đọc về Báo Người Lao Động nhân kỷ niệm 50 năm thành lập Báo (28.7.1975 - 28.7.2025)"},
-      {"type": "video", "path": "291774122806476800/2025/7/26/ho-noi-ve-chung-toi-5-17535152853251349211197.mp4", "italicTitle": true, "caption": "Các lãnh đạo, chuyên gia, doanh nghiệp, bạn đọc nói về Báo Người Lao Động"}
-    ]
-  },
+  {"id": "so-bao-dau-tien", "title": "Khoảnh khắc 30-6", "blocks": [
+    {"type": "album", "rows": [[["tru-so-1", 1200, 900], ["tru-so-2", 2560, 1707], ["tru-so-3", 1284, 1712]]], "caption": "Trụ sở Báo Người Lao Động tọa lạc tại số 123-127 Võ Văn Tần, phường Xuân Hòa, TP HCM"},
+    {"type": "album", "rows": [[["giao-ban-1", 2362, 1256], ["giao-ban-2", 2362, 1575]]], "caption": "Họp giao ban Hội đồng Biên tập"},
+    {"type": "photo", "image": ["toa-soan", 2560, 1648], "layout": "full", "caption": "Đội ngũ phóng viên, biên tập viên, nhân viên làm việc tại trụ sở Báo Người Lao Động"},
+    {"type": "album", "rows": [[["bao-cu-1", 840, 1260], ["bao-cu-2", 1260, 1890], ["bao-cu-3", 1260, 1890]], [["bao-cu-4", 1260, 1890], ["bao-cu-5", 1260, 1890], ["bao-cu-6", 1260, 1890]]], "extra": [["bao-cu-7", 840, 1260], ["bao-cu-8", 1260, 1890], ["bao-cu-9", 1260, 1890], ["bao-cu-10", 1260, 1890], ["bao-cu-11", 1260, 1890], ["bao-cu-12", 1575, 2362]], "archive": true, "caption": "Một vài số báo Công nhân giải phóng - tiền thân của Báo Người Lao Động"},
+    {"type": "photo", "image": ["bia-bao", 1672, 941], "layout": "full", "captionSpace": true}
+  ]},
+  {"id": "nhung-trang-bao-in", "title": "Từ tiếng nói của công nhân", "blocks": [
+    {"type": "photo", "image": ["chuong-2", 2299, 1723], "layout": "full"},
+    {"type": "text", "paragraphs": [
+      "Ra đời trong những ngày đầu đất nước thống nhất, tiền thân là Báo Công nhân Giải phóng, Báo Người Lao Động mang theo sứ mệnh của một tờ báo cách mạng: đồng hành cùng công nhân, tổ chức Công đoàn và góp phần xây dựng TP HCM sau chiến tranh.",
+      "Từ những trang báo còn nhiều khó khăn của thời kỳ bao cấp đến giai đoạn đổi mới, hội nhập và chuyển đổi số, Báo Người Lao Động luôn hiện diện trong những bước chuyển mình của đất nước. Mỗi giai đoạn phát triển của thành phố đều in dấu trên từng trang báo; mỗi đổi thay trong đời sống công nhân, người lao động đều được phản ánh bằng trách nhiệm, sự sẻ chia và tinh thần dấn thân của người làm báo."
+    ]},
+    {"type": "photo", "image": ["anh-014-01", 1748, 777], "layout": "wide"},
+    {"type": "text", "aside": {"type": "photo", "image": ["anh-015-01", 1179, 2966], "layout": "right"}, "paragraphs": [
+      "51 năm qua, hàng ngàn phóng viên, biên tập viên, kỹ thuật viên và người lao động của Báo đã đi đến mọi miền đất nước, có mặt ở những nơi khó khăn nhất, nóng bỏng nhất của đời sống xã hội; ghi lại những câu chuyện của đất nước, của thành phố và của hàng triệu con người bình dị đang lao động, cống hiến mỗi ngày.",
+      "Không chỉ phản ánh hiện thực, Báo Người Lao Động còn góp phần kết nối cộng đồng, thúc đẩy chính sách, lan tỏa những giá trị nhân văn và khơi dậy tinh thần trách nhiệm xã hội thông qua nhiều chương trình mang dấu ấn riêng của tờ báo.",
+      "Từ báo in truyền thống đến báo điện tử, từ những trang báo giấy đến hệ sinh thái số đa nền tảng với hàng triệu lượt tương tác mỗi ngày, Báo Người Lao Động không ngừng đổi mới để thích ứng với thời đại. Nhưng xuyên suốt hành trình ấy vẫn là những giá trị cốt lõi chưa từng thay đổi: phụng sự bạn đọc, bảo vệ lẽ phải, đồng hành cùng sự phát triển của đất nước, của TP HCM, đề cao trách nhiệm xã hội và giữ vững bản lĩnh của một cơ quan báo chí cách mạng.",
+      "Đó chính là sợi chỉ đỏ kết nối quá khứ, hiện tại và cũng là điều còn lại sau 51 năm hình thành và phát triển của Báo Người Lao Động."
+    ]},
+    {"type": "photo", "image": ["toa-soan-cu", 1891, 1263], "layout": "wide", "caption": "Tổng Biên tập Phan Hồng Chiến (bìa phải) làm việc tại Tòa soạn những năm đầu thập niên 1990.", "captionReading": true},
+    {"type": "compare", "images": [["anh-022-01", 800, 486], ["anh-022-02", 800, 534]], "caption": "Trụ sở Báo Người Lao Động tại địa chỉ 123-127 Võ Văn Tần những ngày mới thành lập và hiện nay", "italicTitle": true},
+    {"type": "photo", "image": ["anh-023-01", 2560, 1393], "layout": "wide", "caption": "\"Nhanh - Hay - Chính xác - Trách nhiệm - Nhân văn\" là 5 tiêu chí được Báo Người Lao Động điện tử xác định là rất quan trọng để tạo nên một thương hiệu hấp dẫn bạn đọc.", "italicTitle": true, "captionReading": true},
+    {"type": "photo", "image": ["cot-moc", 2560, 1600], "layout": "full"}
+  ]},
+  {"id": "cong-viec-lam-bao", "title": "Những trang báo đi cùng đời sống", "blocks": [
+    {"type": "photo", "image": ["chuong-3", 1672, 1091], "layout": "full"},
+    {"type": "text", "paragraphs": [
+      "Suốt hơn nửa thế kỷ, Báo Người Lao Động luôn chọn đứng ở nơi cuộc sống đang diễn ra. Đó là những nhà máy rực sáng ca đêm, những công trường ngổn ngang bụi đất, những khu công nghiệp đông nghịt công nhân tan ca; là bệnh viện trong những ngày dịch bệnh căng thẳng, là trường học mỗi mùa thi, là những vùng quê chịu thiên tai, là những diễn đàn chính sách, nghị trường và các sự kiện lớn của thành phố, đất nước."
+    ]},
+    {"type": "photo", "image": ["moi-lan-tac-nghiep", 1748, 706], "layout": "wide", "reveal": true, "alt": "Ở đâu có những vấn đề của đời sống, ở đó có những người làm Báo Người Lao Động"},
+    {"type": "text", "paragraphs": [
+      "Từ những câu chuyện dân sinh bình dị đến những vấn đề lớn liên quan đến phát triển kinh tế - xã hội, từ tiếng nói của công nhân, người lao động đến tâm tư của doanh nghiệp, người dân và các tầng lớp xã hội, Báo Người Lao Động luôn nỗ lực phản ánh trung thực hiện thực cuộc sống, góp phần thúc đẩy những thay đổi tích cực trong xã hội."
+    ]},
+    {"type": "album", "rows": [[["anh-039-01", 2256, 1569], ["phong-vien-1", 1280, 912], ["anh-039-03", 2560, 1707]], [["phong-vien-2", 2560, 1707], ["anh-039-05", 1440, 960], ["phong-vien-3", 2560, 2125]], [["anh-039-07", 2560, 1778], ["anh-039-08", 2560, 1707], ["anh-039-09", 1280, 960]]], "caption": "Đội ngũ phóng viên Báo Người Lao Động lao động hăng say phục vụ bạn đọc"},
+    {"type": "text", "paragraphs": [
+      "Nhiều tuyến bài điều tra, phản biện và giám sát xã hội đã góp phần hoàn thiện chính sách, bảo vệ người yếu thế, đấu tranh với cái xấu, cổ vũ điều tốt đẹp và lan tỏa những giá trị nhân văn trong cộng đồng. Không ít vụ việc đã được giải quyết, không ít số phận đã được sẻ chia, không ít chính sách đã được điều chỉnh từ những thông tin được phản ánh trên mặt báo.",
+      "Hơn 100 giải báo chí quốc gia, giải báo chí TP HCM và các giải báo chí chuyên ngành giai đoạn 2021-2026 là sự ghi nhận cho nỗ lực nghề nghiệp của nhiều thế hệ người làm báo. Nhưng phần thưởng lớn hơn cả chính là sự tin cậy của hàng triệu bạn đọc đã đồng hành cùng Báo Người Lao Động trong suốt nhiều thập niên."
+    ]},
+    {"type": "video", "path": "291774122806476800/2026/6/24/timeline-2-17823432938921223649013.mp4"},
+    {"type": "text", "paragraphs": [
+      "Đằng sau mỗi trang báo là những bước chân không mỏi của phóng viên trên hiện trường, những đêm thức trắng của Ban Biên tập, của Tòa soạn, những cuộc tranh luận nghề nghiệp để bảo vệ sự thật và trách nhiệm xã hội. Tất cả đã góp phần tạo nên một bản sắc làm báo được gìn giữ qua nhiều thế hệ: Nhanh - Hay - Chính xác - Trách nhiệm - Nhân văn."
+    ]},
+    {"type": "featured-articles"},
+    {"type": "photo", "image": ["anh-045-01", 878, 629], "layout": "full", "caption": "Cảm nhận của bạn đọc về Báo Người Lao Động nhân kỷ niệm 50 năm thành lập Báo (28.7.1975 - 28.7.2025)"},
+    {"type": "video", "path": "291774122806476800/2025/7/26/ho-noi-ve-chung-toi-5-17535152853251349211197.mp4", "italicTitle": true, "caption": "Các lãnh đạo, chuyên gia, doanh nghiệp, bạn đọc nói về Báo Người Lao Động"}
+  ]},
   {"id": "sau-mat-bao", "title": "Những điều vượt ra ngoài trang báo", "blocks": [
     {"type": "photo", "image": ["chuong-4", 1672, 941], "layout": "full"},
     {"type": "text", "paragraphs": [
@@ -428,5 +120,46 @@
       ["anh-096-01", 1920, 1080],
       ["anh-097-01", 1920, 1080]
     ]}
+  ]},
+  {"id": "nguoi-lam-bao", "title": "Những người làm nên tờ báo", "blocks": [
+    {"type": "photo", "image": ["chuong-6", 1536, 664], "layout": "full"},
+    {"type": "photo", "image": ["anh-099-01", 2516, 2195], "layout": "wide"},
+    {"type": "group", "title": "BAN BIÊN TẬP", "blocks": [{"type": "photo", "image": ["ban-bien-tap", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-102-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "TÒA SOẠN", "blocks": [{"type": "photo", "image": ["nhom-toa-soan", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-105-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-106-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-107-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-108-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-109-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-110-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-111-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-112-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-113-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-114-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-115-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-116-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-117-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-118-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "BAN CHÍNH TRỊ - CÔNG ĐOÀN - XÃ HỘI", "blocks": [{"type": "photo", "image": ["ban-chinh-tri", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-121-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-122-01", 2362, 1329], "layout": "reading"}, {"type": "photo", "image": ["anh-123-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-124-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-125-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "BAN KINH TẾ - CÔNG NGHỆ", "blocks": [{"type": "photo", "image": ["ban-kinh-te", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-128-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-129-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-130-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-131-01", 2362, 2126], "layout": "reading"}, {"type": "video", "path": "291774122806476800/2026/6/29/audio-chi-son-nhung-1782725639229926489637.mp4"}]},
+    {"type": "group", "title": "BAN GIÁO DỤC - SỨC KHỎE", "blocks": [{"type": "photo", "image": ["anh-134-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-135-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-136-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-137-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-138-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-139-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "BAN VĂN HÓA - THỂ THAO", "blocks": [{"type": "photo", "image": ["anh-142-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-143-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-144-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-145-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "BAN QUỐC TẾ - ĐỐI NGOẠI", "blocks": [{"type": "photo", "image": ["anh-147-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-148-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-149-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-150-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "BAN ĐA PHƯƠNG TIỆN", "blocks": [{"type": "photo", "image": ["anh-152-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-153-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-154-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-155-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-156-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "VĂN PHÒNG", "blocks": [{"type": "photo", "image": ["anh-158-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-159-01", 2362, 1329], "layout": "reading"}, {"type": "photo", "image": ["anh-160-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-161-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "PHÒNG QUẢNG CÁO - DỊCH VỤ", "blocks": [{"type": "photo", "image": ["anh-164-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-165-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-166-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "PHÒNG TÀI CHÍNH -KẾ TOÁN", "blocks": [{"type": "photo", "image": ["anh-168-01", 2560, 1440], "layout": "reading"}]},
+    {"type": "group", "title": "PHÒNG PHÁT HÀNH", "blocks": [{"type": "photo", "image": ["anh-170-01", 2560, 1440], "layout": "reading"}]},
+    {"type": "group", "title": "BAN QUẢN LÝ TÒA NHÀ", "blocks": [{"type": "photo", "image": ["anh-172-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-173-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-174-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-175-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-176-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-177-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "VĂN PHÒNG ĐẠI DIỆN MIỀN BẮC", "blocks": [{"type": "photo", "image": ["van-phong-mien-bac", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-180-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-181-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-182-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-183-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "VĂN PHÒNG ĐẠI DIỆN MIỀN TRUNG", "blocks": [{"type": "photo", "image": ["anh-186-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-187-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-188-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-189-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-190-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-191-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "VĂN PHÒNG ĐẠI DIỆN NAM TRUNG BỘ VÀ TÂY NGUYÊN", "blocks": [{"type": "photo", "image": ["anh-193-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-194-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-195-01", 2362, 2126], "layout": "reading"}]},
+    {"type": "group", "title": "VĂN PHÒNG ĐẠI DIỆN VÙNG ĐÔNG NAM BỘ", "blocks": [{"type": "photo", "image": ["anh-197-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-198-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-199-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-200-01", 2362, 2126], "layout": "reading"}, {"type": "video", "path": "291774122806476800/2026/6/28/clip-bich-ngoc-17826902860541753608999.mov", "caption": "Clip Bich Ngoc"}]},
+    {"type": "group", "title": "Văn phòng đại diện Đồng bằng Sông Cửu Long", "blocks": [{"type": "photo", "image": ["anh-203-01", 2560, 1440], "layout": "reading"}, {"type": "photo", "image": ["anh-204-01", 2362, 2126], "layout": "reading"}, {"type": "photo", "image": ["anh-205-01", 2362, 2126], "layout": "reading"}]}
+  ]},
+  {"id": "ban-doc", "title": "Tri ân bạn đọc", "blocks": [
+    {"type": "photo", "image": ["chuong-7", 1748, 985], "layout": "full"},
+    {"type": "text", "paragraphs": [
+      "51 năm là một hành trình dài đối với một tờ báo. Trên hành trình ấy, Báo Người Lao Động may mắn nhận được sự đồng hành, tin yêu và sẻ chia của rất nhiều người. Chúng tôi xin bày tỏ lòng biết ơn sâu sắc đến hàng triệu bạn đọc trên khắp mọi miền đất nước đã tin tưởng, đón nhận và đồng hành cùng Báo Người Lao Động trong suốt 51 năm qua.",
+      "Xin trân trọng cảm ơn các thế hệ lãnh đạo TP HCM; các cơ quan quản lý báo chí; lãnh đạo các địa phương; các lực lượng vũ trang; các tổ chức chính trị - xã hội; các doanh nghiệp, doanh nhân; các chuyên gia, nhà khoa học, văn nghệ sĩ, cộng tác viên và đối tác đã luôn đồng hành, hỗ trợ để Báo Người Lao Động hoàn thành sứ mệnh của mình."
+    ]},
+    {"type": "album", "rows": [[["anh-210-01", 1684, 2362], ["anh-210-02", 2362, 1626], ["anh-210-03", 2362, 3149]], [["anh-210-04", 2560, 1707], ["anh-210-05", 2560, 1706], ["anh-210-06", 2560, 1706]], [["anh-210-07", 2560, 1707], ["anh-210-08", 2560, 1707], ["nha-in", 2560, 1707]], [["anh-210-10", 2560, 1707], ["ban-doc", 2560, 1707], ["anh-210-12", 2560, 1707]], [["anh-210-13", 2560, 1707], ["anh-210-14", 2560, 1707], ["anh-210-15", 2560, 1706]], [["anh-210-16", 2560, 1707], ["anh-210-17", 2560, 1706], ["anh-210-18", 2560, 1707]]]},
+    {"type": "text", "paragraphs": [
+      "Xin cảm ơn những người công nhân, người lao động, những người dân bình dị đã tin tưởng gửi gắm tâm tư, nguyện vọng, những câu chuyện của cuộc đời mình cho chúng tôi. Chính các anh, các chị, các bạn đã làm nên hơi thở và linh hồn của Báo Người Lao Động.",
+      "Và trên hết, xin tri ân các thế hệ cán bộ, phóng viên, biên tập viên, kỹ thuật viên, nhân viên, cộng tác viên của Báo Người Lao Động qua các thời kỳ; những người đã dành cả thanh xuân, tâm huyết và niềm tin nghề nghiệp để xây dựng nên một thương hiệu báo chí giàu bản sắc, giàu trách nhiệm xã hội và giàu tình người.",
+      "Từ những người đặt viên gạch đầu tiên cho tờ báo sau ngày đất nước thống nhất đến những người đang thực hiện những tác phẩm cuối cùng của hành trình 51 năm hôm nay, tất cả đều đã góp phần viết nên lịch sử của Báo Người Lao Động."
+    ]},
+    {"type": "photo", "image": ["cam-on", 1748, 724], "layout": "wide", "reveal": true}
+  ]},
+  {"id": "dieu-con-lai", "title": "Điều còn lại", "blocks": [
+    {"type": "photo", "image": ["chuong-8", 2560, 2186], "layout": "full"},
+    {"type": "photo", "image": ["anh-216-01", 426, 240], "layout": "full"},
+    {"type": "photo", "image": ["anh-217-01", 1748, 1240], "layout": "wide"}
   ]}
 ]
