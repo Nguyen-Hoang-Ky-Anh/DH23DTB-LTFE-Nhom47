@@ -4,7 +4,7 @@ import {megaStory} from "../config/megaStoryConfig.ts";
 import {chapters, featuredArticles, megaStoryImagePath, type MegaStoryBlock, type MegaStoryComparison, type MegaStoryPhoto} from "../config/megaStoryContent.ts";
 import MegaStoryAlbum, {MediaCaption, MegaStoryText} from "./MegaStoryAlbum.tsx";
 import MegaStoryLightbox from "./MegaStoryLightbox.tsx";
-import MegaStoryTimeline, {MegaStoryVideo} from "./MegaStoryTimeline.tsx";
+import MegaStoryTimeline, {MegaStoryMilestones, MegaStoryVideo} from "./MegaStoryTimeline.tsx";
 import DragCarousel from "./ui/DragCarousel.tsx";
 import UpToTopBtn from "./ui/UpToTopBtn.tsx";
 
@@ -41,7 +41,7 @@ function StoryBlock({block}: {block: MegaStoryBlock}) {
     switch (block.type) {
         case "photo":
             if (block.image[0] === "cot-moc") {
-                return <><Photo {...block} /><MegaStoryTimeline /></>;
+                return <><Photo {...block} /><MegaStoryMilestones /></>;
             }
             return <Photo {...block} />;
         case "album":
@@ -49,11 +49,13 @@ function StoryBlock({block}: {block: MegaStoryBlock}) {
         case "compare":
             return <Comparison {...block} />;
         case "video":
-            return <MegaStoryVideo path={block.path} />;
+            return <MegaStoryVideo path={block.path} caption={block.caption} italicTitle={block.italicTitle} />;
+        case "timeline":
+            return <MegaStoryTimeline images={block.images} />;
         case "featured-articles":
             return (
                 <section className="mega-story-featured">
-                    <h3 className="text-center text-uppercase mb-4">Các bài báo tiêu biểu</h3>
+                    <h3 className="text-center text-uppercase mb-4 fw-bold">Các bài báo tiêu biểu</h3>
                     <DragCarousel showProgress>
                         {featuredArticles.map(({title, image}) => (
                             <article key={image} className="mega-story-featured-card">

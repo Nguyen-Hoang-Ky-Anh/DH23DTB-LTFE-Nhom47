@@ -16,7 +16,7 @@ export function MediaCaption({caption, captionSpace, italicTitle}: {caption?: st
     return null;
 }
 
-export default function MegaStoryAlbum({rows, layout, archive, extra = [], caption, captionSpace}: MegaStoryAlbum) {
+export default function MegaStoryAlbum({rows, layout, archive, extra = [], caption, captionSpace, italicTitle}: MegaStoryAlbum) {
     const lastRow = rows.at(-1);
 
     function showTile(photo: MegaStoryImage) {
@@ -53,7 +53,7 @@ export default function MegaStoryAlbum({rows, layout, archive, extra = [], capti
             {extra.map(([name, width, height]) => (
                 <span key={name} hidden data-mega-story-photo={megaStoryImagePath(name)} data-width={width} data-height={height} />
             ))}
-            <MediaCaption caption={caption} captionSpace={captionSpace} />
+            <MediaCaption caption={caption} captionSpace={captionSpace} italicTitle={italicTitle} />
         </figure>
     );
 }

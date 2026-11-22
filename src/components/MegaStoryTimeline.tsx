@@ -1,10 +1,11 @@
 import {useEffect, useRef, useState} from "react";
-import {megaStoryImagePath} from "../config/megaStoryContent.ts";
+import {megaStoryImagePath, type MegaStoryTimelineImage, type MegaStoryVideoBlock} from "../config/megaStoryContent.ts";
+import {MediaCaption} from "./MegaStoryAlbum.tsx";
 
 const videoPath = "291774122806476800/2026/6/24/2026-khep-lai-178234243589567230044.mp4";
 const videoCdn = "https://nld.mediacdn.vn";
 
-export function MegaStoryVideo({path, poster = `${videoCdn}/.v-thumb/${path}.jpg`}: {path: string; poster?: string}) {
+export function MegaStoryVideo({path, caption, italicTitle, poster = `${videoCdn}/.v-thumb/${path}.jpg`}: Omit<MegaStoryVideoBlock, "type"> & {poster?: string}) {
     return (
         <figure className="mega-story-media mega-story-wide">
             <video className="d-block w-100 h-auto" width={1280} height={720}
@@ -12,26 +13,40 @@ export function MegaStoryVideo({path, poster = `${videoCdn}/.v-thumb/${path}.jpg
                 <source src={`${videoCdn}/.hls/${path}.master.m3u8`} type="application/vnd.apple.mpegurl" />
                 <source src={`${videoCdn}/${path}`} type="video/mp4" />
             </video>
+            <MediaCaption caption={caption} italicTitle={italicTitle} />
         </figure>
     );
 }
 
-const milestones = [
-    {file: "anh-025-01", date: "28-7-1975"},
-    {file: "anh-026-01", date: "1984–1989"},
-    {file: "anh-027-01", date: "28-7-1990"},
-    {file: "anh-028-01", date: "1995"},
-    {file: "anh-029-01", date: "2019"},
-    {file: "anh-030-01", date: "2020"},
-    {file: "anh-031-01", date: "2021"},
-    {file: "anh-032-01", date: "2025"},
-    {file: "anh-033-01", date: "30-6-2026"},
+const milestones: MegaStoryTimelineImage[] = [
+    ["anh-025-01", 2560, 1600, "28-7-1975"],
+    ["anh-026-01", 2560, 1600, "1984–1989"],
+    ["anh-027-01", 2560, 1600, "28-7-1990"],
+    ["anh-028-01", 2560, 1600, "1995"],
+    ["anh-029-01", 2560, 1600, "2019"],
+    ["anh-030-01", 2560, 1600, "2020"],
+    ["anh-031-01", 2560, 1600, "2021"],
+    ["anh-032-01", 2560, 1600, "2025"],
+    ["anh-033-01", 2560, 1600, "30-6-2026"],
 ];
 
-export default function MegaStoryTimeline() {
+export function MegaStoryMilestones() {
+    return (
+        <>
+            <MegaStoryTimeline images={milestones} layout="wide" />
+            <MegaStoryVideo path={videoPath} poster="/mega-story/cot-moc-video-poster.webp" />
+        </>
+    );
+}
+
+export default function MegaStoryTimeline({images, layout = "reading"}: {
+    images: MegaStoryTimelineImage[];
+    layout?: "wide" | "reading";
+}) {
     const timelineRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
-    const {file, date} = milestones[activeIndex];
+    const slideCount = images.length;
+    const [file, width, height, alt = ""] = images[activeIndex];
 
     useEffect(() => {
         const timeline = timelineRef.current;
@@ -42,9 +57,9 @@ export default function MegaStoryTimeline() {
         const updateIndex = () => {
             request = 0;
             const {top, height} = timeline.getBoundingClientRect();
-            const step = Math.max(1, (height - frame.clientHeight) / milestones.length);
+            const step = Math.max(1, (height - frame.clientHeight) / slideCount);
             const nextIndex = Math.floor(-top / step);
-            setActiveIndex(Math.max(0, Math.min(nextIndex, milestones.length - 1)));
+            setActiveIndex(Math.max(0, Math.min(nextIndex, slideCount - 1)));
         };
 
         function handleScroll() {
@@ -59,23 +74,20 @@ export default function MegaStoryTimeline() {
             window.removeEventListener("resize", handleScroll);
             window.cancelAnimationFrame(request);
         };
-    }, []);
+    }, [slideCount]);
 
     return (
-        <>
-            <div ref={timelineRef} style={{height: `${100 + milestones.length * 40}svh`}}>
-                <div className="position-sticky top-0 d-flex align-items-center justify-content-center"
-                     style={{height: "100svh", paddingBlock: "54px 16px"}}>
-                    <figure className="mega-story-wide m-0 h-100 d-flex align-items-center">
-                        <img key={file} src={megaStoryImagePath(file)} alt={date} width={2560} height={1600}
-                             className="d-block w-100 h-auto" style={{maxHeight: "100%", objectFit: "contain"}}
-                             loading="lazy" decoding="async" onLoad={event => {
-                                 event.currentTarget.animate([{opacity: 0}, {opacity: 1}], {duration: 350, easing: "ease-out"});
-                             }} />
-                    </figure>
-                </div>
+        <div ref={timelineRef} style={{height: `${100 + slideCount * 40}svh`}}>
+            <div className="position-sticky top-0 d-flex align-items-center justify-content-center"
+                 style={{height: "100svh", paddingBlock: "54px 16px"}}>
+                <figure className={`mega-story-${layout} m-0 h-100 d-flex align-items-center`}>
+                    <img key={file} src={megaStoryImagePath(file)} alt={alt} width={width} height={height}
+                         className="d-block w-100 h-auto" style={{maxHeight: "100%", objectFit: "contain"}}
+                         loading="lazy" decoding="async" onLoad={event => {
+                             event.currentTarget.animate([{opacity: 0}, {opacity: 1}], {duration: 350, easing: "ease-out"});
+                         }} />
+                </figure>
             </div>
-            <MegaStoryVideo path={videoPath} poster="/mega-story/cot-moc-video-poster.webp" />
-        </>
+        </div>
     );
 }
