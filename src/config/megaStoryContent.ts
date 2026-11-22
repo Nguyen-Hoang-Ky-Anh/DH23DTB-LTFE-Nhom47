@@ -1,6 +1,7 @@
 import media from "./megaStoryMedia.json";
 
 export type MegaStoryImage = [file: string, width: number, height: number];
+export type MegaStoryTimelineImage = [...MegaStoryImage, alt?: string];
 
 interface Caption {
     caption?: string;
@@ -32,7 +33,12 @@ export interface MegaStoryComparison extends Caption {
 
 type MediaBlock = MegaStoryPhoto | MegaStoryAlbum | MegaStoryComparison;
 
-export type MegaStoryBlock = MediaBlock | {type: "video"; path: string} | {type: "featured-articles"} | {
+export type MegaStoryVideoBlock = Pick<Caption, "caption" | "italicTitle"> & {type: "video"; path: string};
+
+export type MegaStoryBlock = MediaBlock | MegaStoryVideoBlock | {type: "featured-articles"} | {
+    type: "timeline";
+    images: MegaStoryTimelineImage[];
+} | {
     type: "text";
     paragraphs: string[];
     aside?: MegaStoryPhoto;
