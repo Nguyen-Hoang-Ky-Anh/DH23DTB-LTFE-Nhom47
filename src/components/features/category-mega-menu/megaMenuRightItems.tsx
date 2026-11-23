@@ -3,7 +3,7 @@ import {SECTIONS, type SectionKey} from "../../../config/newsSectionConfig";
 import {multimediaItems} from "../../../config/multimediaConfig.ts";
 import {
     LyTuongSongIcon, NoiThangIcon, TinDocQuyenIcon, ThiTruongIcon,
-    LienHeIcon, ThongTinToaSoanIcon, DichVuTruyenThongIcon,
+    LienHeIcon, ThongTinToaSoanIcon, DichVuTruyenThongIcon, FacebookIcon, YoutubeIcon, ZaloIcon, RssIcon,
 } from "./MegaMenuIcons";
 
 export interface MenuItem {
@@ -35,4 +35,10 @@ export const MEGA_MENU_COLUMNS_RIGHT: MenuItem[][] = [
         {label: "Thông tin tòa soạn", href: "/thong-tin-toa-soan", icon: <ThongTinToaSoanIcon/>},
         {label: "Dịch vụ truyền thông", href: "/dich-vu-truyen-thong", icon: <DichVuTruyenThongIcon/>},
     ],
+    [
+        {label: "", href: "https://www.facebook.com/nguoilaodong", icon: <FacebookIcon/>},
+        {label: "", href: "https://www.youtube.com/channel/UCzkyOx_0O1pGOqHiUMOe2KQ", icon: <YoutubeIcon/>},
+        {label: "", href: "https://zalo.me/4417973660626754335", icon: <ZaloIcon/>},
+        {label: "", href: "/", icon: <RssIcon/>},
+    ]
 ];
