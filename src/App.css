@@ -2622,3 +2622,88 @@ li:hover {
 .podcast-banner-actions button:hover {
     background: rgba(255, 255, 255, 0.35);
 }
+
+.rss-page {
+    max-width: 1152px;
+    font: 14px/1.85 "Inter", sans-serif;
+}
+
+.rss-page h1,
+.rss-page h2 {
+    color: #000;
+}
+
+.rss-page h1 {
+    margin: 0 0 32px;
+    font: 700 26px/1.35 "Inter", sans-serif;
+    letter-spacing: normal;
+}
+
+.rss-guide h2 {
+    margin: 0;
+    font: 650 17px/1.5 "Inter", sans-serif;
+}
+
+.rss-guide p {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.rss-directory > li + li {
+    border-top: 1px solid #dee2e6;
+}
+
+.rss-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 11px;
+}
+
+summary.rss-row {
+    cursor: pointer;
+}
+
+.rss-row::-webkit-details-marker {
+    display: none;
+}
+
+.rss-feed-link {
+    color: #0959ab;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+}
+
+.rss-feed-link strong {
+    color: #212529;
+    font-weight: 600;
+}
+
+.rss-feed-link:hover {
+    text-decoration: underline;
+}
+
+.rss-toggle {
+    flex-shrink: 0;
+    color: #626f7e;
+    font-size: 13px;
+}
+
+summary.rss-row:hover .rss-toggle {
+    color: #0959ab;
+}
+
+.rss-less,
+.rss-directory details[open] .rss-more {
+    display: none;
+}
+
+.rss-directory details[open] .rss-less {
+    display: inline;
+}
+
+.rss-subcategories {
+    padding: 4px 14px 10px 32px;
+    background: #f6f8fb;
+}
