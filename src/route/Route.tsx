@@ -18,6 +18,7 @@ import MegaStoryPage from "../components/MegaStoryPage.tsx";
 import NewsDetailPage from "../components/NewsDetailPage.tsx";
 import PodcastPage from "../components/PodcastPage.tsx";
 import PodcastSearchPage from "../components/PodcastSearchPage.tsx";
+import RssPage from "../components/RssPage.tsx";
 import {findPodcastSection} from "../config/podcastConfig.ts";
 
 export const router = createBrowserRouter([
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: "rss",
+        element: <RssPage />,
       },
       {
         path: "dong-su-kien/:topic",
