@@ -57,7 +57,7 @@ export default function PodcastCarousel({sections}: PodcastCarouselProps) {
 
     return (
         <DragCarousel
-            showControlsStartEnd
+            overlayControls
             fullWidthSlides
             nextSlide={1374}
         >

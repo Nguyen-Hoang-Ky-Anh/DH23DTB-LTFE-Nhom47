@@ -9,6 +9,7 @@ interface DragCarouselProps {
     showRadio?: boolean;
     nextSlide?: number;
     fullWidthSlides?: boolean;
+    overlayControls?: boolean;
 }
 
 export default function DragCarousel({
@@ -19,6 +20,7 @@ export default function DragCarousel({
                                          showProgress = false,
                                          nextSlide = 240,
                                          fullWidthSlides = false,
+                                         overlayControls = false,
                                      }: DragCarouselProps) {
     const viewportRef = useRef<HTMLDivElement>(null);
     const drag = useRef<{ x: number; left: number } | null>(null);
@@ -40,9 +42,34 @@ export default function DragCarousel({
         });
     };
 
+    const scrollPage = (direction: 1 | -1) => {
+        const viewport = viewportRef.current;
+        if (!viewport) return;
+        viewport.scrollBy({
+            left: direction * (fullWidthSlides ? viewport.clientWidth : nextSlide),
+            behavior: "smooth",
+        });
+    }
+
+    const ArrowButton = ({direction, disabled, onClick}:
+                         {direction: "left" | "right"; disabled: boolean; onClick: () => void;}) => {
+        return (
+            <button type="button" className={`carousel-arrow carousel-arrow--${direction}`} disabled={disabled} onClick={onClick} aria-label={direction === "left" ? "Slide trước" : "Slide sau"}>
+                <i className={`fa-solid fa-chevron-${direction}`}/>
+            </button>
+        )
+    }
+
     return (
         <div className="flex-grow-1" style={{minWidth: 0}}>
-            <div className={`d-flex ${showControlsStartEnd? "border rounded" : "align-items-center"}`}>
+            <div className={`d-flex ${showControlsStartEnd && !overlayControls ? "border rounded" : "align-items-center"} ${overlayControls ? "position-relative" : ""}`}>
+                {overlayControls && (
+                    <ArrowButton
+                        direction="left"
+                        disabled={progress === 0}
+                        onClick={() => scrollPage(-1)}
+                    />
+                )}
                 {showControlsStartEnd &&(
                     <div className={'border-end d-flex align-items-center me-3' }>
                         <button type="button" className="h-100 btn m-0 p-0" disabled={progress === 0}
@@ -118,6 +145,13 @@ export default function DragCarousel({
                         {children}
                     </div>
                 </div>
+                {overlayControls && (
+                    <ArrowButton
+                        direction="right"
+                        disabled={progress >= 0.999}
+                        onClick={() => scrollPage(1)}
+                    />
+                )}
                 {showControls && (
                     <div className="d-flex gap-2 flex-shrink-0">
                         <button type="button" className="btn btn-outline-secondary btn-sm" disabled={progress === 0} onClick={() => viewportRef.current?.scrollBy({left: -320, behavior: "smooth"})}>
