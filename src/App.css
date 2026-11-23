@@ -2181,6 +2181,38 @@ li:hover {
     z-index: -1;
 }
 
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    padding: 20px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.carousel-arrow i {
+    font-size: 60px;
+}
+
+.carousel-arrow--left {
+    left: 1%;
+}
+
+.carousel-arrow--right {
+    right: 1%;
+}
+
+.carousel-arrow:disabled {
+    opacity: 0.25;
+    cursor: default;
+}
+
 .podcast-content {
     display: flex;
     align-items: center;
@@ -2445,6 +2477,10 @@ li:hover {
     margin-bottom: 12px;
     border-top: 1px solid #147de1;
     color: #147de1;
+}
+
+.mx-5 > .podcast-section:first-child .podcast-section-header {
+    border-top: none;
 }
 
 .podcast-section-header h2 {

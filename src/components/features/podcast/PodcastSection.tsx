@@ -22,6 +22,18 @@ interface PodcastSectionProps {
     hideHeader?: boolean;
 }
 
+const menu = [
+    {slug: "Tuần này có gì", icon: ""},
+    {slug: "11 giờ 30", icon: "fa-clock"},
+    {slug: "Giới trẻ", icon: "fa-face-smile"},
+    {slug: "Bàn tròn phái đẹp", icon: "fa-seedling"},
+    {slug: "Cầu vồng hạnh phúc", icon: "fa-rainbow"},
+    {slug: "Sau giờ làm", icon: "fa-briefcase"},
+    {slug: "Sức khỏe của bạn", icon: "fa-heart-pulse"},
+    {slug: "Doanh nghiệp tự giới thiệu", icon: "fa-building"},
+    {slug: "Sáng tác ca khúc Đất nước trọn niềm vui", icon: "fa-microphone"},
+];
+
 export default function PodcastSection({
                                            title,
                                            podcasts,
@@ -37,17 +49,22 @@ export default function PodcastSection({
     const featuredPodcast = podcasts[0];
     const subPodcasts = podcasts.slice(1, 1 + rows * 3);
 
+    const currentMenu = menu.find(
+        (item) => item.slug === title
+    )
+
     return (
         <section className={`podcast-section podcast-layout-${layout}`}>
 
-            <div className="podcast-section-header">
-                {!hideHeader && (
-                    <div className="podcast-section-header">
-                        <i className="fa-regular fa-clock"></i>
-                        <h2>{title}</h2>
-                    </div>
-                )}
-            </div>
+            {!hideHeader && (
+                <div className="podcast-section-header">
+                    <i className={`fa-solid ${currentMenu?.icon ?? "fa-podcast"}`} style={{fontSize: "26px"}}></i>
+
+                    <h2 style={{color: "#147ADE", fontSize: "26px"}}>
+                        {title}
+                    </h2>
+                </div>
+            )}
 
             {layout === "featured" && featuredPodcast && (
                 <div className="podcast-section-featured">
