@@ -66,7 +66,7 @@ export default function HeaderNavigationBar() {
                             onClick={() => setShowCategory((prev) => !prev)}
                             style={{ cursor: "pointer" }}
                         >
-                            <i className="fa-solid fa-ellipsis"></i>
+                            <i className={`fa-solid ${showCategory ? "fa-xmark" : "fa-ellipsis"}`}></i>
                         </li>
                     </ul>
                 </div>

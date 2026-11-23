@@ -861,11 +861,34 @@ a {
     overscroll-behavior: contain;
 
     scrollbar-gutter: stable;
+    animation: mega-slide-down 0.25s ease-out;
+}
+
+@keyframes mega-slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .category-mega-card {
     width: 10rem;
     min-height: 10rem;
+}
+
+.social-icons svg {
+    color: #8c8c8c;
+    --icon-fg: #fff;
+}
+
+.mega-right-featured {
+    font-family: Merriweather, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
 }
 
 .bottom-news .sub-card-image {
