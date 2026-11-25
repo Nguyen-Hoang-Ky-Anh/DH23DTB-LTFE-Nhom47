@@ -201,6 +201,19 @@ body * {
     margin: 0 0 15px 15px;
 }
 
+.news-callout-type-4 {
+    float: right;
+    width: 50%;
+    margin: 0 0 15px 15px;
+}
+.link-callout {
+    font-family: Merriweather, serif;
+    font-size: 15px;
+    color: #333;
+    line-height: 16px;
+    font-weight: 700;
+}
+
 .news-detail-paragraph {
     font-family: Inter, serif;
     line-height: 26px;
@@ -2157,6 +2170,17 @@ li:hover {
     line-height: 36px;
     font-weight: bold;
     text-decoration: none;
+}
+
+.see-now-type-4 {
+    border: 1px solid silver;
+    border-top: 3px solid #0959ab;
+}
+
+.see-now-type-4-header {
+    font-weight: bold;
+    font-family: Inter, serif;
+    font-size: 16px;
 }
 
 .see-now-icon {
