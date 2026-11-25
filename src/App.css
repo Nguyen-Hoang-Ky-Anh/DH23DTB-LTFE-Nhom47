@@ -202,7 +202,6 @@ body * {
 }
 
 .news-detail-paragraph {
-    font-size: 17px;
     font-family: Inter, serif;
     line-height: 26px;
     font-weight: 400;
@@ -216,6 +215,46 @@ body * {
     text-align: center;
     padding-top: 10px;
 }
+
+.news-content-side-bar {
+    position: sticky;
+    top: 60px;
+}
+
+.fontsize-icon {
+    display: inline-block;
+}
+
+.slide-increase {
+    animation: slide-up 0.25s ease-out;
+}
+
+.slide-decrease {
+    animation: slide-down 0.25s ease-out;
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .sports-competition {
     position: relative;
     min-width: 0;

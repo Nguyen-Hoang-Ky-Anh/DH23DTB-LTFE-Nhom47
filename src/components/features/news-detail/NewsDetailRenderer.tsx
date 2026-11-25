@@ -2,7 +2,7 @@ import {Fragment, type ReactNode} from "react";
 import type {NewsContent} from "../../../config/newsStructure.ts";
 import SeeNowCard from "./detail-components/SeeNowCard.tsx";
 
-export default function NewsDetailRenderer({content}: { content: NewsContent[] }) {
+export default function NewsDetailRenderer({content, size}: { content: NewsContent[], size: number }) {
     const elements: ReactNode[] = [];
 
     for (let i = 0; i < content.length; i++) {
@@ -13,7 +13,7 @@ export default function NewsDetailRenderer({content}: { content: NewsContent[] }
 
         switch (block.type) {
             case "paragraph":
-                element = <p className={'news-detail-paragraph mb-3'}>{block.content}</p>;
+                element = <p className={'news-detail-paragraph mb-3'} style={{fontSize: size}}>{block.content}</p>;
                 break;
 
             case "image":

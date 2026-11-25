@@ -8,10 +8,12 @@ import {findChildrenSectionBySectionKey, findSectionByFeedName} from "../config/
 import NewsDetailRelated from "./features/news-detail/detail-components/NewsDetailRelated.tsx";
 import CommentBlock from "./ui/CommentBlock.tsx";
 import NewsDetailRenderer from "./features/news-detail/NewsDetailRenderer.tsx";
+import useUpdateParagraphSize from "../services/fetchNewsDetails.ts";
 
 export default function NewsDetailPage() {
     const dispatch = useDispatch<AppDispatch>();
     const [searchParams] = useSearchParams();
+    const {value, direction, increaseValue, decreaseValue, resetValue} = useUpdateParagraphSize();
 
     const url = searchParams.get("url");
 
@@ -49,7 +51,7 @@ export default function NewsDetailPage() {
         <div className={'container mt-3 mb-3 border-bottom pb-5'}>
             <div className={'row'}>
                 <div className={'col-1 p-0'}>
-                    <NewsContentSideBar/>
+                    <NewsContentSideBar value={value} direction={direction} increaseValue={increaseValue} decreaseValue={decreaseValue} resetValue={resetValue} />
                 </div>
 
                 <div className={'col-11'}>
@@ -124,7 +126,7 @@ export default function NewsDetailPage() {
                             <div className={'news-detail'}>
                                 <h2 className={'news-detail-sapo'}>{news.detailSapo}</h2>
 
-                                <NewsDetailRenderer content={news.detailContent}/>
+                                <NewsDetailRenderer content={news.detailContent} size={value}/>
                             </div>
 
                             <div className={'news-detail-bottom mt-5'}>
