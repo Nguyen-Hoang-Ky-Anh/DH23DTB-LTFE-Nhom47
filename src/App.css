@@ -198,7 +198,7 @@ body * {
 .news-callout {
     float: right;
     width: 40%;
-    margin: 0 0 20px 20px;
+    margin: 0 0 15px 15px;
 }
 
 .news-detail-paragraph {
@@ -214,6 +214,27 @@ body * {
     line-height: 22px;
     text-align: center;
     padding-top: 10px;
+}
+
+.see-now-type-2 {
+    border-top: 3px solid #0959ab;
+    border-bottom: 3px solid #0959ab;
+}
+.see-now-type-3 {
+    border-top: 3px solid #0959ab;
+    border-bottom: 3px solid #0959ab;
+}
+
+.see-now-ref {
+    background: #f6f6f6;
+    border-left: 1px solid #0959AB;
+}
+
+.tham-khao-them {
+    color: #666;
+    font-size: 12px;
+    line-height: 28px;
+    height: 30px;
 }
 
 .news-content-side-bar {
@@ -2116,6 +2137,26 @@ li:hover {
     font-weight: bold;
     text-decoration: none;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+}
+
+.see-now-type-3-title {
+    font-size: 20px;
+    font-family: Merriweather, serif;
+    line-height: 30px;
+}
+
+.see-now-type-3-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: fit-content;
+    padding: 3px 4px 3px 16px;
+    color: #0D4FA1;
+    font-size: 15px;
+    line-height: 36px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .see-now-icon {

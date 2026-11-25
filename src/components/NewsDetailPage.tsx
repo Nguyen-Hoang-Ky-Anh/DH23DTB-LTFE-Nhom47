@@ -130,7 +130,9 @@ export default function NewsDetailPage() {
                             </div>
 
                             <div className={'news-detail-bottom mt-5'}>
-                                <NewsDetailRelated relativeBox={news.relativeBox}/>
+                                {news.relativeBox.relatedLinks[0] &&
+                                    <NewsDetailRelated relativeBox={news.relativeBox}/>
+                                }
 
                                 {/* Social bottom*/}
                                 <div className={'detail-social-bottom mt-3 rounded mb-3'}>
