@@ -15,12 +15,12 @@ export interface NewsImage {
     caption?: string;
 }
 
-export type callOutVariant = 'type-1' | 'type-2' | 'type-3';
+export type callOutVariant = 'type-1' | 'type-2' | 'type-3' | 'type-4' | 'type-5' | 'type-6';
 
 export interface NewsCallOutUl {
     type: "callOutUl";
     variant: callOutVariant;
-    liImg?: string;
+    liImg?: string[];
     index: number;
     li: NewsCallOutLink[];
 }

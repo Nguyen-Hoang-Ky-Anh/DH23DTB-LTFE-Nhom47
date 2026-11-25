@@ -12,7 +12,8 @@ function parseCallOutUl(element: Element, type: callOutVariant, index: number): 
         title: a.textContent?.trim() ?? ""
     }));
 
-    const liImg = element.querySelector(".kbwscwlrl-thumb img")?.getAttribute("src") ?? "";
+    const liImg = Array.from (element.querySelectorAll("img")).map(img =>
+        img.getAttribute("src") ?? "");
     return {type: "callOutUl",variant: type, liImg: liImg, index, li: links};
 }
 
@@ -63,7 +64,7 @@ function parseDetailContent(
             blocks.push(parseContentWrap(element, index));
         } else if (element.matches(".kbwscwl-relatedbox")) {
             const variant = (
-                ["type-1", "type-2", "type-3"] as const
+                ["type-1", "type-2", "type-3", "type-6"] as const
             ).find(type => element.classList.contains(type)) ?? "type-1";
             blocks.push(parseCallOutUl(element, variant, index));
         } else if (element.matches("figure")) {
