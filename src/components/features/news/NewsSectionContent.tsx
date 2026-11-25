@@ -1,3 +1,4 @@
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import Card from "../../ui/Card.tsx";
 import HorizontalCard from "../../ui/HorizontalCard.tsx";
 import type {NewsItem} from "../../../services/rssService.ts";
@@ -69,12 +70,12 @@ export default function NewsSectionContent({
     if (layout === "compact") {
         return (
             <div className="compact-news border-top pt-3">
-                <Card image={featured.image} title={featured.title}/>
+                <Card image={featured.image} title={featured.title} link={featured.link}/>
                 {rest.slice(0, 2).map(item => (
                     <p key={item.link} className="border-top pt-3 mt-3 mb-0 text-start description"
                        style={{fontSize: 16, lineHeight: 1.5, color: "#454545"}}>
                         <span className="text-primary me-1 fs-5 sub-title">›</span>
-                        {item.title}
+                        <Link to={newsDetailHref(item.link)} className="text-reset">{item.title}</Link>
                     </p>
                 ))}
             </div>
@@ -86,12 +87,12 @@ export default function NewsSectionContent({
             <div className="row g-3 mt-0 border-top">
                 {news.slice(0, 2).map(item => (
                     <div key={item.link} className="col-12 col-sm-6 col-lg-4">
-                        <Card image={item.image} title={item.title} description={item.description}/>
+                        <Card image={item.image} title={item.title} link={item.link} description={item.description}/>
                     </div>
                 ))}
                 <div className="col-12 col-lg-4 d-flex flex-column gap-3">
                     {news.slice(2, 5).map(item => (
-                        <HorizontalCard key={item.link} image={item.image} title={item.title}/>
+                        <HorizontalCard key={item.link} image={item.image} title={item.title} link={item.link}/>
                     ))}
                 </div>
             </div>
@@ -109,13 +110,14 @@ export default function NewsSectionContent({
                     <Card
                         image={featured.image}
                         title={featured.title}
+                        link={featured.link}
                         description={featured.description}
                         feature
                     />
                 </div>
                 <div className="d-flex flex-column col-lg-5">
                     {list.map((item) => (
-                        <HorizontalCard key={item.link} image={item.image} title={item.title} whiteText={whiteText}/>
+                        <HorizontalCard key={item.link} image={item.image} title={item.title} link={item.link} whiteText={whiteText}/>
 
                     ))}
                 </div>
@@ -126,6 +128,7 @@ export default function NewsSectionContent({
                         <Card
                             image={sideItem.image}
                             title={sideItem.title}
+                            link={sideItem.link}
                             description={sideItem.description}
                         />
                     </div>
@@ -140,7 +143,7 @@ export default function NewsSectionContent({
                     <div className={'home-sub-main-news-section-card'}>
                         <div className={"row border-bottom me-2 pb-3 align-items-center mb-2"}>
                             <div className={"col-5 ps-0 py-0"}>
-                                <Link to={"/"}>
+                                <Link to={newsDetailHref(featured.link)}>
                                     <img src={featured.image} alt={featured.title} width={130} height={130}
                                          style={{
                                              objectFit: "cover"
@@ -149,7 +152,7 @@ export default function NewsSectionContent({
                             </div>
 
                             <div className={"col-7 p-0"}>
-                                <Link to={"/"} className={'main-title'} style={{fontSize: 15}}> {featured.title}</Link>
+                                <Link to={newsDetailHref(featured.link)} className={'main-title'} style={{fontSize: 15}}> {featured.title}</Link>
                                 <p className={'truncate-description'}>{featured.description}</p>
                             </div>
                         </div>
@@ -158,8 +161,8 @@ export default function NewsSectionContent({
                     <div className={'d-flex flex-row'}>
                         <ul className={'d-flex justify-content-between gap-4 px-2 gap-3'}>
                             {list.slice(0, 2).map(item => (
-                                <li>
-                                    <Link to={"/"} title={item.title} className={'sub-title'}
+                                <li key={item.guid}>
+                                    <Link to={newsDetailHref(item.link)} title={item.title} className={'sub-title'}
                                           style={{fontSize: 15}}>
                                         {item.title}</Link>
                                 </li>
@@ -171,12 +174,12 @@ export default function NewsSectionContent({
                 {sideItem && (
                     <div className="d-flex flex-column col-lg-4">
                         <div className="card-media mb-2">
-                            <Link to={sideItem.link}>
+                            <Link to={newsDetailHref(sideItem.link)}>
                                 <img className={'w-100 h-auto'} src={sideItem.image} alt={sideItem.title}/>
                             </Link>
                         </div>
 
-                        <Link to={sideItem.link}>
+                        <Link to={newsDetailHref(sideItem.link)}>
                             <h3 className={`main-title`} style={{fontSize: 15}}>
                                 {sideItem.title}
                             </h3>
@@ -201,7 +204,7 @@ export default function NewsSectionContent({
                         <div className={'home-sub-main-news-section-card'}>
                             <div className={"row me-2 pb-3 align-items-center mb-2"}>
                                 <div className={"col-5 ps-0 py-0"}>
-                                    <Link to={"/"}>
+                                    <Link to={newsDetailHref(featured.link)}>
                                         <img src={featured.image} alt={featured.title} width={130} height={130}
                                              style={{
                                                  objectFit: "cover"
@@ -210,7 +213,7 @@ export default function NewsSectionContent({
                                 </div>
 
                                 <div className={"col-7 p-0"}>
-                                    <Link to={"/"} className={'main-title'}
+                                    <Link to={newsDetailHref(featured.link)} className={'main-title'}
                                           style={{fontSize: 15}}> {featured.title}</Link>
                                     <p className={'description'}
                                        style={{
@@ -222,7 +225,7 @@ export default function NewsSectionContent({
                     </div>
                     {sideItem && (
                         <div className="d-flex flex-column col-lg-4">
-                            <Link to={sideItem.link}>
+                            <Link to={newsDetailHref(sideItem.link)}>
                                 <h3 className={`main-title`} style={{fontSize: 15}}>
                                     {sideItem.title}
                                 </h3>
@@ -242,7 +245,7 @@ export default function NewsSectionContent({
                     <ul className={'d-flex justify-content-between gap-5 px-2 gap-3'}>
                         {list.slice(0, 3).map(item => (
                             <li>
-                                <Link to={"/"} title={item.title} className={'sub-title'}
+                                <Link to={newsDetailHref(item.link)} title={item.title} className={'sub-title'}
                                       style={{fontSize: 15}}>
                                     {item.title}</Link>
                             </li>
@@ -257,7 +260,7 @@ export default function NewsSectionContent({
         <div className="pb-3">
             <div className="row mb-4 mt-4">
                 <div className="col-9">
-                    <HorizontalCard image={featured.image} title={featured.title} description={featured.description}
+                    <HorizontalCard image={featured.image} title={featured.title} link={featured.link} description={featured.description}
                                     feature/>
                 </div>
             </div>
@@ -265,7 +268,7 @@ export default function NewsSectionContent({
                  style={{width: "fit-content", maxWidth: "100%"}}>
                 {list.map(item => (
                     <div key={item.link} style={{width: 303}}>
-                        <Card image={item.image} title={item.title}/>
+                        <Card image={item.image} title={item.title} link={item.link}/>
                     </div>
                 ))}
             </div>

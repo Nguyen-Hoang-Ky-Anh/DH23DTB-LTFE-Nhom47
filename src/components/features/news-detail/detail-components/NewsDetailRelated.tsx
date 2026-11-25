@@ -1,5 +1,6 @@
 import type {RelativeBox} from "../../../../config/newsStructure.ts";
 import {Link} from "react-router-dom";
+import {newsDetailHref} from "../../../../utils/newsDetailURL.ts";
 
 export interface NewsDetailRelatedProps {
     relativeBox: RelativeBox;
@@ -15,7 +16,7 @@ export default function NewsDetailRelated({relativeBox}: NewsDetailRelatedProps)
                 <div className={'row'}>
                     <div className={'col-4 justify-content-between align-items-center'}>
                         <Link
-                            to={`/news-detail?${new URLSearchParams({url: relativeBox.relatedLinks[0].src}).toString()}`}>
+                            to={newsDetailHref(relativeBox.relatedLinks[0].src)}>
                             <img src={relativeBox.firstRelatedImg} alt={relativeBox.relatedLinks[0].title}
                                  className={'first-related-img'}
                             />
@@ -24,7 +25,7 @@ export default function NewsDetailRelated({relativeBox}: NewsDetailRelatedProps)
                     <div className={'col-8'}>
                         <div className={'d-flex flex-column justify-content-between gap-2'}>
                             <Link
-                                to={`/news-detail?${new URLSearchParams({url: relativeBox.relatedLinks[1].src}).toString()}`}>
+                                to={newsDetailHref(relativeBox.relatedLinks[1].src)}>
                                 <p className={'related-title'}>{relativeBox.relatedLinks[1].title}</p>
                             </Link>
                             <p className={'first-related-description'}>{relativeBox.firstRelatedDescription}</p>
@@ -53,7 +54,7 @@ export default function NewsDetailRelated({relativeBox}: NewsDetailRelatedProps)
                     <ul className={'m-0'}>
                         <li>
                             <Link
-                                to={`/news-detail?${new URLSearchParams({url: relativeBox.relatedLinks[3].src}).toString()}`}
+                                to={newsDetailHref(relativeBox.relatedLinks[3].src)}
                                 title={relativeBox.relatedLinks[3].title}
                             >
                                 <p className={'related-title'}>{relativeBox.relatedLinks[3].title}</p>

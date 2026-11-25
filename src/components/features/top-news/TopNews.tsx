@@ -1,3 +1,4 @@
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "../../../store/store.ts";
@@ -50,10 +51,12 @@ export default function TopNews() {
                 </article>
                 <div className="col-4">
                   {news.slice(1, 3).map((item) => (
-                    <article key={item.guid || item.title} className="mb-3">
-                      <img className="w-100 mb-2" src={item.image} alt="" />
+                    <article key={item.guid} className="mb-3">
+                      <Link to={newsDetailHref(item.link)}>
+                        <img className="w-100 mb-2" src={item.image} alt={item.title} />
+                      </Link>
                       <h3 className="fs-6 fw-bold mb-0" style={titleStyle}>
-                        {item.title}
+                        <Link className="text-reset" to={newsDetailHref(item.link)}>{item.title}</Link>
                       </h3>
                     </article>
                   ))}
@@ -62,11 +65,11 @@ export default function TopNews() {
               <div className="row g-3 border-top mt-4 pt-3 pb-3">
                 {news.slice(3, 6).map((item, index) => (
                   <article
-                    key={item.guid || item.title}
+                    key={item.guid}
                     className={`col-4 ${index > 0 ? "border-start" : ""}`}
                   >
                     <h3 className="fs-6 fw-bold mb-2" style={titleStyle}>
-                      {item.title}
+                      <Link className="text-reset" to={newsDetailHref(item.link)}>{item.title}</Link>
                     </h3>
                     <p className="mb-0" style={descriptionStyle}>
                       {item.description}
@@ -125,13 +128,13 @@ export default function TopNews() {
                 style={{ ...titleStyle, maxHeight: 430, fontSize: 14 }}
               >
                 {news.slice(6, 16).map((item) => (
-                  <li key={item.guid || item.title} className="border-bottom py-3">
-                    <a
-                      href={"#"}
+                  <li key={item.guid} className="border-bottom py-3">
+                    <Link
+                      to={newsDetailHref(item.link)}
                       className="text-reset text-decoration-none"
                     >
                       {item.title}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -160,16 +163,18 @@ export default function TopNews() {
             </h2>
             <DragCarousel showProgress>
               {vipNews.slice(0, 14).map((item) => (
-                <article key={item.guid || item.title} style={{ width: 260 }}>
-                  <img
-                    className="w-100 mb-2"
-                    src={item.image}
-                    alt=""
-                    loading="lazy"
-                    draggable={false}
-                  />
+                <article key={item.guid} style={{ width: 260 }}>
+                  <Link to={newsDetailHref(item.link)}>
+                    <img
+                      className="w-100 mb-2"
+                      src={item.image}
+                      alt={item.title}
+                      loading="lazy"
+                      draggable={false}
+                    />
+                  </Link>
                   <h3 className="fs-6 fw-bold mb-0" style={titleStyle}>
-                    {item.title}
+                    <Link className="text-reset" to={newsDetailHref(item.link)}>{item.title}</Link>
                   </h3>
                 </article>
               ))}

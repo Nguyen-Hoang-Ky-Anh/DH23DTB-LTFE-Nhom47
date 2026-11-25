@@ -1,3 +1,4 @@
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import type {NewsItem} from "../../../services/rssService.ts";
 import {Link, useLocation} from "react-router-dom";
 import {type NavLink, SECTIONS} from "../../../config/newsSectionConfig.ts";
@@ -45,13 +46,13 @@ export default function HomeEnglishNews({href, links, news}: HomeEnglishNewsProp
                 {/* First news */}
                 <div className={"row border-bottom mx-2 pb-2 align-items-center mb-2"}>
                     <div className={"col-5 ps-0 py-0"}>
-                        <Link to={"/"}>
+                        <Link to={newsDetailHref(firstNews.link)}>
                             <img src={firstNews.image} alt={firstNews.title} width={"100%"}/>
                         </Link>
                     </div>
 
                     <div className={"col-7 p-0"}>
-                        <Link to={"/"} className={'main-title'}> {firstNews.title}</Link>
+                        <Link to={newsDetailHref(firstNews.link)} className={'main-title'}> {firstNews.title}</Link>
                         <p className={'description'}>{firstNews.description}</p>
                     </div>
                 </div>
@@ -60,8 +61,8 @@ export default function HomeEnglishNews({href, links, news}: HomeEnglishNewsProp
                 <div className={"content-news"}>
                     <ul className={'d-flex justify-content-between gap-4 ps-3'}>
                         {contentNews.map(item => (
-                            <li>
-                                <Link to={"/"} title={item.title} className={'sub-title'}>
+                            <li key={item.guid}>
+                                <Link to={newsDetailHref(item.link)} title={item.title} className={'sub-title'}>
                                     {item.title}</Link>
                             </li>
                         ))}

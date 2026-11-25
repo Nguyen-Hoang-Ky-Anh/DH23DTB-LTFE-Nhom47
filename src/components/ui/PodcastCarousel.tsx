@@ -6,6 +6,7 @@ import type {FeedName} from "../../services/rssConfig.ts";
 import DragCarousel from "./DragCarousel.tsx";
 import {fetchPodcastDuration} from "../../services/podcastService.ts";
 import {Link} from "react-router-dom";
+import {newsDetailHref} from "../../utils/newsDetailURL.ts";
 
 interface PodcastSection {
     title: string;
@@ -31,14 +32,11 @@ export default function PodcastCarousel({sections}: PodcastCarouselProps) {
     }, [dispatch, sections]);
 
     const carouselItems = useMemo(() => {
-        return sections
-            .map((section) => ({
-                title: section.title,
-                feed: section.feed,
-                newsItem: feeds[section.feed]?.[0]
-            }))
-            .filter((item) => item.newsItem !== undefined);
-    }, [sections, feeds])
+        return sections.flatMap( (section) => {
+            const newsItem = feeds[section.feed]?.[0]
+            return newsItem ? [{title: section.title, feed: section.feed, newsItem}] : []
+        })
+    },[sections, feeds])
 
     useEffect(() => {
         async function getDurations() {
@@ -66,7 +64,7 @@ export default function PodcastCarousel({sections}: PodcastCarouselProps) {
                     key={item.feed}
                     className="podcast-slide flex-shrink-0 w-100"
                     style={{
-                        backgroundImage: `url("${item.newsItem?.image}")`
+                        backgroundImage: `url("${item.newsItem.image}")`
                     }}
                 >
                     <div className="podcast-content">
@@ -77,16 +75,16 @@ export default function PodcastCarousel({sections}: PodcastCarouselProps) {
                                     <i className="fa-solid fa-angle-right"></i>
                                 </span>
                                 <h2>
-                                    {item.newsItem?.title}
+                                    <Link className="text-reset" to={newsDetailHref(item.newsItem.link)}>{item.newsItem.title}</Link>
                                 </h2>
                                 <p>
-                                    {item.newsItem?.description}
+                                    {item.newsItem.description}
                                 </p>
                             </div>
 
                             <div className="podcast-actions">
                                 <Link
-                                    to={item.newsItem?.link}
+                                    to={newsDetailHref(item.newsItem.link)}
                                     className="podcast-play-btn me-3"
                                 >
                                     <i className="fa-solid fa-circle-play"></i>
@@ -95,12 +93,12 @@ export default function PodcastCarousel({sections}: PodcastCarouselProps) {
                                 <span className="description" style={{color: "#AAAAAA", fontWeight: "bold"}}>{durations[item.feed] || "00:00"}</span>
                             </div>
                         </div>
-                        <div className="podcast-cover">
+                        <Link className="podcast-cover" to={newsDetailHref(item.newsItem.link)}>
                             <img
-                                src={item.newsItem?.image}
-                                alt={item.newsItem?.title}
+                                src={item.newsItem.image}
+                                alt={item.newsItem.title}
                             />
-                        </div>
+                        </Link>
                     </div>
                 </section>
             ))}

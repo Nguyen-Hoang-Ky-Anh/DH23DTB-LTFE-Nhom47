@@ -1,3 +1,4 @@
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import type {NewsItem} from "../../../services/rssService.ts";
 import {Link} from "react-router-dom";
 
@@ -9,9 +10,11 @@ export interface HomeSec1CardProps {
 
 export default function HomeSec1Card({news, title, cateHref} : HomeSec1CardProps) {
         return (
-            <div className={'col-6 d-flex text-start m-0 p-0 pe-1'}>
+            <div className={'col-6 d-flex flex-column text-start m-0 p-0 pe-1'}>
                 <Link to={cateHref} title={title}>
                     <p className={'main-title'} style={{fontSize: 18}}>{title}</p>
+                </Link>
+                <Link to={newsDetailHref(news.link)} title={news.title}>
                     <img src={news.image}
                          alt={news.title}
                          className={'home-sec-1-image'}

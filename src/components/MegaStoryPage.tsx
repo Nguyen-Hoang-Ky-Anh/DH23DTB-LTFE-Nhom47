@@ -3,6 +3,7 @@ import {Link, useLocation} from "react-router-dom";
 import {megaStory} from "../config/megaStoryConfig.ts";
 import {chapters, featuredArticles, megaStoryImagePath, type MegaStoryBlock, type MegaStoryComparison, type MegaStoryPhoto} from "../config/megaStoryContent.ts";
 import fetchRSS, {type NewsItem} from "../services/rssService.ts";
+import {newsDetailHref} from "../utils/newsDetailURL.ts";
 import MegaStoryAlbum, {MediaCaption, MegaStoryText} from "./MegaStoryAlbum.tsx";
 import MegaStoryLightbox from "./MegaStoryLightbox.tsx";
 import MegaStoryTimeline, {MegaStoryMilestones, MegaStoryVideo} from "./MegaStoryTimeline.tsx";
@@ -187,10 +188,12 @@ export default function MegaStoryPage() {
                 <section className="mega-story-see-more">
                     <h2 className="main-title">Xem thêm</h2>
                     <div className="mega-story-more-grid">
-                        {articles.map(({guid, title, image}) => (
+                        {articles.map(({guid, title, image, link}) => (
                             <article key={guid || title}>
-                                <img src={image} alt="" loading="lazy" decoding="async" />
-                                <h3 className="main-title mb-0">{title}</h3>
+                                <Link className="text-reset" to={newsDetailHref(link)}>
+                                    <img src={image} alt="" loading="lazy" decoding="async" />
+                                    <h3 className="main-title mb-0">{title}</h3>
+                                </Link>
                             </article>
                         ))}
                     </div>

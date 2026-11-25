@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+import {newsDetailHref} from "../../utils/newsDetailURL.ts";
 interface HorizontalCardProps {
     image: string;
     title: string;
@@ -6,11 +8,12 @@ interface HorizontalCardProps {
     whiteText?: boolean;
     showDescription?: boolean;
     borderBottom?: boolean;
+    link?: string;
 }
 
 export default function HorizontalCard({image, title, description, feature, whiteText, showDescription,
-                                           borderBottom=true}: HorizontalCardProps) {
-    return (
+                                           borderBottom=true, link}: HorizontalCardProps) {
+    const card = (
         <div className={`horizontal-card ${feature ? "horizontal-card-featured" : ""}
          ${whiteText ? "horizontal-card-white" : ""}
          ${borderBottom? "border-bottom pb-2" : ""} mb-2`}>
@@ -23,4 +26,5 @@ export default function HorizontalCard({image, title, description, feature, whit
             </div>
         </div>
     );
+    return link ? <Link className="d-block text-reset text-decoration-none" to={newsDetailHref(link)}>{card}</Link> : card;
 }

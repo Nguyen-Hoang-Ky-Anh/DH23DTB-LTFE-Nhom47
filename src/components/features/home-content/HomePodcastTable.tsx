@@ -1,3 +1,4 @@
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import {type NavLink, SECTIONS} from "../../../config/newsSectionConfig.ts";
 import type {NewsItem} from "../../../services/rssService.ts";
 import {Link, useLocation} from "react-router-dom";
@@ -36,14 +37,14 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                     <ul className="list-inline mb-0 d-flex flew-row justify-content-between align-items-center">
                         {links.map(link => (
                             <li key={link.label} className={'category-more-link'}>
-                                <Link to={`news-detail?${new URLSearchParams(link.href).toString()}`} className={'text-white'}
+                                <Link to={link.href} className={'text-white'}
                                 >{link.label}</Link>
                             </li>
                         ))}
                         <li key={moreLinks[0].label}
                             className={'category-more-link'}
                         >
-                            <Link to={`news-detail?${new URLSearchParams(moreLinks[0].href).toString()}`}
+                            <Link to={moreLinks[0].href}
                                   style={{
                                       color: "white"
                                   }}
@@ -56,7 +57,7 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
             <div className={"content row text-start p-2"}>
                 {/* First news col-8*/}
                 <div className={"col-8 d-flex flex-row gap-2 mt-1"}>
-                    <Link to={`news-detail?${new URLSearchParams(firstNews.link).toString()}`} title={firstNews.title}>
+                    <Link to={newsDetailHref(firstNews.link)} title={firstNews.title}>
                         <img src={firstNews.image} alt={firstNews.title}
                              style={{
                                  width: 130,
@@ -67,13 +68,13 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                              }}/>
                     </Link>
                     <div>
-                        <p style={{
+                        <Link to={newsDetailHref(firstNews.link)} style={{
                             fontSize: 15,
                         }}
-                        className={'main-title pb-3'}
-                        >{firstNews.title}</p>
+                        className={'main-title pb-3 d-block'}
+                        >{firstNews.title}</Link>
                         <div className={"d-flex flex-row gap-3 align-items-center"}>
-                            <button type={"button"} className={"py-1 px-2 rounded btn border"} style={{backgroundColor:"#F5F5F58C"}}>
+                            <Link to={newsDetailHref(firstNews.link)} className={"py-1 px-2 rounded btn border"} style={{backgroundColor:"#F5F5F58C"}}>
                                 <div className={"align-items-center d-flex flex-row justify-content-between gap-1 p-0"}
                                 style={{
                                     fontWeight: 400,
@@ -93,7 +94,7 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                                         Nghe tập này
                                     </p>
                                 </div>
-                            </button>
+                            </Link>
                             <p className={'description'}
                                 style={{
                                 fontSize: 12,
@@ -105,7 +106,7 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                 {/* 2 next news*/}
                 <div className={'col-4 d-flex flex-column border-start'}>
                     <div className={"mx-1 pb-3 border-bottom"}>
-                        <Link to={`news-detail?${new URLSearchParams(contentNews[0].link).toString()}`} title={contentNews[0].title}
+                        <Link to={newsDetailHref(contentNews[0].link)} title={contentNews[0].title}
                         className={'sub-title'}
                             style={{fontSize: 15}}>
                             <p><i className="fa-solid fa-headphones"
@@ -120,7 +121,7 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                     </div>
 
                     <div className={"mx-1 pt-3"}>
-                        <Link to={new URLSearchParams(contentNews[1].link).toString()} title={contentNews[0].title}
+                        <Link to={newsDetailHref(contentNews[1].link)} title={contentNews[1].title}
                         style={{
                             fontFamily: "MerriWeather",
                             fontSize: 15,

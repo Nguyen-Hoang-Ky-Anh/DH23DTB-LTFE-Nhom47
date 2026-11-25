@@ -1,3 +1,5 @@
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
+import {Link} from "react-router-dom";
 import Card from "../../ui/Card.tsx";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../../store/store.ts";
@@ -47,9 +49,8 @@ export function MultimediaContent() {
     return (
         <div className="row g-4 text-white pb-5">
             <div className="col-12 col-lg-4">
-                <a
-                    href={featuredCard.article.link}
-                    target="_blank"
+                <Link
+                    to={newsDetailHref(featuredCard.article.link)}
                     className="card-link"
                 >
                     <Card
@@ -58,7 +59,7 @@ export function MultimediaContent() {
                         description={featuredCard.article.description}
                         feature
                     />
-                </a>
+                </Link>
             </div>
 
             <div className="col-12 col-lg-8">
@@ -68,16 +69,15 @@ export function MultimediaContent() {
 
                         return (
                             <div className="col-12 col-lg-4 col-sm-6" key={card.feed}>
-                                <a
-                                    href={card.article.link}
-                                    target="_blank"
+                                <Link
+                                    to={newsDetailHref(card.article.link)}
                                     className="card-link"
                                 >
                                     <Card
                                         image={card.article.image}
                                         title={card.article.title}
                                     />
-                                </a>
+                                </Link>
                             </div>
                         );
                     })}

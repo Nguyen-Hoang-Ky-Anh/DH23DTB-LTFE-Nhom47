@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import {useEffect} from "react";
 import type {NewsItem} from "../../../services/rssService.ts";
 import NewsResults from "../trending/NewsResults.tsx";
@@ -43,17 +45,21 @@ export default function NewsListingPage({title, news, showHighlights = false, se
                 <section className="news-listing-highlights border-bottom pb-3 mb-4">
                     <article className="row g-0 bg-light">
                         <div className="col-12 col-md-8">
-                            <img src={featured.image} alt={featured.title} className="news-listing-cover w-100"/>
+                            <Link to={newsDetailHref(featured.link)}>
+                                <img src={featured.image} alt={featured.title} className="news-listing-cover w-100"/>
+                            </Link>
                         </div>
                         <div className="col-12 col-md-4 p-3">
-                            <h2 className="main-title fs-4 text-dark">{featured.title}</h2>
+                            <h2 className="main-title fs-4 text-dark">
+                                <Link to={newsDetailHref(featured.link)} className="text-reset">{featured.title}</Link>
+                            </h2>
                             <p className="horizontal-card-description">{featured.description}</p>
                         </div>
                     </article>
                     <div className="row g-3 border-top mt-3">
                         {filteredItems.slice(1, 5).map(item => (
-                            <article key={item.guid || item.link} className="col-6 col-lg-3">
-                                <Card image={item.image} title={item.title}/>
+                            <article key={item.guid} className="col-6 col-lg-3">
+                                <Card image={item.image} title={item.title} link={item.link}/>
                             </article>
                         ))}
                     </div>
@@ -61,7 +67,8 @@ export default function NewsListingPage({title, news, showHighlights = false, se
             )}
             <div className="row">
                 <div className="col-12 col-lg-9">
-                    <NewsResults key={title} news={featured ? filteredItems.slice(5) : filteredItems}/>
+                    <NewsResults key={title} news={featured ? filteredItems.slice(5) : filteredItems}
+                                 initialCount={showHighlights ? 5 : 15}/>
                 </div>
             </div>
         </div>
