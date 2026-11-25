@@ -39,6 +39,7 @@ export default function VideoSection({title, feed, hasSubContent, subContentTitl
                                 <Card
                                     image={item.image}
                                     title={item.title}
+                                    link={item.link}
                                     isVideo
                                     date={new Date(item.pubDate).toLocaleDateString("vi-VN")}
                                 />
@@ -61,6 +62,7 @@ export default function VideoSection({title, feed, hasSubContent, subContentTitl
                                     key={item.link}
                                     image={item.image}
                                     title={item.title}
+                                    link={item.link}
                                     borderBottom={index !== numberOfNewsInSideContent.length - 1}
                                 />
                             ))}

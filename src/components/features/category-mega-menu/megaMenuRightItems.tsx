@@ -39,6 +39,6 @@ export const MEGA_MENU_COLUMNS_RIGHT: MenuItem[][] = [
         {label: "", href: "https://www.facebook.com/nguoilaodong", icon: <FacebookIcon/>},
         {label: "", href: "https://www.youtube.com/channel/UCzkyOx_0O1pGOqHiUMOe2KQ", icon: <YoutubeIcon/>},
         {label: "", href: "https://zalo.me/4417973660626754335", icon: <ZaloIcon/>},
-        {label: "", href: "/", icon: <RssIcon/>},
+        {label: "", href: "/rss", icon: <RssIcon/>},
     ]
 ];

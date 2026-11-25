@@ -1,3 +1,4 @@
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import type {NewsItem} from "../../../services/rssService.ts";
 import SeeMore from "./SeeMore.tsx";
 import {Link} from "react-router-dom";
@@ -9,7 +10,6 @@ interface HomeHorizontalCardProps {
     link: string;
     description?: string;
     seeMore?: NewsItem;
-    linkArticles?: boolean;
 }
 
 function getImageType(index: number) {
@@ -30,15 +30,16 @@ export default function HomeHorizontalCard({
                                                title,
                                                link,
                                                description,
-                                               seeMore,
-                                               linkArticles = true
+                                               seeMore
                                            }: HomeHorizontalCardProps,) {
     return (
         <div className={`home-horizontal-card text-start 
         ${index !== 20 ? "border-bottom pb-2 me-4 mb-4" : ""} me-4`}>
-            <Link className="main-title" to={`/news-detail?${new URLSearchParams({url: link}).toString()}`}>{title}</Link>
+            <Link className="main-title" to={newsDetailHref(link)}>{title}</Link>
             <div className="home-horizontal-card-content mt-3 gap-0">
-                <img src={image} alt={title} className={(index ? getImageType(index) : "home-horizontal-card-image") + " me-3"}/>
+                <Link to={newsDetailHref(link)}>
+                    <img src={image} alt={title} className={(index ? getImageType(index) : "home-horizontal-card-image") + " me-3"}/>
+                </Link>
 
                 <div className={'d-flex flex-column gap-2'}>
                     {index !== 9 && description && (
@@ -47,7 +48,6 @@ export default function HomeHorizontalCard({
                     {index !== 9 && index !== 8 && seeMore && <div className="mt-2">
                         <SeeMore
                         newsItem={seeMore}
-                        linkArticles={linkArticles}
                         isUl={index !== 5 && index !== 13}/>
                         </div>}
                 </div>

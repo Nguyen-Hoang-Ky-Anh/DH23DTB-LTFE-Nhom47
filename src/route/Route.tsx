@@ -160,11 +160,6 @@ export const router = createBrowserRouter([
 
     }
   },
-  {
-    path: "/news-detail",
-    element: <NewsDetailPage/>,
-    errorElement: <Error/>
-  },
 ]);
 
 

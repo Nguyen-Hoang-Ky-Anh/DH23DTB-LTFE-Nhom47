@@ -1,3 +1,4 @@
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import type {NewsItem} from "../../../services/rssService.ts";
 import {Link} from "react-router-dom";
 
@@ -33,9 +34,11 @@ export default function TuHaoCoToQuoc({href, news}: TuHaoCoToQuocProps) {
             <div className={'border-bottom pb-3'}>
                 <div className={'row'}>
                     <div className={'col-8 my-2 pe-2 text-start border-end gap-1 d-flex '}>
-                        <img src={news[0].image} alt={news[0].title} height={130} width={130} style={{objectFit: "cover"}}/>
+                        <Link to={newsDetailHref(news[0].link)}>
+                            <img src={news[0].image} alt={news[0].title} height={130} width={130} style={{objectFit: "cover"}}/>
+                        </Link>
                         <div className={'d-flex flex-column px-1'}>
-                            <Link to={news[0].link} title={news[0].title}
+                            <Link to={newsDetailHref(news[0].link)} title={news[0].title}
                                   className={'main-title'}>
                                 {news[0].title}
                             </Link>
@@ -47,7 +50,7 @@ export default function TuHaoCoToQuoc({href, news}: TuHaoCoToQuocProps) {
                     </div>
 
                     <div className={'text-start col-4 d-flex flex-column my-2'}>
-                        <Link to={news[1].title} title={news[1].title} className={'main-title'}>
+                        <Link to={newsDetailHref(news[1].link)} title={news[1].title} className={'main-title'}>
                             {news[1].title}
                         </Link>
                         <p className={'truncate-description mt-2'} style={{color:"#727272"}} >

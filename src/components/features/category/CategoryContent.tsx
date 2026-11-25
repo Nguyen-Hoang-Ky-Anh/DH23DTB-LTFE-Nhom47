@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import DragCarousel from "../../ui/DragCarousel.tsx";
 import type {FeedName} from "../../../services/rssConfig.ts";
 import {useDispatch, useSelector} from "react-redux";
@@ -43,10 +45,10 @@ export default function CategoryContent({feed, sidebarLinks, isWorldCup = false,
                         <div className="flex-grow-1 overflow-hidden">
                             <DragCarousel showControls>
                                 {news.map(item => (
-                                    <span title={item.title}
+                                    <Link key={item.guid} to={newsDetailHref(item.link)} title={item.title}
                                           className="bg-light py-1 px-3 text-truncate" style={{maxWidth: 260}}>
                                         {item.title}
-                                    </span>
+                                    </Link>
                                 ))}
                             </DragCarousel>
                         </div>
@@ -65,7 +67,6 @@ export default function CategoryContent({feed, sidebarLinks, isWorldCup = false,
                             link={item.link}
                             description={item.description}
                             seeMore={news[index + 6]}
-                            linkArticles={!isWorldCup}
                         />
                     ))}
                     {visibleCount < news.length && (

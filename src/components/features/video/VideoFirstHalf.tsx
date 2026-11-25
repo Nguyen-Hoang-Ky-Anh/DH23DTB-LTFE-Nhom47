@@ -1,3 +1,4 @@
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import {SECTIONS} from "../../../config/newsSectionConfig.ts";
 import Card from "../../ui/Card.tsx";
 import {useEffect} from "react";
@@ -49,10 +50,9 @@ export default function VideoFirstHalf() {
                                   }}
                             >Video</Link>
 
-                            <p className={'main-title'}
-                               style={{
-                                   fontSize: 26
-                               }}>{news[1].title}</p>
+                            <Link to={newsDetailHref(news[1].link)} className={'main-title d-block'} style={{fontSize: 26}}>
+                                {news[1].title}
+                            </Link>
 
                             <div className={'mt-2 d-flex justify-content-between'}>
                                 <p className={'description author'}
@@ -99,7 +99,7 @@ export default function VideoFirstHalf() {
                                      background: "#f5f6f8"
                                  }}
                             >
-                                <HorizontalCard image={news[1].image} title={news[1].title} borderBottom={false}/>
+                                <HorizontalCard image={news[1].image} title={news[1].title} link={news[1].link} borderBottom={false}/>
                             </div>
                         </div>
                     </div>
@@ -111,6 +111,7 @@ export default function VideoFirstHalf() {
                             <Card
                                 image={item.image}
                                 title={item.title}
+                                link={item.link}
                                 isVideo
                                 date={new Date(item.pubDate).toLocaleDateString("vi-VN")}
                             />

@@ -4,15 +4,16 @@ import HorizontalCard from "../../ui/HorizontalCard.tsx";
 
 interface NewsResultsProps {
     news: NewsItem[];
+    initialCount?: number;
 }
 
-export default function NewsResults({news}: NewsResultsProps) {
-    const [visibleCount, setVisibleCount] = useState(15);
+export default function NewsResults({news, initialCount = 15}: NewsResultsProps) {
+    const [visibleCount, setVisibleCount] = useState(initialCount);
 
     return (
         <div className="news-results">
             {news.slice(0, visibleCount).map(item => (
-                <HorizontalCard key={item.guid} image={item.image} title={item.title}
+                <HorizontalCard key={item.guid} image={item.image} title={item.title} link={item.link}
                                 description={item.description} showDescription/>
             ))}
             {visibleCount < news.length && (

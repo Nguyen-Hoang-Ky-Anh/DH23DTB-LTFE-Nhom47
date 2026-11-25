@@ -1,3 +1,4 @@
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import type {NewsItem} from "../../../services/rssService.ts";
 import {Link} from "react-router-dom";
 
@@ -23,7 +24,7 @@ export default function HomeSec2Card({icon, title, cateHref, newsItem} : HomeSec
                 </Link>
             </div>
             <div>
-                <Link to={newsItem.link} title={newsItem.title}>
+                <Link to={newsDetailHref(newsItem.link)} title={newsItem.title}>
                     <div className={'d-flex flex-column justify-content-center align-items-center'}>
                         <div className={'sec-2-card-img-wrapper'}>
                             <img src={newsItem.image} alt={newsItem.title} className={'mt-3 sec-2-card-img'}/>

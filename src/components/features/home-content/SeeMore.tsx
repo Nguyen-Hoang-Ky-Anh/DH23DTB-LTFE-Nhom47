@@ -1,19 +1,20 @@
+import {Link} from "react-router-dom";
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import type {NewsItem} from "../../../services/rssService.ts";
 
 interface SeeMoreProps {
     newsItem: NewsItem;
     isUl: boolean;
-    linkArticles?: boolean;
 }
 
-export default function SeeMore({newsItem, isUl, linkArticles = true}: SeeMoreProps) {
-    const href = linkArticles ? newsItem.link : undefined;
+export default function SeeMore({newsItem, isUl}: SeeMoreProps) {
+    const href = newsDetailHref(newsItem.link);
     if (isUl) {
         return (
             <div className={"see-more"}>
                 <ul className={"p-0"}>
                     <li>
-                        <a href={href}>{newsItem.title}</a>
+                        <Link to={href}>{newsItem.title}</Link>
                     </li>
                 </ul>
             </div>
@@ -25,11 +26,11 @@ export default function SeeMore({newsItem, isUl, linkArticles = true}: SeeMorePr
                 <strong>Xem thêm</strong>
                 <div className={"border border-1 rounded d-flex justify-content-center align-items-center"}
                 style={{padding: 12, marginTop: 8}}>
-                    <a className={'see-more-image-container me-2'} href={href}>
+                    <Link className={'see-more-image-container me-2'} to={href}>
                         <img src={newsItem.image} className={"see-more-image"}/>
-                    </a>
+                    </Link>
 
-                    <a href={href} className={'see-more-title'}>{newsItem.title}</a>
+                    <Link to={href} className={'see-more-title'}>{newsItem.title}</Link>
                 </div>
             </div>
         )

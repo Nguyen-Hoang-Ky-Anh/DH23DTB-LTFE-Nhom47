@@ -1,3 +1,4 @@
+import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import type {NewsItem} from "../../../services/rssService.ts";
 import HomeSec1Card from "./HomeSec1Card.tsx";
 import {SECTIONS} from "../../../config/newsSectionConfig.ts";
@@ -172,8 +173,8 @@ export default function HomeSubContent({
                     <div className={'SubMainSec1SeeMore d-flex flex-column mt-2'}>
                         {seeMoreNews.map(((item, index) => (
                             <div className={'py-3 border-bottom'}>
-                                <a className={'see-more-item'}
-                                   href={item.link}
+                                <Link className={'see-more-item'}
+                                   to={newsDetailHref(item.link)}
                                    title={item.title}
                                 >
                                     <span
@@ -187,7 +188,7 @@ export default function HomeSubContent({
                                         className={'see-more-background-number'}>
                                         {index}
                                     </span>
-                                </a>
+                                </Link>
                             </div>
                         )))}
 
@@ -450,7 +451,7 @@ export default function HomeSubContent({
                                 <div className={'border-bottom pb-3'}>
                                     <div className={'row align-items-center'}>
                                         <div className={'col-5 px-0'}>
-                                            <Link to={batDongSanKinhTeNews[0].link}>
+                                            <Link to={newsDetailHref(batDongSanKinhTeNews[0].link)}>
                                                 <img src={batDongSanKinhTeNews[0].image}
                                                      alt={batDongSanKinhTeNews[0].title}
                                                      height={130} width={130}
@@ -458,7 +459,7 @@ export default function HomeSubContent({
                                             </Link>
                                         </div>
                                         <div className={'col-7 px-0 text-start'}>
-                                            <Link to={batDongSanKinhTeNews[0].link}
+                                            <Link to={newsDetailHref(batDongSanKinhTeNews[0].link)}
                                                   className={'main-title'}>{batDongSanKinhTeNews[0].title}</Link>
                                             <p className={'description'}
                                                style={{color: "#727272"}}
@@ -472,7 +473,7 @@ export default function HomeSubContent({
                                         <li className={'sub-title px-0 text-start pt-2'}
                                             style={{fontSize: 15}}>
                                             <Link
-                                                to={batDongSanKinhTeNews[1].link}>{batDongSanKinhTeNews[1].title}</Link>
+                                                to={newsDetailHref(batDongSanKinhTeNews[1].link)}>{batDongSanKinhTeNews[1].title}</Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -494,7 +495,7 @@ export default function HomeSubContent({
                                 <div className={'border-bottom pb-3'}>
                                     <div className={'row align-items-center'}>
                                         <div className={'col-5 px-0'}>
-                                            <Link to={oToKinhTeNews[0].link}>
+                                            <Link to={newsDetailHref(oToKinhTeNews[0].link)}>
                                                 <img src={oToKinhTeNews[0].image}
                                                      alt={oToKinhTeNews[0].title}
                                                      height={130} width={130}
@@ -502,7 +503,7 @@ export default function HomeSubContent({
                                             </Link>
                                         </div>
                                         <div className={'col-7 px-0 text-start'}>
-                                            <Link to={oToKinhTeNews[0].link}
+                                            <Link to={newsDetailHref(oToKinhTeNews[0].link)}
                                                   className={'main-title'}>{oToKinhTeNews[0].title}</Link>
                                             <p className={'description'}
                                                style={{color: "#727272"}}
@@ -516,7 +517,7 @@ export default function HomeSubContent({
                                         <li className={'sub-title px-0 text-start pt-2'}
                                             style={{fontSize: 15}}>
                                             <Link
-                                                to={oToKinhTeNews[1].link}>{oToKinhTeNews[1].title}</Link>
+                                                to={newsDetailHref(oToKinhTeNews[1].link)}>{oToKinhTeNews[1].title}</Link>
                                         </li>
                                     </ul>
                                 </div>
