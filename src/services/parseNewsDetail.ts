@@ -80,7 +80,7 @@ function parseDetailContent(
                 });
             }
         } else if (element.matches("p")) {
-            const content = element.textContent?.trim();
+            const content = element.innerHTML?.trim();
             if (content) {
                 blocks.push({type: "paragraph", index, content});
             }

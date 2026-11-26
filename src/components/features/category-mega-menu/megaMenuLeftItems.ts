@@ -17,7 +17,7 @@ export const MEGA_MENU_COLUMNS_LEFT: SectionKey[][] = [
         "duLichXanh",
         "truyVetMXH",
         "maiVang",
-        "WorldCup2026",
+        "worldCup2026",
     ],
     [
         "laoDong",

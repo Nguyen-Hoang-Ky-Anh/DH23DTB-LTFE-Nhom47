@@ -116,7 +116,7 @@ export default function TopNews() {
                 >
                   Tin nóng
                 </h2>
-                <Link to={SECTIONS.WorldCup2026.href} style={{minWidth: 0}}>
+                <Link to={SECTIONS.worldCup2026.href} style={{minWidth: 0}}>
                   <img className="img-fluid"
                        src="https://static.mediacdn.vn/thumb_w/226/nld.com.vn/banner_WC2026.png"
                        alt="World Cup 2026"
