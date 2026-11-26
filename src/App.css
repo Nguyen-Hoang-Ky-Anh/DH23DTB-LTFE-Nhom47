@@ -255,6 +255,35 @@ body * {
     top: 60px;
 }
 
+/* Same Category*/
+.same-category-title-type-1 {
+    color: #005bb2;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: Merriweather, serif;
+    border-left: 5px solid orange;
+    padding-left: 10px;
+}
+
+.same-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.same-category-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.same-category-card-title {
+    font-family: Merriweather, serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
 .fontsize-icon {
     display: inline-block;
 }
