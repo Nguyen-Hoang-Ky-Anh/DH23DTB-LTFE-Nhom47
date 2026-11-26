@@ -1,6 +1,26 @@
-import {Fragment, type ReactNode} from "react";
-import type {NewsContent} from "../../../config/newsStructure.ts";
+import {createElement, Fragment, type CSSProperties, type ReactNode} from "react";
+import type {NewsContent, TextContent} from "../../../config/newsStructure.ts";
 import SeeNowCard from "./detail-components/SeeNowCard.tsx";
+
+function renderText(content: TextContent, className?: string, style?: CSSProperties): ReactNode {
+    if (typeof content === "string") {
+        return content;
+    }
+
+    if (content.tag === "br") {
+        return <br/>;
+    }
+
+    return createElement(
+        content.tag,
+        {
+            className, style, href: content.tag === "a" ? content.href: undefined,
+        },
+        content.children.map(child =>
+            renderText(child)
+        )
+    );
+}
 
 export default function NewsDetailRenderer({content, size}: { content: NewsContent[], size: number }) {
     const elements: ReactNode[] = [];
@@ -12,8 +32,10 @@ export default function NewsDetailRenderer({content, size}: { content: NewsConte
         let element: ReactNode;
 
         switch (block.type) {
-            case "paragraph":
-                element = <p className={'news-detail-paragraph mb-3'} style={{fontSize: size}}>{block.content}</p>;
+            case "text":
+                element = renderText(block.content, "news-detail-text mb-3",
+                    {fontSize: typeof block.content !== "string" && block.content.tag === "p" ?
+                    size : undefined});
                 break;
 
             case "image":
@@ -30,7 +52,7 @@ export default function NewsDetailRenderer({content, size}: { content: NewsConte
 
             case "callOutUl":
                 element = (
-                        <SeeNowCard variant={block.variant} li={block.li} liImg={block.liImg}/>
+                    <SeeNowCard variant={block.variant} li={block.li} liImg={block.liImg}/>
                 );
                 break;
 
