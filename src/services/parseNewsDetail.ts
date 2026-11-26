@@ -64,7 +64,7 @@ function parseDetailContent(
             blocks.push(parseContentWrap(element, index));
         } else if (element.matches(".kbwscwl-relatedbox")) {
             const variant = (
-                ["type-1", "type-2", "type-3", "type-6"] as const
+                ["type-1", "type-2", "type-3", "type-4", "type-6"] as const
             ).find(type => element.classList.contains(type)) ?? "type-1";
             blocks.push(parseCallOutUl(element, variant, index));
         } else if (element.matches("figure")) {

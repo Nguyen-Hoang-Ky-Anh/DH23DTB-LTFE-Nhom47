@@ -30,9 +30,7 @@ export default function NewsDetailRenderer({content, size}: { content: NewsConte
 
             case "callOutUl":
                 element = (
-                    <aside className={`${block.variant !== 'type-6'? "news-callout" : "news-callout-type-6"}`}>
                         <SeeNowCard variant={block.variant} li={block.li} liImg={block.liImg}/>
-                    </aside>
                 );
                 break;
 

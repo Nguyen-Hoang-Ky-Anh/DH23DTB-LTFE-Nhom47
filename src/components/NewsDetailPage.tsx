@@ -48,8 +48,6 @@ export default function NewsDetailPage() {
         return <p>Không tìm thấy bài báo.</p>;
     }
     if (news.longform) return <LongformArticle title={news.detailTitle} article={news.longform}/>;
-
-    console.log(news.detailAuthor[0])
     return (
         <div className={'container mt-3 mb-3 border-bottom pb-5'}>
             <div className={'row'}>
