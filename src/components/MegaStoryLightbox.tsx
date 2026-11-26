@@ -1,15 +1,15 @@
 import {useLayoutEffect, useRef, useState} from "react";
 import type {MouseEvent, ReactNode} from "react";
 
-export default function MegaStoryLightbox({children}: {children: ReactNode}) {
+export default function MegaStoryLightbox({children, className}: {children: ReactNode; className?: string}) {
     const dialog = useRef<HTMLDialogElement>(null);
     const image = useRef<HTMLImageElement>(null);
     const origin = useRef<DOMRect | undefined>(undefined);
     const [selection, setSelection] = useState<{photos: HTMLElement[]; index: number} | null>(null);
     const photo = selection?.photos[selection.index];
     const thumbnail = photo?.querySelector("img");
-    const width = Number(thumbnail?.getAttribute("width") || photo?.dataset.width);
-    const height = Number(thumbnail?.getAttribute("height") || photo?.dataset.height);
+    const width = Number(thumbnail?.getAttribute("width") || photo?.dataset.width) || thumbnail?.naturalWidth;
+    const height = Number(thumbnail?.getAttribute("height") || photo?.dataset.height) || thumbnail?.naturalHeight;
     const caption = photo?.closest("figure")?.querySelector(":scope > figcaption")?.textContent;
 
     useLayoutEffect(() => {
@@ -47,7 +47,7 @@ export default function MegaStoryLightbox({children}: {children: ReactNode}) {
     }
 
     return (
-        <article onClick={openPhoto}>
+        <article className={className} onClick={openPhoto}>
             {children}
             <dialog ref={dialog} className="mega-story-lightbox" onClose={() => setSelection(null)}
                     onClick={event => {
@@ -66,10 +66,10 @@ export default function MegaStoryLightbox({children}: {children: ReactNode}) {
                 {photo && (
                     <figure className="mega-story-lightbox-picture">
                         <img ref={image} src={photo.dataset.megaStoryPhoto} alt={thumbnail?.alt ?? ""}
-                             width={width} height={height} style={{
+                             width={width || undefined} height={height || undefined} style={width && height ? {
                                  width: `min(${width}px, calc((100dvh - ${caption ? 160 : 96}px) * ${width / height}))`,
                                  aspectRatio: `${width} / ${height}`,
-                             }} />
+                             } : undefined} />
                         {caption && <figcaption>{caption}</figcaption>}
                     </figure>
                 )}

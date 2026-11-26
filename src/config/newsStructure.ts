@@ -66,6 +66,19 @@ export type NewsContent =
     | NewsCallOutUl
     | ContentWrap;
 
+export type LongformWidth = "reading" | "wide" | "full";
+
+export interface LongformPhoto {
+    src: string;
+    alt: string;
+}
+
+export type LongformBlock =
+    | {type: "paragraph" | "heading" | "quote" | "credit"; text: string}
+    | {type: "gallery"; rows: LongformPhoto[][]; caption: string; width: LongformWidth}
+    | {type: "video"; src: string; poster: string; caption: string; width: LongformWidth}
+    | {type: "related"; links: RelatedLink[]};
+
 export interface NewsStructure {
     typeOfNews?: typeOfNews[];
     detailTitle: string;
@@ -75,4 +88,5 @@ export interface NewsStructure {
     detailContent: NewsContent[];
     relativeBox: RelativeBox;
     detailTab: DetailTab;
+    longform?: {cover?: LongformPhoto; blocks: LongformBlock[]};
 }

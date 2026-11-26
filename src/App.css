@@ -1574,7 +1574,9 @@ li:hover {
 }
 
 .mega-story button[data-mega-story-photo],
-.mega-story button[data-mega-story-photo] img {
+.mega-story button[data-mega-story-photo] img,
+.longform-detail button[data-mega-story-photo],
+.longform-detail button[data-mega-story-photo] img {
     cursor: zoom-in;
 }
 
@@ -1668,7 +1670,8 @@ li:hover {
     max-height: calc(100dvh - 96px);
 }
 
-.mega-story .mega-story-lightbox figcaption {
+.mega-story .mega-story-lightbox figcaption,
+.longform-detail .mega-story-lightbox figcaption {
     color: #fff;
     padding: 12px 0 0;
 }
@@ -2786,4 +2789,122 @@ summary.rss-row:hover .rss-toggle {
 .rss-subcategories {
     padding: 4px 14px 10px 32px;
     background: #f6f8fb;
+}
+
+.longform-detail {
+    padding-bottom: 56px;
+    color: #222834;
+}
+
+.longform-reading {
+    width: min(740px, calc(100% - 36px));
+    margin-inline: auto;
+}
+
+.longform-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block: 18px;
+    font: 600 14px/1.4 "Inter", sans-serif;
+}
+
+.longform-nav a,
+.longform-related a {
+    color: #0959ab;
+}
+
+.longform-cover {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.longform-title,
+.longform-heading {
+    color: #172235;
+    letter-spacing: normal;
+    font-family: "Merriweather", serif;
+    font-weight: 750;
+    line-height: 1.3;
+}
+
+.longform-title {
+    margin-block: 40px 24px;
+    font-size: clamp(28px, 4vw, 44px);
+}
+
+.longform-heading {
+    margin-block: 40px 16px;
+    font-size: clamp(22px, 3vw, 30px);
+}
+
+.longform-detail > p {
+    margin-block: 0 22px;
+    font: 400 clamp(17px, 1.4vw, 20px)/1.75 "Inter", sans-serif;
+}
+
+.longform-media {
+    margin-block: 32px;
+}
+
+.longform-wide {
+    width: min(1120px, calc(100% - 36px));
+    margin-inline: auto;
+}
+
+.longform-photo-row {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 6px;
+}
+
+.longform-photo-row + .longform-photo-row {
+    margin-top: 6px;
+}
+
+.longform-media img,
+.longform-media video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.longform-media figcaption {
+    max-width: 740px;
+    margin: 12px auto 0;
+    padding-inline: 18px;
+    color: #4d5867;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.longform-quote,
+.longform-related {
+    margin-block: 28px;
+    padding: 16px 20px;
+    border-left: 3px solid #0959ab;
+    background: #f1f6fc;
+}
+
+.longform-related h2,
+.longform-comments h2 {
+    color: #172235;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.longform-comments {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid #d9e0e9;
+    scroll-margin-top: 80px;
+}
+
+.longform-detail > .longform-credit {
+    color: #4d5867;
+    font-size: 14px;
 }

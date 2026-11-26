@@ -1,4 +1,5 @@
 import {parseNewsDetail} from "./parseNewsDetail.ts";
+import {parseLongform} from "./parseLongform.ts";
 import {useState} from "react";
 
 export async function fetchNewsDetails(proxyUrl: string) {
@@ -8,7 +9,7 @@ export async function fetchNewsDetails(proxyUrl: string) {
     }
     const html = await response.text();
     const doc =  new DOMParser().parseFromString(html, "text/html");
-    return parseNewsDetail(doc);
+    return parseLongform(doc) ?? parseNewsDetail(doc);
 }
 
 export default function useUpdateParagraphSize() {
