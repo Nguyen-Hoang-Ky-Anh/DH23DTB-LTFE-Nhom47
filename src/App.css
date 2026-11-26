@@ -1437,7 +1437,8 @@ li:hover {
     border: 1px solid #d2d2d2;
     border-radius: 50px;
 }
-.mega-story {
+.mega-story,
+.longform-layout {
     background: #fff;
     color: #292929;
     font-family: Inter, sans-serif;

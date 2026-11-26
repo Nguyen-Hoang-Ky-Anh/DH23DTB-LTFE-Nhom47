@@ -1,8 +1,10 @@
-import {Link} from "react-router-dom";
+import {useEffect} from "react";
+import {Link, useLocation} from "react-router-dom";
 import type {LongformBlock, NewsStructure} from "../../../config/newsStructure.ts";
 import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import MegaStoryLightbox from "../../MegaStoryLightbox.tsx";
 import CommentBlock from "../../ui/CommentBlock.tsx";
+import NewsSameCategory from "../../ui/NewsSameCategory.tsx";
 
 function renderBlock(block: LongformBlock, index: number) {
     switch (block.type) {
@@ -52,6 +54,12 @@ function renderBlock(block: LongformBlock, index: number) {
 }
 
 export default function LongformArticle({title, article}: {title: string; article: NonNullable<NewsStructure["longform"]>}) {
+    const {search} = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [search]);
+
     return (
         <MegaStoryLightbox key={title} className="longform-detail text-start">
             <title>{title}</title>
@@ -64,8 +72,10 @@ export default function LongformArticle({title, article}: {title: string; articl
             <h1 className="longform-reading longform-title">{title}</h1>
             {article.blocks.map(renderBlock)}
             <section id="longform-comments" className="longform-reading longform-comments">
-                <h2>Bình luận</h2>
                 <CommentBlock/>
+            </section>
+            <section className="container mt-4 pt-4 border-top">
+                <NewsSameCategory section={{label: "Longform", href: "/multimedia/longform", feed: "emagazine"}}/>
             </section>
         </MegaStoryLightbox>
     );
