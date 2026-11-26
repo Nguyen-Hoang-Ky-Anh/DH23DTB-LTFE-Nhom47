@@ -10,7 +10,7 @@ const categoryOrder = [
     "vip", "tuHaoCoToQuoc", "duLich", "chuyenTuNoiCachLy", "bienDao", "video", "thiTruong",
     "lyTuongSong", "dongTienThongMinh", "moiTruong", "tuHaoHangViet", "ketQuaXoSo", "nguoiVietYeuSuViet",
     "podcast", "cuocVanDongSangTacCaKhuc", "toanCanhDaiHoiXIV", "NamMuoiNamThanhPhoMangTenBac",
-    "bauCuDaiBieuQuocHoi", "WorldCup2026", "NLDNEWS", "SEAGame33",
+    "bauCuDaiBieuQuocHoi", "worldCup2026", "NLDNEWS", "SEAGame33",
 ] satisfies (keyof typeof feeds)[];
 
 const categoryLabels: Record<string, string> = {

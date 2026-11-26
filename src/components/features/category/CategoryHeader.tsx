@@ -52,7 +52,7 @@ export default function CategoryHeader({ section }: CategoryHeaderProps) {
                     </li>
                 ))}
 
-                {section.feed === "WorldCup2026" && (
+                {section.feed === "worldCup2026" && (
                     <li className="list-inline-item second-category-item">
                         <a href="#lich-thi-dau">Lịch thi đấu</a>
                     </li>

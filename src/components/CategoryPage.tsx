@@ -46,7 +46,7 @@ export default function CategoryPage() {
                 {isSports && <div className="container"><SportsScores/></div>}
                 <CategoryHeader section={currentSection}/>
                 {/*cap nhap key de react khong dung lai useState */}
-                <CategoryContent key={currentFeed} feed={currentFeed} isWorldCup={currentSection.feed === "WorldCup2026"}
+                <CategoryContent key={currentFeed} feed={currentFeed} isWorldCup={currentSection.feed === "worldCup2026"}
                                  isSports={isSports} sidebarLinks={allLinks}/>
             </main>
         </>
