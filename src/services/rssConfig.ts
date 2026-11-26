@@ -288,7 +288,7 @@ export const RSS_FEEDS = {
             children: {},
             extraChildren: {},
         },
-        WorldCup2026: {
+        worldCup2026: {
             title: "World Cup 2026",
             feed: "world-cup-2026",
             children: {},

@@ -10,14 +10,13 @@ import CommentBlock from "./ui/CommentBlock.tsx";
 import NewsDetailRenderer from "./features/news-detail/NewsDetailRenderer.tsx";
 import LongformArticle from "./features/news-detail/LongformArticle.tsx";
 import useUpdateParagraphSize from "../services/fetchNewsDetails.ts";
+import NewsSameCategory from "./ui/NewsSameCategory.tsx";
 
 export default function NewsDetailPage() {
     const dispatch = useDispatch<AppDispatch>();
     const [searchParams] = useSearchParams();
     const {value, direction, increaseValue, decreaseValue, resetValue} = useUpdateParagraphSize();
-
     const url = searchParams.get("url");
-
     const news = useSelector((state: RootState) =>
         url ? state.newsDetail.feeds[url] : undefined
     );
@@ -25,6 +24,15 @@ export default function NewsDetailPage() {
     const status = useSelector((state: RootState) =>
         url ? state.newsDetail.state[url] : undefined
     );
+
+    const categories = news?.typeOfNews ?? [];
+    let section;
+    for (let i = categories.length - 1; i >= 0; i--) {
+        const feedName = categories[i].feedName;
+        section = findSectionByFeedName(feedName)
+            ?? findChildrenSectionBySectionKey(feedName);
+        if (section) break;
+    }
 
     useEffect(() => {
         if (url) {
@@ -49,58 +57,60 @@ export default function NewsDetailPage() {
     }
     if (news.longform) return <LongformArticle title={news.detailTitle} article={news.longform}/>;
     return (
-        <div className={'container mt-3 mb-3 border-bottom pb-5'}>
-            <div className={'row'}>
-                <div className={'col-1 p-0'}>
-                    <NewsContentSideBar value={value} direction={direction} increaseValue={increaseValue} decreaseValue={decreaseValue} resetValue={resetValue} />
-                </div>
+        <div className={'container mb-3'}>
+            <div className={'mt-3 mb-3 border-bottom pb-5'}>
+                <div className={'row'}>
+                    <div className={'col-1 p-0'}>
+                        <NewsContentSideBar value={value} direction={direction} increaseValue={increaseValue}
+                                            decreaseValue={decreaseValue} resetValue={resetValue}/>
+                    </div>
 
-                <div className={'col-11'}>
-                    <div className="category-box-news-detail description fw-bold d-flex flex-row gap-3"
-                         style={{fontSize: 14}}>
-                        {news.typeOfNews?.map((category) => {
-                            let isChildren = false;
-                            let section = findSectionByFeedName(category.feedName);
+                    <div className={'col-11'}>
+                        <div className="category-box-news-detail description fw-bold d-flex flex-row gap-3"
+                             style={{fontSize: 14}}>
+                            {news.typeOfNews?.map((category) => {
+                                let isChildren = false;
+                                let section = findSectionByFeedName(category.feedName);
 
-                            if (!section) {
-                                section = findChildrenSectionBySectionKey(category.feedName);
-                                isChildren = !!section;
-                            }
+                                if (!section) {
+                                    section = findChildrenSectionBySectionKey(category.feedName);
+                                    isChildren = !!section;
+                                }
 
-                            if (!section) {
-                                return (
-                                    <span key={category.feedName} className="category-link">
+                                if (!section) {
+                                    return (
+                                        <span key={category.feedName} className="category-link">
                                         {category.title}
                                     </span>
+                                    );
+                                }
+
+                                return (
+                                    <Link key={category.feedName} to={section.href} className="category-link">
+                                        <div className={'align-items-center d-flex flex-row gap-2'}>
+                                            {isChildren && (<i className="fa-solid fa-circle"
+                                                               style={{fontSize: 5}}
+                                            ></i>)}
+                                            {category.title}
+                                        </div>
+                                    </Link>
                                 );
-                            }
+                            })}
+                        </div>
+                        <h1 className={'news-detail-title my-3'}>{news.detailTitle}</h1>
 
-                            return (
-                                <Link key={category.feedName} to={section.href} className="category-link">
-                                    <div className={'align-items-center d-flex flex-row gap-2'}>
-                                        {isChildren && (<i className="fa-solid fa-circle"
-                                                           style={{fontSize: 5}}
-                                        ></i>)}
-                                        {category.title}
+                        <div className={'row'}>
+                            <div className={'col-9 text-start'}>
+                                <div className={'news-detail-top border-bottom pb-3 mb-2'}>
+                                    <div className={'news-detail-info d-flex justify-content-between'}>
+                                        <p className={'detail-author'}> {news.detailAuthor.map(author => author + " ")} </p>
+                                        <p className={'detail-time'}> {news.detailTime}</p>
                                     </div>
-                                </Link>
-                            );
-                        })}
-                    </div>
-                    <h1 className={'news-detail-title my-3'}>{news.detailTitle}</h1>
 
-                    <div className={'row'}>
-                        <div className={'col-9 text-start'}>
-                            <div className={'news-detail-top border-bottom pb-3 mb-2'}>
-                                <div className={'news-detail-info d-flex justify-content-between'}>
-                                    <p className={'detail-author'}> {news.detailAuthor.map(author => author + " ")} </p>
-                                    <p className={'detail-time'}> {news.detailTime}</p>
-                                </div>
-
-                                <div className={'social-top d-flex flex-start mt-2 gap-2'}>
-                                    <a href="https://news.google.com/publications/CAAqBwgKMMSnwAsw1sLXAw?hl=vi&amp;gl=VN&amp;ceid=VN:vi"
-                                       target="_blank" rel="nofollow" className="gg"
-                                       title="Theo dõi Người Lao Động trên Google News">
+                                    <div className={'social-top d-flex flex-start mt-2 gap-2'}>
+                                        <a href="https://news.google.com/publications/CAAqBwgKMMSnwAsw1sLXAw?hl=vi&amp;gl=VN&amp;ceid=VN:vi"
+                                           target="_blank" rel="nofollow" className="gg"
+                                           title="Theo dõi Người Lao Động trên Google News">
                             <span className="icon">
 
                                <svg width="120" height="33" viewBox="0 0 120 33" fill="none"
@@ -119,57 +129,69 @@ export default function NewsDetailPage() {
                                 </defs>
                                 </svg>
                             </span>
-                                    </a>
-                                    <a className={'btn btn-primary share-btn'}>Chia sẻ</a>
-                                </div>
-                            </div>
-
-                            <div className={'news-detail'}>
-                                <h2 className={'news-detail-sapo'}>{news.detailSapo}</h2>
-
-                                <NewsDetailRenderer content={news.detailContent} size={value}/>
-                            </div>
-
-                            <div className={'news-detail-bottom mt-5'}>
-                                {news.relativeBox.relatedLinks[0] &&
-                                    <NewsDetailRelated relativeBox={news.relativeBox}/>
-                                }
-
-                                {/* Social bottom*/}
-                                <div className={'detail-social-bottom mt-3 rounded mb-3'}>
-                                    <div className={'row p-2'}>
-                                        <div className={'col d-flex flex-row gap-3'}>
-                                            <Link to={"_"} className={'detail-bottom-icon'}><i
-                                                className="fa-brands fa-facebook"></i></Link>
-                                            <Link to={"_"} className={'detail-bottom-icon'}><i
-                                                className="fa-brands fa-twitter"></i></Link>
-                                            <Link to={"_"} className={'detail-bottom-icon'}><i
-                                                className="fa-solid fa-envelope"></i></Link>
-                                        </div>
-                                        <div className={'col d-flex justify-content-end'}>
-                                            <a className={'btn btn-primary share-btn'}>Chia sẻ</a>
-                                        </div>
+                                        </a>
+                                        <a className={'btn btn-primary share-btn'}>Chia sẻ</a>
                                     </div>
                                 </div>
 
-                                {/*Tag*/}
-                                <div className={'detail-tags d-flex flex-wrap gap-2 align-items-center ' +
-                                    'border-bottom border-top py-3 my-2'}>
-                                    <i className="fa-solid fa-tag detail-bottom-icon"></i>
-                                    {news.detailTab.tabLinks.map(tag => (
-                                        <Link to={tag.href} title={tag.title}
-                                              className={'detail-tab-item'}
-                                        >{tag.title}</Link>
-                                    ))}
+                                <div className={'news-detail'}>
+                                    <h2 className={'news-detail-sapo'}>{news.detailSapo}</h2>
+
+                                    <NewsDetailRenderer content={news.detailContent} size={value}/>
                                 </div>
 
-                                {/*Comment*/}
-                                <CommentBlock/>
-                            </div>
-                        </div>
+                                <div className={'news-detail-bottom mt-5'}>
+                                    {news.relativeBox.relatedLinks[0] &&
+                                        <NewsDetailRelated relativeBox={news.relativeBox}/>
+                                    }
 
-                        {/*Tin đọc nhiều*/}
-                        <div className={'col-3'}></div>
+                                    {/* Social bottom*/}
+                                    <div className={'detail-social-bottom mt-3 rounded mb-3'}>
+                                        <div className={'row p-2'}>
+                                            <div className={'col d-flex flex-row gap-3'}>
+                                                <Link to={"_"} className={'detail-bottom-icon'}><i
+                                                    className="fa-brands fa-facebook"></i></Link>
+                                                <Link to={"_"} className={'detail-bottom-icon'}><i
+                                                    className="fa-brands fa-twitter"></i></Link>
+                                                <Link to={"_"} className={'detail-bottom-icon'}><i
+                                                    className="fa-solid fa-envelope"></i></Link>
+                                            </div>
+                                            <div className={'col d-flex justify-content-end'}>
+                                                <a className={'btn btn-primary share-btn'}>Chia sẻ</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/*Tag*/}
+                                    <div className={'detail-tags d-flex flex-wrap gap-2 align-items-center ' +
+                                        'border-bottom border-top py-3 my-2'}>
+                                        <i className="fa-solid fa-tag detail-bottom-icon"></i>
+                                        {news.detailTab.tabLinks.map(tag => (
+                                            <Link to={tag.href} title={tag.title}
+                                                  className={'detail-tab-item'}
+                                            >{tag.title}</Link>
+                                        ))}
+                                    </div>
+
+                                    {/*Comment*/}
+                                    <CommentBlock/>
+                                </div>
+                            </div>
+
+                            {/*Tin đọc nhiều*/}
+                            <div className={'col-3'}></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className={'text-start'}>
+                <div className={'row'}>
+                    <div className={'col-9'}>
+                        {/*Same Category*/}
+                        {section && (
+                            <NewsSameCategory section={section}/>
+                        )}
                     </div>
                 </div>
             </div>

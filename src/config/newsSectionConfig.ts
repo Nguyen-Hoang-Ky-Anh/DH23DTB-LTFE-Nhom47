@@ -90,7 +90,7 @@ export const SECTIONS = {
     vungMien: createSection("vungMien", "fa-solid fa-mountain"),
     vip: createSection("vip", "fa fa-newspaper"),
     nguoiVietYeuSuViet: createSection("nguoiVietYeuSuViet", "fa fa-newspaper"),
-    WorldCup2026: createSection("WorldCup2026", "fa fa-newspaper"),
+    worldCup2026: createSection("worldCup2026", "fa fa-newspaper"),
     home: createSection("home", "fa fa-newspaper"),
     noiThang: createSection("noiThang", "fa fa-newspaper"),
     gocNhin: createSection("gocNhin", "fa fa-newspaper"),
