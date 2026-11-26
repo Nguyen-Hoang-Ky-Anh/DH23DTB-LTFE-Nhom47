@@ -8,6 +8,7 @@ import {findChildrenSectionBySectionKey, findSectionByFeedName} from "../config/
 import NewsDetailRelated from "./features/news-detail/detail-components/NewsDetailRelated.tsx";
 import CommentBlock from "./ui/CommentBlock.tsx";
 import NewsDetailRenderer from "./features/news-detail/NewsDetailRenderer.tsx";
+import LongformArticle from "./features/news-detail/LongformArticle.tsx";
 import useUpdateParagraphSize from "../services/fetchNewsDetails.ts";
 
 export default function NewsDetailPage() {
@@ -46,6 +47,7 @@ export default function NewsDetailPage() {
     if (!news) {
         return <p>Không tìm thấy bài báo.</p>;
     }
+    if (news.longform) return <LongformArticle title={news.detailTitle} article={news.longform}/>;
     return (
         <div className={'container mt-3 mb-3 border-bottom pb-5'}>
             <div className={'row'}>
