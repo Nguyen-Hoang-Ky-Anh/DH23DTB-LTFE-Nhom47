@@ -20,6 +20,7 @@ import PodcastPage from "../components/PodcastPage.tsx";
 import PodcastSearchPage from "../components/PodcastSearchPage.tsx";
 import RssPage from "../components/RssPage.tsx";
 import {findPodcastSection} from "../config/podcastConfig.ts";
+import TagPage from "../components/TagPage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -117,6 +118,10 @@ export const router = createBrowserRouter([
       {
         path: "news-detail/:detail?",
         element: <NewsDetailPage/>,
+      },
+      {
+        path: "tag",
+        element: <TagPage/>
       },
       {
         path: "*",

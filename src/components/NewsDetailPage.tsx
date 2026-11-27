@@ -167,7 +167,7 @@ export default function NewsDetailPage() {
                                         'border-bottom border-top py-3 my-2'}>
                                         <i className="fa-solid fa-tag detail-bottom-icon"></i>
                                         {news.detailTab.tabLinks.map(tag => (
-                                            <Link to={tag.href} title={tag.title}
+                                            <Link to={`/tag?url=${encodeURIComponent(tag.href)}`} title={tag.title}
                                                   className={'detail-tab-item'}
                                             >{tag.title}</Link>
                                         ))}
