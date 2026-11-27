@@ -64,6 +64,13 @@ export default function NewsDetailRenderer({content, size}: { content: NewsConte
                     </div>
                 );
                 break;
+            case "table":
+                element = (
+                    <div className="table-responsive">
+                        {renderText(block.content,"table table-bordered")}
+                    </div>
+                );
+                break;
 
             default:
                 continue;

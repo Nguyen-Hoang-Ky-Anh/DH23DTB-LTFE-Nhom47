@@ -8,7 +8,10 @@ import {newsDetailHref} from "../utils/newsDetailURL.ts";
 
 export const TAGS = new Set([
     "p", "h1", "h2", "h3", "h4", "h5", "h6",
-    "a", "b", "span", "strong", "br"
+    "a", "b", "span", "strong", "br", "font",
+
+//     Table
+    "table", "tbody", "tr", "td", "thead", "tfoot", "caption"
 ])
 
 function parseText(node: Node): TextContent {
@@ -82,7 +85,7 @@ function parseDetailContent(
     const blocks: NewsContent[] = [];
 
     const elements = container.querySelectorAll(
-        "p, h1, h2, h3, h4, h5, h6, figure, .content-wrap, .kbwscwl-relatedbox"
+        "p, h1, h2, h3, h4, h5, h6, figure, .content-wrap, .kbwscwl-relatedbox, span, table"
     );
 
     elements.forEach(element => {
@@ -113,6 +116,12 @@ function parseDetailContent(
         } else if (element.matches("p, h1, h2, h3, h4, h5, h6")) {
             blocks.push({
                 type: "text",
+                index,
+                content: parseText(element)
+            });
+        } else if (element.matches("table")) {
+            blocks.push({
+                type: "table",
                 index,
                 content: parseText(element)
             });

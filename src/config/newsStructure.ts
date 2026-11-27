@@ -59,7 +59,8 @@ export type NewsContent =
     | NewsText
     | NewsImage
     | NewsCallOutUl
-    | ContentWrap;
+    | ContentWrap
+    | NewsTable;
 
 export type LongformWidth = "reading" | "wide" | "full";
 
@@ -82,6 +83,12 @@ export type TextContent = string | {
 
 export interface NewsText {
     type: "text",
+    index: number;
+    content: TextContent;
+}
+
+export interface NewsTable {
+    type: "table";
     index: number;
     content: TextContent;
 }
