@@ -2,11 +2,6 @@ export interface typeOfNews {
     title: string;
     feedName: string;
 }
-export interface Paragraph {
-    type: "paragraph";
-    index: number;
-    content: string;
-}
 
 export interface NewsImage {
     type: "image";
@@ -61,10 +56,11 @@ export interface DetailTab {
 }
 
 export type NewsContent =
-    | Paragraph
+    | NewsText
     | NewsImage
     | NewsCallOutUl
-    | ContentWrap;
+    | ContentWrap
+    | NewsTable;
 
 export type LongformWidth = "reading" | "wide" | "full";
 
@@ -78,6 +74,24 @@ export type LongformBlock =
     | {type: "gallery"; rows: LongformPhoto[][]; caption: string; width: LongformWidth}
     | {type: "video"; src: string; poster: string; caption: string; width: LongformWidth}
     | {type: "related"; links: RelatedLink[]};
+
+export type TextContent = string | {
+    tag: string,
+    href?: string,
+    children: TextContent[];
+}
+
+export interface NewsText {
+    type: "text",
+    index: number;
+    content: TextContent;
+}
+
+export interface NewsTable {
+    type: "table";
+    index: number;
+    content: TextContent;
+}
 
 export interface NewsStructure {
     typeOfNews?: typeOfNews[];

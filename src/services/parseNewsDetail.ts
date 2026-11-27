@@ -1,8 +1,42 @@
 import type {
-    ContentWrap, DetailTab, NewsCallOutLink, NewsCallOutUl, NewsContent, RelatedLink, RelativeBox, typeOfNews,
+    ContentWrap, DetailTab, NewsCallOutLink, NewsCallOutUl, NewsContent, RelatedLink, RelativeBox,
+    TextContent, typeOfNews,
 } from "../config/newsStructure.ts";
 import {convertToProxyURL} from "./rssService.ts";
 import type {NewsStructure, callOutVariant} from "../config/newsStructure";
+import {newsDetailHref} from "../utils/newsDetailURL.ts";
+
+export const TAGS = new Set([
+    "p", "h1", "h2", "h3", "h4", "h5", "h6",
+    "a", "b", "span", "strong", "br", "font",
+
+//     Table
+    "table", "tbody", "tr", "td", "thead", "tfoot", "caption"
+])
+
+function parseText(node: Node): TextContent {
+    if (node.nodeType === Node.TEXT_NODE) {
+        return node.textContent ?? "";
+    }
+
+    if (!(node instanceof Element)) {
+        return "";
+    }
+
+    const tag = node.tagName.toLowerCase();
+
+    if (!TAGS.has(tag)) {
+        return "";
+    }
+
+    return {
+        tag,
+        href: tag === "a"
+            ? newsDetailHref(convertToProxyURL(new URL(node.getAttribute("href") ?? "")))
+            : undefined,
+        children: Array.from(node.childNodes).map(child => parseText(child))
+    };
+}
 
 function parseCallOutUl(element: Element, type: callOutVariant, index: number): NewsCallOutUl {
     const links: NewsCallOutLink[] = Array.from(
@@ -12,9 +46,9 @@ function parseCallOutUl(element: Element, type: callOutVariant, index: number): 
         title: a.textContent?.trim() ?? ""
     }));
 
-    const liImg = Array.from (element.querySelectorAll("img")).map(img =>
+    const liImg = Array.from(element.querySelectorAll("img")).map(img =>
         img.getAttribute("src") ?? "");
-    return {type: "callOutUl",variant: type, liImg: liImg, index, li: links};
+    return {type: "callOutUl", variant: type, liImg: liImg, index, li: links};
 }
 
 function parseContentWrap(element: Element, index: number): ContentWrap {
@@ -51,11 +85,11 @@ function parseDetailContent(
     const blocks: NewsContent[] = [];
 
     const elements = container.querySelectorAll(
-        "p, figure, .content-wrap, .kbwscwl-relatedbox"
+        "p, h1, h2, h3, h4, h5, h6, figure, .content-wrap, .kbwscwl-relatedbox, span, table"
     );
 
     elements.forEach(element => {
-        if (element.parentElement?.closest("figure, .content-wrap, .kbwscwl-relatedbox")) return;
+        if (element.parentElement?.closest("figure, .content-wrap, .kbwscwl-relatedbox, table")) return;
 
         const index = element.matches(".kbwscwl-relatedbox") ?
             Math.max(blocks.length - 1, 1) : blocks.length;
@@ -65,7 +99,7 @@ function parseDetailContent(
         } else if (element.matches(".kbwscwl-relatedbox")) {
             const variant = (
                 ["type-1", "type-2", "type-3", "type-4", "type-6"] as const
-            ).find(type => element.classList.contains(type)) ?? "type-1";
+            ).find(type => element.classList.contains(type)) ?? "type-2";
             blocks.push(parseCallOutUl(element, variant, index));
         } else if (element.matches("figure")) {
             const img = element.querySelector("img");
@@ -79,11 +113,18 @@ function parseDetailContent(
                         ?.textContent?.trim()
                 });
             }
-        } else if (element.matches("p")) {
-            const content = element.innerHTML?.trim();
-            if (content) {
-                blocks.push({type: "paragraph", index, content});
-            }
+        } else if (element.matches("p, h1, h2, h3, h4, h5, h6")) {
+            blocks.push({
+                type: "text",
+                index,
+                content: parseText(element)
+            });
+        } else if (element.matches("table")) {
+            blocks.push({
+                type: "table",
+                index,
+                content: parseText(element)
+            });
         }
     });
 
