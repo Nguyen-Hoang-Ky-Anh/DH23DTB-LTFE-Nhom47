@@ -70,12 +70,8 @@ export default function NewsDetailPage() {
                              style={{fontSize: 14}}>
                             {news.typeOfNews?.map((category) => {
                                 let isChildren = false;
-                                let section = findSectionByFeedName(category.feedName);
-
-                                if (!section) {
-                                    section = findChildrenSectionBySectionKey(category.feedName);
-                                    isChildren = !!section;
-                                }
+                                const section = findSectionByFeedName(category.feedName) ??
+                                    (isChildren = true, findChildrenSectionBySectionKey(category.feedName));
 
                                 if (!section) {
                                     return (
@@ -141,6 +137,9 @@ export default function NewsDetailPage() {
                                 </div>
 
                                 <div className={'news-detail-bottom mt-5'}>
+
+
+
                                     {news.relativeBox.relatedLinks[0] &&
                                         <NewsDetailRelated relativeBox={news.relativeBox}/>
                                     }
@@ -167,7 +166,7 @@ export default function NewsDetailPage() {
                                         'border-bottom border-top py-3 my-2'}>
                                         <i className="fa-solid fa-tag detail-bottom-icon"></i>
                                         {news.detailTab.tabLinks.map(tag => (
-                                            <Link to={tag.href} title={tag.title}
+                                            <Link to={`/tag?url=${encodeURIComponent(tag.href)}`} title={tag.title}
                                                   className={'detail-tab-item'}
                                             >{tag.title}</Link>
                                         ))}
