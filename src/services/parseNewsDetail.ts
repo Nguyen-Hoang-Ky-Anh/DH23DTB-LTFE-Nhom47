@@ -14,6 +14,13 @@ export const TAGS = new Set([
     "table", "tbody", "tr", "td", "thead", "tfoot", "caption"
 ])
 
+function getValidHref(href: string) {
+    if(href.includes("/nld/")) {
+        return newsDetailHref(convertToProxyURL(new URL(href)));
+    }
+    return href;
+}
+
 function parseText(node: Node): TextContent {
     if (node.nodeType === Node.TEXT_NODE) {
         return node.textContent ?? "";
@@ -32,8 +39,8 @@ function parseText(node: Node): TextContent {
     return {
         tag,
         href: tag === "a"
-            ? newsDetailHref(convertToProxyURL(new URL(node.getAttribute("href") ?? "")))
-            : undefined,
+            ? getValidHref(node.getAttribute("href") ?? "")
+        : undefined,
         children: Array.from(node.childNodes).map(child => parseText(child))
     };
 }
