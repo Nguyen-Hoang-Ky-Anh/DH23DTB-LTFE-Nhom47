@@ -103,4 +103,5 @@ export interface NewsStructure {
     relativeBox: RelativeBox;
     detailTab: DetailTab;
     longform?: {cover?: LongformPhoto; blocks: LongformBlock[]};
+    threadId?: string;
 }

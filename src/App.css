@@ -3057,3 +3057,60 @@ summary.rss-row:hover .rss-toggle {
     color: var(--theme-text-secondary);
     font-size: 14px;
 }
+
+/*Detail history*/
+
+.detail-history {
+    border-radius: 4px;
+    border: 1px solid #005bb2;
+    background: #fafafc;
+}
+
+.detail-history-title {
+    font-family: Merriweather, serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.title-box {
+    font-family: Inter, serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.detail-history-item {
+    position: relative;
+}
+.detail-history-item::before {
+    content: "";
+    width: 1px;
+    height: 100%;
+    border-left: 1px dotted #005bb2;
+    position: absolute;
+    left: 3%;
+    top: 26px;
+}
+
+.detail-history-time {
+    border-radius: 4px;
+    height: 22px;
+    width: 55px;
+    text-align: center;
+    background: #148ee7;
+    color: #fff;
+    font-family: Inter, serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.detail-history-link {
+    color: #292929;
+    font-family: Roboto, serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+}
