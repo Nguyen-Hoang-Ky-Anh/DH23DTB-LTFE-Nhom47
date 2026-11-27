@@ -33,22 +33,22 @@ export default function EPaperPackage() {
                     </div>
 
                     <div className="d-flex flex-row align-items-center mb-3 gap-4" style={{}}>
-                        <button className="btn rounded-pill px-4 py-2" style={{backgroundColor: "white", fontFamily: "Inter", fontWeight: "400"}}>Đăng nhập ngay</button>
-                        <button className="btn rounded-pill px-4 py-2" style={{backgroundColor: "white", fontFamily: "Inter", fontWeight: "400"}}>Đăng ký ngay</button>
+                        <button className="btn rounded-pill px-4 py-2" style={{backgroundColor: "white", color: "#212529", fontFamily: "Inter", fontWeight: "400"}}>Đăng nhập ngay</button>
+                        <button className="btn rounded-pill px-4 py-2" style={{backgroundColor: "white", color: "#212529", fontFamily: "Inter", fontWeight: "400"}}>Đăng ký ngay</button>
                     </div>
                 </div>
             </div>
 
-            <div className="d-flex flex-column align-items-center mt-4 mb-1 gap-4" style={{color: "black"}}>
+            <div className="d-flex flex-column align-items-center mt-4 mb-1 gap-4" style={{color: "var(--theme-text-primary)"}}>
                 <h2 className="mb-0" style={{color: "#0D4FA1", fontFamily:"MarriWeather", fontWeight:"bold"}}>Đăng ký gói đọc Báo điện tử Tuổi Trẻ E-Paper dành cho bạn</h2>
-                <p style={{fontFamily: "Inter", color: "black", fontWeight: "400", fontSize: "16px"}}>
+                <p style={{fontFamily: "Inter", color: "var(--theme-text-primary)", fontWeight: "400", fontSize: "16px"}}>
                     Lựa chọn gói Người Lao Động để không bỏ lỡ những nội dung hấp dẫn
                     <br/>
                     đặc biệt chỉ có trên ấn phẩm in của Báo điện tử Tuổi Trẻ.
                 </p>
             </div>
 
-            <div className="container mb-4 mt-4" style={{color: "black"}}>
+            <div className="container mb-4 mt-4" style={{color: "var(--theme-text-primary)"}}>
                 <div className="row g-4">
                     <div className="col-12 col-md-6 col-lg-4">
                         <div className="card h-100 p-3 d-flex flex-column align-items-center gap-4" style={{backgroundColor: "#FFE82133"}}>

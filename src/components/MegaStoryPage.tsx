@@ -9,7 +9,6 @@ import MegaStoryLightbox from "./MegaStoryLightbox.tsx";
 import MagazineHeader from "./layout/header/MagazineHeader.tsx";
 import MegaStoryTimeline, {MegaStoryMilestones, MegaStoryVideo} from "./MegaStoryTimeline.tsx";
 import DragCarousel from "./ui/DragCarousel.tsx";
-import UpToTopBtn from "./ui/UpToTopBtn.tsx";
 import Footer from "./layout/footer/Footer.tsx";
 
 function Photo({image: [file, width, height], alt = "", reveal, caption, captionSpace, layout, italicTitle, captionReading}: Omit<MegaStoryPhoto, "type">) {
@@ -58,7 +57,7 @@ function StoryBlock({block}: {block: MegaStoryBlock}) {
             return <MegaStoryTimeline images={block.images} />;
         case "featured-articles":
             return (
-                <section className="mega-story-featured">
+                <section className="mega-story-featured theme-fixed-light">
                     <h3 className="text-center text-uppercase mb-4 fw-bold">Các bài báo tiêu biểu</h3>
                     <DragCarousel showProgress>
                         {featuredArticles.map(({title, image}) => (
@@ -171,7 +170,7 @@ export default function MegaStoryPage() {
                     <div className="mega-story-more-grid">
                         {articles.map(({guid, title, image, link}) => (
                             <article key={guid || title}>
-                                <Link className="text-reset" to={newsDetailHref(link)}>
+                                <Link to={newsDetailHref(link)}>
                                     <img src={image} alt="" loading="lazy" decoding="async" />
                                     <h3 className="main-title mb-0">{title}</h3>
                                 </Link>
@@ -180,7 +179,6 @@ export default function MegaStoryPage() {
                     </div>
                 </section>
             </main>
-            <UpToTopBtn />
             <Footer/>
         </div>
     );

@@ -14,7 +14,7 @@ export default function BottomNews() {
 
             <NewsSection section="thiTruong" layout="columns" embedded />
             <NewsSection section="vanHoaVanNghe" layout="columns" embedded />
-            <div className="p-3" style={{ backgroundColor: "#fff5f7" }}>
+            <div className="p-3 news-theme-pink theme-fixed-light">
               <NewsSection section="phuNu" layout="columns" embedded />
             </div>
 

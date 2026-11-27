@@ -42,7 +42,7 @@ export default function HomeEnglishNews({href, links, news}: HomeEnglishNewsProp
                     </ul>
                 </div>
             </div>
-            <div className={"content text-start p-1"} style={{backgroundColor: "#fafafc"}}>
+            <div className={"content text-start p-1"} style={{backgroundColor: "var(--theme-bg)"}}>
                 {/* First news */}
                 <div className={"row border-bottom mx-2 pb-2 align-items-center mb-2"}>
                     <div className={"col-5 ps-0 py-0"}>

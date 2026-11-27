@@ -51,7 +51,7 @@ export default function NewsListingPage({title, news, showHighlights = false, se
                         </div>
                         <div className="col-12 col-md-4 p-3">
                             <h2 className="main-title fs-4 text-dark">
-                                <Link to={newsDetailHref(featured.link)} className="text-reset">{featured.title}</Link>
+                                <Link to={newsDetailHref(featured.link)}>{featured.title}</Link>
                             </h2>
                             <p className="horizontal-card-description">{featured.description}</p>
                         </div>

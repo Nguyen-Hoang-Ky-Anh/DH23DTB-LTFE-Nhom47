@@ -9,8 +9,8 @@ import {SECTIONS} from "../../../config/newsSectionConfig.ts";
 import {trendingTopics} from "../../../config/trendingConfig.ts";
 import {findMegaStory, megaStory} from "../../../config/megaStoryConfig.ts";
 
-const titleStyle = {lineHeight: 1.4, color: "#292929", fontFamily: "Merriweather, serif"};
-const descriptionStyle = {fontSize: 14, color: "#555555"};
+const titleStyle = {lineHeight: 1.4, color: "var(--theme-text-primary)", fontFamily: "Merriweather, serif"};
+const descriptionStyle = {fontSize: 14, color: "var(--theme-text-secondary)"};
 
 export default function TopNews() {
     const dispatch = useDispatch<AppDispatch>();
@@ -40,7 +40,7 @@ export default function TopNews() {
               <div className="row g-4">
                 <article className="col-8">
                   <h2 className="fw-bold mb-3" style={{ ...titleStyle, fontSize: 26 }}>
-                    <Link to={megaStory.href} className="text-reset">{mainNews.title}</Link>
+                    <Link to={megaStory.href}>{mainNews.title}</Link>
                   </h2>
                   <Link to={megaStory.href}>
                     <img className="w-100 mb-2" src={megaStory.thumbnail} alt={mainNews.title} />
@@ -56,7 +56,7 @@ export default function TopNews() {
                         <img className="w-100 mb-2" src={item.image} alt={item.title} />
                       </Link>
                       <h3 className="fs-6 fw-bold mb-0" style={titleStyle}>
-                        <Link className="text-reset" to={newsDetailHref(item.link)}>{item.title}</Link>
+                        <Link to={newsDetailHref(item.link)}>{item.title}</Link>
                       </h3>
                     </article>
                   ))}
@@ -69,7 +69,7 @@ export default function TopNews() {
                     className={`col-4 ${index > 0 ? "border-start" : ""}`}
                   >
                     <h3 className="fs-6 fw-bold mb-2" style={titleStyle}>
-                      <Link className="text-reset" to={newsDetailHref(item.link)}>{item.title}</Link>
+                      <Link to={newsDetailHref(item.link)}>{item.title}</Link>
                     </h3>
                     <p className="mb-0" style={descriptionStyle}>
                       {item.description}
@@ -131,7 +131,7 @@ export default function TopNews() {
                   <li key={item.guid} className="border-bottom py-3">
                     <Link
                       to={newsDetailHref(item.link)}
-                      className="text-reset text-decoration-none"
+                      className="text-decoration-none"
                     >
                       {item.title}
                     </Link>
@@ -152,11 +152,11 @@ export default function TopNews() {
         {/*
             Khach doc vip
              */}
-        <section className="py-4" style={{ backgroundColor: "#afeafa" }}>
+        <section className="py-4 vip-news theme-fixed-light">
           <div className="px-3">
             <h2
               className="fs-6 fw-bold text-uppercase mb-3"
-              style={{ ...titleStyle, color: "#0959AB" }}
+              style={{ ...titleStyle, color: "var(--theme-link)" }}
             >
               <i className="fa-solid fa-crown text-warning me-2" />
               Dành cho bạn đọc VIP
@@ -174,7 +174,7 @@ export default function TopNews() {
                     />
                   </Link>
                   <h3 className="fs-6 fw-bold mb-0" style={titleStyle}>
-                    <Link className="text-reset" to={newsDetailHref(item.link)}>{item.title}</Link>
+                    <Link to={newsDetailHref(item.link)}>{item.title}</Link>
                   </h3>
                 </article>
               ))}

@@ -5,6 +5,7 @@ import {newsDetailHref} from "../../../utils/newsDetailURL.ts";
 import MegaStoryLightbox from "../../MegaStoryLightbox.tsx";
 import CommentBlock from "../../ui/CommentBlock.tsx";
 import NewsSameCategory from "../../ui/NewsSameCategory.tsx";
+import type { FeedName } from "../../../services/rssConfig.ts";
 
 function renderBlock(block: LongformBlock, index: number) {
     switch (block.type) {
@@ -75,7 +76,7 @@ export default function LongformArticle({title, article}: {title: string; articl
                 <CommentBlock/>
             </section>
             <section className="container mt-4 pt-4 border-top">
-                <NewsSameCategory section={{label: "Longform", href: "/multimedia/longform", feed: "emagazine"}}/>
+                <NewsSameCategory section={{label: "Longform", href: "/multimedia/longform", feed: "emagazine" as FeedName}}/>
             </section>
         </MegaStoryLightbox>
     );

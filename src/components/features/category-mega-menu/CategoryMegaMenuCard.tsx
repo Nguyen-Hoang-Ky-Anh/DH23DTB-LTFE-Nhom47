@@ -16,7 +16,7 @@ export default function CategoryMegaMenuCard({ section }: CategoryCardProps) {
     const showLinks = expanded ? links : links.slice(0, VISIBLE_LINKS);
 
     return (
-        <div className="card border-0 category-mega-card" style={{backgroundColor: "#FAFAFA"}}>
+        <div className="card border-0 category-mega-card" style={{backgroundColor: "var(--theme-bg)"}}>
             <Link to={section?.href ?? "/"} className="card-title text-start fw-bold mb-0" style={{borderBottom: "1px solid #0959ab", width: "fit-content"}}>{section.title}</Link>
             <div className="card-text text-start d-flex flex-column">
                 {showLinks.map((link) => (
@@ -29,7 +29,7 @@ export default function CategoryMegaMenuCard({ section }: CategoryCardProps) {
                     <button
                         type="button"
                         className="btn btn-link p-0 mt-2 text-start text-decoration-none"
-                        style={{fontSize: "14px", color: "#0959ab"}}
+                        style={{fontSize: "14px", color: "var(--theme-link)"}}
                         aria-expanded={expanded}
                         onClick={() => setExpanded((prev) => !prev)}
                     >

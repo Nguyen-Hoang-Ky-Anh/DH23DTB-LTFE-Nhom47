@@ -3,7 +3,6 @@ import {useSelector} from "react-redux";
 import Header from "./components/layout/header/Header.tsx";
 import MagazineHeader from "./components/layout/header/MagazineHeader.tsx";
 import Footer from "./components/layout/footer/Footer.tsx";
-import UpToTopBtn from "./components/ui/UpToTopBtn.tsx";
 import {SECTIONS} from "./config/newsSectionConfig.ts";
 import { useState } from "react";
 import type {RootState} from "./store/store.ts";
@@ -57,7 +56,6 @@ export default function MainLayout() {
             </main>
 
             <Footer />
-            <UpToTopBtn />
         </div>
     );
 }

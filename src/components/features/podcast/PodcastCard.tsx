@@ -46,7 +46,7 @@ export default function PodcastCard({ title, image, link, description, style = "
                 </Link>
                 <div className="card-body">
                     <p className="card-title text-start" style={{fontWeight: "bold"}}>
-                        <Link to={newsDetailHref(link)} className="text-reset">{title}</Link>
+                        <Link to={newsDetailHref(link)}>{title}</Link>
                     </p>
                     {description && <p className="card-description">{description}</p>}
                     <div className="d-flex align-items-center gap-1">
@@ -77,7 +77,7 @@ export default function PodcastCard({ title, image, link, description, style = "
                     <i className="fa-solid fa-angle-right"></i>
                 </span>
                 <h3 className="horizontal-card-title">
-                    <Link className="text-reset" to={newsDetailHref(link)}>{title}</Link>
+                    <Link to={newsDetailHref(link)}>{title}</Link>
                 </h3>
                 <p className="horizontal-card-description">{description}</p>
                 <div className="podcast-audio-actions">

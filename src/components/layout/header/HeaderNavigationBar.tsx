@@ -22,7 +22,7 @@ export default function HeaderNavigationBar() {
     }, [location.pathname]);
 
     return (
-        <div style={{ backgroundColor: "white" }}>
+        <div style={{ backgroundColor: "var(--theme-bg)" }}>
             <div className="container">
                 <div className="d-flex flex-row align-items-center justify-content-between p-2">
                     <Link to="/">

@@ -3,7 +3,7 @@ export default function FooterLeftContent() {
         <div className="d-flex flex-row align-items-center justify-content-space-between gap-5">
             <img src="https://vahc.com.vn/media/k2/items/cache/dca6745fdbb9da5b038270324f6ced2f_M.jpg" alt="Tuổi trẻ VN"
                  width="200px" height="71px"></img>
-            <div className="d-flex flex-column w-75 text-start" style={{fontSize: 13, color: "#292929"}}>
+            <div className="d-flex flex-column w-75 text-start" style={{fontSize: 13, color: "var(--theme-text-primary)"}}>
                 <div className='d-flex flex-column justify-content-center'>
                     <p>Tổng biên tập: TRẦN XUÂN TOÀN</p>
                     <p>Báo điện tử Tuổi Trẻ (tuoitre.vn)</p>

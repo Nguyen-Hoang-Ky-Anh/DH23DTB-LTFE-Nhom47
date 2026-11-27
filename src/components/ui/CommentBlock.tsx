@@ -2,7 +2,7 @@ export default function CommentBlock() {
     return (
         <div className="form-text mt-3">
             <label className="form-label main-title"
-                   style={{color: "black"}}>
+                   style={{color: "var(--theme-text-primary)"}}>
                 Hãy là người đầu tiên bình luận bài viết!
             </label>
             <textarea className="form-control description" rows={3}
@@ -11,8 +11,8 @@ export default function CommentBlock() {
                           height: 100,
                           borderLeft: "2.5px solid #005bb2",
                           resize: "none",
-                          background: "#fafafa",
-                          color: "#8c8c8c",
+                          background: "var(--theme-bg)",
+                          color: "var(--theme-text-primary)",
                           fontSize: 16,
                           lineHeight: "26px"
                       }}
