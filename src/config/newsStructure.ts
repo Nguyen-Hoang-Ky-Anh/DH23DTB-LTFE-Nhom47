@@ -60,7 +60,8 @@ export type NewsContent =
     | NewsImage
     | NewsCallOutUl
     | ContentWrap
-    | NewsTable;
+    | NewsTable
+    | NewsVideo;
 
 export type LongformWidth = "reading" | "wide" | "full";
 
@@ -91,6 +92,15 @@ export interface NewsTable {
     type: "table";
     index: number;
     content: TextContent;
+}
+
+export type VideoFormat = 'embed' | 'mp4' | 'mov';
+
+export interface NewsVideo {
+    type: "video";
+    format: VideoFormat;
+    index: number;
+    src: string;
 }
 
 export interface NewsStructure {

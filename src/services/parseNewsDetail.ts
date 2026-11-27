@@ -1,6 +1,6 @@
 import type {
-    ContentWrap, DetailTab, NewsCallOutLink, NewsCallOutUl, NewsContent, RelatedLink, RelativeBox,
-    TextContent, typeOfNews,
+    ContentWrap, DetailTab, NewsCallOutLink, NewsCallOutUl, NewsContent, NewsVideo, RelatedLink, RelativeBox,
+    TextContent, typeOfNews, VideoFormat,
 } from "../config/newsStructure.ts";
 import {convertToProxyURL} from "./rssService.ts";
 import type {NewsStructure, callOutVariant} from "../config/newsStructure";
@@ -86,54 +86,140 @@ function parseRelativeBox(element: Element): RelativeBox {
     };
 }
 
+function parseSohaVideo(element: Element, index: number): NewsVideo | null {
+    if (!element.matches('iframe[title="SohaTV Player"]')) {
+        return null;
+    }
+    const src = element.getAttribute("src");
+    if (!src) return null;
+    return {
+        type: "video",
+        format: "embed",
+        index,
+        src
+    };
+}
+
+function parseNormalVideo(element: Element, index: number): NewsVideo | null {
+    if (!element.matches('video, .VCSortableInPreviewMode[type="VideoStream"]')) {
+        return null;
+    }
+    const vid = element.getAttribute("data-vid");
+    let src = element.getAttribute("src")
+        || element.querySelector("source")?.getAttribute("src")
+        || vid;
+    if (!src || src.startsWith("blob:")) {
+        return null;
+    }
+    if (src.startsWith("//")) {
+        src = "https:" + src;
+    } else {
+        src = "https://" + src;
+    }
+    const path = src.split(/[?#]/)[0].toLowerCase();
+    let format: VideoFormat;
+    if (path.endsWith(".mp4")) {
+        format = "mp4";
+    } else if (path.endsWith(".mov")) {
+        format = "mov";
+    } else {
+        return null;
+    }
+    return {
+        type: "video",
+        format,
+        index,
+        src,
+    };
+}
+
+function parseVideo(element: Element, index: number): NewsVideo | null {
+    return parseSohaVideo(element, index)
+        ?? parseNormalVideo(element, index);
+}
+
 function parseDetailContent(
     container: Element
 ): NewsContent[] {
     const blocks: NewsContent[] = [];
 
     const elements = container.querySelectorAll(
-        "p, h1, h2, h3, h4, h5, h6, figure, .content-wrap, .kbwscwl-relatedbox, span, table"
+        `p, h1, h2, h3, h4, h5, h6, img,
+         figure,
+         .content-wrap,
+         .kbwscwl-relatedbox,
+         table,
+         video,
+         iframe[title="SohaTV Player"],
+         .VCSortableInPreviewMode[type="VideoStream"]`
     );
 
     elements.forEach(element => {
-        if (element.parentElement?.closest("figure, .content-wrap, .kbwscwl-relatedbox, table")) return;
+            if (element.parentElement?.closest("figure, .content-wrap, .kbwscwl-relatedbox, table, .VCSortableInPreviewMode[type=\"VideoStream\"]"))
+                return;
 
-        const index = element.matches(".kbwscwl-relatedbox") ?
-            Math.max(blocks.length - 1, 1) : blocks.length;
+            const index = element.matches(".kbwscwl-relatedbox")
+                ? Math.max(blocks.length - 1, 1)
+                : blocks.length;
 
-        if (element.matches(".content-wrap")) {
-            blocks.push(parseContentWrap(element, index));
-        } else if (element.matches(".kbwscwl-relatedbox")) {
-            const variant = (
-                ["type-1", "type-2", "type-3", "type-4", "type-6"] as const
-            ).find(type => element.classList.contains(type)) ?? "type-2";
-            blocks.push(parseCallOutUl(element, variant, index));
-        } else if (element.matches("figure")) {
-            const img = element.querySelector("img");
-            const src = img?.getAttribute("src");
-            if (src) {
-                blocks.push({
-                    type: "image",
-                    index,
-                    src: src,
-                    caption: element.querySelector("figcaption")
-                        ?.textContent?.trim()
-                });
+            if (element.matches(".content-wrap")) {
+                blocks.push(
+                    parseContentWrap(element, index)
+                );
+
+            } else if (element.matches(".kbwscwl-relatedbox")) {
+                const variant = (
+                    ["type-1", "type-2", "type-3", "type-4", "type-6"] as const
+                ).find(type =>
+                    element.classList.contains(type)
+                ) ?? "type-2";
+
+                blocks.push(
+                    parseCallOutUl(element, variant, index)
+                );
+
+            } else if (element.matches("figure")) {
+                const caption = element.querySelector("figcaption")?.textContent?.trim();
+                const img = element.querySelector("img");
+                const src = img?.getAttribute("src");
+                if (src) {
+                    blocks.push({
+                        type: "image",
+                        index,
+                        src,
+                        caption
+                    });
+                }
             }
-        } else if (element.matches("p, h1, h2, h3, h4, h5, h6")) {
-            blocks.push({
-                type: "text",
-                index,
-                content: parseText(element)
-            });
-        } else if (element.matches("table")) {
-            blocks.push({
-                type: "table",
-                index,
-                content: parseText(element)
-            });
+            else if (element.matches("img")) {
+                blocks.push({
+                        type: "image",
+                        index,
+                        src: element.getAttribute("src") ?? ""
+                    }
+                )
+
+            } else if (element.matches("p, h1, h2, h3, h4, h5, h6")) {
+                blocks.push({
+                    type: "text",
+                    index,
+                    content: parseText(element)
+                });
+            } else if (element.matches("table")) {
+                blocks.push({
+                    type: "table",
+                    index,
+                    content: parseText(element)
+                });
+            } else if (element.matches(`video, iframe[title="SohaTV Player"], .VCSortableInPreviewMode[type=    "VideoStream"]`)) {
+                const video = parseVideo(element, index);
+                if (video) {
+                    blocks.push(video);
+                }
+            }
         }
-    });
+    )
+    ;
 
     return blocks;
 }
