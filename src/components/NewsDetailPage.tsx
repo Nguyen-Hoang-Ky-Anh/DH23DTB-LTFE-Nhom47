@@ -11,6 +11,7 @@ import NewsDetailRenderer from "./features/news-detail/NewsDetailRenderer.tsx";
 import LongformArticle from "./features/news-detail/LongformArticle.tsx";
 import useUpdateParagraphSize from "../services/fetchNewsDetails.ts";
 import NewsSameCategory from "./ui/NewsSameCategory.tsx";
+import NewsDetailHistory from "./features/news-detail/detail-components/NewsDetailHistory.tsx";
 
 export default function NewsDetailPage() {
     const dispatch = useDispatch<AppDispatch>();
@@ -33,6 +34,8 @@ export default function NewsDetailPage() {
             ?? findChildrenSectionBySectionKey(feedName);
         if (section) break;
     }
+
+    const threadId = news?.threadId;
 
     useEffect(() => {
         if (url) {
@@ -137,8 +140,9 @@ export default function NewsDetailPage() {
                                 </div>
 
                                 <div className={'news-detail-bottom mt-5'}>
-
-
+                                    {threadId && threadId !== "0" &&
+                                        <NewsDetailHistory threadId={threadId}/>
+                                    }
 
                                     {news.relativeBox.relatedLinks[0] &&
                                         <NewsDetailRelated relativeBox={news.relativeBox}/>

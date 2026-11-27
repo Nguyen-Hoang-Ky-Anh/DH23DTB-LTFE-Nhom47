@@ -15,7 +15,7 @@ export const TAGS = new Set([
 ])
 
 function getValidHref(href: string) {
-    if(href.includes("/nld/")) {
+    if (href.includes("/nld/")) {
         return newsDetailHref(convertToProxyURL(new URL(href)));
     }
     return href;
@@ -40,7 +40,7 @@ function parseText(node: Node): TextContent {
         tag,
         href: tag === "a"
             ? getValidHref(node.getAttribute("href") ?? "")
-        : undefined,
+            : undefined,
         children: Array.from(node.childNodes).map(child => parseText(child))
     };
 }
@@ -165,7 +165,7 @@ export function parseNewsDetail(doc: Document): NewsStructure {
             href: a.href
         }))
     };
-
+    const threadId = doc.getElementById("box-thread-detail")?.getAttribute('data-id-dsk') ?? undefined;
     return {
         typeOfNews: category,
         detailTitle: doc.querySelector("h1")?.textContent?.trim() ?? "",
@@ -179,6 +179,7 @@ export function parseNewsDetail(doc: Document): NewsStructure {
             firstRelatedDescription: "",
             relatedLinks: []
         },
-        detailTab
+        detailTab,
+        threadId
     };
 }

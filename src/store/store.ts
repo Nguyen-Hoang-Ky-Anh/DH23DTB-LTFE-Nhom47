@@ -8,6 +8,7 @@ import soccerStandingsCompetitionsReducer from "./slice/soccerStandingsCompetiti
 import worldCupReducer from "./slice/worldCupSlice";
 import newsDetailReducer from "./slice/newsDetailSlice.ts";
 import themeReducer from "./slice/themeSlice.ts";
+import detailHistoryReducer from "./slice/detailHistorySlice.ts";
 
 export const store = configureStore({
     reducer : {
@@ -20,6 +21,7 @@ export const store = configureStore({
         worldCup: worldCupReducer,
         newsDetail: newsDetailReducer,
         theme: themeReducer,
+        detailHistory: detailHistoryReducer,
     }
 });
 
