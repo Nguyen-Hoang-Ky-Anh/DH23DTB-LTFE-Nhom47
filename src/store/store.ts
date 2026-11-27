@@ -7,6 +7,7 @@ import soccerMatchesCompetitionsReducer from "./slice/soccerMatchesCompetitionSl
 import soccerStandingsCompetitionsReducer from "./slice/soccerStandingsCompetitionSlice.ts";
 import worldCupReducer from "./slice/worldCupSlice";
 import newsDetailReducer from "./slice/newsDetailSlice.ts";
+import themeReducer from "./slice/themeSlice.ts";
 
 export const store = configureStore({
     reducer : {
@@ -18,6 +19,7 @@ export const store = configureStore({
         soccerStanding: soccerStandingsCompetitionsReducer,
         worldCup: worldCupReducer,
         newsDetail: newsDetailReducer,
+        theme: themeReducer,
     }
 });
 

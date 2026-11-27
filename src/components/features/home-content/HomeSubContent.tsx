@@ -342,7 +342,7 @@ export default function HomeSubContent({
                                        width: "100%",
                                        height: "100%",
                                        minWidth: 0,
-                                       backgroundColor: "#f8fbff",
+                                       backgroundColor: "var(--theme-highlight-bg)",
                                        verticalAlign: "middle"
                                    }}>
                                 <thead style={{fontSize: 12, fontWeight: 700}}>
@@ -462,7 +462,7 @@ export default function HomeSubContent({
                                             <Link to={newsDetailHref(batDongSanKinhTeNews[0].link)}
                                                   className={'main-title'}>{batDongSanKinhTeNews[0].title}</Link>
                                             <p className={'description'}
-                                               style={{color: "#727272"}}
+                                               style={{color: "var(--theme-text-secondary)"}}
                                             >{batDongSanKinhTeNews[0].description}</p>
                                         </div>
                                     </div>
@@ -506,7 +506,7 @@ export default function HomeSubContent({
                                             <Link to={newsDetailHref(oToKinhTeNews[0].link)}
                                                   className={'main-title'}>{oToKinhTeNews[0].title}</Link>
                                             <p className={'description'}
-                                               style={{color: "#727272"}}
+                                               style={{color: "var(--theme-text-secondary)"}}
                                             >{oToKinhTeNews[0].description}</p>
                                         </div>
                                     </div>
@@ -525,7 +525,7 @@ export default function HomeSubContent({
                             <div className={'col-4'}>
                                 <div className={'text-start p-2'}
                                     style={{
-                                    background: "#f2f8ff",
+                                    background: "var(--theme-highlight-bg)",
                                     height: "100%",
                                     width: "100%"
                                 }}>

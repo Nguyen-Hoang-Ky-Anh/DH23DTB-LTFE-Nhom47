@@ -42,6 +42,47 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: var(--theme-bg);
+    color: var(--theme-text-primary);
+}
+
+.theme-fixed-light {
+    color: var(--theme-text-primary);
+}
+
+.bg-white,
+.bg-light {
+    background-color: var(--theme-bg) !important;
+}
+
+[data-theme="dark"] .text-dark {
+    color: var(--theme-text-primary) !important;
+}
+
+[data-theme="dark"] :is(.text-muted, .text-secondary) {
+    color: var(--theme-text-secondary) !important;
+}
+
+[data-theme="dark"] :is(.border, .border-top, .border-bottom, .border-start, .border-end) {
+    border-color: var(--theme-border) !important;
+}
+
+[data-theme="dark"] :is(.card, .form-control, .form-select, .alert-light) {
+    background-color: var(--theme-bg);
+    color: var(--theme-text-primary);
+    border-color: var(--theme-border);
+}
+
+[data-theme="dark"] .form-control::placeholder {
+    color: var(--theme-text-secondary);
+}
+
+[data-theme="dark"] .table {
+    color: var(--theme-text-primary);
+    border-color: var(--theme-border);
+}
+
 body * {
     scrollbar-width: thin;
     scrollbar-color: #8B8B8B transparent;
@@ -51,8 +92,8 @@ body * {
     width: 190px;
     min-height: 100px;
     flex-shrink: 0;
-    background-color: #edf5ff;
-    color: #005bb2;
+    background-color: var(--theme-highlight-bg);
+    color: var(--theme-link);
 }
 
 /* News Detail */
@@ -335,7 +376,7 @@ body * {
 }
 
 .sports-fixtures .sports-competition {
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--theme-border);
     border-radius: 4px;
     text-transform: uppercase;
 }
@@ -361,7 +402,7 @@ body * {
     width: 100%;
     min-width: 190px;
     z-index: 20;
-    color: #454545;
+    color: var(--theme-text-secondary);
     color-scheme: light;
     max-height: 260px;
     overflow-y: auto;
@@ -373,7 +414,7 @@ body * {
 
 .sports-competition-menu button:hover,
 .sports-competition-menu .sports-option-selected {
-    color: #005bb2;
+    color: var(--theme-link);
 }
 
 .sports-option-selected {
@@ -392,7 +433,7 @@ body * {
 }
 
 .sports-schedule-match {
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: 1px solid var(--theme-border);
     padding-bottom: 16px;
 }
 
@@ -423,17 +464,17 @@ body * {
     border-bottom: 2px solid transparent;
     padding: 16px 6px;
     font-size: 16px;
-    color: #999;
+    color: var(--theme-text-secondary);
 }
 
 .sports-scoreboard .sports-tab.active {
     border-bottom-color: #00aeef;
-    color: #172b3a;
+    color: var(--theme-text-primary);
 }
 
 .sports-ranking-header {
     padding: 12px 0 18px;
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: 1px solid var(--theme-border);
 }
 
 .sports-ranking-header select {
@@ -445,7 +486,7 @@ body * {
     width: 48px;
     flex-shrink: 0;
     text-align: right;
-    color: #999;
+    color: var(--theme-text-secondary);
 }
 
 .sports-scoreboard table {
@@ -466,8 +507,12 @@ body * {
     height: 34px;
 }
 
+.vip-news {
+    background-color: #afeafa;
+}
+
 .sports-rank {
-    background-color: #bfebfa;
+    background-color: var(--theme-highlight-bg);
 }
 
 .top-header-link-item {
@@ -554,6 +599,22 @@ body * {
 
 .card-link .main-title {
     text-decoration: none;
+    color: inherit;
+}
+
+.article-title-link {
+    color: inherit;
+}
+
+.article-title-link:hover {
+    color: var(--theme-link);
+}
+
+.card-description.description {
+    color: var(--theme-text-secondary);
+}
+
+.text-white .card-description.description {
     color: inherit;
 }
 
@@ -1048,7 +1109,7 @@ a {
 }
 
 .side-group-boxed {
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--theme-border);
     border-radius: 2px;
     padding: 8px;
 }
@@ -1202,7 +1263,11 @@ li:hover {
 
 .wc-scores .wc-standings th {
     font-weight: 400;
-    color: #666;
+    color: var(--theme-text-secondary);
+}
+
+.news-theme-pink {
+    background-color: #fff5f7;
 }
 
 .news-theme-green {
@@ -1356,6 +1421,36 @@ li:hover {
     line-height: 18px;
 }
 
+.floating-page-buttons {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.floating-page-buttons > .up-to-top-btn {
+    position: static;
+}
+
+.floating-page-button {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    font-size: 20px;
+    line-height: 1;
+    background-color: var(--theme-bg);
+}
+
+[data-theme="dark"] .floating-page-button {
+    color: var(--theme-text-primary);
+    border-color: var(--theme-text-secondary);
+}
+
 .search-btn {
     background: transparent;
     border: none;
@@ -1437,9 +1532,10 @@ li:hover {
     border: 1px solid #d2d2d2;
     border-radius: 50px;
 }
-.mega-story {
-    background: #fff;
-    color: #292929;
+.mega-story,
+.longform-layout {
+    background: var(--theme-bg);
+    color: var(--theme-text-primary);
     font-family: Inter, sans-serif;
     letter-spacing: normal;
 }
@@ -1519,7 +1615,7 @@ li:hover {
 }
 
 .mega-story-featured h3 {
-    color: #0759a3;
+    color: var(--theme-link);
     font-size: 24px;
 }
 
@@ -1539,7 +1635,7 @@ li:hover {
 }
 
 .mega-story-featured-card h4:hover {
-    color: #0759a3;
+    color: var(--theme-link);
     cursor: pointer;
 }
 
@@ -1651,7 +1747,7 @@ li:hover {
     width: 100%;
     padding: 0;
     border: 0;
-    background: #f5f5f5;
+    background: var(--theme-bg);
 }
 
 .mega-story-tile img {
@@ -1745,7 +1841,7 @@ li:hover {
 
 .mega-story figcaption {
     padding: 24px 16px;
-    color: #292929;
+    color: var(--theme-text-primary);
     font-size: 14px;
     line-height: 20px;
     font-optical-sizing: none;
@@ -1819,7 +1915,7 @@ li:hover {
     width: min(680px, calc(100% - 32px));
     margin-inline: auto;
     padding-block: 8px 4px;
-    border-bottom: 1px solid #ccd9e8;
+    border-bottom: 1px solid var(--theme-border);
 }
 
 .mega-story-people > summary {
@@ -1875,7 +1971,7 @@ li:hover {
 .mega-story-comments textarea {
     height: 100px;
     border-left: 3px solid #0959AB;
-    background: #fafafa;
+    background: var(--theme-bg);
     resize: none;
 }
 
@@ -1894,8 +1990,8 @@ li:hover {
 
 .mega-story-comment-sort {
     margin-top: 12px;
-    border-bottom: 1px solid #ddd;
-    color: #586471;
+    border-bottom: 1px solid var(--theme-border);
+    color: var(--theme-text-secondary);
     font-weight: 600;
 }
 
@@ -1906,7 +2002,7 @@ li:hover {
 
 .mega-story-comment-sort span:first-child {
     border-bottom-color: #0959AB;
-    color: #0959AB;
+    color: var(--theme-link);
 }
 
 .mega-story-comment-entry {
@@ -1922,8 +2018,8 @@ li:hover {
     place-items: center;
     height: 40px;
     border-radius: 50%;
-    background: #e8f2fc;
-    color: #0959AB;
+    background: var(--theme-highlight-bg);
+    color: var(--theme-link);
     font-size: 14px;
     font-weight: 700;
 }
@@ -1933,7 +2029,7 @@ li:hover {
 }
 
 .mega-story-comment-actions {
-    color: #586471;
+    color: var(--theme-text-secondary);
     font-size: 14px;
 }
 
@@ -1941,14 +2037,14 @@ li:hover {
     width: min(1120px, calc(100% - 32px));
     margin: 0 auto 48px;
     padding-top: 24px;
-    border-top: 1px solid #e5e8ec;
+    border-top: 1px solid var(--theme-border);
 }
 
 .mega-story-see-more h2 {
     padding: 4px 0 4px 8px;
     margin-bottom: 20px;
     border-left: 3px solid #e6a632;
-    color: #0959AB;
+    color: var(--theme-link);
     text-transform: uppercase;
 }
 
@@ -2766,7 +2862,7 @@ li:hover {
 
 .rss-page h1,
 .rss-page h2 {
-    color: #000;
+    color: var(--theme-text-primary);
 }
 
 .rss-page h1 {
@@ -2786,7 +2882,7 @@ li:hover {
 }
 
 .rss-directory > li + li {
-    border-top: 1px solid #dee2e6;
+    border-top: 1px solid var(--theme-border);
 }
 
 .rss-row {
@@ -2806,13 +2902,13 @@ summary.rss-row {
 }
 
 .rss-feed-link {
-    color: #0959ab;
+    color: var(--theme-link);
     overflow-wrap: anywhere;
     text-decoration: none;
 }
 
 .rss-feed-link strong {
-    color: #212529;
+    color: var(--theme-text-primary);
     font-weight: 600;
 }
 
@@ -2822,12 +2918,12 @@ summary.rss-row {
 
 .rss-toggle {
     flex-shrink: 0;
-    color: #626f7e;
+    color: var(--theme-text-secondary);
     font-size: 13px;
 }
 
 summary.rss-row:hover .rss-toggle {
-    color: #0959ab;
+    color: var(--theme-link);
 }
 
 .rss-less,
@@ -2841,12 +2937,12 @@ summary.rss-row:hover .rss-toggle {
 
 .rss-subcategories {
     padding: 4px 14px 10px 32px;
-    background: #f6f8fb;
+    background: var(--theme-bg);
 }
 
 .longform-detail {
     padding-bottom: 56px;
-    color: #222834;
+    color: var(--theme-text-primary);
 }
 
 .longform-reading {
@@ -2864,7 +2960,7 @@ summary.rss-row:hover .rss-toggle {
 
 .longform-nav a,
 .longform-related a {
-    color: #0959ab;
+    color: var(--theme-link);
 }
 
 .longform-cover {
@@ -2875,7 +2971,7 @@ summary.rss-row:hover .rss-toggle {
 
 .longform-title,
 .longform-heading {
-    color: #172235;
+    color: var(--theme-text-primary);
     letter-spacing: normal;
     font-family: "Merriweather", serif;
     font-weight: 750;
@@ -2929,7 +3025,7 @@ summary.rss-row:hover .rss-toggle {
     max-width: 740px;
     margin: 12px auto 0;
     padding-inline: 18px;
-    color: #4d5867;
+    color: var(--theme-text-secondary);
     text-align: center;
     font-size: 14px;
     line-height: 1.5;
@@ -2940,12 +3036,12 @@ summary.rss-row:hover .rss-toggle {
     margin-block: 28px;
     padding: 16px 20px;
     border-left: 3px solid #0959ab;
-    background: #f1f6fc;
+    background: var(--theme-highlight-bg);
 }
 
 .longform-related h2,
 .longform-comments h2 {
-    color: #172235;
+    color: var(--theme-text-primary);
     font-size: 18px;
     font-weight: 700;
 }
@@ -2953,11 +3049,11 @@ summary.rss-row:hover .rss-toggle {
 .longform-comments {
     margin-top: 40px;
     padding-top: 24px;
-    border-top: 1px solid #d9e0e9;
+    border-top: 1px solid var(--theme-border);
     scroll-margin-top: 80px;
 }
 
 .longform-detail > .longform-credit {
-    color: #4d5867;
+    color: var(--theme-text-secondary);
     font-size: 14px;
 }

@@ -129,8 +129,6 @@ function convertToSectionKey(text: string) {
     ).join("")
 }
 
-let section = findSectionByFeedName("ABD") ?? findChildrenSectionBySectionKey("ABC")
-
 export function findSectionByFeedName(feedName: string) {
     let key = convertToSectionKey(feedName.substring(feedName.lastIndexOf("/") + 1,
         feedName.indexOf(".")));

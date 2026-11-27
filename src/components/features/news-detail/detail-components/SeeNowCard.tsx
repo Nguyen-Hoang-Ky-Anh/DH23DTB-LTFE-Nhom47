@@ -15,7 +15,7 @@ export default function SeeNowCard({variant, liImg, li}: SeeNowCardProps) {
                 <aside className={'news-callout'}>
                     <div className="card" style={{
                         width: "100%", fontFamily: "Merriweather, serif",
-                        backgroundColor: "#EAEAEA"
+                        backgroundColor: "var(--theme-bg)"
                     }}>
                         <Link to={newsDetailHref(li[1].src)}>
                             <img className={'w-100'}

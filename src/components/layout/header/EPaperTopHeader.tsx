@@ -6,7 +6,7 @@ interface EPaperTopHeaderProps {
 
 export default function EPaperTopHeader({ hotline }: EPaperTopHeaderProps) {
     return (
-        <div style={{ backgroundColor: "white" }}>
+        <div style={{ backgroundColor: "var(--theme-bg)" }}>
             <div className="container">
                 <div className="d-flex flex-row justify-content-between align-items-center py-3">
                     <div className="d-flex flex-row align-items-center">
@@ -21,7 +21,7 @@ export default function EPaperTopHeader({ hotline }: EPaperTopHeaderProps) {
                             <span
                                 style={{
                                     marginLeft: "22px",
-                                    color: "#0c4fa1",
+                                    color: "var(--theme-link)",
                                     fontSize: "20px",
                                     fontWeight: 700,
                                     fontFamily: "Georgia, 'Times New Roman', serif",
@@ -34,12 +34,12 @@ export default function EPaperTopHeader({ hotline }: EPaperTopHeaderProps) {
                     <div className="d-flex flex-row align-items-center gap-3">
                         <a
                             href="#"
-                            className="d-flex flex-row align-items-center gap-3 text-decoration-none"
+                            className="d-flex flex-row align-items-center gap-3 text-decoration-none theme-fixed-light"
                             style={{
                                 backgroundColor: "#fdecec",
                                 borderRadius: "30px",
                                 padding: "8px 16px 8px 8px",
-                                color: "black",
+                                color: "var(--theme-text-primary)",
                                 fontSize: "18px",
                             }}
                         >

@@ -26,7 +26,7 @@ export default function NewsSection({section, layout = "horizontal", embedded = 
     },[dispatch, feed]);
 
     const content = (
-        <div className={section === "netZero" ? "news-theme-green" : undefined}>
+        <div className={section === "netZero" ? "news-theme-green theme-fixed-light" : undefined}>
             <NewsSectionHeader
                 title={title}
                 href={href}

@@ -6,9 +6,9 @@ import fetchRSS, {type NewsItem} from "../services/rssService.ts";
 import {newsDetailHref} from "../utils/newsDetailURL.ts";
 import MegaStoryAlbum, {MediaCaption, MegaStoryText} from "./MegaStoryAlbum.tsx";
 import MegaStoryLightbox from "./MegaStoryLightbox.tsx";
+import MagazineHeader from "./layout/header/MagazineHeader.tsx";
 import MegaStoryTimeline, {MegaStoryMilestones, MegaStoryVideo} from "./MegaStoryTimeline.tsx";
 import DragCarousel from "./ui/DragCarousel.tsx";
-import UpToTopBtn from "./ui/UpToTopBtn.tsx";
 import Footer from "./layout/footer/Footer.tsx";
 
 function Photo({image: [file, width, height], alt = "", reveal, caption, captionSpace, layout, italicTitle, captionReading}: Omit<MegaStoryPhoto, "type">) {
@@ -57,7 +57,7 @@ function StoryBlock({block}: {block: MegaStoryBlock}) {
             return <MegaStoryTimeline images={block.images} />;
         case "featured-articles":
             return (
-                <section className="mega-story-featured">
+                <section className="mega-story-featured theme-fixed-light">
                     <h3 className="text-center text-uppercase mb-4 fw-bold">Các bài báo tiêu biểu</h3>
                     <DragCarousel showProgress>
                         {featuredArticles.map(({title, image}) => (
@@ -122,27 +122,7 @@ export default function MegaStoryPage() {
     return (
         <div className="mega-story text-start">
             <title>{megaStory.title}</title>
-            <header className="mega-story-bar px-3">
-                <Link to="/" aria-label="Về trang chủ" className="mega-story-brand">
-                    <span className="mega-story-back"><i className="fa-solid fa-arrow-left" aria-hidden="true" /></span>
-                    <img src="/mega-story/tuoi-tre.webp" alt="Tuổi Trẻ" width={129} height={41} />
-                </Link>
-                <img className="mega-story-edition" src="/mega-story/emagazine.webp" alt="eMagazine" width={149} height={28} />
-                <div className="mega-story-actions">
-                    <button type="button" onClick={() => document.getElementById("mega-story-comments")?.scrollIntoView()}>
-                        <i className="fa-regular fa-comment-dots" aria-hidden="true" />
-                        Bình luận
-                    </button>
-                    <button type="button">
-                        <i className="fa-brands fa-facebook-f" aria-hidden="true" />
-                        Facebook
-                    </button>
-                    <button type="button">
-                        <i className="fa-regular fa-paper-plane" aria-hidden="true" />
-                        Góp ý
-                    </button>
-                </div>
-            </header>
+            <MagazineHeader commentsId="mega-story-comments"/>
             <main>
                 <MegaStoryLightbox>
                     <h1 className="visually-hidden">{megaStory.title}</h1>
@@ -190,7 +170,7 @@ export default function MegaStoryPage() {
                     <div className="mega-story-more-grid">
                         {articles.map(({guid, title, image, link}) => (
                             <article key={guid || title}>
-                                <Link className="text-reset" to={newsDetailHref(link)}>
+                                <Link to={newsDetailHref(link)}>
                                     <img src={image} alt="" loading="lazy" decoding="async" />
                                     <h3 className="main-title mb-0">{title}</h3>
                                 </Link>
@@ -199,7 +179,6 @@ export default function MegaStoryPage() {
                     </div>
                 </section>
             </main>
-            <UpToTopBtn />
             <Footer/>
         </div>
     );

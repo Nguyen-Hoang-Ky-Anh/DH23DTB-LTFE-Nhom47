@@ -25,8 +25,8 @@ export default function NewsSectionContent({
     const [featured, ...rest] = news;
     if (!featured) return null;
 
-    const line = whiteText ? "rgba(255,255,255,.6)" : "#ddd";
-    const accent = whiteText ? "#fff" : "#0959ab";
+    const line = whiteText ? "rgba(255,255,255,.6)" : "var(--theme-border)";
+    const accent = whiteText ? "#fff" : "var(--theme-link)";
 
     let sideItemTitle = "";
 
@@ -73,9 +73,9 @@ export default function NewsSectionContent({
                 <Card image={featured.image} title={featured.title} link={featured.link}/>
                 {rest.slice(0, 2).map(item => (
                     <p key={item.link} className="border-top pt-3 mt-3 mb-0 text-start description"
-                       style={{fontSize: 16, lineHeight: 1.5, color: "#454545"}}>
+                       style={{fontSize: 16, lineHeight: 1.5, color: "var(--theme-text-secondary)"}}>
                         <span className="text-primary me-1 fs-5 sub-title">›</span>
-                        <Link to={newsDetailHref(item.link)} className="text-reset">{item.title}</Link>
+                        <Link to={newsDetailHref(item.link)}>{item.title}</Link>
                     </p>
                 ))}
             </div>
@@ -217,7 +217,7 @@ export default function NewsSectionContent({
                                           style={{fontSize: 15}}> {featured.title}</Link>
                                     <p className={'description'}
                                        style={{
-                                           color: "#727272"
+                                           color: "var(--theme-text-secondary)"
                                        }}>{featured.description}</p>
                                 </div>
                             </div>
@@ -233,7 +233,7 @@ export default function NewsSectionContent({
 
                             <p className={'truncate-description'}
                                style={{
-                                   color: "#727272"
+                                   color: "var(--theme-text-secondary)"
                                }}
                             >{sideItem.description}</p>
                         </div>

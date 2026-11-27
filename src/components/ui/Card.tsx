@@ -11,7 +11,7 @@ interface Card {
 }
 
 export default function Card({image, title, description, feature=false, isVideo, date, link}: Card) {
-    const card = (
+    return (
         <div>
             <div className="card-media mb-2">
                 <img src={image} alt={title} className={feature ? "w-100 card-image" : "w-100 sub-card-image"}/>
@@ -29,11 +29,10 @@ export default function Card({image, title, description, feature=false, isVideo,
                 </div>
             )}
 
-            <h3 className={`${feature ? "fw-bold text-start" : "fw-bold text-start"} main-title`}>
-                {title}
+            <h3 className="fw-bold text-start main-title">
+                {link ? <Link className="article-title-link" to={newsDetailHref(link)}>{title}</Link> : title}
             </h3>
-            <p className="description text-start">{description}</p>
+            <p className="card-description description text-start">{description}</p>
         </div>
     );
-    return link ? <Link className="d-block text-reset text-decoration-none" to={newsDetailHref(link)}>{card}</Link> : card;
 }

@@ -75,7 +75,7 @@ export default function PodcastCarousel({sections}: PodcastCarouselProps) {
                                     <i className="fa-solid fa-angle-right"></i>
                                 </span>
                                 <h2>
-                                    <Link className="text-reset" to={newsDetailHref(item.newsItem.link)}>{item.newsItem.title}</Link>
+                                    <Link to={newsDetailHref(item.newsItem.link)}>{item.newsItem.title}</Link>
                                 </h2>
                                 <p>
                                     {item.newsItem.description}

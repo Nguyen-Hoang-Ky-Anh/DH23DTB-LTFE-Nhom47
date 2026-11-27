@@ -19,7 +19,7 @@ export default function NewsSectionHeader({title, href, icon, color, links, more
             <div className="d-flex flex-wrap justify-content-between align-items-center gap-auto text-start mb-2">
                 <div>
                     <h5 className="mb-0 title">
-                        <i className={icon} style={{color: color ?? "#0959ab"}}></i>
+                        <i className={icon} style={{color: color ?? "var(--theme-link)"}}></i>
                         {href ?
                             <Link to={href} className={`fw-bold news-section-title ${compact ? "compact-title" : ""}`}>{title}</Link> :
                             <span className={`main-title ${compact ? "compact-title" : ""}`}>{title}</span>
@@ -30,11 +30,11 @@ export default function NewsSectionHeader({title, href, icon, color, links, more
                     <ul className="list-inline mb-0">
                         {visibleLinks.map(link => (
                             <li key={link.label} className={compact ? "list-inline-item" : "list-inline-item fs-6"}>
-                                <Link to={link.href} style={{color: "#3e3e3e", ...linkStyle}}>{link.label}</Link>
+                                <Link to={link.href} style={{color: "var(--theme-text-primary)", ...linkStyle}}>{link.label}</Link>
                             </li>
                         ))}
                         {dropdownLinks.length > 0 && (
-                            <li className="list-inline-item category-dropdown" style={{color: "#3e3e3e", ...linkStyle}}>
+                            <li className="list-inline-item category-dropdown" style={{color: "var(--theme-text-primary)", ...linkStyle}}>
                                 <i className="fa fa-angle-down"></i>
                                 <div className="category-box">
                                     {dropdownLinks.map(link => (

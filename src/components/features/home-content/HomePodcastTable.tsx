@@ -74,7 +74,7 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                         className={'main-title pb-3 d-block'}
                         >{firstNews.title}</Link>
                         <div className={"d-flex flex-row gap-3 align-items-center"}>
-                            <Link to={newsDetailHref(firstNews.link)} className={"py-1 px-2 rounded btn border"} style={{backgroundColor:"#F5F5F58C"}}>
+                            <Link to={newsDetailHref(firstNews.link)} className={"py-1 px-2 rounded btn border"} style={{backgroundColor:"var(--theme-bg)"}}>
                                 <div className={"align-items-center d-flex flex-row justify-content-between gap-1 p-0"}
                                 style={{
                                     fontWeight: 400,
@@ -89,7 +89,7 @@ export default function HomePodcastTable({href, links, moreLinks, news} : HomePo
                                     }}></i>
                                     <p style={{
                                         fontSize: 14,
-                                        color: "black",
+                                        color: "var(--theme-text-primary)",
                                     }}>
                                         Nghe tập này
                                     </p>
