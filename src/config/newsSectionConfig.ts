@@ -138,4 +138,29 @@ export function findSectionByFeedName(feedName: string) {
     );
 }
 
+export function findSectionByCategory(category: string) {
+    const section = Object.values(SECTIONS).find(s => s.feed.toString() === category);
+    if (section) {
+        return {
+            section,
+            feed: section.feed,
+            title: section.title
+        };
+    }
+    const child =
+        Object.values(SECTIONS)
+        .flatMap(s => [...s.links, ...s.moreLinks])
+            .find(link => link.feed.toString() === category)
+
+    if (child) {
+        return {
+            section: undefined,
+            feed: child.feed,
+            title: child.label
+        };
+    }
+
+    return undefined;
+}
+
 export type SectionKey = keyof typeof SECTIONS;

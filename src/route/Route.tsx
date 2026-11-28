@@ -21,6 +21,7 @@ import PodcastSearchPage from "../components/PodcastSearchPage.tsx";
 import RssPage from "../components/RssPage.tsx";
 import {findPodcastSection} from "../config/podcastConfig.ts";
 import TagPage from "../components/TagPage.tsx";
+import DiscoverNewsByDatePage from "../components/DiscoverNewsByDatePage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -122,6 +123,10 @@ export const router = createBrowserRouter([
       {
         path: "tag",
         element: <TagPage/>
+      },
+      {
+        path: "discover-news-by-date",
+        element: <DiscoverNewsByDatePage/>
       },
       {
         path: "*",
