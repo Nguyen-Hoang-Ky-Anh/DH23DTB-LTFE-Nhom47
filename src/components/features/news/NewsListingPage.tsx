@@ -10,9 +10,14 @@ interface NewsListingPageProps {
     news: NewsItem[];
     showHighlights?: boolean;
     searchKeyword?: string;
+    searchByDay?: string;
+
+    selectedDate?: string;
+    onDateChange?: (date: string) => void;
+    onApplyDate?: () => void;
 }
 
-export default function NewsListingPage({title, news, showHighlights = false, searchKeyword}: NewsListingPageProps) {
+export default function NewsListingPage({title, news, showHighlights = false, searchKeyword, searchByDay, selectedDate, onDateChange, onApplyDate}: NewsListingPageProps) {
     const keyword = searchKeyword?.trim().toLowerCase() ?? "";
 
     const filteredItems = keyword
@@ -28,19 +33,54 @@ export default function NewsListingPage({title, news, showHighlights = false, se
         window.scrollTo(0, 0);
     }, [title, keyword]);
 
+    function formatDate(date: string) {
+        const [year, month, day] = date.split("-");
+
+        return `${day}/${month}/${year}`;
+    }
+
     return (
         <div className="container text-start">
-            <h1 className="main-title fs-4 fw-bold text-dark mb-4"
-                style={{letterSpacing: "normal", borderBottom: "2px solid #0959ab"}}>
-                {searchKeyword?.trim() ? (
-                    <>
-                        <span style={{ color: "#0959ab" }}>
-                            Kết quả tìm kiếm:{" "}
-                        </span>
-                        {searchKeyword.trim()}
-                    </>
-                ) : title}
-            </h1>
+            {searchByDay ? (
+                <div className="news-listing-date-heading">
+                    <div className="d-flex align-items-baseline gap-3">
+                        <h1>{title}</h1>
+                        <span>Ngày {formatDate(searchByDay)}</span>
+                    </div>
+
+                    <div className={'category-news-by-date'}>
+                        <input
+                            type="date"
+                            value={selectedDate ?? searchByDay}
+                            onChange={(e) => onDateChange?.(e.target.value)}
+                        />
+
+                        <button
+                            type="button"
+                            onClick={onApplyDate}
+                        >
+                            OK
+                        </button>
+                    </div>
+                </div>
+            ) : (
+                <h1
+                    className="main-title fs-4 fw-bold text-dark mb-4"
+                    style={{
+                        letterSpacing: "normal",
+                        borderBottom: "2px solid #0959ab"
+                    }}
+                >
+                    {searchKeyword?.trim() ? (
+                        <>
+                            <span style={{ color: "#0959ab" }}>
+                                Kết quả tìm kiếm:{" "}
+                            </span>
+                            {searchKeyword.trim()}
+                        </>
+                    ) : title}
+                </h1>
+            )}
             {featured && (
                 <section className="news-listing-highlights border-bottom pb-3 mb-4">
                     <article className="row g-0 bg-light">
@@ -67,8 +107,11 @@ export default function NewsListingPage({title, news, showHighlights = false, se
             )}
             <div className="row">
                 <div className="col-12 col-lg-9">
-                    <NewsResults key={title} news={featured ? filteredItems.slice(5) : filteredItems}
-                                 initialCount={showHighlights ? 5 : 15}/>
+                    <NewsResults
+                        key={`${title}-${searchByDay ?? ""}`}
+                        news={featured ? filteredItems.slice(5) : filteredItems}
+                        initialCount={showHighlights ? 5 : 15}
+                    />
                 </div>
             </div>
         </div>
