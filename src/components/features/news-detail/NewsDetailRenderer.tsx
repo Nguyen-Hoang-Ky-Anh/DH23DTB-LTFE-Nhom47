@@ -1,6 +1,7 @@
 import {createElement, Fragment, type CSSProperties, type ReactNode} from "react";
 import type {NewsContent, TextContent} from "../../../config/newsStructure.ts";
 import SeeNowCard from "./detail-components/SeeNowCard.tsx";
+import VideoPlayer from "./detail-components/VideoPlayer.tsx";
 
 function renderText(content: TextContent, className?: string, style?: CSSProperties): ReactNode {
     if (typeof content === "string") {
@@ -71,6 +72,10 @@ export default function NewsDetailRenderer({content, size}: { content: NewsConte
                     </div>
                 );
                 break;
+            case "video":
+                element = <VideoPlayer video={block} />;
+                break;
+
 
             default:
                 continue;

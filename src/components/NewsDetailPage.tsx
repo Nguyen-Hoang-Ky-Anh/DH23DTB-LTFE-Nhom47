@@ -39,7 +39,7 @@ export default function NewsDetailPage() {
 
     useEffect(() => {
         if (url) {
-            dispatch(fetchNewsDetail(url));
+            dispatch(fetchNewsDetail(url)).unwrap().catch(error => console.log(error));
         }
     }, [dispatch, url]);
 
